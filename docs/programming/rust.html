@@ -1,0 +1,811 @@
+
+<!DOCTYPE html>
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Rust Scratch &#8212; Yuqi&#39;s Notebook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="数学" href="../mathematic/index.html" />
+    <link rel="prev" title="The C Promgramming Language" href="c.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#programming/rust" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Yuqi&#39;s Notebook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Yuqi's Notebook  文档</span>
+          <span class="md-header-nav__topic"> Rust Scratch </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Yuqi's Notebook  文档</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">编程</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Yuqi&#39;s Notebook 文档" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Yuqi&#39;s Notebook 文档">Yuqi's Notebook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#programming-rust--page-root" class="md-nav__link">Rust Scratch</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#variables-and-mutability" class="md-nav__link">Variables and Mutability</a>
+        </li>
+        <li class="md-nav__item"><a href="#data-type" class="md-nav__link">data type</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#scalar-type" class="md-nav__link">scalar type</a>
+        </li>
+        <li class="md-nav__item"><a href="#compound-type" class="md-nav__link">compound type</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#functions" class="md-nav__link">Functions</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#function-parameters" class="md-nav__link">Function Parameters</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#statements-and-expressions" class="md-nav__link">Statements and Expressions</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#functions-with-return-values" class="md-nav__link">functions with Return Values</a>
+        </li>
+        <li class="md-nav__item"><a href="#comments" class="md-nav__link">Comments</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#control-flow" class="md-nav__link">Control Flow</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#if-else-else-if-expression" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">if/else/else</span> <span class="pre">if</span></code> expression</a>
+        </li>
+        <li class="md-nav__item"><a href="#repetition-with-loops" class="md-nav__link">Repetition with Loops</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#loop" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">loop</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#while" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">while</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#for" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">for</span></code></a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#ownership" class="md-nav__link">Ownership</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#onwership-rules" class="md-nav__link">Onwership rules</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#references-and-borrowing" class="md-nav__link">References and Borrowing</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference</a>
+        </li>
+        <li class="md-nav__item"><a href="#slice-type" class="md-nav__link">slice type</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/programming/rust.md.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  
+<h1 id="programming-rust--page-root">Rust Scratch<a class="headerlink" href="#programming-rust--page-root" title="永久链接至标题">¶</a></h1>
+
+<h2 id="variables-and-mutability">Variables and Mutability<a class="headerlink" href="#variables-and-mutability" title="永久链接至标题">¶</a></h2>
+<p>mutability
+constants：</p>
+<ol class="simple">
+<li><p>can't use <code class="docutils literal notranslate"><span class="pre">mut</span></code> with a constants</p></li>
+<li><p>can be declared in any scope</p></li>
+<li><p>may only set to a constant expression, not the result of function
+call or any other value could only be computed at runtime
+shadow: declare a new variable with the same name as the previous variable,
+say that the first variable is shadowed by the second, which means
+that the second variable's value is what appears when the variable
+is used.</p></li>
+<li><p>compile-time error when reassign a variable without <code class="docutils literal notranslate"><span class="pre">let</span></code> keyword</p></li>
+<li><p>can change the type of the value but reuse the same name</p></li>
+</ol>
+
+
+<h2 id="data-type">data type<a class="headerlink" href="#data-type" title="永久链接至标题">¶</a></h2>
+<p>syntax:</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">var</span>: <span class="o">&lt;</span><span class="k">type</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+
+<h3 id="scalar-type">scalar type<a class="headerlink" href="#scalar-type" title="永久链接至标题">¶</a></h3>
+<p>A single value is a scalar type</p>
+<ol class="simple">
+<li><p>integers</p></li>
+</ol>
+<ul class="simple">
+<li><p>integer types</p></li>
+</ul>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>Length</p></th>
+<th class="head"><p>Signed</p></th>
+<th class="head"><p>Unsigned</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8-bit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">i8</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">u8</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>16-bit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">i16</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">u16</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>32-bit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">i32</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">u32</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>64-bit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">i64</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">u64</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>128-bit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">i128</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">u128</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>integer literals</p></li>
+</ul>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>Number literals</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Decimal</p></td>
+<td><p>98_222</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hex</p></td>
+<td><p>0xff</p></td>
+</tr>
+<tr class="row-even"><td><p>Octal</p></td>
+<td><p>0o77</p></td>
+</tr>
+<tr class="row-odd"><td><p>Binary</p></td>
+<td><p>0b1111_0000</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte (u8 only)</p></td>
+<td><p>b'A'</p></td>
+</tr>
+</tbody>
+</table>
+<p>rust use the term <code class="docutils literal notranslate"><span class="pre">panicking</span></code> when a program exits with an error</p>
+<ol class="simple">
+<li><p>floating-point</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">f32</span></code>: 32 bits</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f64</span></code>: 64 bits</p></li>
+</ul>
+<ol class="simple">
+<li><p>Numeric Operations</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>: addition</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code>: subtraction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: multiplication</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code>: division</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%</span></code>: remainder</p></li>
+</ul>
+<ol class="simple">
+<li><p>boolean</p></li>
+</ol>
+<p>specified by using <code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+</ul>
+<ol class="simple">
+<li><p>characters</p></li>
+</ol>
+<p>specified by using: <code class="docutils literal notranslate"><span class="pre">char</span></code></p>
+
+
+<h3 id="compound-type">compound type<a class="headerlink" href="#compound-type" title="永久链接至标题">¶</a></h3>
+<p>Group multiple values into one type. Two primitive types in rust: <code class="docutils literal notranslate"><span class="pre">tuple</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">array</span></code></p>
+<ol class="simple">
+<li><p>tuple</p></li>
+</ol>
+<p>Fixed length: Once declared, cannot grow or shrink in size</p>
+<ul class="simple">
+<li><p>destructuring:</p></li>
+</ul>
+<p>e.g.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">tup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tup</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"The value of y is: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>indexed by <code class="docutils literal notranslate"><span class="pre">.</span></code>, started at 0.</p></li>
+</ul>
+<p>e.g.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span>: <span class="p">(</span><span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span><span class="w"> </span><span class="kt">u8</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">five_hundred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">six_point_four</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>array</p></li>
+</ol>
+<p>Every element of an array must have the same type. Also have a fixed length, like tuples.</p>
+<p><code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">[3;</span> <span class="pre">5];</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">[3,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">3];</span></code></p>
+<p>access elements by <code class="docutils literal notranslate"><span class="pre">[index]</span></code>, where index is start at 0 like other languages.</p>
+
+
+
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="永久链接至标题">¶</a></h2>
+<p>syntax:</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">func</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">func</span><span class="o">-</span><span class="n">body</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">main</span></code> is the entry point of a rust program</p>
+<p>e.g.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">another_function</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">fn</span> <span class="nf">another_function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Another funciton."</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+<h3 id="function-parameters">Function Parameters<a class="headerlink" href="#function-parameters" title="永久链接至标题">¶</a></h3>
+<p>e.g.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">another_function</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">fn</span> <span class="nf">another_function</span><span class="p">(</span><span class="n">x</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"The value of x is: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+<h4 id="statements-and-expressions">Statements and Expressions<a class="headerlink" href="#statements-and-expressions" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p>Statements: instructions that perform some action and do not return a value</p></li>
+<li><p>Expressions: evaluate to a resulting value</p></li>
+</ul>
+<p>cannot assign a <code class="docutils literal notranslate"><span class="pre">let</span></code> statement to another variable, wrong code:</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span><span class="w"> </span><span class="c1">// error when compiling</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>block in <code class="docutils literal notranslate"><span class="pre">{}</span></code> is an expression</p>
+<p>e.g.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"The value of y is: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"> </span><span class="c1">// result is 4</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+
+
+<h3 id="functions-with-return-values">functions with Return Values<a class="headerlink" href="#functions-with-return-values" title="永久链接至标题">¶</a></h3>
+<p>declare return values' type after an arrow (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>), return the last expression implicitly,
+also can return early with <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">five</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">5</span><span class="w"> </span><span class="c1">// can not add a semicolon, otherwise will get a error</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">five</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"The value of x is: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+
+<h3 id="comments">Comments<a class="headerlink" href="#comments" title="永久链接至标题">¶</a></h3>
+<p>using <code class="docutils literal notranslate"><span class="pre">//</span></code></p>
+
+
+
+<h2 id="control-flow">Control Flow<a class="headerlink" href="#control-flow" title="永久链接至标题">¶</a></h2>
+
+<h3 id="if-else-else-if-expression"><code class="docutils literal notranslate"><span class="pre">if/else/else</span> <span class="pre">if</span></code> expression<a class="headerlink" href="#if-else-else-if-expression" title="永久链接至标题">¶</a></h3>
+<p>branch the code depending on conditions, which must be <code class="docutils literal notranslate"><span class="pre">bool</span></code> type,
+if the condition isn't a <code class="docutils literal notranslate"><span class="pre">bool</span></code>, will get an error</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"condition is true"</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"condition is false"</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>using <code class="docutils literal notranslate"><span class="pre">if</span></code> in a <code class="docutils literal notranslate"><span class="pre">let</span></code> statement, values in each arm must be the same type</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"The value of number is: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+
+<h3 id="repetition-with-loops">Repetition with Loops<a class="headerlink" href="#repetition-with-loops" title="永久链接至标题">¶</a></h3>
+
+<h4 id="loop"><code class="docutils literal notranslate"><span class="pre">loop</span></code><a class="headerlink" href="#loop" title="永久链接至标题">¶</a></h4>
+<p>an infinite loop example:</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"again!"</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>returning values from loops</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"The result is {}"</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+
+<h4 id="while"><code class="docutils literal notranslate"><span class="pre">while</span></code><a class="headerlink" href="#while" title="永久链接至标题">¶</a></h4>
+<p>When the condition cases to be true, the program calls <code class="docutils literal notranslate"><span class="pre">break</span></code>, stopping the loop</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{}!"</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">number</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"LIFTOFF!!!"</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+
+<h4 id="for"><code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#for" title="永久链接至标题">¶</a></h4>
+<p>a safer way to get each element of a collection</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">iter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"the value is: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+
+
+
+<h2 id="ownership">Ownership<a class="headerlink" href="#ownership" title="永久链接至标题">¶</a></h2>
+<p>Rust's central feature</p>
+<p>All programs have to manage the way they use a computer's memory while running:
+some language manage memory by using garbage collection,
+others require programmer explicitly allocate and free the memory.
+memory is managerd through a system of ownership with a set of rules
+that the compiler checks at compile time in Rust.</p>
+
+<h3 id="onwership-rules">Onwership rules<a class="headerlink" href="#onwership-rules" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Each value in Rust has a variable that's called its owner</p></li>
+<li><p>There can only be one owner at at time</p></li>
+<li><p>When the owner goes out of scope, the value will be dropped</p></li>
+</ul>
+<p>varialbe scope devided by <code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>, in another word, every <code class="docutils literal notranslate"><span class="pre">{}</span></code> is individual scope.</p>
+<p>When a variable goes out of scope, Rust calls a special function for us.
+This function is called <code class="docutils literal notranslate"><span class="pre">drop</span></code>, and it's where the author of <code class="docutils literal notranslate"><span class="pre">String</span></code> can
+put the code to return the memory. Rust calls <code class="docutils literal notranslate"><span class="pre">drop</span></code> automatically at the
+closing curly bracket.</p>
+<p>string on heap, using point, and if two point to one data, the latter point owns
+the data. can duplicate data with clone</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>:<span class="nc">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s1</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>stack-only data using copy instead of clone
+cause these data type have certain memory spaces.</p>
+<p>Here are the types:</p>
+<ul class="simple">
+<li><p>All the integer types, such as <code class="docutils literal notranslate"><span class="pre">u32</span></code></p></li>
+<li><p>The Boolean type, <code class="docutils literal notranslate"><span class="pre">bool</span></code> with values <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p>All the floating point types, such as <code class="docutils literal notranslate"><span class="pre">f64</span></code></p></li>
+<li><p>The character type, <code class="docutils literal notranslate"><span class="pre">char</span></code></p></li>
+<li><p>Tuples, if they only contain types that also implement <code class="docutils literal notranslate"><span class="pre">Copy</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">(i32,</span> <span class="pre">i32)</span></code>
+implements <code class="docutils literal notranslate"><span class="pre">Copy</span></code>, but <code class="docutils literal notranslate"><span class="pre">(i32,</span> <span class="pre">String)</span></code> does not.</p></li>
+</ul>
+<p>Passing a varaible to a function will move or copy, just as assignment does.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w">  </span><span class="c1">// s comes into scope</span>
+
+<span class="w">  </span><span class="n">take_ownership</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w">             </span><span class="c1">// s's value moves into the function...</span>
+<span class="w">                                 </span><span class="c1">// ... and so is no longer valid here</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">                     </span><span class="c1">// x comes into scope</span>
+
+<span class="w">   </span><span class="n">makes_copy</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w">                </span><span class="c1">// x would move into the function,</span>
+<span class="w">                                 </span><span class="c1">// but i32 is Copy, so it's okay to still</span>
+<span class="w">                                 </span><span class="c1">// use x afterward</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// Here, x goes out of scope, then s. But because s's value was moved, nothing</span>
+<span class="w">  </span><span class="c1">// special happends.</span>
+</pre></div>
+</div>
+<p>Returning values can also transfer ownership:</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gives_ownership</span><span class="p">();</span><span class="w">        </span><span class="c1">// gives_ownership moves its return</span>
+<span class="w">                                     </span><span class="c1">// value into s1</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w">    </span><span class="c1">// s2 comes into scope</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">takes_and_gives_back</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span><span class="w"> </span><span class="c1">// s2 is moved into</span>
+<span class="w">                                     </span><span class="c1">// takes_and_gives_back, which also</span>
+<span class="w">                                     </span><span class="c1">// move its return value into s3</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// Here, s3 goes out of scope and is dropped. s2 goes out of scope but was</span>
+<span class="w">  </span><span class="c1">// moved, so nothing happens. s1 goes out of scope and is dropped.</span>
+
+<span class="k">fn</span> <span class="nf">gives_ownership</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nb">String</span> <span class="p">{</span><span class="w">           </span><span class="c1">// gives_ownership will move its</span>
+<span class="w">                                           </span><span class="c1">// return value into the function</span>
+<span class="w">                                           </span><span class="c1">// that calls it</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">some_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w"> </span><span class="c1">// some_string comes into scope</span>
+
+<span class="w">  </span><span class="n">some_string</span><span class="w">                              </span><span class="c1">// some_string is returned and</span>
+<span class="w">                                           </span><span class="c1">// moves out to the calling</span>
+<span class="w">                                           </span><span class="c1">// function</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// takes_and_gives_back will take a String and return one</span>
+<span class="k">fn</span> <span class="nf">takes_and_gives_back</span><span class="p">(</span><span class="n">a_string</span>: <span class="nb">String</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">String</span> <span class="p">{</span><span class="w"> </span><span class="c1">// a_string comes into</span>
+<span class="w">                                                      </span><span class="c1">// scope</span>
+
+<span class="w">  </span><span class="n">a_string</span><span class="w">  </span><span class="c1">// a_string is returned and moves out to the calling function</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+
+
+<h2 id="references-and-borrowing">References and Borrowing<a class="headerlink" href="#references-and-borrowing" title="永久链接至标题">¶</a></h2>
+
+<h3 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h3>
+<p>allow you refer to some value without taking ownership of it
+opposite of referencing by using <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> is <em>dereferencing</em> :<code class="docutils literal notranslate"><span class="pre">*</span></code>
+by default, references are immutable.</p>
+<p>Personall opinion: the meaning is the same as C</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">calculate_length</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s1</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="fm">println!</span><span class="p">(</span><span class="s">"The length of '{}' is {}."</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">fn</span> <span class="nf">calculate_length</span><span class="p">(</span><span class="n">s</span>: <span class="kp">&amp;</span><span class="nb">String</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">usize</span> <span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">s</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>using <code class="docutils literal notranslate"><span class="pre">&amp;mut</span> <span class="pre">String</span></code> to make a reference mutable, but notice
+that there's a big restriction: you can have only one mutable
+reference to a particular piece of data in a particular scope.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">change</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">fn</span> <span class="nf">change</span><span class="p">(</span><span class="n">some_string</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">some_string</span><span class="p">.</span><span class="n">push_str</span><span class="p">(</span><span class="s">", world"</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>but the code below will failed:</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="w"> </span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+
+<span class="fm">println!</span><span class="p">(</span><span class="s">"{}, {}"</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>However, we could use curly tbrackets <code class="docutils literal notranslate"><span class="pre">{}</span></code> to create a new scope:</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// r1 goes out of scope here, so we can make a new reference with no problems.</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+
+
+<h3 id="slice-type">slice type<a class="headerlink" href="#slice-type" title="永久链接至标题">¶</a></h3>
+<p>slice does not have ownership</p>
+<p>string literals are slices</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">len</span><span class="p">();</span><span class="w"></span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">slice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="o">..</span><span class="n">len</span><span class="p">];</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="n">slice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="o">..</span><span class="p">];</span><span class="w"></span>
+
+<span class="kd">let</span><span class="w"> </span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s">"hello"</span><span class="p">;</span><span class="w"> </span><span class="c1">// this is string is a slice type</span>
+</pre></div>
+</div>
+
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="c.html" title="The C Promgramming Language"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> The C Promgramming Language </span>
+              </div>
+            </a>
+          
+          
+            <a href="../mathematic/index.html" title="数学"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> 数学 </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020-2021, Yuqi Liu.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

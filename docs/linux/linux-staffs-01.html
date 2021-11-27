@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>我与 Linux 的那些事01：初识 &#8212; Yuqi&#39;s Notebook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="我与 Linux 的那些事02：选择" href="linux-staffs-02.html" />
+    <link rel="prev" title="Linux" href="index.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#linux/linux-staffs-01" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Yuqi&#39;s Notebook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Yuqi's Notebook  文档</span>
+          <span class="md-header-nav__topic"> 我与 Linux 的那些事01：初识 </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Yuqi's Notebook  文档</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Linux</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Yuqi&#39;s Notebook 文档" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Yuqi&#39;s Notebook 文档">Yuqi's Notebook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#linux-linux-staffs-01--page-root" class="md-nav__link">我与 Linux 的那些事01：初识</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">序</a>
+        </li>
+        <li class="md-nav__item"><a href="#linux" class="md-nav__link">初识 Linux</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">起因</a>
+        </li>
+        <li class="md-nav__item"><a href="#vmware-ubuntu" class="md-nav__link">VMWare 和 Ubuntu</a>
+        </li>
+        <li class="md-nav__item"><a href="#ubuntu" class="md-nav__link">Ubuntu 初体验</a>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">Ubuntu 双系统</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#linux-distros" class="md-nav__link">Linux Distros</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#centos-redhat-fedora-linux" class="md-nav__link">CentOS/RedHat/Fedora Linux</a>
+        </li>
+        <li class="md-nav__item"><a href="#arch-linux" class="md-nav__link">Arch Linux</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/linux/linux-staffs-01.md.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  
+<h1 id="linux-linux-staffs-01--page-root">我与 Linux 的那些事01：初识<a class="headerlink" href="#linux-linux-staffs-01--page-root" title="永久链接至标题">¶</a></h1>
+
+<h2 id="id1">序<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>最近看 Obsidian 越来越不错，加上最近也比较空闲，就准备将之前 Onenote 上的笔记全部整理成 Markdown 模式。结果仔细一看，发现上面的笔记很零碎——部分是在之前公司用英文写的工作相关的文档，其他的要么是摘抄的文档，要么干脆就是直接写个标题，贴个链接，并没有太多价值。
+基于职业道德，加上最近看了下山下英子的断舍离系列书，就直接把工作文档给删掉了。然后呢，发现另外一个文件夹也有一些中英文夹杂的笔记。之前对于将自己写的一些英文笔记放到自己的博客会有一点顾虑，毕竟我也是有将一些英文文档中文本土话，但是现在想想，fuck it！崇洋媚外就崇洋媚外了吧。这是我自己的博客，我自己的笔记，不管怎么看，都是我想怎么样就怎么样。
+所以说，笔记啊，自己怎么舒服怎么来。本文是记录一下我对 Debian/Linux 认识和一些使用心得。</p>
+
+
+<h2 id="linux">初识 Linux<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h2>
+
+<h3 id="id2">起因<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>关于我是怎么认识 Linux 的呢？这里面其实涉及了当初的 <a class="reference external" href="https://baike.baidu.com/item/%E8%85%BE%E8%AE%AF360%E4%B9%8B%E4%BA%89">3Q 大战</a>。</p>
+<p>故事是要从我上大学开始说起，2015年，我的中学生涯正式结束了，成为了一个大学生。在那年暑假末，我拥有的人生第一部手机——魅族 4 pro以及第一台计算机——宏碁 Aspire E 15。因为买的晚，同学都在群里说大学所在的城市治安并不是很安全，小偷扒手盛行，然后第一个月又是军训，就没有将电脑带到学校，直接丢在家里。</p>
+<p>军训结束也就放国庆假了，回到家打开笔记本时突然发现开不了机。之后就去找店主了，问他我刚买一个月的电脑怎么开不了机了。然后店主问道：“是不是 Win 8 系统。”我说对。店主就笑笑了，接着说道：“这个应该是Win 8 系统的问题，我给你换成Win 7 吧”。Win 8 sucks！换好系统后，我就高高兴兴地回家了。按照国际管理，系统转好后要装个杀毒软件。那么是腾讯管家呢，还是 360 呢？网上都说 360 好，看室友用的也是 360，好，那就 360 吧。装好后就关机，出去找同学玩了。</p>
+<p>放完假回到学校，就提了一下这个事，然后问了句，这两个杀毒软件那个好用啊？结果的到了两个答案？一个说腾讯好，另一个说360好。好，既然没有得到统一的答案，那我就两个都装上，自己体验。</p>
+<p>这一体验，就体验出问题了。那时3q大战刚结束不就，虽然法院是宣判了结果，但两大厂家怎么可能轻易妥协呢？两个软件起冲突了，腾讯管家说 360 有风险，360 说腾讯管家是个高危漏洞，都推荐卸载对方。搞得我有点烦躁了，既然两个共存不了，那我就直接将两个都卸载掉。卸载掉后一开始一切都很正常。</p>
+<p>可是，可是第二天下课后开电脑发现，开不开。强制关机，再开机，连续三次后通过上次成功启动进入系统，既然进去了，那没事了。然后之后又出现这个问题了。那这我就不能忍了。为了确定是不是每次都会出现，重新关机开机，结果几次之后就再也不能开机了。虽然想马上修好，但是问了电信营业厅的学长，说要收我 50 块，告辞，这都好几天的饭钱。周末回了一趟家，然后又跑去找店主了，装好后又问店主要了个镜像。店主的镜像也是网上下的，这次的安装的系统默认已经安装了 360。我寻思，算了，先这样用着吧。</p>
+<p>用了一段时间后，发现每次开机会启动 360，而且启动时间是越来越慢，又卸掉了 360，卸掉后发现系统又启动不了，是卸载时把那些补丁也删掉了，结果包含了系统重要文件。这回不只是对管家和360失望了，对 Win 7 也是比较失望。时至 Win 10 刚发布没多久，就更新到了 Win 10，然后又找室友推荐了下杀毒软件，安装上了小红伞。</p>
+<p>之后我就想，难道世界上就只有 Windows 这一种操作系统吗？这么想着，就自己去网上搜了搜，结果就被我发现了 Linux。从此踏上了一条不归路。</p>
+
+
+<h3 id="vmware-ubuntu">VMWare 和 Ubuntu<a class="headerlink" href="#vmware-ubuntu" title="永久链接至标题">¶</a></h3>
+<p>既然找到了替代品，那么就得体验下，不实际体验下，怎么进行比较呢？不过基于目前 Win 10 + 小红伞还是很稳的，虽然偶尔软件会有些小问题，但问题都不大，网上都有解决方案。在查看 Ubuntu 安装时，经常看到教程上有说用的是 VMWare 虚拟机做的演示。就有查了下虚拟机。了解后发现，哇，还有这样的好东西。</p>
+<p>在国内，应用越广泛的商业软件，破解体系也很完善。所以很快就安装破解了 VMWare，然后就开始了 Ubuntu 的探索之旅了。</p>
+<p>下载镜像，创建虚拟机，一步一步照着教程走。第一次很成功，啥问题都没有。然后就开始摸索着用 Ubuntu。</p>
+
+
+<h3 id="ubuntu">Ubuntu 初体验<a class="headerlink" href="#ubuntu" title="永久链接至标题">¶</a></h3>
+<p>刚进入 Ubuntu 时，感觉它的 UI 界面都比 Windows 要好看太多了，加上在 terminal 里敲命令很酷，感觉有点电影中黑客的那种味道。初看很美妙，那么就要在进一步，安装一些办公软件了。这下就遇到问题了，QQ 在网上还是找到了个版本的， Wechat 也可以用 Web 版聊天。但总是没有 Windows 上这么丝滑。而且在应用商店更新软件时，会很卡。一开始我只是以为是我网络比较慢的原因，没有在意。也不用去管那些什么杀毒软件了。而且安装软件除了应用商店，直接敲一个命令就好，很舒服。而且开发环境该有的也都有。</p>
+<p>很好，在体验了有一段时间后。总觉着在虚拟机里玩不是个事，总觉得差点什么。于是就想直接装到笔记本上，但我又还想保留 Windows —— 要和室友一起打游戏，那怎么办呢？上网查呗。于是又学到了新词，双系统。</p>
+<p>既然有了解决方案，那么就行动吧。备份文件，下载最新 Ubuntu 镜像，制作U盘启动盘，找好教程。在一个周五的晚上，我向双系统迈出了第一步，结果迈太大，拉胯了。装是装成功了，可惜没有网，默认没有带博通的无线网卡驱动。你说有线网？有线网要 Netkeeper 客户端认证，想什么呢？当时已经到了冬天，也比较晚了。就没有再去说用室友的电脑去下网卡驱动包。用自己的 Win 10 自己下啊。不好意思，第一次装双系统，装好后发现 Win 10 的快速启动不兼容，Win 10 启动不了，挂了。想了一下，等笔记本风扇平静了，又默默掏出 Win 10 启动 U 盘，弄到一两点，就睡了，第二天起来后，老老实实地用着虚拟机，心里虽然有一丝不得劲，但很快就和室友一起玩起了游戏。</p>
+<p>放寒假回到家后，将内存调大一些，结果电脑被卡死了。就加了根内存条，偶尔会开一开虚拟机玩一玩。然后当时又入了 VIM 的坑，一有时间就会去搞搞 VIM。</p>
+
+
+<h3 id="id3">Ubuntu 双系统<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>时间转到大一的暑假，时间够长，为了更好的体验 VIM，毕竟 VIM  还是 Linux 下的爽啊。于是就搞了根网线，在家里搞起了双系统。吸取了上次失败的经验，这次首先把 Win 10 的快速启动给关掉了。</p>
+<p>Ubuntu 安装，没什么难度，加上这次又是连着有线网，一路顺到底。但不能一直连着有线网啊，方便肯定是无线更方便。就把无线网卡装上，一切也都是那么的顺利。基础软件也全都装好了，没毛病，很好。结果正想这要开始玩 VIM 时，突然就弹出个 <code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">error</span></code>，这就给我整的有点懵，赶紧上网查查什么原因，结果一看大家都遇到过，是个没有解决方法，是个 bug。</p>
+<p>Alright，fuck Ubuntu，I'm done with u。老老实实又将 Win 10 重新装了一遍。连 VIM 也不想玩了，索然无味。就和高中同学出去旅游了。玩完回来后，就没有怎么搭理笔记本了。没事就看看小说、电影，出去吃个夜宵。</p>
+
+
+
+<h2 id="linux-distros">Linux Distros<a class="headerlink" href="#linux-distros" title="永久链接至标题">¶</a></h2>
+<p>暑假对 Ubuntu 失望后，但是依然没有放弃对 Linux 的探索。为什么呢？闲的呗，在说这么一个小众的系统，当然符合我的口味啊。不然我为什么手机不买三星 OPPO VIVO 小米，电脑为什么不买联想华硕戴尔，而偏偏要买魅族和宏碁呢？</p>
+
+<h3 id="centos-redhat-fedora-linux">CentOS/RedHat/Fedora Linux<a class="headerlink" href="#centos-redhat-fedora-linux" title="永久链接至标题">¶</a></h3>
+<p>放弃 Ubuntu 后，我对 Ubuntu 的厌恶感与日剧增。然后就开始去了解各个种类的 Linux Distro了。首先，主流的 Linux Distro 可以用包管理来区分，两大阵营：<a class="reference external" href="https://baike.baidu.com/item/deb/7025498"><code class="docutils literal notranslate"><span class="pre">deb</span></code></a>/<a class="reference external" href="https://baike.baidu.com/item/dpkg"><code class="docutils literal notranslate"><span class="pre">dpkg</span></code></a> 和 <a class="reference external" href="https://baike.baidu.com/item/RPM/3794648"><code class="docutils literal notranslate"><span class="pre">rpm</span></code></a> 或者说是 <a class="reference external" href="https://baike.baidu.com/item/apt/20109246"><code class="docutils literal notranslate"><span class="pre">apt</span></code></a> 和 <a class="reference external" href="https://www.man7.org/linux/man-pages/man8/yum.8.html"><code class="docutils literal notranslate"><span class="pre">yum</span></code></a>/<a class="reference external" href="https://fedoraproject.org/wiki/DNF"><code class="docutils literal notranslate"><span class="pre">dnf</span></code></a>。基于对 Ubuntu 的失望，就想试试 <a class="reference external" href="https://baike.baidu.com/item/RPM/3794648"><code class="docutils literal notranslate"><span class="pre">rpm</span></code></a> 系的，<a class="reference external" href="https://www.redhat.com/en"><code class="docutils literal notranslate"><span class="pre">RedHat</span></code></a> 要收费，那就 <a class="reference external" href="https://www.centos.org/"><code class="docutils literal notranslate"><span class="pre">CentOS</span></code></a> 吧。结果是 <a class="reference external" href="https://www.centos.org/"><code class="docutils literal notranslate"><span class="pre">CentOS</span></code></a> 的软件包很旧，<a class="reference external" href="http://gcc.gnu.org/"><code class="docutils literal notranslate"><span class="pre">Gcc</span></code></a> 都 6.2 了，而系统默认的还是 4.8，而且也没有 QQ。看了下界面，风格比较旧，加上同样是 2G 的内存，Ubuntu 能比较流畅，而 CentOS 就有点卡。</p>
+<p>既然开源社区的不太行，那就看看商业版的。在网上，尤其是国内，花点时间总是能找到资源的。找了个比较全的 <a class="reference external" href="https://www.redhat.com/en"><code class="docutils literal notranslate"><span class="pre">RedHat</span></code></a> 镜像资源，又放到虚拟机里体验一下。比 <a class="reference external" href="https://www.centos.org/"><code class="docutils literal notranslate"><span class="pre">CentOS</span></code></a> 还卡。之后又了解到 <a class="reference external" href="https://baike.baidu.com/item/RPM/3794648"><code class="docutils literal notranslate"><span class="pre">rpm</span></code></a> 还有个 <a class="reference external" href="https://getfedora.org"><code class="docutils literal notranslate"><span class="pre">Fedora</span></code></a>，也去试了试，发现和 <a class="reference external" href="https://www.centos.org/"><code class="docutils literal notranslate"><span class="pre">CentOS</span></code></a> 没差多少，就是让我知道了还有个 <code class="docutils literal notranslate"><span class="pre">dnf</span></code> 的命令工具。</p>
+<p>接二连三的测试，对 <a class="reference external" href="https://baike.baidu.com/item/RPM/3794648"><code class="docutils literal notranslate"><span class="pre">rpm</span></code></a> 系的映像并不是很好，总之就是不适合个人日常使用。</p>
+
+
+<h3 id="arch-linux">Arch Linux<a class="headerlink" href="#arch-linux" title="永久链接至标题">¶</a></h3>
+<p>淘汰 <a class="reference external" href="https://baike.baidu.com/item/RPM/3794648"><code class="docutils literal notranslate"><span class="pre">rpm</span></code></a> 后接着逛贴吧，经常看到说 <a class="reference external" href="https://archlinux.org/"><code class="docutils literal notranslate"><span class="pre">Arch</span></code></a>，说是“邪教”。好吧，那就入一次“邪教”吧，看看到底邪在哪里。而且经常在 <a class="reference external" href="https://archlinux.org/"><code class="docutils literal notranslate"><span class="pre">Arch</span></code></a> 吧看到他们晒桌面，桌面是真的好看。</p>
+<p>第一次安装时，被它的镜像给惊讶到了。只有一两百兆，这，比 <a class="reference external" href="https://www.centos.org/"><code class="docutils literal notranslate"><span class="pre">CentOS</span></code></a> minimal 也要小好多。刚进入安装界面就懵了一下，就一个提示符，啥界面都没有，当时直接就关掉了虚拟机了。之前已经装过好多次，也就没有去找教程，结果第一次就是败了。</p>
+<p>失败了不要紧，反而激励了我，不成功一次我是不会罢休的。然后赶紧去查了下安装文档。才知道，这就是 <a class="reference external" href="https://archlinux.org/"><code class="docutils literal notranslate"><span class="pre">Arch</span></code></a> 的特色——精简、高度定制化，安装是没有图形界面，而且要联网，不然你也装不了。这才恍然大悟，这就是它的镜像这么小的原因啊。</p>
+<p>看着英文 <a class="reference external" href="https://wiki.archlinux.org/index.php/Installation_guide">Wiki</a>，一步一步按照上面操作，一开始是卡在网络上，换好源后，最后没有生成 <a class="reference external" href="https://baike.baidu.com/item/initramfs"><code class="docutils literal notranslate"><span class="pre">Initramfs</span></code></a> 结果启动不了。经过两三次的失败后，终于装好了，结果是，还需要自己安装桌面环境。当时累了，不想搞了，直接关掉虚拟机去洗澡了。另一个和 Arch 齐名的高自定义的 <a class="reference external" href="https://www.gentoo.org/"><code class="docutils literal notranslate"><span class="pre">Gentoo</span> <span class="pre">Linux</span></code></a> 我没有去碰过，因为虚拟机上操作不了，安装时大部分都是要现场编译的，只在贴吧看过直播贴。</p>
+<p>之后就是我对桌面环境的选择了。这个第二篇再介绍吧。</p>
+
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="index.html" title="Linux"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Linux </span>
+              </div>
+            </a>
+          
+          
+            <a href="linux-staffs-02.html" title="我与 Linux 的那些事02：选择"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> 我与 Linux 的那些事02：选择 </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020-2021, Yuqi Liu.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

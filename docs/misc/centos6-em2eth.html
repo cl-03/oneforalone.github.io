@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>CentOS 6 网卡名 em 修改成 eth &#8212; Yuqi&#39;s Notebook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="VNC 常见问题及解决方案" href="vnc.html" />
+    <link rel="prev" title="CentOS 6 使用国内 yum 源" href="centos6-yum-repo.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#misc/centos6-em2eth" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Yuqi&#39;s Notebook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Yuqi's Notebook  文档</span>
+          <span class="md-header-nav__topic"> CentOS 6 网卡名 em 修改成 eth </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Yuqi's Notebook  文档</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">杂项</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Yuqi&#39;s Notebook 文档" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="Yuqi&#39;s Notebook 文档">Yuqi's Notebook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#misc-centos6-em2eth--page-root" class="md-nav__link">CentOS 6 网卡名 em 修改成 eth</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#grub" class="md-nav__link">修改 grub 配置文件</a>
+        </li>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">修改网卡的配置文件</a>
+        </li>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">重启服务器</a>
+        </li>
+        <li class="md-nav__item"><a href="#update-from-2021-11-24" class="md-nav__link"><strong>Update from 2021-11-24</strong></a>
+        </li>
+        <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/misc/centos6-em2eth.md.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  
+<h1 id="misc-centos6-em2eth--page-root">CentOS 6 网卡名 em 修改成 eth<a class="headerlink" href="#misc-centos6-em2eth--page-root" title="永久链接至标题">¶</a></h1>
+<p>有些 Dell 的服务器和 Redhat/CentOS 组合一起就是会出现某些特殊的反应，比如，网卡名不是 <code class="docutils literal notranslate"><span class="pre">eth</span></code>
+而是 <code class="docutils literal notranslate"><span class="pre">em</span></code>。这个本来也没啥大问题，但是和一些工业设计软件搭配在一起，就出了个大问题，license 激活
+不了。怎么解决呢？</p>
+
+<h2 id="grub">修改 grub 配置文件<a class="headerlink" href="#grub" title="永久链接至标题">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s1">'s/quiet/quiet biosdevname=0/'</span> /etc/grub.conf
+</pre></div>
+</div>
+<p>如果对 <code class="docutils literal notranslate"><span class="pre">sed</span></code> 不熟的话，直接用 vi 或 nano 去编辑 <code class="docutils literal notranslate"><span class="pre">/etc/grub.conf</span></code>，找到以 <code class="docutils literal notranslate"><span class="pre">kernel</span></code> 开头，<code class="docutils literal notranslate"><span class="pre">quiet</span></code>
+结尾的一行，在 <code class="docutils literal notranslate"><span class="pre">quiet</span></code> 后面添加 <code class="docutils literal notranslate"><span class="pre">biosdevname=0</span></code>，保存</p>
+
+
+<h2 id="id1">修改网卡的配置文件<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /etc/sysconfig/network-scripts
+
+for i in {1..4}; do sed -i "s/em$i/eth$(( i-1 ))/" ifcfg-em$i; mv ifcfg-em$i ifcfg-eth$(( i-1 )); done
+</pre></div>
+</div>
+<p>第二步的具体操作是将 ifcfg-em1 到 ifcfg-em4 这四个文件中的 <code class="docutils literal notranslate"><span class="pre">em1</span></code> / <code class="docutils literal notranslate"><span class="pre">em2</span></code> / <code class="docutils literal notranslate"><span class="pre">em3</span></code> / <code class="docutils literal notranslate"><span class="pre">em4</span></code>
+改为 <code class="docutils literal notranslate"><span class="pre">eth0</span></code> / <code class="docutils literal notranslate"><span class="pre">eth1</span></code> / <code class="docutils literal notranslate"><span class="pre">eth2</span></code> / <code class="docutils literal notranslate"><span class="pre">eth3</span></code>，然后将 <code class="docutils literal notranslate"><span class="pre">ifcfg-em1</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-em2</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-em3</span></code> /
+<code class="docutils literal notranslate"><span class="pre">ifcfg-em4</span></code> 分别改名为 <code class="docutils literal notranslate"><span class="pre">ifcfg-eth0</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-eth1</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-eth2</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-eth3</span></code></p>
+
+
+<h2 id="id2">重启服务器<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reboot
+</pre></div>
+</div>
+
+
+<h2 id="update-from-2021-11-24"><strong>Update from 2021-11-24</strong><a class="headerlink" href="#update-from-2021-11-24" title="永久链接至标题">¶</a></h2>
+<p>最近又被这个问题折磨了一下，正常来说上面这个操作步骤是能够 work 的，但是总是会有不正常的时候，就比如说我前几天遇到的。</p>
+<p>具体情况是这样的：</p>
+<p>情况是这样的，我根据之前的经验，改了 <code class="docutils literal notranslate"><span class="pre">/etc/grub.conf</span></code>，然后一改网卡配置文件名，远程就断掉，沟通后知道路由器那边对服务器
+的网络进行了限制，一开始我以为是配置文件里面的内容没改导致的，然后就叫机房的人协助改一下，结果发现将 <code class="docutils literal notranslate"><span class="pre">em1</span></code> 改为 <code class="docutils literal notranslate"><span class="pre">eth1</span></code> 后，
+竟然不能获取到 IP，配置静态 IP 也不行。无奈之下，只能先恢复成原有的情况，继续使用 <code class="docutils literal notranslate"><span class="pre">em1</span></code>，将一些不依赖网卡名的服务给配置上。
+过了一两天，机房那边想要复现这个问题，结果发现改了配置文件重启后用 <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">a</span></code> 命令看到的网卡名并没有变化，还是 <code class="docutils literal notranslate"><span class="pre">em1</span></code>。</p>
+<p>那么问题出在哪里呢？然后就对比一下配置成功且正常 work 的配置文件，一开始以为是配置文件中少了 <code class="docutils literal notranslate"><span class="pre">NAME="System</span> <span class="pre">eth0"</span></code> 这
+一行配置，结果发现其他的网卡都可以，就是这个 <code class="docutils literal notranslate"><span class="pre">em1</span></code> 变不成 <code class="docutils literal notranslate"><span class="pre">eth0</span></code>。通过使用 <code class="docutils literal notranslate"><span class="pre">nmcli</span></code> 查看分析，改完后 <code class="docutils literal notranslate"><span class="pre">nmcli</span> <span class="pre">con</span></code> 看到
+的是 <code class="docutils literal notranslate"><span class="pre">eth0</span></code>，<code class="docutils literal notranslate"><span class="pre">nmcli</span> <span class="pre">dev</span></code> 看到的却是 <code class="docutils literal notranslate"><span class="pre">em1</span></code>。</p>
+<p>Ok，检查到这，那么问题很清晰了，<code class="docutils literal notranslate"><span class="pre">nmcli</span> <span class="pre">con</span></code> 查看的是 NetworkManager 中的 connection，<code class="docutils literal notranslate"><span class="pre">nmcli</span> <span class="pre">dev</span></code> 查看的是 NetworkManager
+管理的 device 名，那么就是配置是生效了的，但是在 device 的管理识别中有问题。然后就去 <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/70-persistent-net.rules</span></code>
+中一看，终于找到问题了，其中 <code class="docutils literal notranslate"><span class="pre">em1</span></code> 的配置要在 <code class="docutils literal notranslate"><span class="pre">eth0</span></code> 后面，这就难怪为什么改完网卡配置连接显示的是配置文件中的配置，但是设备名却是
+<code class="docutils literal notranslate"><span class="pre">em1</span></code> 了，根据现象我可以确定对于同一个设备，最新的配置会覆盖掉之前的配置，而这台机器产生这个的原因是因为一开始改成功了，但是没有获取到
+IP，之后有改回去，就导致 <code class="docutils literal notranslate"><span class="pre">em1</span></code> 成为最新的了，然后之后修改并没有出现新的命名，所以 device 的配置文件中就不会再更新。所以解决办法就是：
+直接注释掉 <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/70-persistent-net.rules</span></code> 中 <code class="docutils literal notranslate"><span class="pre">em1</span></code> 的配置。</p>
+<p>Problem Solve。</p>
+<p>因此，最完美的方案是：</p>
+<ol class="simple">
+<li><p>修改 <code class="docutils literal notranslate"><span class="pre">/etc/grub.conf</span></code></p></li>
+<li><p>修改  <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/70-persistent-net.rules</span></code>，如果文件不存在的话，在修改完 <code class="docutils literal notranslate"><span class="pre">/etc/grub.conf</span></code> 重启后系统会生成，
+之后再修改</p></li>
+<li><p>修改网卡配置文件然后重命名网卡配置文件</p></li>
+</ol>
+
+
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
+<p>[1]. <a class="reference external" href="https://www.linuxidc.com/Linux/2013-07/86885.htm">CentOS 6.4安装后网卡em改回eth的两种方法</a></p>
+
+
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="centos6-yum-repo.html" title="CentOS 6 使用国内 yum 源"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> CentOS 6 使用国内 yum 源 </span>
+              </div>
+            </a>
+          
+          
+            <a href="vnc.html" title="VNC 常见问题及解决方案"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> VNC 常见问题及解决方案 </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020-2021, Yuqi Liu.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
