@@ -25,4 +25,4 @@ github:
 	@rm -rf docs/*
 	@rm -rf build/*
 	@make html
-	@cp -a build/html/* docs/
+	@cp -a build/html/. docs/
