@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -53,7 +54,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
@@ -436,6 +437,12 @@
         <li class="md-nav__item"><a href="#centos-6-10-adobe-reader" class="md-nav__link">CentOS 6.10 安装 Adobe Reader</a>
         </li>
         <li class="md-nav__item"><a href="#mac-os" class="md-nav__link">Mac OS 命令行打开终端</a>
+        </li>
+        <li class="md-nav__item"><a href="#ubuntu-18-04-apt-certificate-error" class="md-nav__link">Ubuntu 18.04 apt certificate error</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference:</a>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li>
@@ -499,6 +506,12 @@
         <li class="md-nav__item"><a href="#centos-6-10-adobe-reader" class="md-nav__link">CentOS 6.10 安装 Adobe Reader</a>
         </li>
         <li class="md-nav__item"><a href="#mac-os" class="md-nav__link">Mac OS 命令行打开终端</a>
+        </li>
+        <li class="md-nav__item"><a href="#ubuntu-18-04-apt-certificate-error" class="md-nav__link">Ubuntu 18.04 apt certificate error</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference:</a>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li>
@@ -516,11 +529,11 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1 id="misc-miscellaneous--page-root">杂记<a class="headerlink" href="#misc-miscellaneous--page-root" title="永久链接至标题">¶</a></h1>
 <p>本文记录了一些简单的问题和解决方法。</p>
 <hr class="docutils"/>
-
+<section id="jekyll-markdown-latex">
 <h2 id="jekyll-markdown-latex">jekyll markdown 中用 latex<a class="headerlink" href="#jekyll-markdown-latex" title="永久链接至标题">¶</a></h2>
 <p>近期看了会微积分，想在博客中记录一下一些通用的微积分公式，在本地 vs code 中预览完全没问题，
 推到 Github 上发现并没有渲染 <span class="math notranslate nohighlight">\(LATEX\)</span> 的格式。查了一下发现是需要在 Jekyll 中添加个插件：</p>
@@ -539,15 +552,15 @@
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="git-clone-error">
 <h2 id="git-clone-error">Git clone error<a class="headerlink" href="#git-clone-error" title="永久链接至标题">¶</a></h2>
 <p>最近在服务器上拉 Github 代码时发现拉不下来，报了一下错误</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fatal: unable to access <span class="s1">'https://github.com/xxx.git/'</span>: gnutls_handshake<span class="o">()</span> failed: The TLS connection was non-properly terminated.
 </pre></div>
 </div>
 <p>检查一番发现是服务器配置了代理，但代理挂了</p>
-
+<section id="id2">
 <h3 id="id2">查看当前代理<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>方法一</p></li>
@@ -561,8 +574,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>env <span class="p">|</span> grep -I proxy
 </pre></div>
 </div>
-
-
+</section>
+<section id="id3">
 <h3 id="id3">取消代理<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>方法一</p></li>
@@ -590,9 +603,9 @@ git config --global --unset https.proxy
 <span class="nb">unset</span> no_proxy
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+<section id="centos-6-10-adobe-reader">
 <h2 id="centos-6-10-adobe-reader">CentOS 6.10 安装 Adobe Reader<a class="headerlink" href="#centos-6-10-adobe-reader" title="永久链接至标题">¶</a></h2>
 <p>Recently, one of my former colleagues want to install adobe reader on their
 CentOS 6.10 server, so, here is the tutorial：</p>
@@ -604,8 +617,8 @@ yum install -y atk-1.30.0-1.el6.i686 fontconfig-2.8.0-5.el6.i686 <span class="se
   libxml2-2.7.6-21.el6_8.1.i686
 </pre></div>
 </div>
-
-
+</section>
+<section id="mac-os">
 <h2 id="mac-os">Mac OS 命令行打开终端<a class="headerlink" href="#mac-os" title="永久链接至标题">¶</a></h2>
 <p>有时候看电影里电脑特效很酷，动不动就自动打开一大堆 terminal，今天闲着无聊 google 了一下，下面是 MacOS 的：</p>
 <div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>osascript -e <span class="s1">'tell app "Terminal"</span>
@@ -619,8 +632,28 @@ xterm -e ls <span class="c1"># 使用  xterm</span>
 gnome-terminal -x ls <span class="c1"># 使用 gnome-terminal</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="ubuntu-18-04-apt-certificate-error">
+<h2 id="ubuntu-18-04-apt-certificate-error">Ubuntu 18.04 apt certificate error<a class="headerlink" href="#ubuntu-18-04-apt-certificate-error" title="永久链接至标题">¶</a></h2>
+<p>最近在使用 Ubuntu 18.04 安装软件是突然遇到个证书错误：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span> <span class="n">verification</span> <span class="n">failed</span><span class="p">:</span> <span class="n">The</span> <span class="n">certificate</span> <span class="ow">is</span> <span class="n">NOT</span> <span class="n">trusted</span><span class="o">.</span> <span class="n">The</span> <span class="n">certificate</span> <span class="n">issuer</span> <span class="ow">is</span> <span class="n">unknown</span><span class="o">.</span>  <span class="n">Could</span> <span class="ow">not</span> <span class="n">handshake</span><span class="p">:</span> <span class="n">Error</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">certificate</span> <span class="n">verification</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>查了下文档，发现是因为服务器走了代理，但因特殊情况又不能关掉代理，那么怎么办呢？直接不进行证书认证就好了。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
+<span class="nb">echo</span> <span class="s2">"Acquire::https { Verify-Peer \"false\" }"</span> &gt;&gt; /etc/apt/apt.conf.d/99verify-peer.conf
+</pre></div>
+</div>
+<p>Okay, Problem Sovled.</p>
+<section id="reference">
+<h3 id="reference">Reference:<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li><p><a class="reference external" href="https://askubuntu.com/questions/1095266/apt-get-update-failed-because-certificate-verification-failed-because-handshake">StackExchange: apt-get update failed...</a></p></li>
+<li><p><a class="reference external" href="http://manpages.ubuntu.com/manpages/bionic/man1/apt-transport-https.1.html">Ubuntu Manpage: apt-transport-https</a></p></li>
+</ol>
+</section>
+</section>
+</section>
 
 
           </article>
@@ -669,7 +702,7 @@ gnome-terminal -x ls <span class="c1"># 使用 gnome-terminal</span>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

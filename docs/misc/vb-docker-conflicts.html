@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -490,7 +491,7 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="windows-virtualbox-docker">
 <h1 id="misc-vb-docker-conflicts--page-root">Windows 上 VirtualBox 与 Docker 冲突问题<a class="headerlink" href="#misc-vb-docker-conflicts--page-root" title="永久链接至标题">¶</a></h1>
 <p>今天在 Windows 机子上打开虚拟机时突然报 <code class="docutils literal notranslate"><span class="pre">VT-x</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">available</span> <span class="pre">(VERR_VMX_NO_VMX)</span></code>，一开始下意识以为是 BIOS 没有开启虚拟化选项，检查后发现一切设置正常。上网查了下发现，是 Docker 和 VirtualBox 有冲突了，因为 Docker 使用了 Windows 自带的 Hyper-v，而 VirtualBox 和 Heyper-v 是无法同时运行的，只能二选一。</p>
 <p>既然发现了问题所在，那么就解决呗。根据问题的原因，那么解决办法只能是 VB 和 Docker 二选一咯。</p>
@@ -508,13 +509,13 @@
 <p><strong>Update From 2020-12-20</strong></p>
 <p>最近启动了下 VirtualBox 的一台虚拟机，发现后台 Docker 在运行。回想了一下，是因为我启用了 WSL（Windows Subsystem Linux），更新 Docker 时默认选了 WSL 作为 Docker 后台支持。虽然可以同时支持 VB 和 Docker，但还是不是很完美，因为我在新建一个 Win 虚拟机时发现安装系统时会失败，换到 Mac 上就很正常。</p>
 <p>That's it.</p>
-
+<section id="reference">
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
 <ol class="simple">
 <li><p><a class="reference external" href="https://forums.virtualbox.org/viewtopic.php?f=38&amp;t=89791">https://forums.virtualbox.org/viewtopic.php?f=38&amp;t=89791</a></p></li>
 </ol>
-
-
+</section>
+</section>
 
 
           </article>
@@ -563,7 +564,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
