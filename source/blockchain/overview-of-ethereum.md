@@ -11,6 +11,13 @@ Ethereum 中的基础技术概念。
 首先简单地介绍一下 BlockChain 吧。所谓的 BlockChain 呢，就是由一个个 **block** 的组成的链，
 每个节点都会保存一份这个链的备份。而每个 **block** 中都包含了多个 **transaction**。
 
+Overview of Block:
+![block.svg](/_static/images/block.svg)
+
+Block in Ethereum:
+![tx-block.png](/_static/images/tx-block.png)
+
+
 > transaction, 中文通常叫做转账记录，但在不同的链中，对 transaction 的操作不同。所以个人还是更喜欢直接叫 transaction。
 
 ## Ethereum
@@ -52,7 +59,7 @@ Ethereum 中的基础技术概念。
 
 知道了 Ethereum 的定义，然后来看下整个以太坊的概览：
 
-![Overview of Ethereum](/_static/images/overview-of-ethereum.png)
+![Overview of Ethereum.png](/_static/images/overview-of-ethereum.png)
 
 通常，技术上是将 Ethereum 代指 Ethereum network。从上图可以看出，Ethereum network 是由 Ethereum node 组成。而每个 Ethereum node
 都是 EVM 和 **world state** 的具体实现。所以，要想了解 Ethereum，就必须了解 EVM 和 **world state**。那么下面开始介绍 EVM。
@@ -69,7 +76,7 @@ EVM (Ethereum Virtual Machine): 定义了计算区块之间新的有效状态规
 ​
 EVM 的架构如下：
 
-![evm](/_static/images/evm.png)
+![evm.png](/_static/images/evm.png)
 
 - stack: 256 bits * 1024 elements
 - memory: byte addressing linear memory, can be addressed at byte level, random access by stack.
@@ -92,7 +99,7 @@ memroy 就是由一个字节型的数组和一个 uint64 的整型组成的。�
 
 The big picture：
 
-![evm-layer](/_static/images/evm-layer.png)
+![evm-layer.png](/_static/images/evm-layer.png)
 
 **注**：上图中在 Software 和 hardware 的中间，漏掉了操作系统。
 ​
@@ -101,7 +108,7 @@ The big picture：
 ​
 EVM 的工作流程如下：
 
-![evm-execution-model](/_static/images/evm-execution-model.png)
+![evm-execution-model.png](/_static/images/evm-execution-model.png)
 
 首先，用户将自己的智能合约编译成 EVM byte code，然后 EVM 根据 byte code 里对应的指令集，消耗一定量的 gas，在 Stack 上执行操作，期间如果需要对
 storage 进行操作的话，与需要扣除一定量的 gas，同理，调用其他智能合约也需要消耗 gas。
@@ -157,7 +164,7 @@ storage 进行操作的话，与需要扣除一定量的 gas，同理，调用�
 
 **world state** 的结构如下图所示：
 
-![world-state](/_static/images/world-state.png)
+![world-state.png](/_static/images/world-state.png)
 
 从图中可以清楚的看到 **world state** 与 **account** 的差别。
 ​
@@ -179,7 +186,7 @@ P.S. 在 Ethereum 中，Ether 表示的就是 ETH。
 ### 定义
 > A transaction is a single cryptographically-signed instruction by External Actor.
 
-![transaction](/_static/images/transaction.png)
+![transaction.png](/_static/images/transaction.png)
 
 何为 External Actor? 不在 **world state** 中的就叫 Extrenal Actor。就比如说你需要创建个智能合约，
 你创建你需要对 node 发送创建指令并对其签名，然后你就会得到个合约账户，对于 Ethereum 来说，
@@ -189,11 +196,11 @@ P.S. 在 Ethereum 中，Ether 表示的就是 ETH。
 ​
 - contract creation： 对应第一种情况，创建智能合约时的 **transaction**
 
-![tx-contract-creation](/_static/images/tx-contract-creation.png)
+![tx-contract-creation.png](/_static/images/tx-contract-creation.png)
 
 - message call：对应第二种情况，External Actor 用一个 EOA 给另一个 EOA 转账的 **transaction**
 
-![tx-message-call](/_static/images/tx-message-call.png)
+![tx-message-call.png](/_static/images/tx-message-call.png)
 
 那 **transaction** 和 **message** 之间的关系是什么呢？其实就是每个 **transaction** ​都至少会触发一个 **message**，
 而每个 **trasaction** 都会封装到 block 中，每个 block 会保存到 Ethereum Network 中，将 block 保存到 Ethereum
