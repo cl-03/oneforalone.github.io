@@ -265,6 +265,8 @@
         <li class="md-nav__item"><a href="#id6" class="md-nav__link">定义</a>
         </li></ul>
             </nav>
+        </li>
+        <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
         </li>
@@ -537,6 +539,8 @@
         <li class="md-nav__item"><a href="#id6" class="md-nav__link">定义</a>
         </li></ul>
             </nav>
+        </li>
+        <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
         </li>
@@ -562,6 +566,11 @@
 <a class="reference external" href="https://filecoin.io">Filcoin</a>，最后到 <a class="reference external" href="https://ethereum.org/en/">Ethereum</a>。前面的都只是在研究怎么挖，计算回本周期，最后回归到技术原理，本文试图讲解清楚
 Ethereum 中的基础技术概念。</p>
 <p>当然，这是篇技术性文章，所以会有一些技术层面知识的要求。同时，我并不是很想翻译，习惯下英文吧。</p>
+<p>首先简单地介绍一下 BlockChain 吧。所谓的 BlockChain 呢，就是由一个个 <strong>block</strong> 的组成的链，
+每个节点都会保存一份这个链的备份。而每个 <strong>block</strong> 中都包含了多个 <strong>transaction</strong>。</p>
+<blockquote>
+<div><p>transaction, 中文通常叫做转账记录，但在不同的链中，对 transaction 的操作不同。所以个人还是更喜欢直接叫 transaction。</p>
+</div></blockquote>
 
 
 <h2 id="ethereum">Ethereum<a class="headerlink" href="#ethereum" title="永久链接至标题">¶</a></h2>
@@ -675,9 +684,9 @@ An account is an object in the world state.</p>
 <li><p>Externally owned account (aka. EOA): 不包含智能合约的账户，其中 <code class="docutils literal notranslate"><span class="pre">storage</span> <span class="pre">hash</span></code> 和
 <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">hash</span></code> 字段为空</p></li>
 <li><p>Contract account：智能合约对应的账户，<code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">hash</span></code> 字段保存的是合约代码 EVM Code 的
-哈希值，在 message call 时用来定位 EVM Code，<code class="docutils literal notranslate"><span class="pre">storage</span> <span class="pre">hash</span></code> 字段保存的是 Merkle
-tree 根节点的哈希值，该 Merkle tree 将 <strong>account</strong> 中的内容编码到 trie 中，用来
-定位合约账户。
+哈希值，在 message call 时用来定位 EVM Code，<code class="docutils literal notranslate"><span class="pre">storage</span> <span class="pre">hash</span></code> 字段保存的该账户所在 <strong>block</strong>
+的 header 中的 Merkle tree 根节点的哈希值，该 Merkle tree 将 <strong>account</strong> 中的内容编码到 trie 中。
+通俗点讲就是用来确定当前用户的最新状态是在哪个 <strong>block</strong> 中。
 ​</p></li>
 </ul>
 
@@ -711,13 +720,12 @@ serialised as RLP, see Appendix B).</p>
 <p>​
 这个术语的定义比较清晰，就是：</p>
 <blockquote>
-<div><p>Message is Data ( as a set of bytes) and Value (specified as Ether) that is passwd between two Accounts.
-​
-这个定义也没什么好解释的，就是说两个账户之间进行转账就叫 <strong>message</strong>。
+<div><p>Message is Data ( as a set of bytes) and Value (specified as Ether) that is passwd between two Accounts.</p>
+</div></blockquote>
+<p>这个定义也没什么好解释的，就是说两个账户之间进行转账就叫 <strong>message</strong>。
 ​
 P.S. 在 Ethereum 中，Ether 表示的就是 ETH。
 ​</p>
-</div></blockquote>
 
 
 <h3 id="id6">定义<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
@@ -740,10 +748,18 @@ P.S. 在 Ethereum 中，Ether 表示的就是 ETH。
 </ul>
 <p><img alt="tx-message-call" src="../_images/tx-message-call.png"/></p>
 <p>那 <strong>transaction</strong> 和 <strong>message</strong> 之间的关系是什么呢？其实就是每个 <strong>transaction</strong> ​都至少会触发一个 <strong>message</strong>，
-而每个 <strong>trasaction</strong> 都会封装到 block 中，每个 block 会保存到 Ethereum Network 中，将 block 保存到 Ethereum Network
-中的这个操作通常称为<em>上链</em>。</p>
+而每个 <strong>trasaction</strong> 都会封装到 block 中，每个 block 会保存到 Ethereum Network 中，将 block 保存到 Ethereum
+Network 中的这个操作通常称为<em>上链</em>。</p>
 <p>至此，对于 Ethereum 里的大部分概念算是理清了。</p>
 
+
+
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://ethereum.org/en/">Ethereum.org</a></p></li>
+<li><p><a class="reference external" href="https://ethereum.org/en/whitepaper/">Ethereum Whitepaper</a></p></li>
+<li><p><a class="reference external" href="https://ethereum.github.io/yellowpaper/paper.pdf">Ethereum: A Secure Decentralised Generalised Transaction Ledger</a></p></li>
+</ol>
 
 
 

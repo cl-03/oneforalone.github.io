@@ -53,6 +53,8 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="An Overview of Ethereum" href="overview-of-ethereum.html" />
@@ -229,11 +231,13 @@
         </li>
         <li class="md-nav__item"><a href="#merkle-tree" class="md-nav__link">Merkle Tree</a>
         </li>
-        <li class="md-nav__item"><a href="#pow-pos-post" class="md-nav__link">PoW/PoS/PoST</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#consensus-mechanism" class="md-nav__link">Consensus Mechanism</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#pow" class="md-nav__link">PoW</a>
         </li>
         <li class="md-nav__item"><a href="#pos" class="md-nav__link">PoS</a>
+        </li>
+        <li class="md-nav__item"><a href="#pow-vs-pos" class="md-nav__link">PoW VS. PoS</a>
         </li>
         <li class="md-nav__item"><a href="#post" class="md-nav__link">PoST</a>
         </li></ul>
@@ -490,11 +494,13 @@
         </li>
         <li class="md-nav__item"><a href="#merkle-tree" class="md-nav__link">Merkle Tree</a>
         </li>
-        <li class="md-nav__item"><a href="#pow-pos-post" class="md-nav__link">PoW/PoS/PoST</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#consensus-mechanism" class="md-nav__link">Consensus Mechanism</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#pow" class="md-nav__link">PoW</a>
         </li>
         <li class="md-nav__item"><a href="#pos" class="md-nav__link">PoS</a>
+        </li>
+        <li class="md-nav__item"><a href="#pow-vs-pos" class="md-nav__link">PoW VS. PoS</a>
         </li>
         <li class="md-nav__item"><a href="#post" class="md-nav__link">PoST</a>
         </li></ul>
@@ -527,12 +533,43 @@
 <h2 id="merkle-tree">Merkle Tree<a class="headerlink" href="#merkle-tree" title="永久链接至标题">¶</a></h2>
 
 
-<h2 id="pow-pos-post">PoW/PoS/PoST<a class="headerlink" href="#pow-pos-post" title="永久链接至标题">¶</a></h2>
+<h2 id="consensus-mechanism">Consensus Mechanism<a class="headerlink" href="#consensus-mechanism" title="永久链接至标题">¶</a></h2>
+<p>Consensus Mechanism，共识机制。以下是个比较贴切的定义：</p>
+<blockquote>
+<div><p>How the individual nodes of a distributed network agree on the current state
+of the system</p>
+</div></blockquote>
+<p>共识共识，即对某件事的处理方式和结果打成一致。在计算机的分布式系统中，即是各个节点的当前系统中
+的状态都有遵守一个协议，至于这个协议是什么，那就要下面要介绍到的 <code class="docutils literal notranslate"><span class="pre">PoW/PoS/PoST/PoA</span></code>。如果
+对共识机制感兴趣的话，可以自行了解下<a class="reference external" href="https://en.wikipedia.org/wiki/Byzantine_fault">Byzantine fault</a>。
+中文的话搜索拜占庭将军问题。</p>
 
 <h3 id="pow">PoW<a class="headerlink" href="#pow" title="永久链接至标题">¶</a></h3>
+<p><strong>Proof of Work</strong> 的简写，工作量证明（说了也是白说），一种共识机制协议。目前 Ethereum 和
+Bitcoin 使用的都是 <strong>PoW</strong> 协议，Ethereum 目前正准备将协议从 <strong>PoW</strong> 改为 <strong>PoS</strong>，
+升级为 Eth2。</p>
+<p>那么 <strong>PoW</strong> 到底是个什么呢？</p>
+<p>在分布式网络中，最大的问题是要解决信任问题，就是你需要怎么证明这件事确实是你做的，而不是别人做的。
+感谢 Hash 函数（那些到处宣扬数学无用论的人，祝愿他们永远也用不到数学），因为 Hash 函数的特性，
+所以 <strong>PoW</strong> 就相当于在做数学题，以下只是形式上的描述，仅供参考，具体的实现要举例的要复杂的多。</p>
+<p><span class="math notranslate nohighlight">\( Hash(x, nonce) = C \)</span></p>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">nonce</span></code> 是系统随机分配的，<code class="docutils literal notranslate"><span class="pre">C</span></code> 是由系统根据当前的状态进行指定，<code class="docutils literal notranslate"><span class="pre">Hash</span></code> 函数的算法也是确定的，
+所需要的是求出 <code class="docutils literal notranslate"><span class="pre">x</span></code> 的值，而因为 hash 算法是不可逆的，所以只能通过穷举法来尝试，而穷举法是很消耗
+CPU 资源的，需要做大量的计算，因而叫做 <strong>PoW</strong> —— 工作量证明。其他人要验证也很简单，只需要将 <code class="docutils literal notranslate"><span class="pre">x</span></code>
+和 <code class="docutils literal notranslate"><span class="pre">nonce</span></code> 代入函数，将得到的结果与 C 进行对比，因为哈希碰撞域很小，小到几乎可以忽略，因此可以
+根据这个结果来判断对方是否正确，算出答案的这个节点就能够获得奖励。因此，区块链就是在凭空造币。</p>
+<p>因为这种机制，所以又将做这种计算的工作叫做挖矿，执行计算工作的计算机叫矿机。</p>
+<blockquote>
+<div><p>Tips. 第一个算出答案并同步上链的机器就证明了它算出了这个答案，而其他的晚了的被称为孤块，不同
+的链对孤块的处理方式不同，BitCoin 是直接将孤块丢掉，Ethereum 是将孤块定义为 Uncle Block，
+前 7 个 Uncle Block 都有奖励。</p>
+</div></blockquote>
 
 
 <h3 id="pos">PoS<a class="headerlink" href="#pos" title="永久链接至标题">¶</a></h3>
+
+
+<h3 id="pow-vs-pos">PoW VS. PoS<a class="headerlink" href="#pow-vs-pos" title="永久链接至标题">¶</a></h3>
 
 
 <h3 id="post">PoST<a class="headerlink" href="#post" title="永久链接至标题">¶</a></h3>

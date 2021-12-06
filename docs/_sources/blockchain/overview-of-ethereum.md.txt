@@ -8,6 +8,10 @@ Ethereum 中的基础技术概念。
 
 当然，这是篇技术性文章，所以会有一些技术层面知识的要求。同时，我并不是很想翻译，习惯下英文吧。
 
+首先简单地介绍一下 BlockChain 吧。所谓的 BlockChain 呢，就是由一个个 **block** 的组成的链，
+每个节点都会保存一份这个链的备份。而每个 **block** 中都包含了多个 **transaction**。
+
+> transaction, 中文通常叫做转账记录，但在不同的链中，对 transaction 的操作不同。所以个人还是更喜欢直接叫 transaction。
 
 ## Ethereum
 
@@ -132,9 +136,9 @@ storage 进行操作的话，与需要扣除一定量的 gas，同理，调用�
   `code hash` 字段为空
 
 - Contract account：智能合约对应的账户，`code hash` 字段保存的是合约代码 EVM Code 的
-  哈希值，在 message call 时用来定位 EVM Code，`storage hash` 字段保存的是 Merkle
-  tree 根节点的哈希值，该 Merkle tree 将 **account** 中的内容编码到 trie 中，用来
-  定位合约账户。
+  哈希值，在 message call 时用来定位 EVM Code，`storage hash` 字段保存的该账户所在 **block**
+  的 header 中的 Merkle tree 根节点的哈希值，该 Merkle tree 将 **account** 中的内容编码到 trie 中。
+  通俗点讲就是用来确定当前用户的最新状态是在哪个 **block** 中。
 ​
 
 ### 定义
@@ -166,7 +170,7 @@ storage 进行操作的话，与需要扣除一定量的 gas，同理，调用�
 ​
 这个术语的定义比较清晰，就是：
 > Message is Data ( as a set of bytes) and Value (specified as Ether) that is passwd between two Accounts.
-​
+
 这个定义也没什么好解释的，就是说两个账户之间进行转账就叫 **message**。
 ​
 P.S. 在 Ethereum 中，Ether 表示的就是 ETH。
@@ -192,10 +196,17 @@ P.S. 在 Ethereum 中，Ether 表示的就是 ETH。
 ![tx-message-call](/_static/images/tx-message-call.png)
 
 那 **transaction** 和 **message** 之间的关系是什么呢？其实就是每个 **transaction** ​都至少会触发一个 **message**，
-而每个 **trasaction** 都会封装到 block 中，每个 block 会保存到 Ethereum Network 中，将 block 保存到 Ethereum Network
-中的这个操作通常称为*上链*。
+而每个 **trasaction** 都会封装到 block 中，每个 block 会保存到 Ethereum Network 中，将 block 保存到 Ethereum
+Network 中的这个操作通常称为*上链*。
 
 至此，对于 Ethereum 里的大部分概念算是理清了。
+
+
+## Reference
+
+1. [Ethereum.org](https://ethereum.org/en/)
+2. [Ethereum Whitepaper](https://ethereum.org/en/whitepaper/)
+3. [Ethereum: A Secure Decentralised Generalised Transaction Ledger](https://ethereum.github.io/yellowpaper/paper.pdf)
 
 [chia]: https://www.chia.net
 
