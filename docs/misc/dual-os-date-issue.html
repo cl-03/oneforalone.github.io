@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -214,7 +215,7 @@
     <li class="md-nav__item">
     
     
-      <a href="../blockchain/conceptions.html" class="md-nav__link">基础概念</a>
+      <a href="../blockchain/concepts.html" class="md-nav__link">Basic Concepts</a>
       
     
     </li>
@@ -502,20 +503,20 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="windows-debian">
 <h1 id="misc-dual-os-date-issue--page-root">Windows/Debian 双系统时间问题<a class="headerlink" href="#misc-dual-os-date-issue--page-root" title="永久链接至标题">¶</a></h1>
-
+<section id="id1">
 <h2 id="id1">序<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>家里的台式有好几块硬盘，作为一个 Linuxer，玩虚拟机什么的完全提不起兴趣，就直接一块硬盘一个系统，第三块硬盘作为数据交换。但是呢，最近突然发现一个小问题，那就是从 Debian 切换到 Windows 后时间不是东8区，需要手动点以下同步时间才会恢复。每次这样就会有点烦，那么就上网查下原因及解决方法。</p>
-
-
+</section>
+<section id="id2">
 <h2 id="id2">问题分析<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>首先需要引出一个概念：</p>
 <p>RTC：Real-Time Clock，即实时时钟，在计算机领域作为硬件时钟的简称。</p>
 <p>世界上不同地区所在的时区是不同的，这些时区决定了当地的本地时间。比如北京处于东八区，即北京时间为 UTC + 8，如果 UTC 时间现在是上午 6 点整，那么北京时间为 14 点整。</p>
 <p>Windows 与 Linux 看待硬件时间的方式不同。Windows 把电脑的硬件时钟（RTC）看成是本地时间，即 RTC = Local Time，Windows 会直接显示硬件时间；而 Linux 则是把电脑的硬件时钟看成 UTC 时间，即 RTC = UTC，那么 Linux 显示的时间就是硬件时间加上时区</p>
-
-
+</section>
+<section id="id3">
 <h2 id="id3">解决办法<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>既然知道了问题原因，我们就知道如何去解决，大概思路分为两种，一是让 Windows 认为硬件时钟是 UTC 时间，二是让 Linux 认为硬件时钟是本地时间。</p>
 <ul>
@@ -535,12 +536,12 @@
 <p>现在，系统时间显示正常了。</p>
 </li>
 </ul>
-
-
+</section>
+<section id="id4">
 <h2 id="id4">总结<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>这两种方法中，推荐第一种方法，修改 Windows 的时间管理。因为在 Linux 系统中修改后，输入 <code class="docutils literal notranslate"><span class="pre">timedatectl</span></code> 命令后，会出现警告，提示你使用 RTC 时钟会导致一些程序错误；并且 Windows 也在更改时间管理方式为 UTC 时间。</p>
-
-
+</section>
+</section>
 
 
           </article>
@@ -589,7 +590,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

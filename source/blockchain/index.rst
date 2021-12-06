@@ -6,5 +6,5 @@
 .. toctree::
    :maxdepth: 1
 
-   conceptions.md
+   concepts.md
    overview-of-ethereum.md
