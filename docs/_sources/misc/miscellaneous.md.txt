@@ -133,3 +133,35 @@ Okay, Problem Sovled.
 
 1. [StackExchange: apt-get update failed...](https://askubuntu.com/questions/1095266/apt-get-update-failed-because-certificate-verification-failed-because-handshake)
 2. [Ubuntu Manpage: apt-transport-https](http://manpages.ubuntu.com/manpages/bionic/man1/apt-transport-https.1.html)
+
+
+## CentOS 7 配置 bond
+
+有时候在安装系统时忘了配置 bond，需要用命令手动配置，理论上来说，只需要创建好对应的配置文件应该就可以，
+但是那配置文件，根本记不住。google 一下，发现可以使用 `nmcli` 来配置。
+
+```bash
+nmcli connection add type bond ifname bond0 mode 4
+nmcli connection add type bond-slave ifname enps0f0 master bond0
+nmcli connection add type bond-slave ifname enps0f1 master bond0
+```
+
+然后在根据自己的需求配置对应的 bond 参数以及网络信息。至于其背后详细的原理，请参考 [bond技术分析](https://cloud.tencent.com/developer/article/1087312?from=15425)
+
+### Reference
+
+[1]. [centos7.x网卡bond配置](https://www.cnblogs.com/liwanggui/p/6807212.html)
+
+## Cron 任务执行不成功
+
+突然发现配置了一个 cron 任务的脚本，没有得到预期的结果，查看日志发现任务确实执行了。
+然后查了下资料发现 cron 的命令是以 sh 执行的，而我用的是 bash 的语法。Well，改了
+后就执行成功了。其实就是 sh 中没有 `source` 命令，只有 `.` 命令。
+
+Emmm…… 之后在找找资料详细的对比下 systemd 的 timer 和 crontab 吧。
+
+### Reference
+
+[1]. https://unix.stackexchange.com/questions/278564/cron-vs-systemd-timers
+
+[2]. https://askubuntu.com/questions/752240/crontab-syntax-multiple-commands
