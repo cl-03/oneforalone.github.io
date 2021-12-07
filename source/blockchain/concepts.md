@@ -2,7 +2,7 @@
 
 ## Hash Function
 
-哈希函数是密码学中的一种加密算法，所谓函数呢，即是两个不同集合之间对应的映射关系。哈希函数的描述是：
+哈希函数是密码学中的一种加密算法，所谓函数呢，即是两个集合之间对应的映射关系。哈希函数的描述是：
 > A mathematical algorithm that maps data of an arbitrary size (often called the "message")
 > to a bit array of a fixed size (the "hash value", "hash", or "message digest").
 
@@ -108,7 +108,7 @@ CPU 资源的，需要做大量的计算，因而叫做 **PoW** —— 工作量
 * Cons：
   - 耗电
   - 开挖前需要对矿机硬件进行调研
-  - 大矿池容易控场，从去中心化有转变成中心化
+  - 大矿池容易控场，从去中心化又转变成中心化
 
 #### Reference
 
