@@ -169,7 +169,7 @@ CPU 资源的，需要做大量的计算，因而叫做 **PoW** —— 工作量
 
 [^miner]: 即节点的实现，通俗点说就是挖矿软件
 
-### Reference
+#### Reference
 
 [1]. [What sets it apart: Filecoin's proof system](https://filecoin.io/blog/posts/what-sets-us-apart-filecoin-s-proof-system/)
 
@@ -180,15 +180,35 @@ CPU 资源的，需要做大量的计算，因而叫做 **PoW** —— 工作量
 
 ### PoA
 
-> TODO: Need more time to invesigating.
-> Deadline: 2021-12-12
+**Proof of Authority**，基于认证证明，用于 Ethereum 的私链。[Polkadot Network](https://polkadot.network/)， 波卡网主网上线时使用，现已切
+换到 [**NPoS**](#npos)。
 
-**Proof of Authority**，Using in [Polkadot Network](https://polkadot.network/)
+> Proof-of-authority chains utilise a number of secret keys (authorities) to collaborate and create the longest chain
+> instead of the public Ethereum network's proof-of-work scheme (Ethash).
+
+目前还不是很完善，只有 `TurboEthereum`[^turboethereum] 中的 `flu`[^flu] 客户端中使用。简单说就是通过密钥字段来区分不同的链。
+
+[^turboethereum]: 以太坊tookkit，集成了很多以太坊操作的工具。
+[^flu]: TurboEthereum中的一个命令，用来与链进行交互
 
 
-### Reference
+#### Reference
 
 [1]. [PoA Private Chains](https://github.com/ethereum/guide/blob/master/poa.md)
+
+[2]. [TurboEthereum Guide](https://gavofyork.gitbooks.io/turboethereum/content/index.html)
+
+
+### NPoS
+
+**Nominated Proof of Stake** 的简写。
+
+
+#### Reference
+
+[1]. [Polkadot wiki: learn-staking](https://wiki.polkadot.network/docs/learn-staking)
+
+[2]. [How Nominated Proof-of-Stake will work in Polkadot](https://medium.com/web3foundation/how-nominated-proof-of-stake-will-work-in-polkadot-377d70c6bd43)
 
 
 ## Zero-Knowledge Proof
