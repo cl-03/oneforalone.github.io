@@ -272,7 +272,7 @@
         </li>
         <li class="md-nav__item"><a href="#npos" class="md-nav__link">NPoS</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id15" class="md-nav__link">Reference</a>
+        <li class="md-nav__item"><a href="#id17" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -284,7 +284,7 @@
         </li>
         <li class="md-nav__item"><a href="#interactive-zero-knowledge-proof" class="md-nav__link">Interactive Zero-Knowledge Proof</a>
         </li>
-        <li class="md-nav__item"><a href="#id16" class="md-nav__link">Reference</a>
+        <li class="md-nav__item"><a href="#id18" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -577,7 +577,7 @@
         </li>
         <li class="md-nav__item"><a href="#npos" class="md-nav__link">NPoS</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id15" class="md-nav__link">Reference</a>
+        <li class="md-nav__item"><a href="#id17" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -589,7 +589,7 @@
         </li>
         <li class="md-nav__item"><a href="#interactive-zero-knowledge-proof" class="md-nav__link">Interactive Zero-Knowledge Proof</a>
         </li>
-        <li class="md-nav__item"><a href="#id16" class="md-nav__link">Reference</a>
+        <li class="md-nav__item"><a href="#id18" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -794,11 +794,85 @@ instead of the public Ethereum network's proof-of-work scheme (Ethash).</p>
 </section>
 <section id="npos">
 <h3 id="npos">NPoS<a class="headerlink" href="#npos" title="永久链接至标题">¶</a></h3>
-<p><strong>Nominated Proof of Stake</strong> 的简写。</p>
-<section id="id15">
-<h4 id="id15">Reference<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h4>
+<p><strong>Nominated Proof of Stake</strong> 的简写。Polkadot 链中使用的共识机制。</p>
+<blockquote>
+<div><p>A relatively new type of scheme used to select the validators who are allowed to participate
+in the consensus protocol.</p>
+</div></blockquote>
+<p><strong>PoS</strong> 中选举 Validators 的新方法。引入了 Nominators，即让更多的 Token 持有者加入共识中。就如同选举自己的
+代表一样，只要是公民，就能选择自己看好的代表，同时有算法来保证代表的公平性，不能被过代表（over-representation，
+想想“女拳师”们，过代表的典型），也不能 under-presentation（不知道中文翻译成什么更确切，意思就是代表性不足，
+国人就参考人大代表的选举是什么情况，典型的 under-presentation）。现在来看 Polkadot 中的 <strong>validator</strong> 和
+<strong>nominator</strong>。</p>
+<ul class="simple">
+<li><p><strong>Validator</strong></p></li>
+</ul>
+<blockquote>
+<div><p>Play a key role in highly sensitive protocols such as block production and the finality gadget.
+Their job is demanding as they need to run costly operations, ensure high communication
+responsiveness, and build a long-term reputation of reliability.</p>
+</div></blockquote>
+<p>就是说 Validator 在 Polkadot 中掌握治理权，由他们来保障链中区块的生成以及最终确认，同时保证高响应。在 <strong>PoS</strong>
+中，他们需要支付大额度的 Token 质押。一旦有 Validator 违反共识（确认假区块、离线、恶意攻击链上网络、执行修改后
+的 node 软件等），那么所质押的 Token 就会被没收掉。当然，只要遵守共识，就能得到一定的收益，同时，和人大代表或议
+员一样，数量上是有限制，不可能有很多个 validator。</p>
+<ul class="simple">
+<li><p><strong>nominators</strong></p></li>
+</ul>
+<blockquote>
+<div><p>A nominator publishes a list of validator candidates that she trusts, and puts down an amount
+of Dots at stake to support them with.</p>
+</div></blockquote>
+<p>如果将 validator 比作人大代表，那么 nominator 就是超过 18 岁的公民了。nominator 可以通过质押自己手中的 <code class="docutils literal notranslate"><span class="pre">DOT</span></code><a class="footnote-reference brackets" href="#dot" id="id15">9</a>
+来为自己看好的 validator 候选人进行投票，不同于人大代表的选举，nominator 可以选举多个 validator 候选人。如果
+自己支持的候选人被选中为 validator ，那么你支持的 validator 在获得收益时，你也能获得收益，反之亦然，validator
+违反共识会被惩罚，你对其的支持的 DOT 也会被没收掉。在分配收益时，你可以自己选择将自己的收益给 validator，分配给
+多少取决于你自己，你既可以将收益完全给 validator，自己不要那些收益，也可以完全保留收益，不和 validator 分享。
+不同于 validator 的数量有限，只要你有 DOT，你就可以成为 nominator。这样就能让持有 DOT 的人都可以参与链上的治理。</p>
+<p>那么选举的流程是怎么样的呢？不同于 <strong>PoS</strong> 的按质押的权重比，而是确保 nominator 的质押平均的分配到参选的 validator
+上。为了确保这一点，选举需要有以下两点：</p>
+<ul class="simple">
+<li><p><strong>Fair representation</strong></p></li>
+</ul>
+<blockquote>
+<div><p>any nominator holding at least one n-th of the totall stake is guaranteed to have at
+least one of their trusted validators elected.</p>
+</div></blockquote>
+<p>代表的公平性，即不能被 over-presentation，也不能被 under-presentation。这点是根据
+<a class="reference external" href="https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/view/14757/13791">Lars Edvard Phragmen 的 proportional justified representation</a>
+来实现的。其规则是：</p>
+<blockquote>
+<div><p>如果要选举 <span class="math notranslate nohighlight">\( n \)</span> 个 validator，任意持有总质押的 <span class="math notranslate nohighlight">\( \frac{1}{n} \)</span> 及以上 token 的 nominator 至少要选择一个
+validator 候选人。</p>
+</div></blockquote>
+<p>以下图片展示了三个选举，其中第一个选举认为是不公平的，二、三认为是公平的。</p>
+<p><img alt="npos-election.png" src="../_images/npos-election.png"/></p>
+<ul class="simple">
+<li><p><strong>Security</strong></p></li>
+</ul>
+<blockquote>
+<div><p>If a nominator gets two or more of its trusted validators elected, we need to distribute<a class="footnote-reference brackets" href="#np" id="id16">10</a>
+her stake among them, in such a wway that the validators' backings are as balanced as
+possible.</p>
+</div></blockquote>
+<p>那安全性是怎么实现的呢？当 nominator 给多个 validator 候选人投票时，将其投票拆分，然后分别投给不同的候选人，最后
+通过计算候选人的最终得票，将得票最少票数作为安全等级的级数。至于该如何拆分投票的数量，这是个 NP 完全问题，我暂时还没
+去研究。如果要看具体的算法分析，可自行阅读参考文档中的 <code class="docutils literal notranslate"><span class="pre">Nominated</span> <span class="pre">Proof-of-Stake</span></code> 。</p>
+<p>下图展示了 level 6 和 level 9 的选举。Level 越高，其安全性肯定是越好。</p>
+<p><img alt="npos-security-level.png" src="../_images/npos-security-level.png"/></p>
+<p>至于具体的细节方面，那时属于 Polkadot 里面的内容了，就不再这里介绍。</p>
+<blockquote>
+<div><p>P.S 因为截止到我写这个的时候，我也没有完全看完文档，只是做了个 overview。具体的介绍应该会放的 Polkadot 的介绍
+文档中。</p>
+</div></blockquote>
+<section id="id17">
+<h4 id="id17">Reference<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h4>
 <p>[1]. <a class="reference external" href="https://wiki.polkadot.network/docs/learn-staking">Polkadot wiki: learn-staking</a></p>
 <p>[2]. <a class="reference external" href="https://medium.com/web3foundation/how-nominated-proof-of-stake-will-work-in-polkadot-377d70c6bd43">How Nominated Proof-of-Stake will work in Polkadot</a></p>
+<p>[3]. <a class="reference external" href="https://medium.com/polkadot-network/grandpa-block-finality-in-polkadot-an-introduction-part-1-d08a24a021b5">GRANDPA: Block Finality in Polkadot</a></p>
+<p>[4]. <a class="reference external" href="https://www.britannica.com/science/NP-complete-problem">NP-complete problem</a></p>
+<p>[5]. <a class="reference external" href="https://research.web3.foundation/en/latest/polkadot/NPoS/index.html">Nominated Proof-of-Stake</a></p>
+<p>[6]. <a class="reference external" href="http://www.npc.gov.cn/npc/c30834/202112/07284fbc6faa4189b77f8b0ca9a39153.shtml">人大代表选举是实现全过程人民民主的首要环节和坚实基础</a></p>
 </section>
 </section>
 </section>
@@ -813,8 +887,8 @@ instead of the public Ethereum network's proof-of-work scheme (Ethash).</p>
 <section id="interactive-zero-knowledge-proof">
 <h3 id="interactive-zero-knowledge-proof">Interactive Zero-Knowledge Proof<a class="headerlink" href="#interactive-zero-knowledge-proof" title="永久链接至标题">¶</a></h3>
 </section>
-<section id="id16">
-<h3 id="id16">Reference<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<section id="id18">
+<h3 id="id18">Reference<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
 <p>[1]. <a class="reference external" href="https://en.wikipedia.org/wiki/Zero-knowledge_proof#Zero_knowledge_types">Wikipedia: Zero-knowledge proof</a></p>
 <p>[2]. <a class="reference external" href="https://en.wikipedia.org/wiki/Non-interactive_zero-knowledge_proof">Wikipedia: Non-interactive zero-knowledge proof</a></p>
 <p>[3]. <a class="reference external" href="https://link.springer.com/chapter/10.1007/3-540-46766-1_35">Non-interactive zero-knowledge proof of knowledge and chosen ciphertext attack</a></p>
@@ -845,6 +919,12 @@ instead of the public Ethereum network's proof-of-work scheme (Ethash).</p>
 </dd>
 <dt class="label" id="flu"><span class="brackets"><a class="fn-backref" href="#id13">8</a></span></dt>
 <dd><p>TurboEthereum中的一个命令，用来与链进行交互</p>
+</dd>
+<dt class="label" id="dot"><span class="brackets"><a class="fn-backref" href="#id15">9</a></span></dt>
+<dd><p>Polkadot的代币（Token）</p>
+</dd>
+<dt class="label" id="np"><span class="brackets"><a class="fn-backref" href="#id16">10</a></span></dt>
+<dd><p>NP-complete算法</p>
 </dd>
 </dl>
 </section>

@@ -201,7 +201,77 @@ CPU 资源的，需要做大量的计算，因而叫做 **PoW** —— 工作量
 
 ### NPoS
 
-**Nominated Proof of Stake** 的简写。
+**Nominated Proof of Stake** 的简写。Polkadot 链中使用的共识机制。
+> A relatively new type of scheme used to select the validators who are allowed to participate
+> in the consensus protocol.
+
+**PoS** 中选举 Validators 的新方法。引入了 Nominators，即让更多的 Token 持有者加入共识中。就如同选举自己的
+代表一样，只要是公民，就能选择自己看好的代表，同时有算法来保证代表的公平性，不能被过代表（over-representation，
+想想“女拳师”们，过代表的典型），也不能 under-presentation（不知道中文翻译成什么更确切，意思就是代表性不足，
+国人就参考人大代表的选举是什么情况，典型的 under-presentation）。现在来看 Polkadot 中的 **validator** 和
+**nominator**。
+
+* **Validator**
+> Play a key role in highly sensitive protocols such as block production and the finality gadget.
+> Their job is demanding as they need to run costly operations, ensure high communication
+> responsiveness, and build a long-term reputation of reliability.
+
+就是说 Validator 在 Polkadot 中掌握治理权，由他们来保障链中区块的生成以及最终确认，同时保证高响应。在 **PoS**
+中，他们需要支付大额度的 Token 质押。一旦有 Validator 违反共识（确认假区块、离线、恶意攻击链上网络、执行修改后
+的 node 软件等），那么所质押的 Token 就会被没收掉。当然，只要遵守共识，就能得到一定的收益，同时，和人大代表或议
+员一样，数量上是有限制，不可能有很多个 validator。
+
+
+* **nominators**
+> A nominator publishes a list of validator candidates that she trusts, and puts down an amount
+> of Dots at stake to support them with.
+
+如果将 validator 比作人大代表，那么 nominator 就是超过 18 岁的公民了。nominator 可以通过质押自己手中的 `DOT`[^dot]
+来为自己看好的 validator 候选人进行投票，不同于人大代表的选举，nominator 可以选举多个 validator 候选人。如果
+自己支持的候选人被选中为 validator ，那么你支持的 validator 在获得收益时，你也能获得收益，反之亦然，validator
+违反共识会被惩罚，你对其的支持的 DOT 也会被没收掉。在分配收益时，你可以自己选择将自己的收益给 validator，分配给
+多少取决于你自己，你既可以将收益完全给 validator，自己不要那些收益，也可以完全保留收益，不和 validator 分享。
+不同于 validator 的数量有限，只要你有 DOT，你就可以成为 nominator。这样就能让持有 DOT 的人都可以参与链上的治理。
+
+[^dot]: Polkadot的代币（Token）
+
+那么选举的流程是怎么样的呢？不同于 **PoS** 的按质押的权重比，而是确保 nominator 的质押平均的分配到参选的 validator
+上。为了确保这一点，选举需要有以下两点：
+
+* **Fair representation**
+> any nominator holding at least one n-th of the totall stake is guaranteed to have at
+> least one of their trusted validators elected.
+
+代表的公平性，即不能被 over-presentation，也不能被 under-presentation。这点是根据
+[Lars Edvard Phragmen 的 proportional justified representation](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/view/14757/13791)
+来实现的。其规则是：
+
+> 如果要选举 $ n $ 个 validator，任意持有总质押的 $ \frac{1}{n} $ 及以上 token 的 nominator 至少要选择一个
+> validator 候选人。
+
+以下图片展示了三个选举，其中第一个选举认为是不公平的，二、三认为是公平的。
+
+![npos-election.png](/_static/images/npos-election.png)
+
+* **Security**
+> If a nominator gets two or more of its trusted validators elected, we need to distribute[^np]
+> her stake among them, in such a wway that the validators' backings are as balanced as
+> possible.
+
+那安全性是怎么实现的呢？当 nominator 给多个 validator 候选人投票时，将其投票拆分，然后分别投给不同的候选人，最后
+通过计算候选人的最终得票，将得票最少票数作为安全等级的级数。至于该如何拆分投票的数量，这是个 NP 完全问题，我暂时还没
+去研究。如果要看具体的算法分析，可自行阅读参考文档中的 `Nominated Proof-of-Stake` 。
+
+下图展示了 level 6 和 level 9 的选举。Level 越高，其安全性肯定是越好。
+
+![npos-security-level.png](/_static/images/npos-security-level.png)
+
+[^np]: NP-complete算法
+
+至于具体的细节方面，那时属于 Polkadot 里面的内容了，就不再这里介绍。
+
+> P.S 因为截止到我写这个的时候，我也没有完全看完文档，只是做了个 overview。具体的介绍应该会放的 Polkadot 的介绍
+> 文档中。
 
 
 #### Reference
@@ -210,6 +280,13 @@ CPU 资源的，需要做大量的计算，因而叫做 **PoW** —— 工作量
 
 [2]. [How Nominated Proof-of-Stake will work in Polkadot](https://medium.com/web3foundation/how-nominated-proof-of-stake-will-work-in-polkadot-377d70c6bd43)
 
+[3]. [GRANDPA: Block Finality in Polkadot](https://medium.com/polkadot-network/grandpa-block-finality-in-polkadot-an-introduction-part-1-d08a24a021b5)
+
+[4]. [NP-complete problem](https://www.britannica.com/science/NP-complete-problem)
+
+[5]. [Nominated Proof-of-Stake](https://research.web3.foundation/en/latest/polkadot/NPoS/index.html)
+
+[6]. [人大代表选举是实现全过程人民民主的首要环节和坚实基础](http://www.npc.gov.cn/npc/c30834/202112/07284fbc6faa4189b77f8b0ca9a39153.shtml)
 
 ## Zero-Knowledge Proof
 
