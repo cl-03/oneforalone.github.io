@@ -8,3 +8,4 @@
 
    concepts.md
    overview-of-ethereum.md
+   Substrate.md
