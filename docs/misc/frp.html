@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -264,6 +265,13 @@
     
     
       <a href="../life/my-fellows.html" class="md-nav__link">My Fellows</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../life/summary-of-2021.html" class="md-nav__link">Summary of 2021</a>
       
     
     </li></ul>
@@ -557,18 +565,18 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="frp">
 <h1 id="misc-frp--page-root">内网穿透 frp 配置<a class="headerlink" href="#misc-frp--page-root" title="永久链接至标题">¶</a></h1>
-
+<section id="id1">
 <h2 id="id1">缘由<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>由于网络资源受限，部分服务器只有私网 IP ，没有公网 IP，即部分服务器无法被公网访问。但是有时我们需要通过公网对一些服务器进行访问，这样就出现了内网穿透。</p>
-
-
+</section>
+<section id="id2">
 <h2 id="id2">工作原理<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>其本质是通过一台有公网 IP 的服务器，通过对应的协议和端口，和无公网服务器之间建立起一条虚拟隧道，达到让无公网 IP 的服务器也能被公网访问的目的。</p>
 <p><img alt="image.png" src="../_images/frp.png"/></p>
-
-
+</section>
+<section id="id3">
 <h2 id="id3">配置<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>内网穿透有多个工具，具体参考：<a class="reference external" href="https://zhuanlan.zhihu.com/p/303175108">https://zhuanlan.zhihu.com/p/303175108</a>
 这里选择 frp 进行内网穿透，通过其工作原理可知，做内网穿透必须要有两台服务器：</p>
@@ -576,9 +584,9 @@
 <li><p>具有公网 IP 的服务器（VPS），也叫服务端</p></li>
 <li><p>无公网 IP 的服务器（目标服务器），称为客户端，即目标的主机</p></li>
 </ul>
-
+<section id="id4">
 <h3 id="id4">服务端配置<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-
+<section id="id5">
 <h4 id="id5">下载对应的 frp 压缩包<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h4>
 <p>官网链接：<a class="reference external" href="https://github.com/fatedier/frp/releases/">https://github.com/fatedier/frp/releases/</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir ~/frps
@@ -586,14 +594,14 @@
 wget https://github.com/fatedier/frp/releases/download/v0.37.1/frp_0.37.1_linux_amd64.tar.gz
 </pre></div>
 </div>
-
-
+</section>
+<section id="id6">
 <h4 id="id6">解压压缩包<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar -zxf frp_0.37.1_linux_amd64.tar.gz
 </pre></div>
 </div>
-
-
+</section>
+<section id="id7">
 <h4 id="id7">修改配置文件<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> frp_0.37.1_linux_amd64
 vi frps.ini
@@ -615,8 +623,8 @@ vi frps.ini
 <li><p><code class="docutils literal notranslate"><span class="pre">dashboard_user</span></code>: 管理界面用户账号</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dashboard_pwd</span></code>: 管理界面账号密码</p></li>
 </ul>
-
-
+</section>
+<section id="id8">
 <h4 id="id8">启动服务<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 修改 frp_0.37.1_linux_amd64/systemd 中的 frps.service 文件</span>
 <span class="nb">cd</span> ~/frps/frp_0.37.1_linux_amd64/systemd
@@ -645,11 +653,11 @@ sudo systemctl <span class="nb">enable</span> frps.service
 <span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+<section id="id9">
 <h3 id="id9">客户端配置<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
-
+<section id="id10">
 <h4 id="id10">下载对应 frp 压缩包<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
 <p>官网下载链接: <a class="reference external" href="https://github.com/fatedier/frp/releases/">https://github.com/fatedier/frp/releases/</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir ~/frpc
@@ -657,15 +665,15 @@ sudo systemctl <span class="nb">enable</span> frps.service
 wget https://github.com/fatedier/frp/releases/download/v0.37.1/frp_0.37.1_linux_amd64.tar.gz
 </pre></div>
 </div>
-
-
+</section>
+<section id="id11">
 <h4 id="id11">解压压缩包<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/frpc
 tar -zxf frp_0.37.1_linux_amd64.tar.gz
 </pre></div>
 </div>
-
-
+</section>
+<section id="id12">
 <h4 id="id12">修改配置文件<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/frpc/frp_0.37.1_linux_amd64
 vi frpc.ini
@@ -693,8 +701,8 @@ vi frpc.ini
 <li><p><code class="docutils literal notranslate"><span class="pre">local_port</span></code>: 本地端口，即需要从外网访问客户端的真实端口</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">remote_port</span></code>: 远程端口，即外网访问客户端时的端口</p></li>
 </ul>
-
-
+</section>
+<section id="id13">
 <h4 id="id13">启动服务<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 修改 frp_0.37.1_linux_amd64/systemd 中的 frpc.service 文件</span>
 <span class="nb">cd</span> ~/frpc/frp_0.37.1_linux_amd64/systemd
@@ -725,10 +733,10 @@ sudo systemctl <span class="nb">enable</span> frpc.service
 <span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
 </pre></div>
 </div>
-
-
-
-
+</section>
+</section>
+</section>
+</section>
 
 
           </article>
@@ -777,7 +785,7 @@ sudo systemctl <span class="nb">enable</span> frpc.service
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

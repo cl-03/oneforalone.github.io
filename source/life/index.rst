@@ -10,3 +10,4 @@
    summary-of-2020.md
    rework.md
    my-fellows.md
+   summary-of-2021.md

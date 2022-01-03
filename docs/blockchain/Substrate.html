@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -307,6 +308,13 @@
       <a href="../life/my-fellows.html" class="md-nav__link">My Fellows</a>
       
     
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../life/summary-of-2021.html" class="md-nav__link">Summary of 2021</a>
+      
+    
     </li></ul>
     
     </li>
@@ -541,13 +549,13 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="substrate">
 <h1 id="blockchain-substrate--page-root">Substrate<a class="headerlink" href="#blockchain-substrate--page-root" title="永久链接至标题">¶</a></h1>
-
+<section id="substrate-01">
 <h2 id="substrate-01">Substrate 01<a class="headerlink" href="#substrate-01" title="永久链接至标题">¶</a></h2>
-
+<section id="environment-setup">
 <h3 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="永久链接至标题">¶</a></h3>
-
+<section id="required-packages">
 <h4 id="required-packages">Required Packages<a class="headerlink" href="#required-packages" title="永久链接至标题">¶</a></h4>
 <ul class="simple">
 <li><p>Ubuntu or Debian</p></li>
@@ -566,8 +574,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew update <span class="o">&amp;&amp;</span> brew install openssl
 </pre></div>
 </div>
-
-
+</section>
+<section id="rust-and-rust-toolchain">
 <h4 id="rust-and-rust-toolchain">Rust and Rust toolchain<a class="headerlink" href="#rust-and-rust-toolchain" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install rustp</span>
 curl https://sh.rustup.rs -sSf <span class="p">|</span> sh
@@ -584,19 +592,19 @@ rustc --version
 rustup show
 </pre></div>
 </div>
-
-
+</section>
+<section id="font-end-template">
 <h4 id="font-end-template">Font-end template<a class="headerlink" href="#font-end-template" title="永久链接至标题">¶</a></h4>
-
+<section id="node-js-yarn">
 <h5 id="node-js-yarn">node.js &amp; yarn<a class="headerlink" href="#node-js-yarn" title="永久链接至标题">¶</a></h5>
 <p>如果没有安装 node.js，可根据自己平台下载官网对应的安装包进行安装，官网地址：https://nodejs.org/
 版本最好是最新版或是 &gt; 12, &lt; 14, 或 14.2.0。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm install -g yarn
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+<section id="get-the-template-source-code">
 <h4 id="get-the-template-source-code">Get the template source code<a class="headerlink" href="#get-the-template-source-code" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/substrate-developer-hub/substrate-front-end-template
 <span class="nb">cd</span> substrate-front-end-template
@@ -604,9 +612,9 @@ git checkout latest
 yarn install
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+<section id="build-substrate-node">
 <h3 id="build-substrate-node">Build Substrate node<a class="headerlink" href="#build-substrate-node" title="永久链接至标题">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/substrate-developer-hub/substrate-node-template
 <span class="nb">cd</span> substrate-node-template
@@ -614,8 +622,8 @@ git checkout latest
 cargo build --release
 </pre></div>
 </div>
-
-
+</section>
+<section id="start-node">
 <h3 id="start-node">Start node<a class="headerlink" href="#start-node" title="永久链接至标题">¶</a></h3>
 <p>切换到 <code class="docutils literal notranslate"><span class="pre">substrate-node-template</span></code> 目录下，然后执行：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./target/release/node-template --dev
@@ -625,9 +633,9 @@ cargo build --release
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yarn start
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+</section>
 
 
           </article>
@@ -676,7 +684,7 @@ cargo build --release
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
