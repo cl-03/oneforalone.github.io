@@ -57,7 +57,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="项目" href="../projects/index.html" />
+    <link rel="next" title="MacOS 使用记录" href="macos.html" />
     <link rel="prev" title="VNC 常见问题及解决方案" href="vnc.html" />
   
    
@@ -449,8 +449,6 @@
         </li>
         <li class="md-nav__item"><a href="#centos-6-10-adobe-reader" class="md-nav__link">CentOS 6.10 安装 Adobe Reader</a>
         </li>
-        <li class="md-nav__item"><a href="#mac-os" class="md-nav__link">Mac OS 命令行打开终端</a>
-        </li>
         <li class="md-nav__item"><a href="#ubuntu-18-04-apt-certificate-error" class="md-nav__link">Ubuntu 18.04 apt certificate error</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference:</a>
@@ -478,6 +476,13 @@
 
   </ul>
 </nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="macos.html" class="md-nav__link">MacOS 使用记录</a>
       
     
     </li></ul>
@@ -531,8 +536,6 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#centos-6-10-adobe-reader" class="md-nav__link">CentOS 6.10 安装 Adobe Reader</a>
-        </li>
-        <li class="md-nav__item"><a href="#mac-os" class="md-nav__link">Mac OS 命令行打开终端</a>
         </li>
         <li class="md-nav__item"><a href="#ubuntu-18-04-apt-certificate-error" class="md-nav__link">Ubuntu 18.04 apt certificate error</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -660,21 +663,6 @@ yum install -y atk-1.30.0-1.el6.i686 fontconfig-2.8.0-5.el6.i686 <span class="se
 </div>
 
 
-<h2 id="mac-os">Mac OS 命令行打开终端<a class="headerlink" href="#mac-os" title="永久链接至标题">¶</a></h2>
-<p>有时候看电影里电脑特效很酷，动不动就自动打开一大堆 terminal，今天闲着无聊 google 了一下，下面是 MacOS 的：</p>
-<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>osascript -e <span class="s1">'tell app "Terminal"</span>
-<span class="s1">    do script "echo hello"</span>
-<span class="s1">end tell'</span>
-</pre></div>
-</div>
-<p>Linux 的话：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># terminal -e command</span>
-xterm -e ls <span class="c1"># 使用  xterm</span>
-gnome-terminal -x ls <span class="c1"># 使用 gnome-terminal</span>
-</pre></div>
-</div>
-
-
 <h2 id="ubuntu-18-04-apt-certificate-error">Ubuntu 18.04 apt certificate error<a class="headerlink" href="#ubuntu-18-04-apt-certificate-error" title="永久链接至标题">¶</a></h2>
 <p>最近在使用 Ubuntu 18.04 安装软件是突然遇到个证书错误：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span> <span class="n">verification</span> <span class="n">failed</span><span class="p">:</span> <span class="n">The</span> <span class="n">certificate</span> <span class="ow">is</span> <span class="n">NOT</span> <span class="n">trusted</span><span class="o">.</span> <span class="n">The</span> <span class="n">certificate</span> <span class="n">issuer</span> <span class="ow">is</span> <span class="n">unknown</span><span class="o">.</span>  <span class="n">Could</span> <span class="ow">not</span> <span class="n">handshake</span><span class="p">:</span> <span class="n">Error</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">certificate</span> <span class="n">verification</span><span class="o">.</span>
@@ -767,12 +755,12 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
             </a>
           
           
-            <a href="../projects/index.html" title="项目"
+            <a href="macos.html" title="MacOS 使用记录"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> 项目 </span>
+                class="md-footer-nav__direction"> Next </span> MacOS 使用记录 </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

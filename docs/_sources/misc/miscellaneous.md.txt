@@ -94,24 +94,6 @@ yum install -y atk-1.30.0-1.el6.i686 fontconfig-2.8.0-5.el6.i686 \
   libxml2-2.7.6-21.el6_8.1.i686
 ```
 
-## Mac OS 命令行打开终端
-
-有时候看电影里电脑特效很酷，动不动就自动打开一大堆 terminal，今天闲着无聊 google 了一下，下面是 MacOS 的：
-
-```zsh
-osascript -e 'tell app "Terminal"
-    do script "echo hello"
-end tell'
-```
-
-Linux 的话：
-
-```bash
-# terminal -e command
-xterm -e ls # 使用  xterm
-gnome-terminal -x ls # 使用 gnome-terminal
-```
-
 ## Ubuntu 18.04 apt certificate error
 
 最近在使用 Ubuntu 18.04 安装软件是突然遇到个证书错误：
