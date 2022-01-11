@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -521,20 +520,20 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section class="tex2jax_ignore mathjax_ignore" id="centos-6-em-eth">
+  
 <h1 id="misc-centos6-em2eth--page-root">CentOS 6 网卡名 em 修改成 eth<a class="headerlink" href="#misc-centos6-em2eth--page-root" title="永久链接至标题">¶</a></h1>
 <p>有些 Dell 的服务器和 Redhat/CentOS 组合一起就是会出现某些特殊的反应，比如，网卡名不是 <code class="docutils literal notranslate"><span class="pre">eth</span></code>
 而是 <code class="docutils literal notranslate"><span class="pre">em</span></code>。这个本来也没啥大问题，但是和一些工业设计软件搭配在一起，就出了个大问题，license 激活
 不了。怎么解决呢？</p>
-<section id="grub">
+
 <h2 id="grub">修改 grub 配置文件<a class="headerlink" href="#grub" title="永久链接至标题">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s1">'s/quiet/quiet biosdevname=0/'</span> /etc/grub.conf
 </pre></div>
 </div>
 <p>如果对 <code class="docutils literal notranslate"><span class="pre">sed</span></code> 不熟的话，直接用 vi 或 nano 去编辑 <code class="docutils literal notranslate"><span class="pre">/etc/grub.conf</span></code>，找到以 <code class="docutils literal notranslate"><span class="pre">kernel</span></code> 开头，<code class="docutils literal notranslate"><span class="pre">quiet</span></code>
 结尾的一行，在 <code class="docutils literal notranslate"><span class="pre">quiet</span></code> 后面添加 <code class="docutils literal notranslate"><span class="pre">biosdevname=0</span></code>，保存</p>
-</section>
-<section id="id1">
+
+
 <h2 id="id1">修改网卡的配置文件<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /etc/sysconfig/network-scripts
 
@@ -544,14 +543,14 @@ for i in {1..4}; do sed -i "s/em$i/eth$(( i-1 ))/" ifcfg-em$i; mv ifcfg-em$i ifc
 <p>第二步的具体操作是将 ifcfg-em1 到 ifcfg-em4 这四个文件中的 <code class="docutils literal notranslate"><span class="pre">em1</span></code> / <code class="docutils literal notranslate"><span class="pre">em2</span></code> / <code class="docutils literal notranslate"><span class="pre">em3</span></code> / <code class="docutils literal notranslate"><span class="pre">em4</span></code>
 改为 <code class="docutils literal notranslate"><span class="pre">eth0</span></code> / <code class="docutils literal notranslate"><span class="pre">eth1</span></code> / <code class="docutils literal notranslate"><span class="pre">eth2</span></code> / <code class="docutils literal notranslate"><span class="pre">eth3</span></code>，然后将 <code class="docutils literal notranslate"><span class="pre">ifcfg-em1</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-em2</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-em3</span></code> /
 <code class="docutils literal notranslate"><span class="pre">ifcfg-em4</span></code> 分别改名为 <code class="docutils literal notranslate"><span class="pre">ifcfg-eth0</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-eth1</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-eth2</span></code> / <code class="docutils literal notranslate"><span class="pre">ifcfg-eth3</span></code></p>
-</section>
-<section id="id2">
+
+
 <h2 id="id2">重启服务器<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reboot
 </pre></div>
 </div>
-</section>
-<section id="update-from-2021-11-24">
+
+
 <h2 id="update-from-2021-11-24"><strong>Update from 2021-11-24</strong><a class="headerlink" href="#update-from-2021-11-24" title="永久链接至标题">¶</a></h2>
 <p>最近又被这个问题折磨了一下，正常来说上面这个操作步骤是能够 work 的，但是总是会有不正常的时候，就比如说我前几天遇到的。</p>
 <p>具体情况是这样的：</p>
@@ -576,12 +575,12 @@ IP，之后有改回去，就导致 <code class="docutils literal notranslate"><
 之后再修改</p></li>
 <li><p>修改网卡配置文件然后重命名网卡配置文件</p></li>
 </ol>
-</section>
-<section id="reference">
+
+
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
 <p>[1]. <a class="reference external" href="https://www.linuxidc.com/Linux/2013-07/86885.htm">CentOS 6.4安装后网卡em改回eth的两种方法</a></p>
-</section>
-</section>
+
+
 
 
           </article>
@@ -630,7 +629,7 @@ IP，之后有改回去，就导致 <code class="docutils literal notranslate"><
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
