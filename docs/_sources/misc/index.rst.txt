@@ -16,3 +16,4 @@
    centos6-em2eth.md
    vnc.md
    miscellaneous.md
+   raspberry-pi-4b.md

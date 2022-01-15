@@ -58,7 +58,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="项目" href="../projects/index.html" />
+    <link rel="next" title="树莓派 4B" href="raspberry-pi-4b.html" />
     <link rel="prev" title="VNC 常见问题及解决方案" href="vnc.html" />
   
    
@@ -479,6 +479,13 @@
 </nav>
       
     
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="raspberry-pi-4b.html" class="md-nav__link">树莓派 4B</a>
+      
+    
     </li></ul>
     
     </li>
@@ -577,7 +584,7 @@
 推到 Github 上发现并没有渲染 <span class="math notranslate nohighlight">\(LATEX\)</span> 的格式。查了一下发现是需要在 Jekyll 中添加个插件：</p>
 <p>在 <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> 文件中添加一行: <code class="docutils literal notranslate"><span class="pre">markdown:</span> <span class="pre">kramdown</span></code> 。然后到自己的 includes 中的
 被所有的 layout 文件都 include 了的文件（我的是 <code class="docutils literal notranslate"><span class="pre">header.html</span></code>）中添加下面的 js 代码：</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- add latex support --&gt;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- add latex support --&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/x-mathjax-config"</span><span class="p">&gt;</span>
@@ -685,7 +692,7 @@ gnome-terminal -x ls <span class="c1"># 使用 gnome-terminal</span>
 <p>Okay, Problem Sovled.</p>
 <section id="reference">
 <h3 id="reference">Reference:<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://askubuntu.com/questions/1095266/apt-get-update-failed-because-certificate-verification-failed-because-handshake">StackExchange: apt-get update failed...</a></p></li>
 <li><p><a class="reference external" href="http://manpages.ubuntu.com/manpages/bionic/man1/apt-transport-https.1.html">Ubuntu Manpage: apt-transport-https</a></p></li>
 </ol>
@@ -744,12 +751,12 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
             </a>
           
           
-            <a href="../projects/index.html" title="项目"
+            <a href="raspberry-pi-4b.html" title="树莓派 4B"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> 项目 </span>
+                class="md-footer-nav__direction"> Next </span> 树莓派 4B </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
@@ -767,7 +774,7 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
