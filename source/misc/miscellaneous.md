@@ -94,24 +94,6 @@ yum install -y atk-1.30.0-1.el6.i686 fontconfig-2.8.0-5.el6.i686 \
   libxml2-2.7.6-21.el6_8.1.i686
 ```
 
-## Mac OS 命令行打开终端
-
-有时候看电影里电脑特效很酷，动不动就自动打开一大堆 terminal，今天闲着无聊 google 了一下，下面是 MacOS 的：
-
-```zsh
-osascript -e 'tell app "Terminal"
-    do script "echo hello"
-end tell'
-```
-
-Linux 的话：
-
-```bash
-# terminal -e command
-xterm -e ls # 使用  xterm
-gnome-terminal -x ls # 使用 gnome-terminal
-```
-
 ## Ubuntu 18.04 apt certificate error
 
 最近在使用 Ubuntu 18.04 安装软件是突然遇到个证书错误：
@@ -148,9 +130,33 @@ nmcli connection add type bond-slave ifname enps0f1 master bond0
 
 然后在根据自己的需求配置对应的 bond 参数以及网络信息。至于其背后详细的原理，请参考 [bond技术分析](https://cloud.tencent.com/developer/article/1087312?from=15425)
 
+
 ### Reference
 
 [1]. [centos7.x网卡bond配置](https://www.cnblogs.com/liwanggui/p/6807212.html)
+
+
+## CentOS 7 root 忘记密码
+
+通常来说，系统的 root 密码应该是被记录下来的，不会被忘记。但是就是有不一般的情况。
+客户直接将服务器寄过来，然后就让我们去检查配置。伞兵客户。没办法，只能强制将 root
+的密码修改咯。 直接参考博客——[CentOS 7 root用户密码忘记，找回密码方法](https://blog.csdn.net/qq_43518645/article/details/105098090)
+进行修改。
+
+为了防止 CSDN 访问出现异常，加个简单的记录吧：
+
+1. 按 `e` 修改系统启动项
+2. 将以 `linux16` 开头的一行中末尾处的 `ro` 修改成 `rw init=sysroot/bin/sh`
+3. 按 `Ctrl+X` 后会直接进入系统
+4. 将 `/sysroot` 指定为 `/` ：`chroot /sysroot`
+5. 修改密码： `passwd`
+6. 更新系统信息：`touch /.autorelabel`
+7. 退出 `chroot`：`exit`
+8. 重启服务器：`reoobt`
+
+注：如果机器使用了 UEFI 启动，需要先进入 BIOS 关闭 UEFI 然后再启动，不然看不到
+系统的选择界面。 UEFI 启动加载太快了，根本反应不过来就进入系统了。
+
 
 ## Cron 任务执行不成功
 
@@ -158,7 +164,7 @@ nmcli connection add type bond-slave ifname enps0f1 master bond0
 然后查了下资料发现 cron 的命令是以 sh 执行的，而我用的是 bash 的语法。Well，改了
 后就执行成功了。其实就是 sh 中没有 `source` 命令，只有 `.` 命令。
 
-Emmm…… 之后在找找资料详细的对比下 systemd 的 timer 和 crontab 吧。
+Emmm…… 之后再找找资料详细的对比下 systemd 的 timer 和 crontab 吧。
 
 ### Reference
 

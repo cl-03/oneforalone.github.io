@@ -58,7 +58,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="树莓派 4B" href="raspberry-pi-4b.html" />
+    <link rel="next" title="MacOS 使用记录" href="macos.html" />
     <link rel="prev" title="VNC 常见问题及解决方案" href="vnc.html" />
   
    
@@ -450,8 +450,6 @@
         </li>
         <li class="md-nav__item"><a href="#centos-6-10-adobe-reader" class="md-nav__link">CentOS 6.10 安装 Adobe Reader</a>
         </li>
-        <li class="md-nav__item"><a href="#mac-os" class="md-nav__link">Mac OS 命令行打开终端</a>
-        </li>
         <li class="md-nav__item"><a href="#ubuntu-18-04-apt-certificate-error" class="md-nav__link">Ubuntu 18.04 apt certificate error</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference:</a>
@@ -463,6 +461,8 @@
         <li class="md-nav__item"><a href="#id4" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
+        </li>
+        <li class="md-nav__item"><a href="#centos-7-root" class="md-nav__link">CentOS 7 root 忘记密码</a>
         </li>
         <li class="md-nav__item"><a href="#cron" class="md-nav__link">Cron 任务执行不成功</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -477,6 +477,13 @@
 
   </ul>
 </nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="macos.html" class="md-nav__link">MacOS 使用记录</a>
       
     
     </li>
@@ -538,8 +545,6 @@
         </li>
         <li class="md-nav__item"><a href="#centos-6-10-adobe-reader" class="md-nav__link">CentOS 6.10 安装 Adobe Reader</a>
         </li>
-        <li class="md-nav__item"><a href="#mac-os" class="md-nav__link">Mac OS 命令行打开终端</a>
-        </li>
         <li class="md-nav__item"><a href="#ubuntu-18-04-apt-certificate-error" class="md-nav__link">Ubuntu 18.04 apt certificate error</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference:</a>
@@ -551,6 +556,8 @@
         <li class="md-nav__item"><a href="#id4" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
+        </li>
+        <li class="md-nav__item"><a href="#centos-7-root" class="md-nav__link">CentOS 7 root 忘记密码</a>
         </li>
         <li class="md-nav__item"><a href="#cron" class="md-nav__link">Cron 任务执行不成功</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -663,21 +670,6 @@ yum install -y atk-1.30.0-1.el6.i686 fontconfig-2.8.0-5.el6.i686 <span class="se
 </pre></div>
 </div>
 </section>
-<section id="mac-os">
-<h2 id="mac-os">Mac OS 命令行打开终端<a class="headerlink" href="#mac-os" title="永久链接至标题">¶</a></h2>
-<p>有时候看电影里电脑特效很酷，动不动就自动打开一大堆 terminal，今天闲着无聊 google 了一下，下面是 MacOS 的：</p>
-<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>osascript -e <span class="s1">'tell app "Terminal"</span>
-<span class="s1">    do script "echo hello"</span>
-<span class="s1">end tell'</span>
-</pre></div>
-</div>
-<p>Linux 的话：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># terminal -e command</span>
-xterm -e ls <span class="c1"># 使用  xterm</span>
-gnome-terminal -x ls <span class="c1"># 使用 gnome-terminal</span>
-</pre></div>
-</div>
-</section>
 <section id="ubuntu-18-04-apt-certificate-error">
 <h2 id="ubuntu-18-04-apt-certificate-error">Ubuntu 18.04 apt certificate error<a class="headerlink" href="#ubuntu-18-04-apt-certificate-error" title="永久链接至标题">¶</a></h2>
 <p>最近在使用 Ubuntu 18.04 安装软件是突然遇到个证书错误：</p>
@@ -713,12 +705,32 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
 <p>[1]. <a class="reference external" href="https://www.cnblogs.com/liwanggui/p/6807212.html">centos7.x网卡bond配置</a></p>
 </section>
 </section>
+<section id="centos-7-root">
+<h2 id="centos-7-root">CentOS 7 root 忘记密码<a class="headerlink" href="#centos-7-root" title="永久链接至标题">¶</a></h2>
+<p>通常来说，系统的 root 密码应该是被记录下来的，不会被忘记。但是就是有不一般的情况。
+客户直接将服务器寄过来，然后就让我们去检查配置。伞兵客户。没办法，只能强制将 root
+的密码修改咯。 直接参考博客——<a class="reference external" href="https://blog.csdn.net/qq_43518645/article/details/105098090">CentOS 7 root用户密码忘记，找回密码方法</a>
+进行修改。</p>
+<p>为了防止 CSDN 访问出现异常，加个简单的记录吧：</p>
+<ol class="arabic simple">
+<li><p>按 <code class="docutils literal notranslate"><span class="pre">e</span></code> 修改系统启动项</p></li>
+<li><p>将以 <code class="docutils literal notranslate"><span class="pre">linux16</span></code> 开头的一行中末尾处的 <code class="docutils literal notranslate"><span class="pre">ro</span></code> 修改成 <code class="docutils literal notranslate"><span class="pre">rw</span> <span class="pre">init=sysroot/bin/sh</span></code></p></li>
+<li><p>按 <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code> 后会直接进入系统</p></li>
+<li><p>将 <code class="docutils literal notranslate"><span class="pre">/sysroot</span></code> 指定为 <code class="docutils literal notranslate"><span class="pre">/</span></code> ：<code class="docutils literal notranslate"><span class="pre">chroot</span> <span class="pre">/sysroot</span></code></p></li>
+<li><p>修改密码： <code class="docutils literal notranslate"><span class="pre">passwd</span></code></p></li>
+<li><p>更新系统信息：<code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">/.autorelabel</span></code></p></li>
+<li><p>退出 <code class="docutils literal notranslate"><span class="pre">chroot</span></code>：<code class="docutils literal notranslate"><span class="pre">exit</span></code></p></li>
+<li><p>重启服务器：<code class="docutils literal notranslate"><span class="pre">reoobt</span></code></p></li>
+</ol>
+<p>注：如果机器使用了 UEFI 启动，需要先进入 BIOS 关闭 UEFI 然后再启动，不然看不到
+系统的选择界面。 UEFI 启动加载太快了，根本反应不过来就进入系统了。</p>
+</section>
 <section id="cron">
 <h2 id="cron">Cron 任务执行不成功<a class="headerlink" href="#cron" title="永久链接至标题">¶</a></h2>
 <p>突然发现配置了一个 cron 任务的脚本，没有得到预期的结果，查看日志发现任务确实执行了。
 然后查了下资料发现 cron 的命令是以 sh 执行的，而我用的是 bash 的语法。Well，改了
 后就执行成功了。其实就是 sh 中没有 <code class="docutils literal notranslate"><span class="pre">source</span></code> 命令，只有 <code class="docutils literal notranslate"><span class="pre">.</span></code> 命令。</p>
-<p>Emmm…… 之后在找找资料详细的对比下 systemd 的 timer 和 crontab 吧。</p>
+<p>Emmm…… 之后再找找资料详细的对比下 systemd 的 timer 和 crontab 吧。</p>
 <section id="id5">
 <h3 id="id5">Reference<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>[1]. https://unix.stackexchange.com/questions/278564/cron-vs-systemd-timers</p>
@@ -751,12 +763,12 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
             </a>
           
           
-            <a href="raspberry-pi-4b.html" title="树莓派 4B"
+            <a href="macos.html" title="MacOS 使用记录"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> 树莓派 4B </span>
+                class="md-footer-nav__direction"> Next </span> MacOS 使用记录 </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
