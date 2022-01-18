@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -523,9 +522,9 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section class="tex2jax_ignore mathjax_ignore" id="macos">
+  
 <h1 id="misc-macos--page-root">MacOS 使用记录<a class="headerlink" href="#misc-macos--page-root" title="永久链接至标题">¶</a></h1>
-<section id="mac-os">
+
 <h2 id="mac-os">Mac OS 命令行打开终端<a class="headerlink" href="#mac-os" title="永久链接至标题">¶</a></h2>
 <p>有时候看电影里电脑特效很酷，动不动就自动打开一大堆 terminal，今天闲着无聊 google 了一下，下面是 MacOS 的：</p>
 <div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>osascript -e <span class="s1">'tell app "Terminal"</span>
@@ -539,8 +538,8 @@ xterm -e ls <span class="c1"># 使用  xterm</span>
 gnome-terminal -x ls <span class="c1"># 使用 gnome-terminal</span>
 </pre></div>
 </div>
-</section>
-<section id="id1">
+
+
 <h2 id="id1">Mac OS 磁盘空间清理：可清除空间<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>最近无聊看了下电脑的磁盘使用率，结果发现 512G 的磁盘基本快满了，但是查来查去也没找到
 大的文件。然后仔细一看发现其中有近 300 G 的空间标注为可清除（purgeable）。以为是
@@ -557,8 +556,8 @@ for i in `sudo tmutil listlocalsnapshots / | tail -n +2 | cut -d'.' -f4` ; \
 do tmutil deletelocalsnapshots $i; done
 </pre></div>
 </div>
-</section>
-</section>
+
+
 
 
           </article>
@@ -607,7 +606,7 @@ do tmutil deletelocalsnapshots $i; done
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

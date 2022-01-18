@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -519,9 +518,9 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section class="tex2jax_ignore mathjax_ignore" id="b">
+  
 <h1 id="misc-raspberry-pi-4b--page-root">树莓派 4B<a class="headerlink" href="#misc-raspberry-pi-4b--page-root" title="永久链接至标题">¶</a></h1>
-<section id="raspberry-pi-4b-ubuntu-wifi">
+
 <h2 id="raspberry-pi-4b-ubuntu-wifi">Raspberry Pi 4b 安装 Ubuntu 配置 Wifi<a class="headerlink" href="#raspberry-pi-4b-ubuntu-wifi" title="永久链接至标题">¶</a></h2>
 <hr class="docutils"/>
 <p>Author: Yuqi Liu</p>
@@ -557,20 +556,20 @@ SD 卡，本来想着应该很快就能配置玩系统，谁能想到，这届�
 所以我就去改了一下 <code class="docutils literal notranslate"><span class="pre">network-config</span></code>，其中  <code class="docutils literal notranslate"><span class="pre">wifi</span></code> 部分被
 注释掉了，我就尝试改一下，看看能不能成功，反正添加
 <code class="docutils literal notranslate"><span class="pre">wpa_suppalicant.conf</span></code> 文件是没用任何用。</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="nt">ethernets</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">eth0</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="nt">wifis</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">wlan0</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">access-points</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">wifi-name</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">"wifi-password"</span><span class="w"></span>
-<span class="w">      </span><span class="nt">wifi-name2</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">"wifi-password"</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">ethernets</span><span class="p">:</span>
+  <span class="nt">eth0</span><span class="p">:</span>
+    <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">optional</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">wifis</span><span class="p">:</span>
+  <span class="nt">wlan0</span><span class="p">:</span>
+    <span class="nt">dhcp4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">optional</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">access-points</span><span class="p">:</span>
+      <span class="nt">wifi-name</span><span class="p">:</span>
+        <span class="nt">password</span><span class="p">:</span> <span class="s">"wifi-password"</span>
+      <span class="nt">wifi-name2</span><span class="p">:</span>
+        <span class="nt">password</span><span class="p">:</span> <span class="s">"wifi-password"</span>
 </pre></div>
 </div>
 <p>将 <code class="docutils literal notranslate"><span class="pre">wifi-name</span></code> 和 <code class="docutils literal notranslate"><span class="pre">password</span></code> 替换成对应的 wifi 名和密码，
@@ -578,8 +577,8 @@ SD 卡，本来想着应该很快就能配置玩系统，谁能想到，这届�
 至于无法登陆路由器管理界面查看的，方法也很简单，就是将网络配置
 换成静态 IP，具体配置参考 <a class="reference external" href="https://netplan.io/examples/">netplan 配置示范</a>。</p>
 <p>That's all, Happy Hacking :).</p>
-</section>
-</section>
+
+
 
 
           </article>
@@ -628,7 +627,7 @@ SD 卡，本来想着应该很快就能配置玩系统，谁能想到，这届�
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
