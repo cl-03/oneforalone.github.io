@@ -54,8 +54,6 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="MacOS 使用记录" href="macos.html" />
@@ -232,6 +230,13 @@
     
     
       <a href="../blockchain/Substrate.html" class="md-nav__link">Substrate</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../blockchain/bitcoin-on-pi.html" class="md-nav__link">Raspberry Pi 安装 bitcoin</a>
       
     
     </li></ul>
@@ -581,17 +586,17 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+  <section id="id1">
 <h1 id="misc-miscellaneous--page-root">杂记<a class="headerlink" href="#misc-miscellaneous--page-root" title="永久链接至标题">¶</a></h1>
 <p>本文记录了一些简单的问题和解决方法。</p>
 <hr class="docutils"/>
 <section id="jekyll-markdown-latex">
 <h2 id="jekyll-markdown-latex">jekyll markdown 中用 latex<a class="headerlink" href="#jekyll-markdown-latex" title="永久链接至标题">¶</a></h2>
 <p>近期看了会微积分，想在博客中记录一下一些通用的微积分公式，在本地 vs code 中预览完全没问题，
-推到 Github 上发现并没有渲染 <span class="math notranslate nohighlight">\(LATEX\)</span> 的格式。查了一下发现是需要在 Jekyll 中添加个插件：</p>
+推到 Github 上发现并没有渲染 $LATEX$ 的格式。查了一下发现是需要在 Jekyll 中添加个插件：</p>
 <p>在 <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> 文件中添加一行: <code class="docutils literal notranslate"><span class="pre">markdown:</span> <span class="pre">kramdown</span></code> 。然后到自己的 includes 中的
 被所有的 layout 文件都 include 了的文件（我的是 <code class="docutils literal notranslate"><span class="pre">header.html</span></code>）中添加下面的 js 代码：</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- add latex support --&gt;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- add latex support --&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/x-mathjax-config"</span><span class="p">&gt;</span>
@@ -786,7 +791,7 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

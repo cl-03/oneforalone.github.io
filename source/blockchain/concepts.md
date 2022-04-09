@@ -115,6 +115,7 @@ CPU 资源的，需要做大量的计算，因而叫做 **PoW** —— 工作量
 [1]. [PROOF-OF-WORK](https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/)
 
 
+(pos)=
 ### PoS
 
 **Proof of Stake** 的简写，权益证明，对 **PoW** 的一种改进。由 **PoW** 的特性可知，执行
@@ -175,13 +176,13 @@ CPU 资源的，需要做大量的计算，因而叫做 **PoW** —— 工作量
 
 [2]. [How Filecoin Works: Proofs](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#proofs)
 
-[3]. [FAQ: What is Proof of Space and Time](chia.net/faq/#faq-3)
+[3]. [FAQ: What is Proof of Space and Time](https://chia.net/faq/#faq-3)
 
 
 ### PoA
 
-**Proof of Authority**，基于认证证明，用于 Ethereum 的私链。[Polkadot Network](https://polkadot.network/)， 波卡网主网上线时使用，现已切
-换到 [**NPoS**](#npos)。
+**Proof of Authority**，基于认证证明，用于 Ethereum 的私链。[Polkadot Network](https://polkadot.network/)，
+波卡网主网上线时使用，现已切换到 {ref}`npos`。
 
 > Proof-of-authority chains utilise a number of secret keys (authorities) to collaborate and create the longest chain
 > instead of the public Ethereum network's proof-of-work scheme (Ethash).
@@ -199,6 +200,7 @@ CPU 资源的，需要做大量的计算，因而叫做 **PoW** —— 工作量
 [2]. [TurboEthereum Guide](https://gavofyork.gitbooks.io/turboethereum/content/index.html)
 
 
+(npos)=
 ### NPoS
 
 **Nominated Proof of Stake** 的简写。Polkadot 链中使用的共识机制。

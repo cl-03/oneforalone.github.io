@@ -9,3 +9,4 @@
    concepts.md
    overview-of-ethereum.md
    Substrate.md
+   bitcoin-on-pi.md
