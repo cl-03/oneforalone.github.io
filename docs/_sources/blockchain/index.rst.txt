@@ -8,6 +8,7 @@
 
    concepts.md
    overview-of-ethereum.md
-   Substrate.md
+   substrate-tutorial.md
    bitcoin-on-pi.md
    rust-web3-tutorial.md
+   web3-development-toolkits.md
