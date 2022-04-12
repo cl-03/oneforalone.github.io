@@ -1,11 +1,6 @@
 # Summary of 2021
 
----
-Author: Yuqi Liu
-
 Date: 2022-01-03
-
----
 
 ## 序
 

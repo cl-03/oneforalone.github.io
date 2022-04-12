@@ -1,11 +1,8 @@
 # Raspberry Pi 安装 bitcoin
 
----
 Author: Yuqi Liu
 
 Date: Sat Apr 9 2022
-
----
 
 **声明**：因为用的是 Rapsberry Pi，Arm 架构的，所以就直接从源代码编译，
 官网有编译好了 ARM 版本的二进制，如果懒得去编译可以直接下载去官网下载就

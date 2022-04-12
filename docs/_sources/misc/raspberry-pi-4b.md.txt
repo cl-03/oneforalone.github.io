@@ -2,13 +2,10 @@
 
 ## Raspberry Pi 4b 安装 Ubuntu 配置 Wifi
 
----
-
 Author: Yuqi Liu
 
 Date: Sat. Jan. 15 2022
 
----
 
 昨天晚上想拿我的 Pi 来做 IPFS 的服务器，然后买了一张 128G 的
 SD 卡，本来想着应该很快就能配置玩系统，谁能想到，这届的博主不给
@@ -67,5 +64,6 @@ wifis:
 然后保存，将 SD 卡插回 Pi，开机等待一会就 Pi 就会连上 wifi。
 至于无法登陆路由器管理界面查看的，方法也很简单，就是将网络配置
 换成静态 IP，具体配置参考 [netplan 配置示范](https://netplan.io/examples/)。
+经过验证好像是要重启两次才能生效。
 
 That's all, Happy Hacking :).

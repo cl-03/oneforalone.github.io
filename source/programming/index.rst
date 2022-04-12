@@ -6,5 +6,6 @@
 .. toctree::
    :maxdepth: 1
 
-   c.md
-   rust.md
+   hacking-in-c.md
+   hacking-in-rust.md
+   hacking-in-lisp.md

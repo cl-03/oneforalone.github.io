@@ -10,3 +10,4 @@
    overview-of-ethereum.md
    Substrate.md
    bitcoin-on-pi.md
+   rust-web3-tutorial.md
