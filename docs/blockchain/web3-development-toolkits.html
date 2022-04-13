@@ -261,7 +261,25 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#blockchain-web3-development-toolkits--page-root" class="md-nav__link">Smart Contract Development Toolkits</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#hardhat" class="md-nav__link">Hardhat</a>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">序</a>
+        </li>
+        <li class="md-nav__item"><a href="#hardhat" class="md-nav__link">Hardhat</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">安装</a>
+        </li>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">使用</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">初始化项目</a>
+        </li>
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">配置</a>
+        </li>
+        <li class="md-nav__item"><a href="#id7" class="md-nav__link">编译合约源代码</a>
+        </li>
+        <li class="md-nav__item"><a href="#id8" class="md-nav__link">执行脚本（测试，上链）</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
         </li>
         <li class="md-nav__item"><a href="#truffle" class="md-nav__link">Truffle</a>
         </li>
@@ -535,7 +553,25 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#blockchain-web3-development-toolkits--page-root" class="md-nav__link">Smart Contract Development Toolkits</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#hardhat" class="md-nav__link">Hardhat</a>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">序</a>
+        </li>
+        <li class="md-nav__item"><a href="#hardhat" class="md-nav__link">Hardhat</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">安装</a>
+        </li>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">使用</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">初始化项目</a>
+        </li>
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">配置</a>
+        </li>
+        <li class="md-nav__item"><a href="#id7" class="md-nav__link">编译合约源代码</a>
+        </li>
+        <li class="md-nav__item"><a href="#id8" class="md-nav__link">执行脚本（测试，上链）</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
         </li>
         <li class="md-nav__item"><a href="#truffle" class="md-nav__link">Truffle</a>
         </li>
@@ -561,10 +597,325 @@
             
   <section id="smart-contract-development-toolkits">
 <span id="id1"></span><h1 id="blockchain-web3-development-toolkits--page-root">Smart Contract Development Toolkits<a class="headerlink" href="#blockchain-web3-development-toolkits--page-root" title="永久链接至标题">¶</a></h1>
-<p>Create Date: Wed Apr. 13 2022</p>
+<p>Date: Wed Apr. 13 2022</p>
+<section id="id2">
+<h2 id="id2">序<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>智能合约，目前公认的是 Ethereum 上的定义，可以简单的理解为运行在
+Ethereum 中 EVM 上的程序，推广一下就是运行在分布式系统上的程序。</p>
+<p>而一个程序的开发过程，不外乎来说有三步：编写源代码，编译以及链接。</p>
+<p>通常来说，编译和链接都是有一个工具完成的，而对于区块链来说，链接
+对应的是上链（我喜欢这么叫，反正就是将编译出来的 EVM 字节码发布
+到区块链上），而上链设计到网络交互，这个差异就导致了编译和链接是
+由不同的工具完成。</p>
+<p>当然，官方有提供 IDE —— Remix，使用也很简单，但是相信我，作为一个
+学习者，使用 IDE 不是个好途径。（因为网络的原因，我经常会遇到要修改
+一个合约代码时加载不出来，然后又要重写。所以国内的话，能不用 Remix
+就不用 Remix）。出了网络的问题，还有一个就是 IDE 有时会掩盖掉一些
+细节，anyway，IDE 这个问题只能说是见仁见智，反正我学习时是不喜欢。</p>
+<p>以下是我了解到的智能合约开发的 toolkits。</p>
+<blockquote>
+<div><p>P.S. 目前我所指得智能合约均指代的是 Etheruem 生态的智能合约，不涉及
+NEAR 和 SOLONA 这些链的智能合约开发（这两个链最好还是先把 Rust 学
+一遍吧，因为他们的合约使用 Rust 去写的）。</p>
+</div></blockquote>
+<p>NOTE: 因为区块链又和 "Web3" 紧密联系到一起了，所以，在开发智能合约时，
+最好还是先去学一下 JavaScript(或者 NodeJS)，不然就会像我一开始学开发
+智能合约一样，两眼懵逼，又要看 Solidity 的文档，还要去查 NodeJS 的文档。</p>
+</section>
 <section id="hardhat">
 <h2 id="hardhat">Hardhat<a class="headerlink" href="#hardhat" title="永久链接至标题">¶</a></h2>
-<p>reference: https://hardhat.org/getting-started/</p>
+<p>这个 toolkit 使用起来很简单，我目前使用的就是这个，但是最近准备把 Rust
+用起来，准备切换到 Foundry 开发了。首先，先将官方文档的链接放出来：
+https://hardhat.org/getting-started 。如果有条件的话，建议还是去看
+英文文档。</p>
+<section id="id3">
+<h3 id="id3">安装<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>安装有两种选择:</p>
+<ul class="simple">
+<li><p>安装在对应的项目，只有进入当前项目才能使用：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm install --save-dev hardhat
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>安装到系统环境中，可以在系统的任意目录下使用：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm install -g hardhat
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3 id="id4">使用<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<section id="id5">
+<h4 id="id5">初始化项目<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx hardhat
+</pre></div>
+</div>
+<p>执行完这条有如下输出，会有一些配置选项：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>888    888                      888 888               888
+888    888                      888 888               888
+888    888                      888 888               888
+8888888888  8888b.  888d888 .d88888 88888b.   8888b.  888888
+888    888     "88b 888P"  d88" 888 888 "88b     "88b 888
+888    888 .d888888 888    888  888 888  888 .d888888 888
+888    888 888  888 888    Y88b 888 888  888 888  888 Y88b.
+888    888 "Y888888 888     "Y88888 888  888 "Y888888  "Y888
+
+👷 Welcome to Hardhat v2.9.3 👷‍
+
+? What do you want to do? …
+❯ Create a basic sample project
+  Create an advanced sample project
+  Create an advanced sample project that uses TypeScript
+  Create an empty hardhat.config.js
+  Quit
+</pre></div>
+</div>
+<p>可以根据自己的需求进行选择，如果不知道该选哪个，直接一路按回车选默认的就好了。
+默认会创建一些基础的文件（以下是除了 <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> 的目录结构）：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tree -I node_module ./
+./
+├── README.md
+├── contracts
+│   └── Greeter.sol
+├── hardhat.config.js
+├── package-lock.json
+├── package.json
+├── scripts
+│   └── sample-script.js
+└── test
+    └── sample-test.js
+
+3 directories, 7 files
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contracts</span></code> 目录：存放 solidity 源代码文件</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hardhat.config.js</span></code>: Hardhat 配置文件</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts</span></code>: 存放部署（上链）合约的 JS 脚本文件</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code>: 存放测试合约的 JS 脚本文件</p></li>
+</ul>
+<p>至于 <code class="docutils literal notranslate"><span class="pre">package-lock.json</span></code> 和 <code class="docutils literal notranslate"><span class="pre">package.json</span></code> 这两个文件是 npm 的配置文件。
+主要是因为 <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> 目录太大了，不会上传到 Github 上，所以别人使用你
+的代码时，只要执行 <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> 就回把所以的依赖都安装好。</p>
+</section>
+<section id="id6">
+<h4 id="id6">配置<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h4>
+<p>这里需要额外介绍一下 <code class="docutils literal notranslate"><span class="pre">hardhat.config.js</span></code> 文件，最初的文件内容为：</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">require</span><span class="p">(</span><span class="s2">"nomiclabs/hardhat-waffle"</span><span class="p">);</span>
+
+<span class="c1">// This is a sample Hardhat task. To learn how to create your own go to</span>
+<span class="c1">// https://hardhat.org/guides/create-task.html</span>
+<span class="nx">task</span><span class="p">(</span><span class="s2">"accounts"</span><span class="p">,</span> <span class="s2">"Prints the list of accounts"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">taskArgs</span><span class="p">,</span> <span class="nx">hre</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">accounts</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">hre</span><span class="p">.</span><span class="nx">ethers</span><span class="p">.</span><span class="nx">getSigners</span><span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">account</span> <span class="k">of</span> <span class="nx">accounts</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">account</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// You need to export an object to set up your config</span>
+<span class="c1">// Go to https://hardhat.org/config/ to learn more</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @type import('hardhat/config').HardhatUserConfig</span>
+<span class="cm"> */</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">solidity</span><span class="o">:</span> <span class="s2">"0.8.4"</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>其中配置中可以添加 <code class="docutils literal notranslate"><span class="pre">task</span></code>，上面代码中是一个打印当前配置所以的账户地址，名字叫
+<code class="docutils literal notranslate"><span class="pre">accounts</span></code> —— <code class="docutils literal notranslate"><span class="pre">task</span></code> 函数中第一个参数。执行 <code class="docutils literal notranslate"><span class="pre">npx</span> <span class="pre">hardhat</span> <span class="pre">accounts</span></code> 就
+是执行这个 <code class="docutils literal notranslate"><span class="pre">task</span></code> 函数。如果你喜欢的话，也可以添加一个部署（<code class="docutils literal notranslate"><span class="pre">deploy</span></code>）任务：</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">task</span><span class="p">(</span><span class="s2">"deploy"</span><span class="p">,</span> <span class="s2">"Deploying the contract"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">taskArgs</span><span class="p">,</span> <span class="nx">hre</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// set the first account to deployer</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">deployer</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">hre</span><span class="p">.</span><span class="nx">ethers</span><span class="p">.</span><span class="nx">getSigners</span><span class="p">();</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Deploying contracts with account: "</span><span class="p">,</span> <span class="nx">deployer</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Account balance: "</span><span class="p">,</span> <span class="p">(</span><span class="k">await</span> <span class="nx">deployer</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">()).</span><span class="nx">toString</span><span class="p">());</span>
+
+  <span class="c1">// get contract instance</span>
+  <span class="kd">const</span> <span class="nx">Greeter</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">hre</span><span class="p">.</span><span class="nx">ethers</span><span class="p">.</span><span class="nx">getContractFactory</span><span class="p">(</span><span class="s2">"Greeter"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">greeter</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Greeter</span><span class="p">.</span><span class="nx">deploy</span><span class="p">(</span><span class="s2">"Hello, world"</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">greeter</span><span class="p">.</span><span class="nx">deployed</span><span class="p">();</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Greeter deployed to: "</span><span class="p">,</span> <span class="nx">greeter</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>保存后需要部署时直接执行：<code class="docutils literal notranslate"><span class="pre">npx</span> <span class="pre">hardhat</span> <span class="pre">deploy</span></code> 就可以将合约部署到链上了。
+不过我不推荐，因为配置文件一旦设置好后，我基本不会去改，而部署的脚本经常要改动
+的，我更喜欢在 <code class="docutils literal notranslate"><span class="pre">scripts</span></code> 目录下创建一个 <code class="docutils literal notranslate"><span class="pre">deploy.js</span></code> 的部署脚本。</p>
+<p>这里稍微讲解一下脚本里的一些方法和属性：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hre.ethers.getContractFactory(Greeter"</span></code> 函数中的参数是构造一个合约
+的对象，参数是 <code class="docutils literal notranslate"><span class="pre">contracts</span></code> 目录下 <code class="docutils literal notranslate"><span class="pre">.sol</span></code> 的文件名，即合约的文件名。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Greeter.deploy("Hello,</span> <span class="pre">world")</span></code>，是将合约部署到链上，其中参数就是合约
+构造函数的参数，如果有多个参数的话，以逗号分隔。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">greeter.deployed()</span></code>，是等待合约上链成功，因为区块打包需要一定时间。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">greeter.address</span></code>: 合约部署成功后的地址，可以去区块链的 scan 网站查看，
+Ethereum 的是 https://etherscan.io。</p></li>
+</ul>
+<p>其实前两个方法可以合并成一段代码：</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">greeter</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">hre</span><span class="p">.</span><span class="nx">ethers</span><span class="p">.</span><span class="nx">getContractFactory</span><span class="p">(</span><span class="s2">"Greeter"</span><span class="p">)</span>
+                                <span class="p">.</span><span class="nx">deploy</span><span class="p">(</span><span class="s2">"Hello, world"</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>不过这样看起来有点乱。不优雅。</p>
+<p>Whoo, 介绍完 <code class="docutils literal notranslate"><span class="pre">task</span></code> （其实也顺带介绍了部署），然后再介绍一下 <code class="docutils literal notranslate"><span class="pre">module.exports</span></code>。</p>
+<p>首先是其中的第一个 key/value：<code class="docutils literal notranslate"><span class="pre">solidity:</span> <span class="pre">"0.8.4"</span></code>，这个是制定对应的 <code class="docutils literal notranslate"><span class="pre">solidity</span></code>
+的版本，有一点需要注意，不同版本的 <code class="docutils literal notranslate"><span class="pre">solidity</span></code> 所支持的特性有所不同。</p>
+<p>然后可以在其中添加 <code class="docutils literal notranslate"><span class="pre">network</span></code> 的配置，就是指定合约具体要部署到 Ethereum Ecosystem
+上具体的那个 Network，是 <code class="docutils literal notranslate"><span class="pre">mainnet</span></code>，还是 <code class="docutils literal notranslate"><span class="pre">testnet</span></code>，还是 <code class="docutils literal notranslate"><span class="pre">sidechain</span></code>，亦或是
+<code class="docutils literal notranslate"><span class="pre">layer</span> <span class="pre">2</span></code>？以下给出一些对应的 network 的配置以供参考：</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// solidity: "0.8.4", // depends on your solidity version</span>
+  <span class="nx">solidity</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">version</span><span class="o">:</span> <span class="s2">"0.8.4"</span><span class="p">,</span>
+    <span class="nx">settings</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">optimizer</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">runs</span><span class="o">:</span> <span class="mf">200</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">defaultNetwork</span><span class="o">:</span> <span class="s2">"rinkeby"</span><span class="p">,</span> <span class="c1">// defined below</span>
+  <span class="nx">networks</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">mainnet</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s2">"https://xxxxxxxxxxx"</span><span class="p">,</span> <span class="c1">// your node provider link</span>
+      <span class="nx">accounts</span><span class="o">:</span> <span class="p">[</span><span class="nx">privateKey1</span><span class="p">,</span> <span class="nx">privateKey2</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">// this array stores your accounts' private key</span>
+    <span class="p">},</span>
+    <span class="nx">rinkeby</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s2">"https://xxxxx"</span><span class="p">,</span>
+      <span class="nx">accounts</span><span class="o">:</span> <span class="p">[</span><span class="nx">privateKey1</span><span class="p">,</span> <span class="nx">privateKey2</span><span class="p">,</span> <span class="p">...],</span>
+    <span class="p">},</span>
+    <span class="nx">mumbai</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s2">"https://xxxxxxx"</span><span class="p">,</span>
+      <span class="nx">accounts</span><span class="o">:</span> <span class="p">[</span><span class="nx">privateKey1</span><span class="p">,</span> <span class="nx">privateKey2</span><span class="p">,</span> <span class="p">...],</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">sources</span><span class="o">:</span> <span class="s2">"./contracts"</span><span class="p">,</span>
+    <span class="nx">tests</span><span class="o">:</span> <span class="s2">"./test"</span><span class="p">,</span>
+    <span class="nx">cache</span><span class="o">:</span> <span class="s2">"./cache"</span><span class="p">,</span>
+    <span class="nx">artifacts</span><span class="o">:</span> <span class="s2">"./artifacts"</span>
+  <span class="p">},</span>
+  <span class="nx">mocha</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">timeout</span><span class="o">:</span> <span class="mf">40000</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">networks</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">networks</span></code> 中每个网络的 <code class="docutils literal notranslate"><span class="pre">url</span></code> 的值是节点的链接，就是说你需要去链接一个<strong>全节点</strong>，
+通过这个全节点来对链进行操作，可以是第三方（如 Infura、Alchemy）提供的，也可以是
+自己本地运行的，如果是本地运行的全节点，<code class="docutils literal notranslate"><span class="pre">url</span></code> 的值可以设置为：
+<code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8545</span></code>。因为第三方提供的服务是有 api key 或是 token 的，所以
+呢，需要进行一个封装，通用的做法是将一些私密性的配置单独存放在项目更目录下的一个文件中：
+<code class="docutils literal notranslate"><span class="pre">.env</span></code>。然后代码就需要改一下，下面只展示需要修改的，若没有出现的，保持原有的不变：</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// ..., the same as before</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'dotenv'</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'@nomiclabs/hardhat-ethers'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">PROVIDER_URL</span><span class="p">,</span> <span class="nx">PRIVATE_KEY</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
+<span class="c1">// or you can write like this:</span>
+<span class="c1">// const PROVIDER_URL = process.env.PROVIDER_URL;</span>
+<span class="c1">// const PRIVATE_KEY = process.env.PRIVATE_KEY;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="nx">networks</span> <span class="p">{</span>
+    <span class="nx">mainnet</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="nx">PROVIDER_URL</span><span class="p">,</span> <span class="c1">// your node provider link</span>
+      <span class="nx">accounts</span><span class="o">:</span> <span class="p">[</span><span class="sb">`0x</span><span class="si">${</span><span class="nx">PRIVATE_KEY</span><span class="si">}</span><span class="sb">`</span><span class="p">],</span> <span class="c1">// this array stores your accounts' private key</span>
+    <span class="p">},</span>
+    <span class="nx">rinkeby</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="nx">PROVIDER_URL</span><span class="p">,</span>
+      <span class="nx">accounts</span><span class="o">:</span> <span class="p">[</span><span class="sb">`0x</span><span class="si">${</span><span class="nx">PRIVATE_KEY</span><span class="si">}</span><span class="sb">`</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="nx">mumbai</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="nx">PROVIDER_URL</span><span class="p">,</span>
+      <span class="nx">accounts</span><span class="o">:</span> <span class="p">[</span><span class="sb">`0x</span><span class="si">${</span><span class="nx">PRIVATE_KEY</span><span class="si">}</span><span class="sb">`</span><span class="p">],</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件里的内容为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROVIDER_URL</span> <span class="o">=</span> <span class="s2">"https://eth-rinkeby.alchemyapi.io/v2/123abc123abc123abc123abc123abcde"</span>
+<span class="n">PRIVATE_KEY</span> <span class="o">=</span> <span class="s2">""</span> <span class="c1"># fill your own private key</span>
+</pre></div>
+</div>
+<p>注：这里的 <code class="docutils literal notranslate"><span class="pre">PROVIDER_URL</span></code> 不同的网络对应不同的 URL，不能像上面示例一样使用同样的，
+否则无法连上 full node。</p>
+<p><code class="docutils literal notranslate"><span class="pre">accounts</span></code> 字段的值是一个数组，数组中是账号的私钥，这里需要在导出的私钥前面添加 <code class="docutils literal notranslate"><span class="pre">0x</span></code>
+字符串。当然，如果代码要上传到 Github 上，私钥泄露的话，你这个地址基本也就废了，所以
+呢，也需要放在 <code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件中。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">solidity</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">solidity</span></code> 出了可以指定版本外，还可以设置编译是是否进行优化。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">path</span></code> 指定了对应的源代码文件路径，<code class="docutils literal notranslate"><span class="pre">sources</span></code> 指定合约代码路径，<code class="docutils literal notranslate"><span class="pre">tests</span></code> 指定
+测试代码的路径，<code class="docutils literal notranslate"><span class="pre">cache</span></code> 指定缓存目录路径，<code class="docutils literal notranslate"><span class="pre">artifacts</span></code> 指定了合约代码编译后生
+成的 abi 文件的存放路径。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mocha</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">mocha</span></code> 是执行测试时的一些配置，上面只配置了超时时间，更多的配置参考：
+https://mochajs.org/#command-line-usage ，其中的参数是一致的。</p>
+<p>更多相关的配置介绍，参考：https://hardhat.org/config/#path-configuration</p>
+</section>
+<section id="id7">
+<h4 id="id7">编译合约源代码<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx hardhat compile
+</pre></div>
+</div>
+<p>编译没啥好介绍的，通过了就通过了，出错了就自己去修复。</p>
+</section>
+<section id="id8">
+<h4 id="id8">执行脚本（测试，上链）<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p>上链（部署）</p></li>
+</ul>
+<p>在 <code class="docutils literal notranslate"><span class="pre">scripts</span></code> 目录下创建一个 <code class="docutils literal notranslate"><span class="pre">deploy.js</span></code>（或者你自己取个名字，我用 deploy 命名）
+的文件，文件内容如下：</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span> <span class="p">{</span> <span class="nx">ethers</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"hardhat"</span><span class="p">);</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">deployer</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">getSigners</span><span class="p">();</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Deploying contracts with the account: "</span><span class="p">,</span> <span class="nx">deployer</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Account balance: "</span><span class="p">,</span> <span class="p">(</span><span class="k">await</span> <span class="nx">deployer</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">()).</span><span class="nx">toString</span><span class="p">());</span>
+
+  <span class="kd">const</span> <span class="nx">Greeter</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">getContractFactory</span><span class="p">(</span><span class="s2">"Greeter"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">greeter</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Greeter</span><span class="p">.</span><span class="nx">deploy</span><span class="p">(</span><span class="s2">"Hello, world"</span><span class="p">);</span>
+
+  <span class="k">await</span> <span class="nx">greeter</span><span class="p">.</span><span class="nx">deployed</span><span class="p">();</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Contract deployed at: "</span><span class="p">,</span> <span class="nx">greeter</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+  <span class="p">})</span>
+</pre></div>
+</div>
+<p>然后执行：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx hardhat run scripts/deploy.js
+</pre></div>
+</div>
+<p>正常的话你将你的合约部署好了。</p>
+</section>
+</section>
 </section>
 <section id="truffle">
 <h2 id="truffle">Truffle<a class="headerlink" href="#truffle" title="永久链接至标题">¶</a></h2>
