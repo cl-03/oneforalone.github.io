@@ -33,6 +33,7 @@ NOTE: 因为区块链又和 "Web3" 紧密联系到一起了，所以，在开发
 智能合约一样，两眼懵逼，又要看 Solidity 的文档，还要去查 NodeJS 的文档。
 
 
+(hardhat)=
 ## Hardhat
 
 这个 toolkit 使用起来很简单，我目前使用的就是这个，但是最近准备把 Rust
@@ -41,6 +42,7 @@ https://hardhat.org/getting-started 。如果有条件的话，建议还是去�
 英文文档。
 
 
+(hardhat_installation)=
 ### 安装
 
 安装有两种选择:
@@ -57,10 +59,13 @@ npm install --save-dev hardhat
 npm install -g hardhat
 ```
 
+
+(hardhat_usage)=
 ### 使用
 
 
-#### 初始化项目
+(hardhat_init)=
+#### 初始化
 
 ```bash
 npx hardhat
@@ -118,6 +123,7 @@ $ tree -I node_module ./
 的代码时，只要执行 `npm install` 就回把所以的依赖都安装好。
 
 
+(hardhat_config)=
 #### 配置
 
 这里需要额外介绍一下 `hardhat.config.js` 文件，最初的文件内容为：
@@ -313,6 +319,7 @@ https://mochajs.org/#command-line-usage ，其中的参数是一致的。
 更多相关的配置介绍，参考：https://hardhat.org/config/#path-configuration
 
 
+(hardhat_compile)=
 #### 编译
 
 ```bash
@@ -322,9 +329,8 @@ npx hardhat compile
 编译没啥好介绍的，通过了就通过了，出错了就自己去修复。
 
 
+(hardhat_deploy)=
 #### 上链（部署）
-
-* 上链（部署）
 
 在 `scripts` 目录下创建一个 `deploy.js`（或者你自己取个名字，我用 deploy 命名）
 的文件，文件内容如下：
@@ -370,6 +376,7 @@ Update[Fir Apr. 15 2022]: 这两天又仔细瞄了一眼 Hardhat 的文档，发
 不要钱。
 
 
+(truffle)=
 ## Truffle
 
 Date: Fri Apr. 15 2022
@@ -390,6 +397,7 @@ Truffle 基础的使用是真的简单，但是它的配置和部署不是很适
 好了，介绍就说到这里了，下面简单介绍下怎么使用吧。
 
 
+(truffle_installation)=
 ### 安装
 
 说到安装，在国内的环境是真的很痛苦，除非使用代理，不过代理最好是稳定一点的，
@@ -403,10 +411,12 @@ node install -g truffle
 ```
 
 
+(truffle_usage)=
 ### 使用
 
 
-#### 创建
+(truffle_init)=
+#### 初始化
 
 ```bash
 mkdir my-project
@@ -414,6 +424,7 @@ truffle init
 ```
 
 
+(truffle_config)=
 #### 配置
 
 编辑项目目录下的 `truffle-config.js`:
@@ -452,6 +463,7 @@ GUI 版本的话端口就是 7545，如果是三方提供的全节点的话，�
 详细的配置说明见：https://trufflesuite.com/docs/truffle/reference/configuration
 
 
+(truffle_compile)=
 #### 编译
 
 编译很简单，直接执行 `truffle compile` 就可以了，编译好的 abi 文件默认存放
@@ -463,6 +475,7 @@ contracts_build_directory: "/path/to/the/abi/output/director"
 路径自己定义，不要照抄。
 
 
+(truffle_deploy)=
 #### 部署
 
 首先要在 `migrations` 目录下创建一个对应的脚本，一般习惯命名为
@@ -528,14 +541,105 @@ truffle 封装了一个根据配置文件中的一些配置生成了个
 Truffle 介绍也就到这里了，最后再附上官方文档地址：
 https://trufflesuite.com/docs/truffle/quickstart/
 
+> P.S. truffle 还有一个槽点就是团队不怎么维护了，所以懂得都懂。
 
+
+(brownie)=
 ## Brownie
 
-Brownie，一个由 python 和 web3.py 实现的一个 toolkit，或者说 framework 吧。
-怎么叫随你了。
+**TODO: 添加完整的使用体验和介绍**。
+
+Brownie，一个由 python 和 web3.py 实现的一个 toolkit，或者说
+framework 吧。怎么叫随你了。
+
+
+(brownie_installation)=
+### 安装
+
+```bash
+python3.9 -m pip install --user pipx
+python3.9 -m pipx ensurepath
+source ~/.zshrcr
+pipx install eth-brownie
+```
+
+**注**：这里需要使用 python3.9 或相近的版本，但不能高于 3.9，比如
+3.10 安装会出错的。我只验证过 python3.9，3.8 和 3.7 没有验证过。
+
+
+(brownie_usage)=
+### 使用
+
+
+(brownie_init)=
+#### 初始化
+
+
+(brownie_config)=
+#### 配置
+
+
+(brownie_compile)=
+#### 编译
+
+
+(brownie_deploy)=
+#### 部署
+
+
 reference: https://eth-brownie.readthedocs.io/en/stable/
 
+
+(foundry)=
 ## Foundry
 
+**TODO: 添加完整的使用体验和介绍**
+
 Foundry 是个用 rust 实现的 toolkit，用法和 Brownie 差不多。
+
+
+(foundry_installation)=
+### 安装
+
+官方提供的安装二进制的方法我在 M1 上失败了，所以我就从源代码
+直接编译出来了。
+
+官方的安装二进制的命令：
+
+```bash
+curl -L https://foundry.paradigm.xyz | bash
+```
+
+在从源代码编译安装之前，需要首先安装好 Rust 和 Cargo，
+不然你怎么编译呢？
+
+从源代码编译安装官方也提供了对应的命令：
+
+```bash
+curl https://sh.rustup.rs -sSf | sh
+```
+
+
+
+
+(foundry_usage)=
+### 使用
+
+
+(foundry_init)=
+#### 初始化
+
+
+(foundry_config)=
+#### 配置
+
+
+(foundry_compile)=
+#### 编译
+
+
+(foundry_deploy)=
+#### 部署
+
+
 reference: https://book.getfoundry.sh/getting-started/installation.html

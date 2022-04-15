@@ -22,3 +22,5 @@ Yuqi's Notebook
    misc/index
 
    projects/index
+
+   about-me.md
