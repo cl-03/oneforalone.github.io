@@ -3,6 +3,7 @@
 
 Date: Wed Apr. 13 2022
 
+
 ## 序
 
 智能合约，目前公认的是 Ethereum 上的定义，可以简单的理解为运行在
@@ -39,6 +40,7 @@ NOTE: 因为区块链又和 "Web3" 紧密联系到一起了，所以，在开发
 https://hardhat.org/getting-started 。如果有条件的话，建议还是去看
 英文文档。
 
+
 ### 安装
 
 安装有两种选择:
@@ -56,6 +58,7 @@ npm install -g hardhat
 ```
 
 ### 使用
+
 
 #### 初始化项目
 
@@ -113,6 +116,7 @@ $ tree -I node_module ./
 至于 `package-lock.json` 和 `package.json` 这两个文件是 npm 的配置文件。
 主要是因为 `node_modules` 目录太大了，不会上传到 Github 上，所以别人使用你
 的代码时，只要执行 `npm install` 就回把所以的依赖都安装好。
+
 
 #### 配置
 
@@ -309,7 +313,7 @@ https://mochajs.org/#command-line-usage ，其中的参数是一致的。
 更多相关的配置介绍，参考：https://hardhat.org/config/#path-configuration
 
 
-#### 编译合约源代码
+#### 编译
 
 ```bash
 npx hardhat compile
@@ -318,7 +322,7 @@ npx hardhat compile
 编译没啥好介绍的，通过了就通过了，出错了就自己去修复。
 
 
-#### 执行脚本（测试，上链）
+#### 上链（部署）
 
 * 上链（部署）
 
@@ -358,14 +362,180 @@ npx hardhat run scripts/deploy.js
 
 正常的话你将你的合约部署好了。
 
+Update[Fir Apr. 15 2022]: 这两天又仔细瞄了一眼 Hardhat 的文档，发现 `scripts`
+目录下的脚本是完全不依赖 Hardhat 的，如果使用 `web3.js`/`etheres.js` 库的话，可以
+直接用 node 执行。
+
+对了，忘了写怎么测试了，我测试的话直接是用的 `web3.js`，直接部署到测试网上测试的，反正
+不要钱。
+
+
 ## Truffle
 
-reference: https://trufflesuite.com/docs/truffle/quickstart/
+Date: Fri Apr. 15 2022
+
+今天试着用了一下 Truffle，发现是真的难用（可能是我水平不够），反正我不喜欢。
+Truffle 基础的使用是真的简单，但是它的配置和部署不是很适合我。最主要的原因
+还是，在里面需要额外多加一个 `Migrate.sol` 的合约，部署时也要先部署
+`Migrate`，官网的解释是说确保安全，同时也说也可以自己去修改 `Migrate.sol`
+合约。我比较喜欢 KISS( Keep It Simple and Stupid) 的准则。额外多加一个
+合约，部署时就得付 gas fee，安全的话直接使用 Openzeppelin 的库就好了。
+还有一个就是如果合约要引用 npm 安装的库的话，不能使用通用的引用格式。这个也让
+我不太喜欢。
+
+当然也不是没有优点的，那就是 truffle 可以和 ganache 直接交互，使用命令
+`truffle develop` 或是 `truffle console` 就可以直接进入交互模式，
+前提是需要先启动 ganache。
+
+好了，介绍就说到这里了，下面简单介绍下怎么使用吧。
+
+
+### 安装
+
+说到安装，在国内的环境是真的很痛苦，除非使用代理，不过代理最好是稳定一点的，
+我就是因为代理稍微有点不稳定（可能是我用的设备比较多），导致出错好几次，浪费
+我将近一个小时的时间。
+
+```bash
+# configure your proxy first
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+node install -g truffle
+```
+
+
+### 使用
+
+
+#### 创建
+
+```bash
+mkdir my-project
+truffle init
+```
+
+
+#### 配置
+
+编辑项目目录下的 `truffle-config.js`:
+
+```js
+module.exports = {
+  networks: {
+    development: {
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "*"
+    },
+    test: {
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "*"
+    }
+  },
+
+  compilers: {
+    solc: {
+      version: "^0.8.0"
+    }
+  }
+
+}
+```
+
+上面只配置了测试开发的网络，主网的话需要配置一样，只不过是 `host` 的值设为
+全节点的 IP 或 URL，和 hardhat 配置中的网络配置的 `url` 参数去掉端口的值，
+然后 `port` 就写成对应的端口就好，本地的 ganache-cli 的话是 8545，ganache
+GUI 版本的话端口就是 7545，如果是三方提供的全节点的话，那么就是 80/443。
+或者是直接不使用 host 参数，而是使用 `provider` 参数，值设置为
+`new Web3.providers.HttpProvider("https://<host>:<port>)`。
+当然 `network` 里面也可以设置 `gas`、`gasPrice`、`from` 等参数。
+详细的配置说明见：https://trufflesuite.com/docs/truffle/reference/configuration
+
+
+#### 编译
+
+编译很简单，直接执行 `truffle compile` 就可以了，编译好的 abi 文件默认存放
+在 `build` 目录下。这个目录路径也可以在 `truffle-config.js` 中配置，在
+其中添加一行：
+```js
+contracts_build_directory: "/path/to/the/abi/output/director"
+```
+路径自己定义，不要照抄。
+
+
+#### 部署
+
+首先要在 `migrations` 目录下创建一个对应的脚本，一般习惯命名为
+`2_deploy_contracts.js`, 因为该目录下已经有一个 `1_initial_migration.js`
+文件了。这里以官方给的例子讲解：
+
+```bash
+mkdir MetaCoin
+cd MetaCoin
+truffle unbox metacoin
+truffle migrate
+```
+
+`truffle migrate` 会自动执行 `migrations` 目录下所有的脚本。
+MetaCoin 的目录结构如下：
+
+```
+$ tree ./
+./
+├── LICENSE
+├── contracts
+│   ├── ConvertLib.sol
+│   ├── MetaCoin.sol
+│   └── Migrations.sol
+├── migrations
+│   ├── 1_initial_migration.js
+│   └── 2_deploy_contracts.js
+├── test
+│   ├── TestMetaCoin.sol
+│   └── metacoin.js
+└── truffle-config.js
+
+3 directories, 9 files
+```
+
+其中 `MetaCoin.sol` `import` 了 `ConvertLib.sol`。
+
+MetaCoin 的 `2_deploy_contracts.js` 如下：
+
+```js
+const ConvertLib =artifacts.require("ConvertLib");
+const MetaCoin = artifacts.require("MetaCoin");
+
+module.exports = function(deployer) {
+  deployer.deploy(ConvertLib);
+  deployer.link(ConvertLib, MetaCoin);
+  deployer.deploy(MetaCoin);
+}
+```
+
+前两行没啥可讲的，就是导入合约的 abi，即 json 文件。然后先部署被
+`import` 的合约（`ConvertLib.sol`)，将两个合约链接到一起
+（`deployer.link(ConvertLib, MetaCoin)`，最后在部署调用其他
+合约的合约。
+
+这里的部署函数被完全封装起来了，我也不想去扒其中的代码了，所以不要问
+`deployer` 是什么了，具体是什么我没去看源代码，不确定，但可以推测出
+truffle 封装了一个根据配置文件中的一些配置生成了个
+`web3.eth.Contract` 对象传进去了。所以说我不太喜欢它，封装的有点
+过了，虽然我可以自己完全用 `web3.js` 写一个部署脚本，但那样的话我
+为什么不用 hardhat 呢？
+
+Truffle 介绍也就到这里了，最后再附上官方文档地址：
+https://trufflesuite.com/docs/truffle/quickstart/
+
 
 ## Brownie
 
+Brownie，一个由 python 和 web3.py 实现的一个 toolkit，或者说 framework 吧。
+怎么叫随你了。
 reference: https://eth-brownie.readthedocs.io/en/stable/
 
 ## Foundry
 
+Foundry 是个用 rust 实现的 toolkit，用法和 Brownie 差不多。
 reference: https://book.getfoundry.sh/getting-started/installation.html
