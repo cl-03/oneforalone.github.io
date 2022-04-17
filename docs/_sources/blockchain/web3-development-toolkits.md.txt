@@ -697,7 +697,9 @@ brownie compile
 brownie run scripts/deploy.py
 ```
 
-部署命令都可以手动指定网络的，通过 `--network=<network-name>`。
+部署命令都可以手动指定网络的，通过 `--network <network-name>`。
+这也是 brownie 一个优点，就是其默认内部集成了很多的网络，可以使用
+`brownie networks list` 来查看。
 
 以合约源文件为 `Hello.sol` 为例，其中 `deploy.py` 的如下：
 
@@ -766,8 +768,6 @@ hello_contract = Contract.from_abi("Hello", hello.address, Hello.abi)
 
 部署后可以使用 `brownie gui` 查看对应合约的 opcode。这个我就看到文档可以这样
 做，但是具体我没操作过，毕竟还没达到那个水平。
-
-
 
 最后同样是附上官方文档： https://eth-brownie.readthedocs.io/en/stable/
 
