@@ -708,6 +708,7 @@ from brownie import (
   config,
   network,
   accounts,
+  Hello,
 )
 
 import eth_utils
@@ -740,11 +741,16 @@ def main():
 
 ```
 
-`Hello.deploy()` 中 `Hello` 为合约名，`deploy()` 中首先是要有合约构造
-时的参数，如果构造函数没有参数那就不用写，然后后面就是跟对应的 transaction
-中的属性了，如果想部署时同时发布源代码，就使用 `publish_source` 来指定是否
-发布，`publish_source` 的类型为 `boolean`，可以通过在配置文件中配置对应
+`Hello.deploy()` 中 `Hello` 为合约名，需要从 brownie 中导入，
+`deploy()` 中首先是要有合约构造时的参数，如果构造函数没有参数那就
+不用写，然后后面就是跟对应的 transaction 中的属性了，如果想部署时
+同时发布源代码，就使用 `publish_source` 来指定是否发布，
+`publish_source` 的类型为 `boolean`，可以通过在配置文件中配置对应
 网络的值。
+
+> P.S. 这里需要注意的是，因为 Github 增加了其安全性，所以需要自己到
+> Github 上生成一下 Token，然后在 `.zshrc` / `.bashrc` 中添加
+> `GITHUB_TOKNE="<your-github-token>"`
 
 如果要与合约进行交互的话，就需要从 brownie 中导入 `Contract` 模块：
 
@@ -761,7 +767,9 @@ hello_contract = Contract.from_abi("Hello", hello.address, Hello.abi)
 部署后可以使用 `brownie gui` 查看对应合约的 opcode。这个我就看到文档可以这样
 做，但是具体我没操作过，毕竟还没达到那个水平。
 
-reference: https://eth-brownie.readthedocs.io/en/stable/
+
+
+最后同样是附上官方文档： https://eth-brownie.readthedocs.io/en/stable/
 
 
 (foundry)=

@@ -1304,6 +1304,7 @@ brownie 中的编译其的配置中，多了 <code class="docutils literal notra
   <span class="n">config</span><span class="p">,</span>
   <span class="n">network</span><span class="p">,</span>
   <span class="n">accounts</span><span class="p">,</span>
+  <span class="n">Hello</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">eth_utils</span>
@@ -1336,11 +1337,17 @@ brownie 中的编译其的配置中，多了 <code class="docutils literal notra
 
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Hello.deploy()</span></code> 中 <code class="docutils literal notranslate"><span class="pre">Hello</span></code> 为合约名，<code class="docutils literal notranslate"><span class="pre">deploy()</span></code> 中首先是要有合约构造
-时的参数，如果构造函数没有参数那就不用写，然后后面就是跟对应的 transaction
-中的属性了，如果想部署时同时发布源代码，就使用 <code class="docutils literal notranslate"><span class="pre">publish_source</span></code> 来指定是否
-发布，<code class="docutils literal notranslate"><span class="pre">publish_source</span></code> 的类型为 <code class="docutils literal notranslate"><span class="pre">boolean</span></code>，可以通过在配置文件中配置对应
+<p><code class="docutils literal notranslate"><span class="pre">Hello.deploy()</span></code> 中 <code class="docutils literal notranslate"><span class="pre">Hello</span></code> 为合约名，需要从 brownie 中导入，
+<code class="docutils literal notranslate"><span class="pre">deploy()</span></code> 中首先是要有合约构造时的参数，如果构造函数没有参数那就
+不用写，然后后面就是跟对应的 transaction 中的属性了，如果想部署时
+同时发布源代码，就使用 <code class="docutils literal notranslate"><span class="pre">publish_source</span></code> 来指定是否发布，
+<code class="docutils literal notranslate"><span class="pre">publish_source</span></code> 的类型为 <code class="docutils literal notranslate"><span class="pre">boolean</span></code>，可以通过在配置文件中配置对应
 网络的值。</p>
+<blockquote>
+<div><p>P.S. 这里需要注意的是，因为 Github 增加了其安全性，所以需要自己到
+Github 上生成一下 Token，然后在 <code class="docutils literal notranslate"><span class="pre">.zshrc</span></code> / <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> 中添加
+<code class="docutils literal notranslate"><span class="pre">GITHUB_TOKNE="&lt;your-github-token&gt;"</span></code></p>
+</div></blockquote>
 <p>如果要与合约进行交互的话，就需要从 brownie 中导入 <code class="docutils literal notranslate"><span class="pre">Contract</span></code> 模块：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brownie</span> <span class="kn">import</span> <span class="n">Contract</span>
 </pre></div>
@@ -1351,7 +1358,7 @@ brownie 中的编译其的配置中，多了 <code class="docutils literal notra
 </div>
 <p>部署后可以使用 <code class="docutils literal notranslate"><span class="pre">brownie</span> <span class="pre">gui</span></code> 查看对应合约的 opcode。这个我就看到文档可以这样
 做，但是具体我没操作过，毕竟还没达到那个水平。</p>
-<p>reference: https://eth-brownie.readthedocs.io/en/stable/</p>
+<p>最后同样是附上官方文档： https://eth-brownie.readthedocs.io/en/stable/</p>
 </section>
 </section>
 </section>
