@@ -366,7 +366,8 @@ main()
 npx hardhat run scripts/deploy.js
 ```
 
-正常的话你将你的合约部署好了。
+正常的话你将你的合约部署好了。后面可以加一个 `--network=<network-name>`
+用来指定对应的网络的。
 
 Update[Fir Apr. 15 2022]: 这两天又仔细瞄了一眼 Hardhat 的文档，发现 `scripts`
 目录下的脚本是完全不依赖 Hardhat 的，如果使用 `web3.js`/`etheres.js` 库的话，可以
@@ -406,7 +407,9 @@ Truffle 基础的使用是真的简单，但是它的配置和部署不是很适
 
 ```bash
 # configure your proxy first
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890 \
+       http_proxy=http://127.0.0.1:7890 \
+       all_proxy=socks5://127.0.0.1:7890
 node install -g truffle
 ```
 
@@ -543,14 +546,24 @@ https://trufflesuite.com/docs/truffle/quickstart/
 
 > P.S. truffle 还有一个槽点就是团队不怎么维护了，所以懂得都懂。
 
+Update[Sun Apr. 17 2020]: 忘了介绍怎么在 truffle 的项目中使用
+第三方的合约了，这也是我吐槽的一个槽点，标准的 Solidity 语法是：
+`import "@OpenZeppelin/contracts/token/ERC20/ERC20.sol";`
+
+而到了 truffle 项目中，引用是这样的：
+`import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";`
+
+所以 truffle 在引用三方的合约时，需要注意。
+
 
 (brownie)=
 ## Brownie
 
-**TODO: 添加完整的使用体验和介绍**。
-
 Brownie，一个由 python 和 web3.py 实现的一个 toolkit，或者说
-framework 吧。怎么叫随你了。
+framework 吧。怎么叫随你了。其中 brownie 的优势是，其提供了 GUI
+界面显示合约的 opcode，可以对合约进行 evm 级别的优化。当然，前提
+是你要了解 evm 的 opcode 具体含义，这个有点 hardcore，因为 evm
+的 opcode 类似于汇编语言，所以懂得都懂。
 
 
 (brownie_installation)=
@@ -574,18 +587,179 @@ pipx install eth-brownie
 (brownie_init)=
 #### 初始化
 
+初始化项目很简单，基本命令都是通用的，就一句：
+
+```bash
+brownie init
+```
+
+执行后会在目录下自动生成一些目录，目录结构为：
+```
+$ tree ./
+./
+├── build
+│   ├── contracts
+│   ├── deployments
+│   └── interfaces
+├── contracts
+├── interfaces
+├── reports
+├── scripts
+└── tests
+
+9 directories, 0 files
+```
+
+* `contracts`：存放合约源代码
+* `interfaces`：存放合约的 interface 源代码
+* `scripts`：存放合约部署、交互的脚本
+* `tests`：存放测试脚本
+
+* `build`：存放编译后的文件代码以及测试结果
+* `reports`：可选的，这里放的是 JSON 报告文件，供 GUI 中使用
 
 (brownie_config)=
 #### 配置
+
+`brownie init` 不会像 truffle 和 hardhat 那样提供一些初始的
+配置文件和示例代码，所以需要自己手动创建配置文件，配置文件名为：
+`brownie-config.yaml`。
+
+```yaml
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.1.0
+
+compiler:
+  solc:
+    version: '0.8.4'
+    optimizer:
+      enabled: true
+      runs: 200
+    remappings:
+      - '@OpenZeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0'
+
+# Automatically fetch contract sources from Etherscan
+autofetch_sources: true
+dotenv: .env
+networks:
+  defaults: development
+  development:
+    verify: false
+  rinkeby:
+    verify: false
+  ganache:
+    verify: false
+wallets:
+  private_key: ${PRIVATE_KEY}
+  mnemonic: ${MNEMONIC}
+```
+
+配置和前面的两个也是大同小异，基本的网络、编译器的配置参数基本一致，只要在
+brownie 中的编译其的配置中，多了 `dependencies` 和 `remapping` 这两
+个参数，这里 `dependencies` 下值是
+`<Github Name>/<repo-name>@<version>`，通过这个配置 brownie 会自动
+去 Github 上拉取对应的代码，然后通过 `remappings` 来映射成合约中的引用。
+
+因为 `solidity` 引用三方库的标准语法是 `@OpenZeppelin/.....`，所以就
+写成 `@OpenZeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0`
+
+而 `networks` 中每个 network 的 `verify` 是用来是否是在 `etherscan.io`
+上开源代码，因为默认部署后并不是开源的，而是一堆 EVM 的 OP Code。
+
+`dotenv` 业内通用，一些比较私密性的配置，都喜欢放到 `.env` 文件中，这里的
+也需要创建一个 `.env` 文件，文件中一般需要设置为：
+
+```
+export WEB3_INFURA_PROJECT_ID=''
+export PRIVATE_KEY=''
+export MNEMONIC=''
+export ETHERSCAN_TOKEN=''
+```
+
+首先是全节点的信息，如果你自己本地有全节点的话，可以不用配置，直接在部署测试中
+写就好了，毕竟 brownie 使用的是 `web3.py`，和 `web3.js` 基本没差。其他的
+配置都可以直接通过名字就知道其配置是干啥的，私钥，助记词，etherscan 的 token。
 
 
 (brownie_compile)=
 #### 编译
 
+编译和其他的一样，都是后面加个 `compile` 就好了
+
+```bash
+brownie compile
+```
 
 (brownie_deploy)=
 #### 部署
 
+```bash
+brownie run scripts/deploy.py
+```
+
+部署命令都可以手动指定网络的，通过 `--network=<network-name>`。
+
+以合约源文件为 `Hello.sol` 为例，其中 `deploy.py` 的如下：
+
+```python
+#!/usr/bin/python3
+
+from brownie import (
+  config,
+  network,
+  accounts,
+)
+
+import eth_utils
+
+NON_FORKED_LOCAL_BLOCKCHAIN_ENVIROMENTS = ["development", "ganache"]
+LOCAL_BLOCKCHAIN_ENVIROMENTS = NON_FORKED_LOCAL_BLOCKCHAIN_ENVIROMENTS + [
+  "mainnet-fork",
+  "binance-fork",
+  "matic-fork",
+]
+
+def get_account(number=None):
+  if network.show_active() in LOCAL_BLOCKCHAIN_ENVIROMENTS:
+    return accounts[0]
+  if number:
+    return accounts[number]
+  if network.show_active() in config["networks"]:
+    return accounts.add(config["wallets"]["from_key"])
+  return None
+
+def main():
+  account = get_account()
+  print(f"Deploying to {network.show_active()}")
+  hello = Hello.deploy({"from": account})
+  # hello = Hello.deploy(
+  #   {"from": account},
+  #   publish_source=config["networks"][network.show_active()]["verify"]
+  # )
+  print(f"Deployed to: { hello.address }")
+
+```
+
+`Hello.deploy()` 中 `Hello` 为合约名，`deploy()` 中首先是要有合约构造
+时的参数，如果构造函数没有参数那就不用写，然后后面就是跟对应的 transaction
+中的属性了，如果想部署时同时发布源代码，就使用 `publish_source` 来指定是否
+发布，`publish_source` 的类型为 `boolean`，可以通过在配置文件中配置对应
+网络的值。
+
+如果要与合约进行交互的话，就需要从 brownie 中导入 `Contract` 模块：
+
+```python
+from brownie import Contract
+```
+
+然后构建一个 Contract 的对象：
+
+```python
+hello_contract = Contract.from_abi("Hello", hello.address, Hello.abi)
+```
+
+部署后可以使用 `brownie gui` 查看对应合约的 opcode。这个我就看到文档可以这样
+做，但是具体我没操作过，毕竟还没达到那个水平。
 
 reference: https://eth-brownie.readthedocs.io/en/stable/
 
@@ -618,8 +792,6 @@ curl -L https://foundry.paradigm.xyz | bash
 ```bash
 curl https://sh.rustup.rs -sSf | sh
 ```
-
-
 
 
 (foundry_usage)=

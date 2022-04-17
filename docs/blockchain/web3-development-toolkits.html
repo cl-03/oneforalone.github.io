@@ -1020,7 +1020,8 @@ https://mochajs.org/#command-line-usage ，其中的参数是一致的。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx hardhat run scripts/deploy.js
 </pre></div>
 </div>
-<p>正常的话你将你的合约部署好了。</p>
+<p>正常的话你将你的合约部署好了。后面可以加一个 <code class="docutils literal notranslate"><span class="pre">--network=&lt;network-name&gt;</span></code>
+用来指定对应的网络的。</p>
 <p>Update[Fir Apr. 15 2022]: 这两天又仔细瞄了一眼 Hardhat 的文档，发现 <code class="docutils literal notranslate"><span class="pre">scripts</span></code>
 目录下的脚本是完全不依赖 Hardhat 的，如果使用 <code class="docutils literal notranslate"><span class="pre">web3.js</span></code>/<code class="docutils literal notranslate"><span class="pre">etheres.js</span></code> 库的话，可以
 直接用 node 执行。</p>
@@ -1050,7 +1051,9 @@ Truffle 基础的使用是真的简单，但是它的配置和部署不是很适
 我就是因为代理稍微有点不稳定（可能是我用的设备比较多），导致出错好几次，浪费
 我将近一个小时的时间。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure your proxy first</span>
-<span class="nb">export</span> <span class="nv">https_proxy</span><span class="o">=</span>http://127.0.0.1:7890 <span class="nv">http_proxy</span><span class="o">=</span>http://127.0.0.1:7890 <span class="nv">all_proxy</span><span class="o">=</span>socks5://127.0.0.1:7890
+<span class="nb">export</span> <span class="nv">https_proxy</span><span class="o">=</span>http://127.0.0.1:7890 <span class="se">\</span>
+       <span class="nv">http_proxy</span><span class="o">=</span>http://127.0.0.1:7890 <span class="se">\</span>
+       <span class="nv">all_proxy</span><span class="o">=</span>socks5://127.0.0.1:7890
 node install -g truffle
 </pre></div>
 </div>
@@ -1167,14 +1170,22 @@ https://trufflesuite.com/docs/truffle/quickstart/</p>
 <blockquote>
 <div><p>P.S. truffle 还有一个槽点就是团队不怎么维护了，所以懂得都懂。</p>
 </div></blockquote>
+<p>Update[Sun Apr. 17 2020]: 忘了介绍怎么在 truffle 的项目中使用
+第三方的合约了，这也是我吐槽的一个槽点，标准的 Solidity 语法是：
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">"@OpenZeppelin/contracts/token/ERC20/ERC20.sol";</span></code></p>
+<p>而到了 truffle 项目中，引用是这样的：
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">"openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";</span></code></p>
+<p>所以 truffle 在引用三方的合约时，需要注意。</p>
 </section>
 </section>
 </section>
 <section id="brownie">
 <span id="id17"></span><h2 id="brownie">Brownie<a class="headerlink" href="#brownie" title="永久链接至标题">¶</a></h2>
-<p><strong>TODO: 添加完整的使用体验和介绍</strong>。</p>
 <p>Brownie，一个由 python 和 web3.py 实现的一个 toolkit，或者说
-framework 吧。怎么叫随你了。</p>
+framework 吧。怎么叫随你了。其中 brownie 的优势是，其提供了 GUI
+界面显示合约的 opcode，可以对合约进行 evm 级别的优化。当然，前提
+是你要了解 evm 的 opcode 具体含义，这个有点 hardcore，因为 evm
+的 opcode 类似于汇编语言，所以懂得都懂。</p>
 <section id="brownie-installation">
 <span id="id18"></span><h3 id="brownie-installation">安装<a class="headerlink" href="#brownie-installation" title="永久链接至标题">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3.9 -m pip install --user pipx
@@ -1190,15 +1201,156 @@ pipx install eth-brownie
 <span id="id19"></span><h3 id="brownie-usage">使用<a class="headerlink" href="#brownie-usage" title="永久链接至标题">¶</a></h3>
 <section id="brownie-init">
 <span id="id20"></span><h4 id="brownie-init">初始化<a class="headerlink" href="#brownie-init" title="永久链接至标题">¶</a></h4>
+<p>初始化项目很简单，基本命令都是通用的，就一句：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brownie init
+</pre></div>
+</div>
+<p>执行后会在目录下自动生成一些目录，目录结构为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tree ./
+./
+├── build
+│   ├── contracts
+│   ├── deployments
+│   └── interfaces
+├── contracts
+├── interfaces
+├── reports
+├── scripts
+└── tests
+
+9 directories, 0 files
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contracts</span></code>：存放合约源代码</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interfaces</span></code>：存放合约的 interface 源代码</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts</span></code>：存放合约部署、交互的脚本</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests</span></code>：存放测试脚本</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build</span></code>：存放编译后的文件代码以及测试结果</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reports</span></code>：可选的，这里放的是 JSON 报告文件，供 GUI 中使用</p></li>
+</ul>
 </section>
 <section id="brownie-config">
 <span id="id21"></span><h4 id="brownie-config">配置<a class="headerlink" href="#brownie-config" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">brownie</span> <span class="pre">init</span></code> 不会像 truffle 和 hardhat 那样提供一些初始的
+配置文件和示例代码，所以需要自己手动创建配置文件，配置文件名为：
+<code class="docutils literal notranslate"><span class="pre">brownie-config.yaml</span></code>。</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">dependencies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OpenZeppelin/openzeppelin-contracts@4.1.0</span>
+
+<span class="nt">compiler</span><span class="p">:</span>
+  <span class="nt">solc</span><span class="p">:</span>
+    <span class="nt">version</span><span class="p">:</span> <span class="s">'0.8.4'</span>
+    <span class="nt">optimizer</span><span class="p">:</span>
+      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">runs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">200</span>
+    <span class="nt">remappings</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">'@OpenZeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0'</span>
+
+<span class="c1"># Automatically fetch contract sources from Etherscan</span>
+<span class="nt">autofetch_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">dotenv</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.env</span>
+<span class="nt">networks</span><span class="p">:</span>
+  <span class="nt">defaults</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">development</span>
+  <span class="nt">development</span><span class="p">:</span>
+    <span class="nt">verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">rinkeby</span><span class="p">:</span>
+    <span class="nt">verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">ganache</span><span class="p">:</span>
+    <span class="nt">verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">wallets</span><span class="p">:</span>
+  <span class="nt">private_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${PRIVATE_KEY}</span>
+  <span class="nt">mnemonic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${MNEMONIC}</span>
+</pre></div>
+</div>
+<p>配置和前面的两个也是大同小异，基本的网络、编译器的配置参数基本一致，只要在
+brownie 中的编译其的配置中，多了 <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> 和 <code class="docutils literal notranslate"><span class="pre">remapping</span></code> 这两
+个参数，这里 <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> 下值是
+<code class="docutils literal notranslate"><span class="pre">&lt;Github</span> <span class="pre">Name&gt;/&lt;repo-name&gt;@&lt;version&gt;</span></code>，通过这个配置 brownie 会自动
+去 Github 上拉取对应的代码，然后通过 <code class="docutils literal notranslate"><span class="pre">remappings</span></code> 来映射成合约中的引用。</p>
+<p>因为 <code class="docutils literal notranslate"><span class="pre">solidity</span></code> 引用三方库的标准语法是 <code class="docutils literal notranslate"><span class="pre">@OpenZeppelin/.....</span></code>，所以就
+写成 <code class="docutils literal notranslate"><span class="pre">@OpenZeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0</span></code></p>
+<p>而 <code class="docutils literal notranslate"><span class="pre">networks</span></code> 中每个 network 的 <code class="docutils literal notranslate"><span class="pre">verify</span></code> 是用来是否是在 <code class="docutils literal notranslate"><span class="pre">etherscan.io</span></code>
+上开源代码，因为默认部署后并不是开源的，而是一堆 EVM 的 OP Code。</p>
+<p><code class="docutils literal notranslate"><span class="pre">dotenv</span></code> 业内通用，一些比较私密性的配置，都喜欢放到 <code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件中，这里的
+也需要创建一个 <code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件，文件中一般需要设置为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">WEB3_INFURA_PROJECT_ID</span><span class="o">=</span><span class="s1">''</span>
+<span class="n">export</span> <span class="n">PRIVATE_KEY</span><span class="o">=</span><span class="s1">''</span>
+<span class="n">export</span> <span class="n">MNEMONIC</span><span class="o">=</span><span class="s1">''</span>
+<span class="n">export</span> <span class="n">ETHERSCAN_TOKEN</span><span class="o">=</span><span class="s1">''</span>
+</pre></div>
+</div>
+<p>首先是全节点的信息，如果你自己本地有全节点的话，可以不用配置，直接在部署测试中
+写就好了，毕竟 brownie 使用的是 <code class="docutils literal notranslate"><span class="pre">web3.py</span></code>，和 <code class="docutils literal notranslate"><span class="pre">web3.js</span></code> 基本没差。其他的
+配置都可以直接通过名字就知道其配置是干啥的，私钥，助记词，etherscan 的 token。</p>
 </section>
 <section id="brownie-compile">
 <span id="id22"></span><h4 id="brownie-compile">编译<a class="headerlink" href="#brownie-compile" title="永久链接至标题">¶</a></h4>
+<p>编译和其他的一样，都是后面加个 <code class="docutils literal notranslate"><span class="pre">compile</span></code> 就好了</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brownie compile
+</pre></div>
+</div>
 </section>
 <section id="brownie-deploy">
 <span id="id23"></span><h4 id="brownie-deploy">部署<a class="headerlink" href="#brownie-deploy" title="永久链接至标题">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brownie run scripts/deploy.py
+</pre></div>
+</div>
+<p>部署命令都可以手动指定网络的，通过 <code class="docutils literal notranslate"><span class="pre">--network=&lt;network-name&gt;</span></code>。</p>
+<p>以合约源文件为 <code class="docutils literal notranslate"><span class="pre">Hello.sol</span></code> 为例，其中 <code class="docutils literal notranslate"><span class="pre">deploy.py</span></code> 的如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="kn">from</span> <span class="nn">brownie</span> <span class="kn">import</span> <span class="p">(</span>
+  <span class="n">config</span><span class="p">,</span>
+  <span class="n">network</span><span class="p">,</span>
+  <span class="n">accounts</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">eth_utils</span>
+
+<span class="n">NON_FORKED_LOCAL_BLOCKCHAIN_ENVIROMENTS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"development"</span><span class="p">,</span> <span class="s2">"ganache"</span><span class="p">]</span>
+<span class="n">LOCAL_BLOCKCHAIN_ENVIROMENTS</span> <span class="o">=</span> <span class="n">NON_FORKED_LOCAL_BLOCKCHAIN_ENVIROMENTS</span> <span class="o">+</span> <span class="p">[</span>
+  <span class="s2">"mainnet-fork"</span><span class="p">,</span>
+  <span class="s2">"binance-fork"</span><span class="p">,</span>
+  <span class="s2">"matic-fork"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_account</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">network</span><span class="o">.</span><span class="n">show_active</span><span class="p">()</span> <span class="ow">in</span> <span class="n">LOCAL_BLOCKCHAIN_ENVIROMENTS</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">number</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">accounts</span><span class="p">[</span><span class="n">number</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">network</span><span class="o">.</span><span class="n">show_active</span><span class="p">()</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s2">"networks"</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">accounts</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"wallets"</span><span class="p">][</span><span class="s2">"from_key"</span><span class="p">])</span>
+  <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">account</span> <span class="o">=</span> <span class="n">get_account</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Deploying to </span><span class="si">{</span><span class="n">network</span><span class="o">.</span><span class="n">show_active</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+  <span class="n">hello</span> <span class="o">=</span> <span class="n">Hello</span><span class="o">.</span><span class="n">deploy</span><span class="p">({</span><span class="s2">"from"</span><span class="p">:</span> <span class="n">account</span><span class="p">})</span>
+  <span class="c1"># hello = Hello.deploy(</span>
+  <span class="c1">#   {"from": account},</span>
+  <span class="c1">#   publish_source=config["networks"][network.show_active()]["verify"]</span>
+  <span class="c1"># )</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Deployed to: </span><span class="si">{</span> <span class="n">hello</span><span class="o">.</span><span class="n">address</span> <span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Hello.deploy()</span></code> 中 <code class="docutils literal notranslate"><span class="pre">Hello</span></code> 为合约名，<code class="docutils literal notranslate"><span class="pre">deploy()</span></code> 中首先是要有合约构造
+时的参数，如果构造函数没有参数那就不用写，然后后面就是跟对应的 transaction
+中的属性了，如果想部署时同时发布源代码，就使用 <code class="docutils literal notranslate"><span class="pre">publish_source</span></code> 来指定是否
+发布，<code class="docutils literal notranslate"><span class="pre">publish_source</span></code> 的类型为 <code class="docutils literal notranslate"><span class="pre">boolean</span></code>，可以通过在配置文件中配置对应
+网络的值。</p>
+<p>如果要与合约进行交互的话，就需要从 brownie 中导入 <code class="docutils literal notranslate"><span class="pre">Contract</span></code> 模块：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brownie</span> <span class="kn">import</span> <span class="n">Contract</span>
+</pre></div>
+</div>
+<p>然后构建一个 Contract 的对象：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hello_contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="o">.</span><span class="n">from_abi</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="n">hello</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">Hello</span><span class="o">.</span><span class="n">abi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>部署后可以使用 <code class="docutils literal notranslate"><span class="pre">brownie</span> <span class="pre">gui</span></code> 查看对应合约的 opcode。这个我就看到文档可以这样
+做，但是具体我没操作过，毕竟还没达到那个水平。</p>
 <p>reference: https://eth-brownie.readthedocs.io/en/stable/</p>
 </section>
 </section>
