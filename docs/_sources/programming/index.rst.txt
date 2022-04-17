@@ -9,3 +9,4 @@
    hacking-in-c.md
    hacking-in-rust.md
    hacking-in-lisp.md
+   hacking-in-golang.md
