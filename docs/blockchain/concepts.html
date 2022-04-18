@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -53,8 +54,6 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="An Overview of Ethereum" href="overview-of-ethereum.html" />
@@ -329,6 +328,13 @@
     
     
       <a href="web3-development-toolkits.html" class="md-nav__link">Smart Contract Development Toolkits</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="GPG-on-Mac.html" class="md-nav__link">PGP Suit for Apple Mail on Mac OS</a>
       
     
     </li></ul>
@@ -678,9 +684,9 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="basic-concepts">
 <h1 id="blockchain-concepts--page-root">Basic Concepts<a class="headerlink" href="#blockchain-concepts--page-root" title="永久链接至标题">¶</a></h1>
-
+<section id="hash-function">
 <h2 id="hash-function">Hash Function<a class="headerlink" href="#hash-function" title="永久链接至标题">¶</a></h2>
 <p>哈希函数是密码学中的一种加密算法，所谓函数呢，即是两个集合之间对应的映射关系。哈希函数的描述是：</p>
 <blockquote>
@@ -712,12 +718,12 @@ to a bit array of a fixed size (the "hash value", "hash", or "message digest").<
 </ul>
 </li>
 </ul>
-
+<section id="reference">
 <h3 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h3>
 <p>[1]. <a class="reference external" href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">Wikipedia: Cryptographic hash function</a></p>
-
-
-
+</section>
+</section>
+<section id="merkle-tree">
 <h2 id="merkle-tree">Merkle Tree<a class="headerlink" href="#merkle-tree" title="永久链接至标题">¶</a></h2>
 <p>Wiki 对 Merkle Tree 的定义是：</p>
 <blockquote>
@@ -730,12 +736,12 @@ with the cryptographic hash of the labels of its child nodes.</p>
 <p>简单的概括来说，就是 hash 的 hash。</p>
 <p>为什么要这么做呢？这和 hash 函数的第三个特性有关，冲突域小。虽然hash 函数的冲突域很小，但是对区块链来说，
 其存在的安全漏洞还是比较大，那么怎么解决的，给它在加一层 hash，这样就能在既保证效率的同时还能保证安全。</p>
-
+<section id="id3">
 <h3 id="id3">Reference<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <p>[1]. <a class="reference external" href="https://en.wikipedia.org/wiki/Merkle_tree">Wikipedia: Merkle tree</a></p>
-
-
-
+</section>
+</section>
+<section id="consensus-mechanism">
 <h2 id="consensus-mechanism">Consensus Mechanism<a class="headerlink" href="#consensus-mechanism" title="永久链接至标题">¶</a></h2>
 <p>Consensus Mechanism，共识机制。以下是个比较贴切的定义：</p>
 <blockquote>
@@ -746,7 +752,7 @@ of the system</p>
 的状态都有遵守一个协议，至于这个协议是什么，那就要下面要介绍到的 <code class="docutils literal notranslate"><span class="pre">PoW/PoS/PoST/PoA</span></code>。如果
 对共识机制感兴趣的话，可以自行了解下<a class="reference external" href="https://en.wikipedia.org/wiki/Byzantine_fault">Byzantine fault</a>。
 中文的话搜索拜占庭将军问题。</p>
-
+<section id="pow">
 <h3 id="pow">PoW<a class="headerlink" href="#pow" title="永久链接至标题">¶</a></h3>
 <p><strong>Proof of Work</strong> 的简写，工作量证明（说了也是白说），一种共识机制协议。目前 Ethereum 和
 Bitcoin 使用的都是 <strong>PoW</strong> 协议，Ethereum 目前正准备将协议从 <strong>PoW</strong> 改为 <strong>PoS</strong>，
@@ -755,7 +761,7 @@ Bitcoin 使用的都是 <strong>PoW</strong> 协议，Ethereum 目前正准备�
 <p>在分布式网络中，最大的问题是要解决信任问题，就是你需要怎么证明这件事确实是你做的，而不是别人做的。
 感谢 Hash 函数（那些到处宣扬数学无用论的人，祝愿他们永远也用不到数学），因为 Hash 函数的特性，
 所以 <strong>PoW</strong> 就相当于在做数学题，以下只是形式上的描述，仅供参考，具体的实现要举例的要复杂的多。</p>
-<p><span class="math notranslate nohighlight">\( Hash(x || nonce) = C \)</span></p>
+<p>$ Hash(x || nonce) = C $</p>
 <p>其中 <code class="docutils literal notranslate"><span class="pre">nonce</span></code> 是系统随机分配的，<code class="docutils literal notranslate"><span class="pre">C</span></code> 是由系统根据当前的状态进行指定，<code class="docutils literal notranslate"><span class="pre">Hash</span></code> 函数的算法也是确定的，
 所需要的是求出 <code class="docutils literal notranslate"><span class="pre">x</span></code> 的值，而因为 hash 算法是不可逆的，所以只能通过穷举法来尝试，而穷举法是很消耗
 CPU 资源的，需要做大量的计算，因而叫做 <strong>PoW</strong> —— 工作量证明。其他人要验证也很简单，只需要将 <code class="docutils literal notranslate"><span class="pre">x</span></code>
@@ -767,7 +773,7 @@ CPU 资源的，需要做大量的计算，因而叫做 <strong>PoW</strong> —
 的链对孤块的处理方式不同，BitCoin 是直接将孤块丢掉，Ethereum 是将孤块定义为 Uncle Block，
 前 7 个 Uncle Block 都有奖励。</p>
 </div></blockquote>
-
+<section id="pros-and-cons">
 <h4 id="pros-and-cons">Pros and Cons<a class="headerlink" href="#pros-and-cons" title="永久链接至标题">¶</a></h4>
 <ul class="simple">
 <li><p>Pros：</p>
@@ -785,13 +791,13 @@ CPU 资源的，需要做大量的计算，因而叫做 <strong>PoW</strong> —
 </ul>
 </li>
 </ul>
-
-
+</section>
+<section id="id4">
 <h4 id="id4">Reference<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
 <p>[1]. <a class="reference external" href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/">PROOF-OF-WORK</a></p>
-
-
-
+</section>
+</section>
+<section id="pos">
 <span id="id5"></span><h3 id="pos">PoS<a class="headerlink" href="#pos" title="永久链接至标题">¶</a></h3>
 <p><strong>Proof of Stake</strong> 的简写，权益证明，对 <strong>PoW</strong> 的一种改进。由 <strong>PoW</strong> 的特性可知，执行
 <strong>PoW</strong> 的的计算机需要做大量的计算，这就意味着需要消耗大量的电量，同时也催生了一些定制的CPU：
@@ -810,7 +816,7 @@ CPU 资源的，需要做大量的计算，因而叫做 <strong>PoW</strong> —
 </ul>
 <p>对 Ethereum 来说，<strong>PoS</strong> 也带来对 <code class="docutils literal notranslate"><span class="pre">shard</span> <span class="pre">chains</span></code><a class="footnote-reference brackets" href="#shard" id="id7">4</a> -- <a class="reference external" href="https://ethereum.org/en/eth2/shard-chains/">shard chains</a> 更强劲的支持，而这是 Ethereum Network
 扩展的关键性更新。</p>
-
+<section id="id8">
 <h4 id="id8">Pros and Cons<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
 <ul class="simple">
 <li><p>Pros:</p>
@@ -827,26 +833,26 @@ CPU 资源的，需要做大量的计算，因而叫做 <strong>PoW</strong> —
 </ul>
 </li>
 </ul>
-
-
+</section>
+<section id="id10">
 <h4 id="id10">Reference<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
 <p>[1]. <a class="reference external" href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/">PROOF-OF-STAKE</a></p>
 <p>[2]. <a class="reference external" href="https://ethereum.org/en/eth2/shard-chains/">shard chains</a></p>
 <p>[3]. <a class="reference external" href="https://www.investopedia.com/terms/1/51-attack.asp">51% attack</a></p>
-
-
-
+</section>
+</section>
+<section id="post">
 <h3 id="post">PoST<a class="headerlink" href="#post" title="永久链接至标题">¶</a></h3>
 <p><strong>Proof of Spacetime</strong> 或 <strong>Proof of Space and Time</strong> 的简写，时间和空间证明，简称时空证明。每隔一段时间，随机
 抽取存放在 miner<a class="footnote-reference brackets" href="#miner" id="id11">6</a> 上的存储数据，来验证这段时间内该 miner 确实存储了对应的数据。代表性的链是：<a class="reference external" href="https://filecoin.io/">filecoin</a></p>
-
+<section id="id12">
 <h4 id="id12">Reference<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
 <p>[1]. <a class="reference external" href="https://filecoin.io/blog/posts/what-sets-us-apart-filecoin-s-proof-system/">What sets it apart: Filecoin's proof system</a></p>
 <p>[2]. <a class="reference external" href="https://docs.filecoin.io/about-filecoin/how-filecoin-works/#proofs">How Filecoin Works: Proofs</a></p>
 <p>[3]. <a class="reference external" href="https://chia.net/faq/#faq-3">FAQ: What is Proof of Space and Time</a></p>
-
-
-
+</section>
+</section>
+<section id="poa">
 <h3 id="poa">PoA<a class="headerlink" href="#poa" title="永久链接至标题">¶</a></h3>
 <p><strong>Proof of Authority</strong>，基于认证证明，用于 Ethereum 的私链。<a class="reference external" href="https://polkadot.network/">Polkadot Network</a>，
 波卡网主网上线时使用，现已切换到 <a class="reference internal" href="#npos"><span class="std std-ref">NPoS</span></a>。</p>
@@ -855,13 +861,13 @@ CPU 资源的，需要做大量的计算，因而叫做 <strong>PoW</strong> —
 instead of the public Ethereum network's proof-of-work scheme (Ethash).</p>
 </div></blockquote>
 <p>目前还不是很完善，只有 <code class="docutils literal notranslate"><span class="pre">TurboEthereum</span></code><a class="footnote-reference brackets" href="#turboethereum" id="id13">7</a> 中的 <code class="docutils literal notranslate"><span class="pre">flu</span></code><a class="footnote-reference brackets" href="#flu" id="id14">8</a> 客户端中使用。简单说就是通过密钥字段来区分不同的链。</p>
-
+<section id="id15">
 <h4 id="id15">Reference<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h4>
 <p>[1]. <a class="reference external" href="https://github.com/ethereum/guide/blob/master/poa.md">PoA Private Chains</a></p>
 <p>[2]. <a class="reference external" href="https://gavofyork.gitbooks.io/turboethereum/content/index.html">TurboEthereum Guide</a></p>
-
-
-
+</section>
+</section>
+<section id="npos">
 <span id="id16"></span><h3 id="npos">NPoS<a class="headerlink" href="#npos" title="永久链接至标题">¶</a></h3>
 <p><strong>Nominated Proof of Stake</strong> 的简写。Polkadot 链中使用的共识机制。</p>
 <blockquote>
@@ -911,7 +917,7 @@ least one of their trusted validators elected.</p>
 <a class="reference external" href="https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/view/14757/13791">Lars Edvard Phragmen 的 proportional justified representation</a>
 来实现的。其规则是：</p>
 <blockquote>
-<div><p>如果要选举 <span class="math notranslate nohighlight">\( n \)</span> 个 validator，任意持有总质押的 <span class="math notranslate nohighlight">\( \frac{1}{n} \)</span> 及以上 token 的 nominator 至少要选择一个
+<div><p>如果要选举 $ n $ 个 validator，任意持有总质押的 $ \frac{1}{n} $ 及以上 token 的 nominator 至少要选择一个
 validator 候选人。</p>
 </div></blockquote>
 <p>以下图片展示了三个选举，其中第一个选举认为是不公平的，二、三认为是公平的。</p>
@@ -934,7 +940,7 @@ possible.</p>
 <div><p>P.S 因为截止到我写这个的时候，我也没有完全看完文档，只是做了个 overview。具体的介绍应该会放的 Polkadot 的介绍
 文档中。</p>
 </div></blockquote>
-
+<section id="id19">
 <h4 id="id19">Reference<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
 <p>[1]. <a class="reference external" href="https://wiki.polkadot.network/docs/learn-staking">Polkadot wiki: learn-staking</a></p>
 <p>[2]. <a class="reference external" href="https://medium.com/web3foundation/how-nominated-proof-of-stake-will-work-in-polkadot-377d70c6bd43">How Nominated Proof-of-Stake will work in Polkadot</a></p>
@@ -942,21 +948,21 @@ possible.</p>
 <p>[4]. <a class="reference external" href="https://www.britannica.com/science/NP-complete-problem">NP-complete problem</a></p>
 <p>[5]. <a class="reference external" href="https://research.web3.foundation/en/latest/polkadot/NPoS/index.html">Nominated Proof-of-Stake</a></p>
 <p>[6]. <a class="reference external" href="http://www.npc.gov.cn/npc/c30834/202112/07284fbc6faa4189b77f8b0ca9a39153.shtml">人大代表选举是实现全过程人民民主的首要环节和坚实基础</a></p>
-
-
-
-
+</section>
+</section>
+</section>
+<section id="zero-knowledge-proof">
 <h2 id="zero-knowledge-proof">Zero-Knowledge Proof<a class="headerlink" href="#zero-knowledge-proof" title="永久链接至标题">¶</a></h2>
 <blockquote>
 <div><p><strong>Notes: it's a long term study subject, need more time to read paper &amp; reference.</strong></p>
 </div></blockquote>
-
+<section id="non-interactive-zero-knowledge-proof">
 <h3 id="non-interactive-zero-knowledge-proof">Non-interactive Zero-Knowledge Proof<a class="headerlink" href="#non-interactive-zero-knowledge-proof" title="永久链接至标题">¶</a></h3>
-
-
+</section>
+<section id="interactive-zero-knowledge-proof">
 <h3 id="interactive-zero-knowledge-proof">Interactive Zero-Knowledge Proof<a class="headerlink" href="#interactive-zero-knowledge-proof" title="永久链接至标题">¶</a></h3>
-
-
+</section>
+<section id="id20">
 <h3 id="id20">Reference<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <p>[1]. <a class="reference external" href="https://en.wikipedia.org/wiki/Zero-knowledge_proof#Zero_knowledge_types">Wikipedia: Zero-knowledge proof</a></p>
 <p>[2]. <a class="reference external" href="https://en.wikipedia.org/wiki/Non-interactive_zero-knowledge_proof">Wikipedia: Non-interactive zero-knowledge proof</a></p>
@@ -996,9 +1002,9 @@ possible.</p>
 <dd><p>NP-complete算法</p>
 </dd>
 </dl>
-
-
-
+</section>
+</section>
+</section>
 
 
           </article>
@@ -1047,7 +1053,7 @@ possible.</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

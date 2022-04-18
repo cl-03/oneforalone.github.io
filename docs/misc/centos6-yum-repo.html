@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -250,6 +251,13 @@
     
     
       <a href="../blockchain/web3-development-toolkits.html" class="md-nav__link">Smart Contract Development Toolkits</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../blockchain/GPG-on-Mac.html" class="md-nav__link">PGP Suit for Apple Mail on Mac OS</a>
       
     
     </li></ul>
@@ -572,7 +580,7 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="centos-6-yum">
 <h1 id="misc-centos6-yum-repo--page-root">CentOS 6 使用国内 yum 源<a class="headerlink" href="#misc-centos6-yum-repo--page-root" title="永久链接至标题">¶</a></h1>
 <p>虽然说 CentOS 已经被收购了，但是国内还是有部分服务器使用的是 CentOS 6 的系统，
 这时要想安装一些软件就会有点问题，官网给的源在国内的话速度很慢。解决办法有：</p>
@@ -584,31 +592,31 @@
 是中科大还是网易，都没有 CentOS 6 的 yum 源了，最后发现清华大学的源很流畅。以下是
 CentOS 6.10 跟换清华大学源的操作。</p>
 <p><strong>注：</strong> 以下操作都是在 <code class="docutils literal notranslate"><span class="pre">root</span></code> 用户下执行的。</p>
-
+<section id="id1">
 <h2 id="id1">将官方源给禁掉<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s1">'s/enable=1/enable=0/g'</span> /etc/yum.repos.d/CentOS-Base.repo
 </pre></div>
 </div>
-
-
+</section>
+<section id="vault">
 <h2 id="vault">替换 vault 源<a class="headerlink" href="#vault" title="永久链接至标题">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s1">'s#vault.centos.org#mirrors.tuna.tsinghua.edu.cn/centos-vault#g'</span> /etc/yum.repos.d/CentOS-Vault.repo
 </pre></div>
 </div>
-
-
+</section>
+<section id="id2">
 <h2 id="id2">生成本地缓存<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum makecache
 </pre></div>
 </div>
 <p>这里会有多个版本的源，如果觉得太多，可以直接将除自己系统对应版本都删掉，只保留系统版本的源。即自行删除 <code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d/CentOS-Vault.repo</span></code> 中其他版本的源。</p>
 <p>That's it.</p>
-
-
+</section>
+<section id="reference">
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
 <p>[1]. <a class="reference external" href="https://support.huaweicloud.com/ecs_faq/ecs_faq_1009.html">CentOS 6 镜像源更换方法</a></p>
-
-
+</section>
+</section>
 
 
           </article>
@@ -657,7 +665,7 @@ CentOS 6.10 跟换清华大学源的操作。</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

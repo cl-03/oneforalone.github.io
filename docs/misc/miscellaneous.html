@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -53,8 +54,6 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="MacOS 使用记录" href="macos.html" />
@@ -252,6 +251,13 @@
     
     
       <a href="../blockchain/web3-development-toolkits.html" class="md-nav__link">Smart Contract Development Toolkits</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../blockchain/GPG-on-Mac.html" class="md-nav__link">PGP Suit for Apple Mail on Mac OS</a>
       
     
     </li></ul>
@@ -622,17 +628,17 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="id1">
 <h1 id="misc-miscellaneous--page-root">杂记<a class="headerlink" href="#misc-miscellaneous--page-root" title="永久链接至标题">¶</a></h1>
 <p>本文记录了一些简单的问题和解决方法。</p>
 <hr class="docutils"/>
-
+<section id="jekyll-markdown-latex">
 <h2 id="jekyll-markdown-latex">jekyll markdown 中用 latex<a class="headerlink" href="#jekyll-markdown-latex" title="永久链接至标题">¶</a></h2>
 <p>近期看了会微积分，想在博客中记录一下一些通用的微积分公式，在本地 vs code 中预览完全没问题，
-推到 Github 上发现并没有渲染 <span class="math notranslate nohighlight">\(LATEX\)</span> 的格式。查了一下发现是需要在 Jekyll 中添加个插件：</p>
+推到 Github 上发现并没有渲染 $LATEX$ 的格式。查了一下发现是需要在 Jekyll 中添加个插件：</p>
 <p>在 <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> 文件中添加一行: <code class="docutils literal notranslate"><span class="pre">markdown:</span> <span class="pre">kramdown</span></code> 。然后到自己的 includes 中的
 被所有的 layout 文件都 include 了的文件（我的是 <code class="docutils literal notranslate"><span class="pre">header.html</span></code>）中添加下面的 js 代码：</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- add latex support --&gt;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- add latex support --&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/x-mathjax-config"</span><span class="p">&gt;</span>
@@ -645,15 +651,15 @@
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="git-clone-error">
 <h2 id="git-clone-error">Git clone error<a class="headerlink" href="#git-clone-error" title="永久链接至标题">¶</a></h2>
 <p>最近在服务器上拉 Github 代码时发现拉不下来，报了一下错误</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fatal: unable to access <span class="s1">'https://github.com/xxx.git/'</span>: gnutls_handshake<span class="o">()</span> failed: The TLS connection was non-properly terminated.
 </pre></div>
 </div>
 <p>检查一番发现是服务器配置了代理，但代理挂了</p>
-
+<section id="id2">
 <h3 id="id2">查看当前代理<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>方法一</p></li>
@@ -667,8 +673,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>env <span class="p">|</span> grep -I proxy
 </pre></div>
 </div>
-
-
+</section>
+<section id="id3">
 <h3 id="id3">取消代理<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>方法一</p></li>
@@ -696,9 +702,9 @@ git config --global --unset https.proxy
 <span class="nb">unset</span> no_proxy
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+<section id="centos-6-10-adobe-reader">
 <h2 id="centos-6-10-adobe-reader">CentOS 6.10 安装 Adobe Reader<a class="headerlink" href="#centos-6-10-adobe-reader" title="永久链接至标题">¶</a></h2>
 <p>Recently, one of my former colleagues want to install adobe reader on their
 CentOS 6.10 server, so, here is the tutorial：</p>
@@ -710,8 +716,8 @@ yum install -y atk-1.30.0-1.el6.i686 fontconfig-2.8.0-5.el6.i686 <span class="se
   libxml2-2.7.6-21.el6_8.1.i686
 </pre></div>
 </div>
-
-
+</section>
+<section id="ubuntu-18-04-apt-certificate-error">
 <h2 id="ubuntu-18-04-apt-certificate-error">Ubuntu 18.04 apt certificate error<a class="headerlink" href="#ubuntu-18-04-apt-certificate-error" title="永久链接至标题">¶</a></h2>
 <p>最近在使用 Ubuntu 18.04 安装软件是突然遇到个证书错误：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span> <span class="n">verification</span> <span class="n">failed</span><span class="p">:</span> <span class="n">The</span> <span class="n">certificate</span> <span class="ow">is</span> <span class="n">NOT</span> <span class="n">trusted</span><span class="o">.</span> <span class="n">The</span> <span class="n">certificate</span> <span class="n">issuer</span> <span class="ow">is</span> <span class="n">unknown</span><span class="o">.</span>  <span class="n">Could</span> <span class="ow">not</span> <span class="n">handshake</span><span class="p">:</span> <span class="n">Error</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">certificate</span> <span class="n">verification</span><span class="o">.</span>
@@ -723,15 +729,15 @@ yum install -y atk-1.30.0-1.el6.i686 fontconfig-2.8.0-5.el6.i686 <span class="se
 </pre></div>
 </div>
 <p>Okay, Problem Sovled.</p>
-
+<section id="reference">
 <h3 id="reference">Reference:<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://askubuntu.com/questions/1095266/apt-get-update-failed-because-certificate-verification-failed-because-handshake">StackExchange: apt-get update failed...</a></p></li>
 <li><p><a class="reference external" href="http://manpages.ubuntu.com/manpages/bionic/man1/apt-transport-https.1.html">Ubuntu Manpage: apt-transport-https</a></p></li>
 </ol>
-
-
-
+</section>
+</section>
+<section id="centos-7-bond">
 <h2 id="centos-7-bond">CentOS 7 配置 bond<a class="headerlink" href="#centos-7-bond" title="永久链接至标题">¶</a></h2>
 <p>有时候在安装系统时忘了配置 bond，需要用命令手动配置，理论上来说，只需要创建好对应的配置文件应该就可以，
 但是那配置文件，根本记不住。google 一下，发现可以使用 <code class="docutils literal notranslate"><span class="pre">nmcli</span></code> 来配置。</p>
@@ -741,19 +747,19 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
 </pre></div>
 </div>
 <p>然后在根据自己的需求配置对应的 bond 参数以及网络信息。至于其背后详细的原理，请参考 <a class="reference external" href="https://cloud.tencent.com/developer/article/1087312?from=15425">bond技术分析</a></p>
-
+<section id="id4">
 <h3 id="id4">Reference<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>[1]. <a class="reference external" href="https://www.cnblogs.com/liwanggui/p/6807212.html">centos7.x网卡bond配置</a></p>
-
-
-
+</section>
+</section>
+<section id="centos-7-root">
 <h2 id="centos-7-root">CentOS 7 root 忘记密码<a class="headerlink" href="#centos-7-root" title="永久链接至标题">¶</a></h2>
 <p>通常来说，系统的 root 密码应该是被记录下来的，不会被忘记。但是就是有不一般的情况。
 客户直接将服务器寄过来，然后就让我们去检查配置。伞兵客户。没办法，只能强制将 root
 的密码修改咯。 直接参考博客——<a class="reference external" href="https://blog.csdn.net/qq_43518645/article/details/105098090">CentOS 7 root用户密码忘记，找回密码方法</a>
 进行修改。</p>
 <p>为了防止 CSDN 访问出现异常，加个简单的记录吧：</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>按 <code class="docutils literal notranslate"><span class="pre">e</span></code> 修改系统启动项</p></li>
 <li><p>将以 <code class="docutils literal notranslate"><span class="pre">linux16</span></code> 开头的一行中末尾处的 <code class="docutils literal notranslate"><span class="pre">ro</span></code> 修改成 <code class="docutils literal notranslate"><span class="pre">rw</span> <span class="pre">init=sysroot/bin/sh</span></code></p></li>
 <li><p>按 <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code> 后会直接进入系统</p></li>
@@ -765,20 +771,20 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
 </ol>
 <p>注：如果机器使用了 UEFI 启动，需要先进入 BIOS 关闭 UEFI 然后再启动，不然看不到
 系统的选择界面。 UEFI 启动加载太快了，根本反应不过来就进入系统了。</p>
-
-
+</section>
+<section id="cron">
 <h2 id="cron">Cron 任务执行不成功<a class="headerlink" href="#cron" title="永久链接至标题">¶</a></h2>
 <p>突然发现配置了一个 cron 任务的脚本，没有得到预期的结果，查看日志发现任务确实执行了。
 然后查了下资料发现 cron 的命令是以 sh 执行的，而我用的是 bash 的语法。Well，改了
 后就执行成功了。其实就是 sh 中没有 <code class="docutils literal notranslate"><span class="pre">source</span></code> 命令，只有 <code class="docutils literal notranslate"><span class="pre">.</span></code> 命令。</p>
 <p>Emmm…… 之后再找找资料详细的对比下 systemd 的 timer 和 crontab 吧。</p>
-
+<section id="id5">
 <h3 id="id5">Reference<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>[1]. https://unix.stackexchange.com/questions/278564/cron-vs-systemd-timers</p>
 <p>[2]. https://askubuntu.com/questions/752240/crontab-syntax-multiple-commands</p>
-
-
-
+</section>
+</section>
+</section>
 
 
           </article>
@@ -827,7 +833,7 @@ nmcli connection add <span class="nb">type</span> bond-slave ifname enps0f1 mast
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

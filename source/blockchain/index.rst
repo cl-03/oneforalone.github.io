@@ -12,3 +12,4 @@
    bitcoin-on-pi.md
    rust-web3-tutorial.md
    web3-development-toolkits.md
+   GPG-on-Mac.md
