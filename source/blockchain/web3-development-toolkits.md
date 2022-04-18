@@ -775,8 +775,6 @@ hello_contract = Contract.from_abi("Hello", hello.address, Hello.abi)
 (foundry)=
 ## Foundry
 
-**TODO: 添加完整的使用体验和介绍**
-
 Foundry 是个用 rust 实现的 toolkit，用法和 Brownie 差不多。
 要注意的一点就是 Foundry 是这个 toolkit 的名字，但是内部命令
 不是 foundry，而是 `forge` 和 `cast` 两个命令。
