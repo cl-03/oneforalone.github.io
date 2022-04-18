@@ -778,6 +778,8 @@ hello_contract = Contract.from_abi("Hello", hello.address, Hello.abi)
 **TODO: 添加完整的使用体验和介绍**
 
 Foundry 是个用 rust 实现的 toolkit，用法和 Brownie 差不多。
+要注意的一点就是 Foundry 是这个 toolkit 的名字，但是内部命令
+不是 foundry，而是 `forge` 和 `cast` 两个命令。
 
 
 (foundry_installation)=
@@ -798,7 +800,7 @@ curl -L https://foundry.paradigm.xyz | bash
 从源代码编译安装官方也提供了对应的命令：
 
 ```bash
-curl https://sh.rustup.rs -sSf | sh
+cargo install --git https://github.com/foundry-rs/foundry --bins --locked
 ```
 
 
@@ -809,17 +811,277 @@ curl https://sh.rustup.rs -sSf | sh
 (foundry_init)=
 #### 初始化
 
+这些 toolkits 的初始化命令大同小异，这个因为是 rust 开发的，
+所以就会继承 rust 的一些特性，比如，创建新项目可以直接指定
+项目名。
+
+```bash
+forge init hello
+```
+
+这条命令会在当前目录下创建一个 hello 的文件夹，文件夹的目录
+结构为：
+
+```
+$ cd hello
+$ tree ./
+./
+├── foundry.toml
+├── lib
+│   └── ds-test
+│       ├── LICENSE
+│       ├── Makefile
+│       ├── default.nix
+│       ├── demo
+│       │   └── demo.sol
+│       └── src
+│           └── test.sol
+├── src
+│   └── Contract.sol
+└── test
+    └── Contract.t.sol
+
+6 directories, 8 files
+```
+
+* `foundry.toml`：配置文件
+* `lib`：存放一些依赖库、模版
+* `src`：存放合约源代码文件
+* `test`：存放测试合约代码，一般都是 `ContractName.t.sol`
+
+编译后会多出两个文件夹，一个是 `out`，里面存放的是合约的 abi
+等文件，`cache` 就是一些缓存，重新编译时会检查里面的文件来进行
+对应的编译。
+
 
 (foundry_config)=
 #### 配置
+
+Foundry 的配置文件为 `foundry.toml`
+
+```
+[default]
+# The source directory
+src = 'src'
+# The test directory
+test = 'test'
+# The artifact directory
+out = 'out'
+# A list of paths to look for libraries in
+libs = ['lib']
+# A list of remappings
+remappings = []
+# A list of deployed libraries to link against
+libraries = []
+# Whether to cache builds or not
+cache = true
+# Whether to ignore the cache
+force = false
+# The EVM version by hardfork name
+evm_version = 'london'
+# Override the Solidity version (this overrides `auto_detect_solc`)
+#solc_version = '0.8.10'
+# Whether or not Forge should auto-detect the solc version to use
+auto_detect_solc = true
+# Disables downloading missing solc versions
+offline = false
+# Enables or disables the optimizer
+optimizer = true
+# The number of optimizer runs
+optimizer_runs = 200
+# The verbosity of tests
+verbosity = 0
+# A list of ignored solc error codes
+ignored_error_codes = []
+# The number of fuzz runs for fuzz tests
+fuzz_runs = 256
+# The max number of individual inputs that may be rejected before a fuzz test aborts
+fuzz_max_local_rejects = 65536
+# The max number of combined inputs that may be rejected before a fuzz test aborts
+fuzz_max_global_rejects = 1024
+# Whether or not to enable `cheats.ffi`
+ffi = false
+# The address of `msg.sender` in tests
+sender = '0x00a329c0648769a73afac7f9381e08fb43dbea72'
+# The address of `tx.origin` in tests
+tx_origin = '0x00a329c0648769a73afac7f9381e08fb43dbea72'
+# The initial balance of the test contract
+initial_balance = '0xffffffffffffffffffffffff'
+# The block number we are at in tests
+block_number = 0
+# The chain ID we are on in tests
+chain_id = 99
+# The gas limit in tests
+gas_limit = 9223372036854775807
+# The gas price in tests (in wei)
+gas_price = 0
+# The block basefee in tests (in wei)
+block_base_fee_per_gas = 0
+# The address of `block.coinbase` in tests
+block_coinbase = '0x0000000000000000000000000000000000000000'
+# The block timestamp in tests
+block_timestamp = 0
+# The block difficulty in tests
+block_difficulty = 0
+# A list of contracts to output gas reports for
+gas_reports = ["*"]
+# Enables or disables RPC caching when forking
+no_storage_caching = false
+# Caches storage retrieved locally for certain chains and endpoints
+# Can also be restricted to multiple chains
+# By default only remote endpoints will be cached
+# To disable storage caching, set `no_storage_caching = true`
+rpc_storage_caching = { chains = "all", endpoints = "remote" }
+# Extra output to include in the contract's artifact.
+extra_output = []
+# Extra output to write to separate files.
+extra_output_files = []
+# Use the given hash method for the metadata hash that is appended
+# to the bytecode.
+# The metadata hash can be removed from the bytecode by setting "none"
+bytecode_hash = "ipfs"
+# If enabled, the Solidity compiler is instructed to generate bytecode
+# only for the required contracts. This can reduce compile time
+# for `forge test`, but is experimental.
+sparse_mode = false
+```
+
+上面的配置文件包含了大部分参数，注意也讲解的很清楚，这里只想介绍一下
+`remapping`。因为现在大部分合约都会调用 `OpenZeppelin` 的库，所
+以本文档中的第三方库都是以 `OpenZeppelin` 的为例。
+
+不同于上面三个 toolkit，foundry 安装三方库不是使用 npm 安装保存
+在项目目录下的，而是通过 `forge` 进行安装的：
+
+```bash
+forge install openzeppelin/openzeppelin-contracts
+```
+
+然后再在配置文件中添加 `remmappings` 的配置:
+
+```
+remappings= ['@openzeppelin=lib/openzeppelin-contracts']
+```
+
+这个其实和 brownie 比较类似，都是去 Github 上下载源代码。当然，
+测试合约中就是这样调用的，也可以将测试合约调用的库进行
+*remapping* 一下：
+
+```
+remappins = [
+  '@openzeppelin=lib/openzeppelin-contracts',
+  '@ds-test=lib/ds-test/src/'
+]
+```
+
+然后测试合约中的 `import "ds-test/test.sol";` 就可以改写成
+`import "@ds-test/test.sol";`。
+
+好像有点脱裤子放屁的感觉，因为测试合约中本生就是调用本地的，无所谓了，
+这样更符合标准一点，毕竟 `ds-test` 是创建项目时默认添加的库，第三方
+库的引用还是统一用 Solidity 的标准的好。
+
+> P.S. 就是不知道为什么 truffle 不支持 remapping。
 
 
 (foundry_compile)=
 #### 编译
 
+和上面三个不同的是，foundry 的编译用的是 build 命令，这和其实现
+有关，毕竟是 rust 写的。
+
+```bash
+forge build
+```
 
 (foundry_deploy)=
 #### 部署
 
+Foundry 的部署上面三个要稍微繁琐一点，不支持脚本。没办法，编译型语言和
+解释型语言的差异。
 
-reference: https://book.getfoundry.sh/getting-started/installation.html
+```bash
+$ forge create --rpc-url <your-rpc-url> \
+    --constructor-args "Arg1" "Arg2" ... \
+    --private-key <your-private-key> \
+    src/<ContractSourceFileName>:<ContractName>
+```
+
+这些关键信息需要自己手动指定，配置文件中也配置不了。
+
+如果要将合约代码开源的话，需要使用 `forge verify-contract` 命令：
+
+```bash
+$ forge verify-contract --chain-id <chainId> \
+    --num-of-optimizations <Optimization Number> \
+    --constructor-args \
+    (cast abi-encode "constructor(arg1, arg2, ...)" "Arg1" "Arg2") \
+    --compiler-version <solc version> \
+    <Contract Address> \
+    src/<ContractSourceFileName>:<ContractName> \
+    <your-etherscan-api-key>
+```
+
+Whoo, 这个参数有够多的，没有脚本语言舒服，希望后续可以放到配置文件中吧。
+
+
+#### 交互
+
+如果要与链进行交互的话，Foundry 使用的是另一个命令：`cast`。
+
+这种编译型语言就是这点不太方便，不能像解释型那样直接写一个脚本然后运行就
+完事。所以，如果要和链上的合约交互的话，也需要指定一些信息（个人感觉
+这个可以通过 rust 的 web3 写个 lib 来调用，不过这个库更新不是很频繁）。
+
+```bash
+$ cast call <contract-address> <contract-method-signature> \
+    --rpc-url <your-rpc-provider-url>
+```
+
+`cast` 还可以对 opcode 进行解码，不过前提是你要有合约中的方法的原型：
+
+```bash
+$ bash 4byte-decode <op-code> <contract-method-signature>
+```
+
+更多的去官方文档上查看吧。
+
+官网文档：https://book.getfoundry.sh/getting-started/installation.html
+
+
+## 总结
+
+上面的使用中我都没有介绍怎么进行测试，因为我都是直接部署到测试网上，然后进行
+交互式的验证，反正测试网上不要钱，直接测就好，或者本地起一个 ganache，也可以
+直接测试，至于具体怎么测，那肯定是看具体的合约是什么了。你已经步入 web3 的开
+发了，是个成熟的开发者了，我相信你自己会对自己的合约设计一些 TC（Test Case）
+的。你要是自己懒得测，被科学家们给割了那就只能是怪自己咯。
+
+以上，简单的介绍了一下目前我所接触的一些智能合约开发所用到的 toolkit，
+下面就做个简单的对比吧。
+
+| Toolkits | 实现语言    | 上手难度   | 优点               | 缺点                    | 总体评分 |
+| :------- | :--------: | :------: | ------------------ | ---------------------- | ------- |
+| Hardhat  | JavaScript | 1   星   | 文档全，用户多        | 无                     | 4       |
+| Truffle  | JavaScript | 1   星   | 使用简单             | 项目不再更新，可配置性不高 | 3       |
+| Brownie  | Python     | 2   星   | 使用方便，集成功能较多 | Python 在速度上比较慢    | 4       |
+| Foundry  | Rust       | 2.5 星   | 一个字，快           | 部署和交互比较麻烦        | 3.5     |
+
+对于刚接触 Web3 的新手来说，最推荐的还是 Hardhat，如果是说有
+Python 背景的人，那么 Brownie 是个很不错的选择，毕竟不用再去学
+习 JavaScript，直接上手。如果是有 Rust 背景，且比较在意速度和
+只想用 Solidity 写合约已经测试，那么 Foundry 是你的不二之选。
+要知道，没有最好，只有最适合，所以选择时不要过于纠结，选一个适合
+自己的，然后专注合约的开发就好了，毕竟工具只是辅助而已，如果你
+像 hardcore 一点，那么不用这些 toolkit 也是可以的，直接手动
+编译成 abi，然后调用 web3 的库直接部署也是可以的。
+
+> The choice is yours.
+
+好了，所有的介绍就到这里了。
+
+One more thing，一个个人觉得很不错的资源合集的链接：
+
+https://github.com/OpenZeppelin/awesome-openzeppelin
+
+Happy Crypting :)
