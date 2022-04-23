@@ -25,7 +25,6 @@ copyright = f'2020-{datetime.now().year}, Yuqi Liu'
 # release = version
 default_role = "obj"
 author = 'Yuqi Liu'
-pygments_style = 'sphinx'
 
 
 
