@@ -12,14 +12,21 @@
 #
 import os
 import sys
+from datetime import datetime
 sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = "Yuqi's Notebook"
-copyright = '2020-2021, Yuqi Liu'
+project = "Yuqi's Blog"
+master_doc = "index"
+copyright = f'2020-{datetime.now().year}, Yuqi Liu'
+# version = "1.0.0"
+# release = version
+default_role = "obj"
 author = 'Yuqi Liu'
+pygments_style = 'sphinx'
+
 
 
 # -- General configuration ---------------------------------------------------
@@ -51,7 +58,7 @@ language = 'zh'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = ['_build']
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -65,7 +72,7 @@ html_theme = 'sphinx_material'
 html_theme_options = {
   'base_url': 'https://oneforalone.github.io/',
   'repo_url': 'https://github.com/oneforalone/oneforalone.github.io/',
-  'repo_name': "Yuqi's Notebook",
+  'repo_name': "Yuqi's Blog",
 
   'logo_icon': '&#xe409',
 
