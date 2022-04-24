@@ -83,7 +83,7 @@ btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs �
   下面 `tx_out` 数组中 txid 的个数
 * `tx_out`：tx 的输出，数组，具体介绍见 {ref}`transaction-output`
 * `lock_time`：UTXO 的锁定时间或区块（uint_32_t），用来表示这个 tx 中的
-  UTXO 多久或多少个区块后可以被消费（优先级没有 `tx_in` 中 `sequence` 的高）
+  UTXO 多久或哪个区块后可以被消费（优先级没有 `tx_in` 中 `sequence` 的高）
 
 
 (transaction-input)=
@@ -312,19 +312,19 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 02000000 ................................... Version
 00 ......................................... Marker, segwit format
 01 ......................................... Flag, segwit format
-01 ......................................... Number of Inputs, tx_in counts
+01 ......................................... Number of Inputs: 1, tx_in counts
 |
 |                                            Txln/vin
 | 3d75af2a19881e883ff5c604eeaaae55
 | 1f048ee2e530eb3e06569c5321605487 ......... Oupoint TXID
 |
-| 0100000000 ............................... Outpoint index number
+| 0100000000 ............................... Outpoint index number: 1
 |
 | fdffffff ................................. Sequence Number, 4294967293(0xfffffffd)
 |
 |                                            TxOut/vout
 
-02 ......................................... Number of outputs, tx_out counts
+02 ......................................... Number of outputs: 2, tx_out counts
 | 00ca9a3b00000000 ......................... Satoshis (10.00000000 BTC)
 |
 | 16 ....................................... Bytes in pubkey script: 22
@@ -343,7 +343,7 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 |
 |                                            Witness
 
-02 ......................................... Number of witness2, size of witness
+02 ......................................... Number of witness: 2, size of witness
 |
 | 47 ....................................... Bytes in witness script: 71
 | | 304402205faa35a19c56faa2c78f40bf
@@ -361,7 +361,9 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 ```
 
 就先到这里吧，Witness Script 还没有去研究，就不去解析他了，等看
-完所有的 scripting 在来解析吧。
+完所有的 scripting 在来解析吧。上面的 locktime 指的是 block
+number，而不是多少个 block 之后，而是在这个 block number/height
+后就能被花费。
 
 Segwit 的格式参考文章为： https://bitcoincore.org/en/segwit_wallet_dev/#transaction-serialization
 

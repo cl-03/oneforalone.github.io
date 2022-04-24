@@ -712,7 +712,7 @@ btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs �
 下面 <code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 数组中 txid 的个数</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tx_out</span></code>：tx 的输出，数组，具体介绍见 <a class="reference internal" href="#transaction-output"><span class="std std-ref">TxOut: A Transaction Output</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">lock_time</span></code>：UTXO 的锁定时间或区块（uint_32_t），用来表示这个 tx 中的
-UTXO 多久或多少个区块后可以被消费（优先级没有 <code class="docutils literal notranslate"><span class="pre">tx_in</span></code> 中 <code class="docutils literal notranslate"><span class="pre">sequence</span></code> 的高）</p></li>
+UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docutils literal notranslate"><span class="pre">tx_in</span></code> 中 <code class="docutils literal notranslate"><span class="pre">sequence</span></code> 的高）</p></li>
 </ul>
 </section>
 <section id="txin-a-transaction-input-non-coinbase">
@@ -919,19 +919,19 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">02000000</span> <span class="o">...................................</span> <span class="n">Version</span>
 <span class="mi">00</span> <span class="o">.........................................</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">segwit</span> <span class="nb">format</span>
 <span class="mi">01</span> <span class="o">.........................................</span> <span class="n">Flag</span><span class="p">,</span> <span class="n">segwit</span> <span class="nb">format</span>
-<span class="mi">01</span> <span class="o">.........................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">Inputs</span><span class="p">,</span> <span class="n">tx_in</span> <span class="n">counts</span>
+<span class="mi">01</span> <span class="o">.........................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">Inputs</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tx_in</span> <span class="n">counts</span>
 <span class="o">|</span>
 <span class="o">|</span>                                            <span class="n">Txln</span><span class="o">/</span><span class="n">vin</span>
 <span class="o">|</span> <span class="mi">3</span><span class="n">d75af2a19881e883ff5c604eeaaae55</span>
 <span class="o">|</span> <span class="mi">1</span><span class="n">f048ee2e530eb3e06569c5321605487</span> <span class="o">.........</span> <span class="n">Oupoint</span> <span class="n">TXID</span>
 <span class="o">|</span>
-<span class="o">|</span> <span class="mi">0100000000</span> <span class="o">...............................</span> <span class="n">Outpoint</span> <span class="n">index</span> <span class="n">number</span>
+<span class="o">|</span> <span class="mi">0100000000</span> <span class="o">...............................</span> <span class="n">Outpoint</span> <span class="n">index</span> <span class="n">number</span><span class="p">:</span> <span class="mi">1</span>
 <span class="o">|</span>
 <span class="o">|</span> <span class="n">fdffffff</span> <span class="o">.................................</span> <span class="n">Sequence</span> <span class="n">Number</span><span class="p">,</span> <span class="mi">4294967293</span><span class="p">(</span><span class="mh">0xfffffffd</span><span class="p">)</span>
 <span class="o">|</span>
 <span class="o">|</span>                                            <span class="n">TxOut</span><span class="o">/</span><span class="n">vout</span>
 
-<span class="mi">02</span> <span class="o">.........................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">tx_out</span> <span class="n">counts</span>
+<span class="mi">02</span> <span class="o">.........................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">outputs</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tx_out</span> <span class="n">counts</span>
 <span class="o">|</span> <span class="mi">00</span><span class="n">ca9a3b00000000</span> <span class="o">.........................</span> <span class="n">Satoshis</span> <span class="p">(</span><span class="mf">10.00000000</span> <span class="n">BTC</span><span class="p">)</span>
 <span class="o">|</span>
 <span class="o">|</span> <span class="mi">16</span> <span class="o">.......................................</span> <span class="n">Bytes</span> <span class="ow">in</span> <span class="n">pubkey</span> <span class="n">script</span><span class="p">:</span> <span class="mi">22</span>
@@ -950,7 +950,7 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 <span class="o">|</span>
 <span class="o">|</span>                                            <span class="n">Witness</span>
 
-<span class="mi">02</span> <span class="o">.........................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">witness2</span><span class="p">,</span> <span class="n">size</span> <span class="n">of</span> <span class="n">witness</span>
+<span class="mi">02</span> <span class="o">.........................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">witness</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span> <span class="n">of</span> <span class="n">witness</span>
 <span class="o">|</span>
 <span class="o">|</span> <span class="mi">47</span> <span class="o">.......................................</span> <span class="n">Bytes</span> <span class="ow">in</span> <span class="n">witness</span> <span class="n">script</span><span class="p">:</span> <span class="mi">71</span>
 <span class="o">|</span> <span class="o">|</span> <span class="mi">304402205</span><span class="n">faa35a19c56faa2c78f40bf</span>
@@ -968,7 +968,9 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 </pre></div>
 </div>
 <p>就先到这里吧，Witness Script 还没有去研究，就不去解析他了，等看
-完所有的 scripting 在来解析吧。</p>
+完所有的 scripting 在来解析吧。上面的 locktime 指的是 block
+number，而不是多少个 block 之后，而是在这个 block number/height
+后就能被花费。</p>
 <p>Segwit 的格式参考文章为： https://bitcoincore.org/en/segwit_wallet_dev/#transaction-serialization</p>
 </section>
 </section>
