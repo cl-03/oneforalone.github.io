@@ -1,3 +1,4 @@
+(bitcoin-on-pi)=
 # Raspberry Pi 安装 bitcoin
 
 Author: Yuqi Liu

@@ -13,4 +13,4 @@
    rust-web3-tutorial.md
    web3-development-toolkits.md
    GPG-on-Mac.md
-   diving-into-bitcoin.md
+   dive-into-bitcoin.md
