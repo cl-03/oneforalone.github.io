@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -606,12 +607,12 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="vnc">
 <h1 id="misc-vnc--page-root">VNC 常见问题及解决方案<a class="headerlink" href="#misc-vnc--page-root" title="永久链接至标题">¶</a></h1>
 <p>关于 VNC，我只想说，一般的 Linuxer 基本不会用这玩意，毕竟远程连接 CLI 的效率要比 GUI 的高很多，且对带宽
 要求也不在同一个量级。那为什么要写这部分文档呢？因为支持过 ICer，那群 ICer 对 IT 知识懂得比较少，而且都
 他们的工作环境确实离不开 GUI。现在来跟新下 VNC 出错的情况和解决方法吧（系统版本为 Redhat/CentOS6 为准）。</p>
-
+<section id="id1">
 <h2 id="id1">连接问题<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>首先，在出现 vnc 客户端连接不上服务端时，要先确认服务端的 vnc 成功配置并启动了，也就是说，服务器上的端口
 （ vncserver 的端口是 5900 + vnc-port）是 LISTEN 的状态。</p>
@@ -627,14 +628,14 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsof -i :&lt;port&gt;
 </pre></div>
 </div>
-
+<section id="connection-refuse">
 <h3 id="connection-refuse">Connection Refuse<a class="headerlink" href="#connection-refuse" title="永久链接至标题">¶</a></h3>
 <p>如果连接时报错提示中有 <strong>refuse</strong>，那么，就该检查主机名了，因为已经排除了服务端端口没有打开的问题，
 那么只能说是没有找到正确的主机了。CentOS/RedHat 的主机名有两个配置文件，一个是 <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code>，这个是
 配置 shell 中命令提示符主机名，还有一个是 <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/network</span></code>，这个是配置该主机在网络上的主机
 名。这两个配置文件中的主机名保持一致。</p>
-
-
+</section>
+<section id="connection-timeout">
 <h3 id="connection-timeout">Connection Timeout<a class="headerlink" href="#connection-timeout" title="永久链接至标题">¶</a></h3>
 <p>如果连接时报错提示中有 <strong>timeout</strong>，这个问题一般是 Iptables （软件防火墙）引起的，系统的 Iptables
 开着，同时没有 vnc 端口的策略，所以收到连接请求后或直接将数据包丢掉，所以就 timeout 咯。解决方法当然
@@ -644,11 +645,11 @@ chkconfig iptables off <span class="c1"># disable auto start with system boot"</
 </pre></div>
 </div>
 <p>P.S. 关于连接出错问题，不排除中间网络链路多，其中硬件防火墙做了对应的策略可能。</p>
-
-
-
+</section>
+</section>
+<section id="id2">
 <h2 id="id2">灰/黑屏问题<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-
+<section id="id3">
 <h3 id="id3">连接后灰屏<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <p>好吧，是一个前同事遇到的问题，TA 在服务端启动了 vncserver 后，登录时发现界面是灰色的，
 然后又来问我，这个问题呢，其实吧，看下官方文档就能解决的，但是却耗了我半个小时，为什么，因为
@@ -686,22 +687,22 @@ twm <span class="p">&amp;</span>
 </pre></div>
 </div>
 <p>Okay, problem solved.</p>
-
-
+</section>
+<section id="id4">
 <h3 id="id4">黑屏<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>还有一种就是连接上了但是是黑屏，请注意黑屏和灰屏不是个概念，应该没有黑灰色盲吧。灰屏的解决方法参看上面，
 黑屏的话其实也是比较简单，这个在创建 vnc session 时是会出现一个错误提示：<code class="docutils literal notranslate"><span class="pre">timeout</span> <span class="pre">in</span> <span class="pre">locking</span> <span class="pre">authority</span> <span class="pre">file</span> <span class="pre">...</span></code>。
 最大的可能就是之前的 vncserver 的 session 没有正常关闭退出，然后导致 <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> 目录下还存在 <code class="docutils literal notranslate"><span class="pre">.X</span></code> 开头的目录，
 里面的文件被占用没有释放，问题的原因说明了，那么解决方法当然就是：直接删掉对应的 <code class="docutils literal notranslate"><span class="pre">.X</span></code> 开头的目录了。</p>
 <p>其他的可能原因也没遇到过，等遇到在更新吧。</p>
-
-
-
+</section>
+</section>
+<section id="reference">
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
 <p>[1]. <a class="reference external" href="https://wiki.centos.org/HowTos/VNC-Server#Create_xstartup_scripts_.28_You_may_omit_this_step_for_CentOS_6_.29">wiki:how-to:vnc#section 2.5</a></p>
 <p>[2]. <a class="reference external" href="https://unix.stackexchange.com/questions/285352/timeout-in-locking-authority-file-vnc-service">timeout in locking authority file (vnc service)</a></p>
-
-
+</section>
+</section>
 
 
           </article>
@@ -750,7 +751,7 @@ twm <span class="p">&amp;</span>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -278,9 +279,7 @@
         </li>
         <li class="md-nav__item"><a href="#keys-addresses-wallets" class="md-nav__link">Keys, Addresses, Wallets</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#keys" class="md-nav__link">Keys</a>
-        </li>
-        <li class="md-nav__item"><a href="#addresses" class="md-nav__link">Addresses</a>
+        <li class="md-nav__item"><a href="#keys-addresses" class="md-nav__link">Keys / Addresses</a>
         </li>
         <li class="md-nav__item"><a href="#wallets" class="md-nav__link">Wallets</a>
         </li></ul>
@@ -298,7 +297,7 @@
         </li>
         <li class="md-nav__item"><a href="#txout-a-transaction-output" class="md-nav__link">TxOut: A Transaction Output</a>
         </li>
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">实例</a>
+        <li class="md-nav__item"><a href="#tx-example" class="md-nav__link">实例</a>
         </li></ul>
             </nav>
         </li>
@@ -592,9 +591,7 @@
         </li>
         <li class="md-nav__item"><a href="#keys-addresses-wallets" class="md-nav__link">Keys, Addresses, Wallets</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#keys" class="md-nav__link">Keys</a>
-        </li>
-        <li class="md-nav__item"><a href="#addresses" class="md-nav__link">Addresses</a>
+        <li class="md-nav__item"><a href="#keys-addresses" class="md-nav__link">Keys / Addresses</a>
         </li>
         <li class="md-nav__item"><a href="#wallets" class="md-nav__link">Wallets</a>
         </li></ul>
@@ -612,7 +609,7 @@
         </li>
         <li class="md-nav__item"><a href="#txout-a-transaction-output" class="md-nav__link">TxOut: A Transaction Output</a>
         </li>
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">实例</a>
+        <li class="md-nav__item"><a href="#tx-example" class="md-nav__link">实例</a>
         </li></ul>
             </nav>
         </li>
@@ -638,12 +635,12 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="dive-into-bitcoin">
 <span id="diving-into-bitcoin"></span><h1 id="blockchain-dive-into-bitcoin--page-root">Dive into Bitcoin<a class="headerlink" href="#blockchain-dive-into-bitcoin--page-root" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div><p><strong>CRYPTO IS HARD, DO NOT TRUST ANYONE, VERIFY YOURSELF !!!</strong></p>
 </div></blockquote>
-
+<section id="prodromes">
 <span id="id1"></span><h2 id="prodromes">序论<a class="headerlink" href="#prodromes" title="永久链接至标题">¶</a></h2>
 <p>正如开头引用的那句话，加密货币里面涉及到的知识太多了，而且经过十多年的发展，
 所需要学习的知识也很多，不过，随着慢慢的接触，我渐渐发现其最底层的原理和基础
@@ -664,20 +661,184 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 <div><p>P.S. 本文知识技术分析介绍，对于投资理财不做任何推荐担保。投资有风险，
 入市需谨慎，对于市场和生活要常怀敬畏之心。</p>
 </div></blockquote>
-
-
+</section>
+<section id="keys-addresses-wallets">
 <h2 id="keys-addresses-wallets">Keys, Addresses, Wallets<a class="headerlink" href="#keys-addresses-wallets" title="永久链接至标题">¶</a></h2>
-
-<span id="bitcoin-keys"></span><h3 id="keys">Keys<a class="headerlink" href="#keys" title="永久链接至标题">¶</a></h3>
-
-
-<span id="bitcoin-addresses"></span><h3 id="addresses">Addresses<a class="headerlink" href="#addresses" title="永久链接至标题">¶</a></h3>
-
-
+<p>Date: Mon Apr. 25 2022</p>
+<p>在 crypto 中，你有了 private key，你就有了这个 key 的
+一切。所以对于自己的 private key，一定不要大意，失去了这
+个 key，你就失去了你那个账户的一切。这里推荐看一下
+<a class="reference external" href="https://github.com/slowmist/Blockchain-dark-forest-selfguard-handbook">区块链黑暗深林自救手册</a>。
+不要求你完全理解或者说按照其中的每一个步骤去做，但是在
+crypto 这种新兴的产业中，你心中需要有这么一根弦。不要觉得
+安全事小，或者说没人会在意你的那点小资产，但是有积少成多这
+么一个说法，所以，涉及到自己的财产，收起内心的傲慢。正如
+《三体》中所说的：“弱小和无知不是生存的障碍，傲慢才是。”</p>
+<p>那么，接下来就开始进入 bitcoin 的世界，开始了解在 bitcoin
+中私钥和公钥以及钱包地址的生成吧。</p>
+<section id="keys-addresses">
+<span id="bitcoin-keys-addresses"></span><h3 id="keys-addresses">Keys / Addresses<a class="headerlink" href="#keys-addresses" title="永久链接至标题">¶</a></h3>
+<p>首先， bitcoin 或者说整个 crypto 中，账号的生成使用的加密算法都
+是一致的，使用的都是<a class="reference external" href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">椭圆曲线加密</a>
+。确切到 bitcoin 就是使用了 C 语言优化过的 secp256k1 库。因为
+密码学涉及的知识点较多，同时也比较复杂，个人还没完全搞明白，所以就
+不再这里献丑，感兴趣的可以自行拓展阅读。反正这些加密算法的特点就是
+无法逆向运算，即不同通过公钥来反推出私钥，而且碰撞域小，基本上是
+公钥与私钥一一对应的，确保了每个地址的唯一性。虽然说从理论上来计算
+可以计算出具有相同公钥的私钥，但是以目前的计算水品，需要的时间太久，
+所以可以忽略不计。</p>
+<blockquote>
+<div><p>注：最近看文章有看到 ECDSA 被人破了，然后又出现了改进版的 EdDSA。
+文章链接为：https://medium.com/asecuritysite-when-bob-met-alice/whats-the-difference-between-ecdsa-and-eddsa-e3a16ee0c966</p>
+</div></blockquote>
+<p>刚开始玩 bitcoin 时，尤其是从 Ethereum 转过来时，会有一点比较不好
+接受的，就是 bitcoin 中通用的是其钱包地址，而 Ethereum 的直接是
+公钥。下面来介绍下 bitcoin 中公钥、私钥以及地址之间的关系。</p>
+<p>这三者的关系如下：</p>
+<p>Private Key - Elliptic Curve Multiplication -&gt; Public Key
+Public Key - Hashing Function -&gt; Address</p>
+<p>Private Key 通过椭圆曲线加密得到 Public Key，然后 Public Key
+通过 Hashing Function 得到地址。因为这些加密算法都是单向不可逆，
+且碰撞域很小，所以不需要保存 Public Key，都可以通过 Private Key
+直接计算出来。</p>
+<p>那么 Private Key 又是什么呢？其实就是一个随机数，这个随机数的大小
+是 256 位，即 Private Key 的范围是 (0, 2^256)。这里的随机数不能
+使用一些伪随机数生成器生成，这样很容易被人破解，因为椭圆曲线原本是有
+两个变量，无法直接求解，如果随机数是个比较确定的，那么就能直接通过公
+式将另一个变量推导出来，从而将你的公私钥给破解。Sony 的 PS3 就是因为
+用于签名的随机数是固定的，结果被人给破解了。具体的可以参考知乎文章：
+<a class="reference external" href="https://zhuanlan.zhihu.com/p/97953640">一文读懂 ECDSSA 算法如何保护数据</a></p>
+<p>那为什么 bitcoin 不直接使用公钥呢？很简单，因为公钥中会包含 0 O l 1
+这些容易混淆的字符，有时很难将其区分，而转账时地址一旦输错，是不能追回
+的，同时也为了将公钥的更多一些。所以就需要将公钥，确切的说是公钥的 hash
+值进行 <a class="reference external" href="https://en.bitcoin.it/wiki/Base58Check_encoding">Base58Check</a>
+编码。这个编码是可以解码的，即可以通过地址算出公钥的哈希值，所以在 tx 中
+的 pubkey script 是发送方通过接收方的地址算出其 pubkey hash，然后
+放到 pubkey script 中。</p>
+<p>以下是 bitcoin 从私钥到地址的详细步骤：</p>
+<ol class="arabic simple" start="0">
+<li><p>生成个随机数的 ECDSA 值</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">18e14</span><span class="n">a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>将上面生成的 ECDSA 值使用 ECC 加密生成公钥</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0250863</span><span class="n">ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>对公钥使用 SHA-256 进行 hash，得到一个哈希值</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="n">b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>对上面的 SHA-256 的哈希值 使用 RIPEMD-160 进行 hash，得到另一个哈希值</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>在上面的哈希值前添加一个版本的字段（一个字节），其中 0x00 表示主网</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span>
+</pre></div>
+</div>
+<p>到这一步其实基本已经完成了需要信息的生成，但是还需要对公钥的哈希进行编码，下面
+就是对这个哈希值的 Bass58Check 的编码</p>
+<ol class="arabic simple" start="5">
+<li><p>对第 4 步中所得到的结果使用 SHA-256 进行 hash，得到一个哈希值</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ad3c854da227c7e99c4abfad4ea41d71311160df2e415e713318c70d67c6b41c</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>对上一步的哈希值在进行一次 SHA-256 的 hash，得到另一个哈希值</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c7f18fe8fcbed6396741e58ad259b5cb16b7fd7f041904147ba1dcffabf747fd</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>去上一步结果的前四个字节，作为地址的校验码（checksum）</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c7f18fe8</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>将上一步得到的 checksum 追加到第 4 步的结果的末尾</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span> <span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span> <span class="n">c7f18fe8</span>
+</pre></div>
+</div>
+<p>这里我故意将三个不同的字段用空格分隔开来，实际情况中是没有空格的。
+9. 将上一步的结果使用 Base58Check 编码成一个 base58 格式的字符串，就得到地址了</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="n">PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs</span>
+</pre></div>
+</div>
+<p>从地址到 pubkey hash 就是上面第 8 步到第 9 步的逆操作，通过 Base58Check
+对地址进行解码，然后去掉解码后字符串的前面一个字节和末尾的四个字节，就得到了
+其 pubkey hash。</p>
+<p>下面表格是不同版本对应的值（第四步中的版本字段），以及 Base58Check 编码的结果：</p>
+<table>
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Type</p></th>
+<th class="text-center head"><p>Version prefix (hex)</p></th>
+<th class="text-center head"><p>Base58 result prefix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Bitcoin Address</p></td>
+<td class="text-center"><p>0x00</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Pay-to-Script-Hash Address</p></td>
+<td class="text-center"><p>0x05</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Bitcoin Testnet Address</p></td>
+<td class="text-center"><p>0x6F</p></td>
+<td class="text-center"><p>m or n</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Private Key WIF</p></td>
+<td class="text-center"><p>0x80</p></td>
+<td class="text-center"><p>5, K, or L</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>BIP-38 Encrypted Private Key</p></td>
+<td class="text-center"><p>0x0142</p></td>
+<td class="text-center"><p>6P</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>BIP-32 Extended Public Key</p></td>
+<td class="text-center"><p>0x0488B21E</p></td>
+<td class="text-center"><p>xpub</p></td>
+</tr>
+</tbody>
+</table>
+<p>所以，别人给你看他的账号时，注意看其钱包地址的前缀，不要被骗了，因为有测试网能
+够手动生成区块，这个在 <a class="reference internal" href="#bitcoin-tx"><span class="std std-ref">Transaction</span></a> 一节中的 <a class="reference internal" href="#tx-example"><span class="std std-ref">实例</span></a>
+中会演示。</p>
+<p>Okay，到这里其实就可以自己去写一个来生成 bitcoin 的地址了。</p>
+</section>
+<section id="wallets">
 <span id="bitcoin-wallets"></span><h3 id="wallets">Wallets<a class="headerlink" href="#wallets" title="永久链接至标题">¶</a></h3>
-
-
-
+<ul class="simple">
+<li><p>Full-Service Wallets</p></li>
+</ul>
+<p>create private keys -&gt; derive public keys -&gt; distribute public keys -&gt; monitor for outputs -&gt; sign txes -&gt; broadcast txes</p>
+<ul class="simple">
+<li><p>Signing-Only Wallets</p></li>
+</ul>
+<p>create parent private key -&gt; derive parent public key -&gt; derive child public keys -&gt; | Networked Wallet: distribute public keys -&gt; monitor for outputs -&gt; create unsigned txes :Networked Wallet| -&gt; sign txes -&gt; | Networked Wallet: broadcast txes</p>
+<ul class="simple">
+<li><p>Offline Wallets</p></li>
+<li><p>Hardware Wallets</p></li>
+<li><p>distributing-only wallets</p></li>
+</ul>
+<p>only distribute public keys</p>
+</section>
+</section>
+<section id="transaction">
 <span id="bitcoin-tx"></span><h2 id="transaction">Transaction<a class="headerlink" href="#transaction" title="永久链接至标题">¶</a></h2>
 <p>Transaction，通常缩写成 tx，本文之后统一使用 tx 表示 transaction。
 那么什么是 tx 呢？其实 tx 在金融或者跟确切点来说 —— 银行中用的最多，
@@ -686,7 +847,7 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 毕竟要想确认自己的转账是否成功，最可靠的办法就是去浏览器（区块链的浏览器）
 上查看对应的 tx。而对于技术来说，不单要看懂 tx，还要知道 tx 是怎么构造
 的，即根据自己的需求定制一个 tx。</p>
-
+<section id="utxo">
 <span id="bitcoin-utxo"></span><h3 id="utxo">UTXO<a class="headerlink" href="#utxo" title="永久链接至标题">¶</a></h3>
 <p>在讲 tx 之前，首先要介绍一下 bitcoin 记账的独特机制，一般的银行账户来说，会
 有一个账户余额的概念，而对于 bitcoin 来说，根本就没有账户余额这一说，而是采用
@@ -696,29 +857,29 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 你有 1 btc（10^8 satoshi），那么就意味着你在等待一个或多个 UTXO。那么最初的
 UTXO 来自那里呢？当然是矿工了，因为每当矿工挖到了一个 block，就会被奖励对应的
 btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs 了。</p>
-
-
+</section>
+<section id="transaction-struct">
 <h3 id="transaction-struct">Transaction Struct<a class="headerlink" href="#transaction-struct" title="永久链接至标题">¶</a></h3>
-<p>介绍为 UTXO，那么就直接介绍一下 tx 的具体的结构。</p>
+<p>介绍了 UTXO，那么就直接介绍一下 tx 的具体的结构。</p>
 <p>每个 tx 有六部分组成：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">version</span></code>：4 个字节（uint32_t），表示当前的版本，数字越大，版本越新，当前都
 是 1 或 2，2 表示该 tx 符合 <a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki#specification">BIP-68</a>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tx_in</span> <span class="pre">count</span></code>：可变大小（uint），表示当前 tx 中包含的 input 个数，即下面
 <code class="docutils literal notranslate"><span class="pre">tx_in</span></code> 数组中 txid 的个数。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tx_in</span></code>：tx 的输入，数组，具体介绍见 <a class="reference internal" href="#transaction-input"><span class="std std-ref">TxIn: A Transaction Input (Non-Coinbase)</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tx_in</span></code>：tx 的输入，数组，具体介绍见 <a class="reference internal" href="#tx-input"><span class="std std-ref">TxIn: A Transaction Input (Non-Coinbase)</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tx_out</span> <span class="pre">count</span></code>：可变大小（uint)，表示当前 tx 中包含的 output 个数，即
 下面 <code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 数组中 txid 的个数</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tx_out</span></code>：tx 的输出，数组，具体介绍见 <a class="reference internal" href="#transaction-output"><span class="std std-ref">TxOut: A Transaction Output</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tx_out</span></code>：tx 的输出，数组，具体介绍见 <a class="reference internal" href="#tx-output"><span class="std std-ref">TxOut: A Transaction Output</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">lock_time</span></code>：UTXO 的锁定时间或区块（uint_32_t），用来表示这个 tx 中的
 UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docutils literal notranslate"><span class="pre">tx_in</span></code> 中 <code class="docutils literal notranslate"><span class="pre">sequence</span></code> 的高）</p></li>
 </ul>
-
-
-<span id="transaction-input"></span><h3 id="txin-a-transaction-input-non-coinbase">TxIn: A Transaction Input (Non-Coinbase)<a class="headerlink" href="#txin-a-transaction-input-non-coinbase" title="永久链接至标题">¶</a></h3>
+</section>
+<section id="txin-a-transaction-input-non-coinbase">
+<span id="tx-input"></span><h3 id="txin-a-transaction-input-non-coinbase">TxIn: A Transaction Input (Non-Coinbase)<a class="headerlink" href="#txin-a-transaction-input-non-coinbase" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">previous_output</span></code>：36 字节，上一个 UTXO，或者说是之前的 <code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 中的一个
-元素，又被称为 <code class="docutils literal notranslate"><span class="pre">outpoint</span></code>，其结构见 <a class="reference internal" href="#transaction-txin-outpoint"><span class="std std-ref">Outpoint</span></a>。</p></li>
+元素，又被称为 <code class="docutils literal notranslate"><span class="pre">outpoint</span></code>，其结构见 <a class="reference internal" href="#txin-outpoint"><span class="std std-ref">Outpoint</span></a>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">script</span> <span class="pre">bytes</span></code>：签名脚本的大小（即签名脚本是多少个字节）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">signature</span> <span class="pre">script</span></code>：char[]，满足 <code class="docutils literal notranslate"><span class="pre">outpoint</span></code> 中的公钥脚本（<code class="docutils literal notranslate"><span class="pre">pb_script</span></code>）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sequence</span></code>：4 字节，默认为 <code class="docutils literal notranslate"><span class="pre">0xffffffff</span></code>，这个值是用来禁用 <code class="docutils literal notranslate"><span class="pre">locktime</span></code>，
@@ -733,18 +894,18 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 </ul>
 </li>
 </ul>
-
-
-<span id="transaction-txin-outpoint"></span><h3 id="outpoint">Outpoint<a class="headerlink" href="#outpoint" title="永久链接至标题">¶</a></h3>
+</section>
+<section id="outpoint">
+<span id="txin-outpoint"></span><h3 id="outpoint">Outpoint<a class="headerlink" href="#outpoint" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">hash</span></code>：32 字节，char[32]，包含本次 input 所花费的 utxo 的 tx 的哈希值，
 这个哈希值是正常得到哈希值相反的字节序（小端对齐，little-endian）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>：4 字节，uint32_t，所需要话费的 utxo 在 tx 中位置，即 utxo 在
 <code class="docutils literal notranslate"><span class="pre">vout</span></code>/<code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 数组中的索引/位置。</p></li>
 </ul>
-
-
-<span id="transaction-output"></span><h3 id="txout-a-transaction-output">TxOut: A Transaction Output<a class="headerlink" href="#txout-a-transaction-output" title="永久链接至标题">¶</a></h3>
+</section>
+<section id="txout-a-transaction-output">
+<span id="tx-output"></span><h3 id="txout-a-transaction-output">TxOut: A Transaction Output<a class="headerlink" href="#txout-a-transaction-output" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>：8 字节，int64_t，允许其他人花费的 satoshi，这里的 satoshi 总量
 不能超过 input 中的总量</p></li>
@@ -753,9 +914,9 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 <li><p><code class="docutils literal notranslate"><span class="pre">pk_script</span></code>：定义这个 utxo 是谁可以用的，只有这个脚本执行成功的人才能使用
 这个 utxo，通俗点就是转给谁的。</p></li>
 </ul>
-
-
-<h3 id="id3">实例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+</section>
+<section id="tx-example">
+<span id="id3"></span><h3 id="tx-example">实例<a class="headerlink" href="#tx-example" title="永久链接至标题">¶</a></h3>
 <p>Talk is cheap，所以下面是一个 pay-to-pubkey-hash<a class="footnote-reference brackets" href="#scripts" id="id4">2</a> 的 tx：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01000000</span> <span class="o">...................................</span> <span class="n">Version</span>
 
@@ -965,23 +1126,30 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 </pre></div>
 </div>
 <p>就先到这里吧，Witness Script 还没有去研究，就不去解析他了，等看
-完所有的 scripting 再来解析吧。</p>
-<p>Segwit 的格式参考文章为： https://bitcoincore.org/en/segwit_wallet_dev/#transaction-serialization</p>
-
-
-
+完所有的 scripting 再来解析吧。这里提解析中的一个问题，就是明明
+接受者，这里是指 bob，指提供了其地址，那为什么 发送者 alice 能够
+获取到 bob 的 pubkey hash 呢？这里不要陷入误区，从 private
+key 到 public key，再到 address 是不可逆的，但是可以通过
+address 解码成 pubkey(public key) hash，具体的流程见
+<a class="reference internal" href="#bitcoin-keys-addresses"><span class="std std-ref">Keys / Addresses</span></a></p>
+</section>
+</section>
+<section id="scripting">
 <span id="bitcoin-scipting"></span><h2 id="scripting">Scripting<a class="headerlink" href="#scripting" title="永久链接至标题">¶</a></h2>
-
-
+</section>
+<section id="terminology">
 <span id="bitcoin-terminology"></span><h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="永久链接至标题">¶</a></h2>
-
-
+</section>
+<section id="reference">
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>https://bitcoin.org/bitcoin.pdf</p></li>
 <li><p>https://developer.bitcoin.org/devguide/transactions.html</p></li>
 <li><p>https://developer.bitcoin.org/reference/transactions.html</p></li>
 <li><p>https://github.com/bitcoinbook/bitcoinbook</p></li>
+<li><p>https://bitcoincore.org/en/segwit_wallet_dev/#transaction-serialization</p></li>
+<li><p>https://bitcoin.stackexchange.com/questions/8250/what-is-relation-between-scriptsig-and-scriptpubkey</p></li>
+<li><p>https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses</p></li>
 </ol>
 <hr class="footnotes docutils"/>
 <dl class="footnote brackets">
@@ -998,8 +1166,8 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 <dd><p>https://bitcoin.stackexchange.com/questions/90608/cant-get-the-tx-with-gettransaction-or-getrawtransaction-methods</p>
 </dd>
 </dl>
-
-
+</section>
+</section>
 
 
           </article>
@@ -1048,7 +1216,7 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
