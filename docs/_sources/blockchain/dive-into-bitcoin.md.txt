@@ -103,7 +103,7 @@ btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs �
   - 如果 `>= 500,000,000`，则被解析为 Unix epoch time[^unix-epoch-time]，
     即锁定到某个确切的时间节点，改时间节点后这个 utxo 才能被使用。
 
-[^unix-epoch-time]: 从1970-01-01T00:00UTC距离现在多少秒，计算机通用的做法。
+[^unix-epoch-time]: 从1970-01-01T00:00UTC距离现在多少秒，计算机计算时间的方法。
 
 
 (transaction-txin-outpoint)=
@@ -171,9 +171,9 @@ Talk is cheap，所以下面是一个 pay-to-pubkey-hash[^scripts] 的 tx：
 下面让我们使用本地的测试网来自己手动发起一个 tx，然后看看这个 tx 的数据。
 首先，在自己的 pc 或服务器上安装好 bitcoin 的 node，具体操作步骤，参考
 {ref}`bitcoin-on-pi`。安装好后，先创建三个钱包，一个是矿工的钱包，另外
-两个分别是 Alice 和 Bob（加密学中通用的 Alice 和 Bob）[^cryptocouple]。
+两个分别是 Alice 和 Bob[^cryptocouple] （加密学中通用的 Alice 和 Bob）。
 
-[^cryptocouple]：http://cryptocouple.com/
+[^cryptocouple]: http://cryptocouple.com/
 
 注：这里在配置文件需要在 `bitcoin.conf` 中添加 `txindex=1` 这个配置，
 然后重启 bitcoind，不然 `getrawtransaction` 命令用不了[^txindex]。
@@ -249,8 +249,7 @@ $ bitcoin-cli getrawtransaction c47bc10dc069bbd2bb669b3bb954564cc75c5c0f184dba89
 020000000001013d75af2a19881e883ff5c604eeaaae551f048ee2e530eb3e06569c53216054870100000000fdffffff0200ca9a3b000000001600142d46047172bcaebc2f538ff5960518c0e6fdc965ecf76759000000001600148eede2516b0ff9e902440a95225e39d6d98fad330247304402205faa35a19c56faa2c78f40bf84918ee53117e789c9bb27a37c8c36b0b70d713402205855358e1379e225742110fcdfed064b80e1443c1df3e8c7f77a1c12a3c97211012102ccc59184de0b0e5318308ca755b7af3eef3c62a41c1d802d3a0f1e92c87b529166000000
 ```
 
-没有搞明白为什么 `getawtransaction` 为什么会没结果。
-把这个 tx 中的 hex 用 `decoderawtransaction` 来解析一下这个 tx。
+把这个 tx 用 `decoderawtransaction` 来解析一下这个 tx。
 
 ```
 bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551f048ee2e530eb3e06569c53216054870100000000fdffffff0200ca9a3b000000001600142d46047172bcaebc2f538ff5960518c0e6fdc965ecf76759000000001600148eede2516b0ff9e902440a95225e39d6d98fad330247304402205faa35a19c56faa2c78f40bf84918ee53117e789c9bb27a37c8c36b0b70d713402205855358e1379e225742110fcdfed064b80e1443c1df3e8c7f77a1c12a3c97211012102ccc59184de0b0e5318308ca755b7af3eef3c62a41c1d802d3a0f1e92c87b529166000000
@@ -361,9 +360,7 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 ```
 
 就先到这里吧，Witness Script 还没有去研究，就不去解析他了，等看
-完所有的 scripting 在来解析吧。上面的 locktime 指的是 block
-number，而不是多少个 block 之后，而是在这个 block number/height
-后就能被花费。
+完所有的 scripting 再来解析吧。
 
 Segwit 的格式参考文章为： https://bitcoincore.org/en/segwit_wallet_dev/#transaction-serialization
 

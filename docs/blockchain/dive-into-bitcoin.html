@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -639,12 +638,12 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="dive-into-bitcoin">
+  
 <span id="diving-into-bitcoin"></span><h1 id="blockchain-dive-into-bitcoin--page-root">Dive into Bitcoin<a class="headerlink" href="#blockchain-dive-into-bitcoin--page-root" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div><p><strong>CRYPTO IS HARD, DO NOT TRUST ANYONE, VERIFY YOURSELF !!!</strong></p>
 </div></blockquote>
-<section id="prodromes">
+
 <span id="id1"></span><h2 id="prodromes">序论<a class="headerlink" href="#prodromes" title="永久链接至标题">¶</a></h2>
 <p>正如开头引用的那句话，加密货币里面涉及到的知识太多了，而且经过十多年的发展，
 所需要学习的知识也很多，不过，随着慢慢的接触，我渐渐发现其最底层的原理和基础
@@ -665,20 +664,20 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 <div><p>P.S. 本文知识技术分析介绍，对于投资理财不做任何推荐担保。投资有风险，
 入市需谨慎，对于市场和生活要常怀敬畏之心。</p>
 </div></blockquote>
-</section>
-<section id="keys-addresses-wallets">
+
+
 <h2 id="keys-addresses-wallets">Keys, Addresses, Wallets<a class="headerlink" href="#keys-addresses-wallets" title="永久链接至标题">¶</a></h2>
-<section id="keys">
+
 <span id="bitcoin-keys"></span><h3 id="keys">Keys<a class="headerlink" href="#keys" title="永久链接至标题">¶</a></h3>
-</section>
-<section id="addresses">
+
+
 <span id="bitcoin-addresses"></span><h3 id="addresses">Addresses<a class="headerlink" href="#addresses" title="永久链接至标题">¶</a></h3>
-</section>
-<section id="wallets">
+
+
 <span id="bitcoin-wallets"></span><h3 id="wallets">Wallets<a class="headerlink" href="#wallets" title="永久链接至标题">¶</a></h3>
-</section>
-</section>
-<section id="transaction">
+
+
+
 <span id="bitcoin-tx"></span><h2 id="transaction">Transaction<a class="headerlink" href="#transaction" title="永久链接至标题">¶</a></h2>
 <p>Transaction，通常缩写成 tx，本文之后统一使用 tx 表示 transaction。
 那么什么是 tx 呢？其实 tx 在金融或者跟确切点来说 —— 银行中用的最多，
@@ -687,7 +686,7 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 毕竟要想确认自己的转账是否成功，最可靠的办法就是去浏览器（区块链的浏览器）
 上查看对应的 tx。而对于技术来说，不单要看懂 tx，还要知道 tx 是怎么构造
 的，即根据自己的需求定制一个 tx。</p>
-<section id="utxo">
+
 <span id="bitcoin-utxo"></span><h3 id="utxo">UTXO<a class="headerlink" href="#utxo" title="永久链接至标题">¶</a></h3>
 <p>在讲 tx 之前，首先要介绍一下 bitcoin 记账的独特机制，一般的银行账户来说，会
 有一个账户余额的概念，而对于 bitcoin 来说，根本就没有账户余额这一说，而是采用
@@ -697,8 +696,8 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 你有 1 btc（10^8 satoshi），那么就意味着你在等待一个或多个 UTXO。那么最初的
 UTXO 来自那里呢？当然是矿工了，因为每当矿工挖到了一个 block，就会被奖励对应的
 btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs 了。</p>
-</section>
-<section id="transaction-struct">
+
+
 <h3 id="transaction-struct">Transaction Struct<a class="headerlink" href="#transaction-struct" title="永久链接至标题">¶</a></h3>
 <p>介绍为 UTXO，那么就直接介绍一下 tx 的具体的结构。</p>
 <p>每个 tx 有六部分组成：</p>
@@ -714,8 +713,8 @@ btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs �
 <li><p><code class="docutils literal notranslate"><span class="pre">lock_time</span></code>：UTXO 的锁定时间或区块（uint_32_t），用来表示这个 tx 中的
 UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docutils literal notranslate"><span class="pre">tx_in</span></code> 中 <code class="docutils literal notranslate"><span class="pre">sequence</span></code> 的高）</p></li>
 </ul>
-</section>
-<section id="txin-a-transaction-input-non-coinbase">
+
+
 <span id="transaction-input"></span><h3 id="txin-a-transaction-input-non-coinbase">TxIn: A Transaction Input (Non-Coinbase)<a class="headerlink" href="#txin-a-transaction-input-non-coinbase" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">previous_output</span></code>：36 字节，上一个 UTXO，或者说是之前的 <code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 中的一个
@@ -734,8 +733,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 </ul>
 </li>
 </ul>
-</section>
-<section id="outpoint">
+
+
 <span id="transaction-txin-outpoint"></span><h3 id="outpoint">Outpoint<a class="headerlink" href="#outpoint" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">hash</span></code>：32 字节，char[32]，包含本次 input 所花费的 utxo 的 tx 的哈希值，
@@ -743,8 +742,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 <li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>：4 字节，uint32_t，所需要话费的 utxo 在 tx 中位置，即 utxo 在
 <code class="docutils literal notranslate"><span class="pre">vout</span></code>/<code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 数组中的索引/位置。</p></li>
 </ul>
-</section>
-<section id="txout-a-transaction-output">
+
+
 <span id="transaction-output"></span><h3 id="txout-a-transaction-output">TxOut: A Transaction Output<a class="headerlink" href="#txout-a-transaction-output" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>：8 字节，int64_t，允许其他人花费的 satoshi，这里的 satoshi 总量
@@ -754,8 +753,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 <li><p><code class="docutils literal notranslate"><span class="pre">pk_script</span></code>：定义这个 utxo 是谁可以用的，只有这个脚本执行成功的人才能使用
 这个 utxo，通俗点就是转给谁的。</p></li>
 </ul>
-</section>
-<section id="id3">
+
+
 <h3 id="id3">实例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <p>Talk is cheap，所以下面是一个 pay-to-pubkey-hash<a class="footnote-reference brackets" href="#scripts" id="id4">2</a> 的 tx：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01000000</span> <span class="o">...................................</span> <span class="n">Version</span>
@@ -795,10 +794,9 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 <p>下面让我们使用本地的测试网来自己手动发起一个 tx，然后看看这个 tx 的数据。
 首先，在自己的 pc 或服务器上安装好 bitcoin 的 node，具体操作步骤，参考
 <a class="reference internal" href="bitcoin-on-pi.html#bitcoin-on-pi"><span class="std std-ref">Raspberry Pi 安装 bitcoin</span></a>。安装好后，先创建三个钱包，一个是矿工的钱包，另外
-两个分别是 Alice 和 Bob（加密学中通用的 Alice 和 Bob）[^cryptocouple]。</p>
-<p>[^cryptocouple]：http://cryptocouple.com/</p>
+两个分别是 Alice 和 Bob<a class="footnote-reference brackets" href="#cryptocouple" id="id5">3</a> （加密学中通用的 Alice 和 Bob）。</p>
 <p>注：这里在配置文件需要在 <code class="docutils literal notranslate"><span class="pre">bitcoin.conf</span></code> 中添加 <code class="docutils literal notranslate"><span class="pre">txindex=1</span></code> 这个配置，
-然后重启 bitcoind，不然 <code class="docutils literal notranslate"><span class="pre">getrawtransaction</span></code> 命令用不了<a class="footnote-reference brackets" href="#txindex" id="id5">3</a>。</p>
+然后重启 bitcoind，不然 <code class="docutils literal notranslate"><span class="pre">getrawtransaction</span></code> 命令用不了<a class="footnote-reference brackets" href="#txindex" id="id6">4</a>。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ bitcoin-cli -named createwallet <span class="nv">wallet_name</span><span class="o">=</span><span class="s2">"miner"</span> <span class="se">\</span>
     <span class="nv">avoid_reuse</span><span class="o">=</span><span class="nb">true</span> <span class="nv">load_on_startup</span><span class="o">=</span><span class="nb">true</span>
 
@@ -860,8 +858,7 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 020000000001013d75af2a19881e883ff5c604eeaaae551f048ee2e530eb3e06569c53216054870100000000fdffffff0200ca9a3b000000001600142d46047172bcaebc2f538ff5960518c0e6fdc965ecf76759000000001600148eede2516b0ff9e902440a95225e39d6d98fad330247304402205faa35a19c56faa2c78f40bf84918ee53117e789c9bb27a37c8c36b0b70d713402205855358e1379e225742110fcdfed064b80e1443c1df3e8c7f77a1c12a3c97211012102ccc59184de0b0e5318308ca755b7af3eef3c62a41c1d802d3a0f1e92c87b529166000000
 </pre></div>
 </div>
-<p>没有搞明白为什么 <code class="docutils literal notranslate"><span class="pre">getawtransaction</span></code> 为什么会没结果。
-把这个 tx 中的 hex 用 <code class="docutils literal notranslate"><span class="pre">decoderawtransaction</span></code> 来解析一下这个 tx。</p>
+<p>把这个 tx 用 <code class="docutils literal notranslate"><span class="pre">decoderawtransaction</span></code> 来解析一下这个 tx。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bitcoin</span><span class="o">-</span><span class="n">cli</span> <span class="n">decoderawtransaction</span> <span class="mi">020000000001013</span><span class="n">d75af2a19881e883ff5c604eeaaae551f048ee2e530eb3e06569c53216054870100000000fdffffff0200ca9a3b000000001600142d46047172bcaebc2f538ff5960518c0e6fdc965ecf76759000000001600148eede2516b0ff9e902440a95225e39d6d98fad330247304402205faa35a19c56faa2c78f40bf84918ee53117e789c9bb27a37c8c36b0b70d713402205855358e1379e225742110fcdfed064b80e1443c1df3e8c7f77a1c12a3c97211012102ccc59184de0b0e5318308ca755b7af3eef3c62a41c1d802d3a0f1e92c87b529166000000</span>
 <span class="p">{</span>
   <span class="s2">"txid"</span><span class="p">:</span> <span class="s2">"c47bc10dc069bbd2bb669b3bb954564cc75c5c0f184dba896bde33415ee7e359"</span><span class="p">,</span>
@@ -968,21 +965,19 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 </pre></div>
 </div>
 <p>就先到这里吧，Witness Script 还没有去研究，就不去解析他了，等看
-完所有的 scripting 在来解析吧。上面的 locktime 指的是 block
-number，而不是多少个 block 之后，而是在这个 block number/height
-后就能被花费。</p>
+完所有的 scripting 再来解析吧。</p>
 <p>Segwit 的格式参考文章为： https://bitcoincore.org/en/segwit_wallet_dev/#transaction-serialization</p>
-</section>
-</section>
-<section id="scripting">
+
+
+
 <span id="bitcoin-scipting"></span><h2 id="scripting">Scripting<a class="headerlink" href="#scripting" title="永久链接至标题">¶</a></h2>
-</section>
-<section id="terminology">
+
+
 <span id="bitcoin-terminology"></span><h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="永久链接至标题">¶</a></h2>
-</section>
-<section id="reference">
+
+
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>https://bitcoin.org/bitcoin.pdf</p></li>
 <li><p>https://developer.bitcoin.org/devguide/transactions.html</p></li>
 <li><p>https://developer.bitcoin.org/reference/transactions.html</p></li>
@@ -991,17 +986,20 @@ number，而不是多少个 block 之后，而是在这个 block number/height
 <hr class="footnotes docutils"/>
 <dl class="footnote brackets">
 <dt class="label" id="unix-epoch-time"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>从1970-01-01T00:00UTC距离现在多少秒，计算机通用的做法。</p>
+<dd><p>从1970-01-01T00:00UTC距离现在多少秒，计算机计算时间的方法。</p>
 </dd>
 <dt class="label" id="scripts"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
 <dd><p>比特币有几种脚本语言，这个不是最新的，是比较老的，但也还有在用。</p>
 </dd>
-<dt class="label" id="txindex"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dt class="label" id="cryptocouple"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dd><p>http://cryptocouple.com/</p>
+</dd>
+<dt class="label" id="txindex"><span class="brackets"><a class="fn-backref" href="#id6">4</a></span></dt>
 <dd><p>https://bitcoin.stackexchange.com/questions/90608/cant-get-the-tx-with-gettransaction-or-getrawtransaction-methods</p>
 </dd>
 </dl>
-</section>
-</section>
+
+
 
 
           </article>
@@ -1050,7 +1048,7 @@ number，而不是多少个 block 之后，而是在这个 block number/height
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
