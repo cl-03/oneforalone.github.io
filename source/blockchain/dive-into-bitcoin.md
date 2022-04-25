@@ -31,16 +31,54 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 
 ## Keys, Addresses, Wallets
 
-(bitcoin-keys)=
-### Keys
+0 - Having a private ECDSA key
+`18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725`
+1 - Using ECDSA key to generate public key (33 bytes, 1 byte 0x02 (y-coord is even), and 32 bytes corresponding to X coordinate)
+`0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352`
+2 - Perform SHA-256 hashing on the public key
+`0b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98`
+3 - Perform RIPEMD-160 hashing on the result of SHA-256
+`f54a5851e9372b87810a8e60cdd2e7cfd80b6e31`
+4 - Add version byte in front of RIPEMD-160 hash (0x00 for Main Network)
+`00f54a5851e9372b87810a8e60cdd2e7cfd80b6e31`
+Base58 Check encoding, can be decode
+5 - Perform SHA-256 hash on the result of the extended RIPEMD-160 result
+`ad3c854da227c7e99c4abfad4ea41d71311160df2e415e713318c70d67c6b41c`
+6 - Perform SHA-256 hash on the result of previous SHA-256
+`c7f18fe8fcbed6396741e58ad259b5cb16b7fd7f041904147ba1dcffabf747fd`
+7 - Take the first 4 bytes of the second SHA-256 hash. This is the address checksum
+`c7f18fe8`
+8 - Add the 4 checksum bytes from stage 7 at the end of extended RIPEMD-160 hash from stage 4
+`00 f54a5851e9372b87810a8e60cdd2e7cfd80b6e31 c7f18fe8`
+9 - Convert the result from a byte string into a base58 string using Base58Check encoding
+`1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs`
 
-
-(bitcoin-addresses)=
-### Addresses
+(bitcoin-keys-addresses)=
+### Keys / Addresses
 
 
 (bitcoin-wallets)=
 ### Wallets
+
+#### Full-Service Wallets
+
+create private keys -> derive public keys -> distribute public keys -> monitor for outputs -> sign txes -> broadcast txes
+
+#### Signing-Only Wallets
+
+create parent private key -> derive parent public key -> derive child public keys -> | Networked Wallet: distribute public keys -> monitor for outputs -> create unsigned txes :Networked Wallet| -> sign txes -> | Networked Wallet: broadcast txes
+
+#### Offline Wallets
+
+
+
+#### Hardware Wallets
+
+
+#### distributing-only wallets
+
+only distribute public keys
+
 
 
 (bitcoin-tx)=
@@ -70,7 +108,7 @@ btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs �
 
 ### Transaction Struct
 
-介绍为 UTXO，那么就直接介绍一下 tx 的具体的结构。
+介绍了 UTXO，那么就直接介绍一下 tx 的具体的结构。
 
 每个 tx 有六部分组成：
 
