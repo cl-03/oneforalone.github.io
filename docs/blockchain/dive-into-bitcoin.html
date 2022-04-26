@@ -705,14 +705,14 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 
 <h2 id="keys-addresses-wallets">Keys, Addresses, Wallets<a class="headerlink" href="#keys-addresses-wallets" title="永久链接至标题">¶</a></h2>
 <p>Date: Mon Apr. 25 2022</p>
-<p>在 crypto 中，你有了 private key，你就有了这个 key 的
-一切。所以对于自己的 private key，一定不要大意，失去了这
-个 key，你就失去了你那个账户的一切。这里推荐看一下
+<p>在 crypto 中，有了 private key，才能打开 crypto 的大
+门。所以对于自己的 private key，一定不要大意，失去了这
+个 key，就会被 crypo 拒之门外。这里推荐看一下
 <a class="reference external" href="https://github.com/slowmist/Blockchain-dark-forest-selfguard-handbook">区块链黑暗深林自救手册</a>。
-不要求你完全理解或者说按照其中的每一个步骤去做，但是在
-crypto 这种新兴的产业中，你心中需要有这么一根弦。不要觉得
-安全事小，或者说没人会在意你的那点小资产，但是有积少成多这
-么一个说法，所以，涉及到自己的财产，收起内心的傲慢。正如
+不求完全理解或者按照其中的每一个步骤去做，但是在 crypto
+这种新兴的产业中，你心中需要有这么一根弦。不要觉得安全事小，
+或者觉得资产比较小，没人会在意，但是有“积少成多”这么一个
+说法，所以，涉及到自己的财产，收起内心的傲慢。正如
 《三体》中所说的：“弱小和无知不是生存的障碍，傲慢才是。”</p>
 <p>那么，接下来就开始进入 bitcoin 的世界，开始了解在 bitcoin
 中私钥和公钥以及钱包地址的生成吧。</p>
@@ -756,64 +756,46 @@ Public Key - Hashing Function -&gt; Address</p>
 的 pubkey script 是发送方通过接收方的地址算出其 pubkey hash，然后
 放到 pubkey script 中。</p>
 <p>以下是 bitcoin 从私钥到地址的详细步骤：</p>
-<ol class="simple">
-<li><p>生成个随机数的 ECDSA 值</p></li>
-</ol>
+<p>0 生成个随机数的 ECDSA 值</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">18e14</span><span class="n">a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>将上面生成的 ECDSA 值使用 ECC 加密生成公钥</p></li>
-</ol>
+<p>1 将上面生成的 ECDSA 值使用 ECC 加密生成公钥</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0250863</span><span class="n">ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>对公钥使用 SHA-256 进行 hash，得到一个哈希值</p></li>
-</ol>
+<p>2 对公钥使用 SHA-256 进行 hash，得到一个哈希值</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="n">b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>对上面的 SHA-256 的哈希值 使用 RIPEMD-160 进行 hash，得到另一个哈希值</p></li>
-</ol>
+<p>3 对上面的 SHA-256 的哈希值 使用 RIPEMD-160 进行 hash，得到另一个哈希值</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>在上面的哈希值前添加一个版本的字段（一个字节），其中 0x00 表示主网</p></li>
-</ol>
+<p>4 在上面的哈希值前添加一个版本的字段（一个字节），其中 0x00 表示主网</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span>
 </pre></div>
 </div>
 <p>到这一步其实基本已经完成了需要信息的生成，但是还需要对公钥的哈希进行编码，下面
 就是对这个哈希值的 Bass58Check 的编码</p>
-<ol class="simple">
-<li><p>对第 4 步中所得到的结果使用 SHA-256 进行 hash，得到一个哈希值</p></li>
-</ol>
+<p>5 对第 4 步中所得到的结果使用 SHA-256 进行 hash，得到一个哈希值</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ad3c854da227c7e99c4abfad4ea41d71311160df2e415e713318c70d67c6b41c</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>对上一步的哈希值在进行一次 SHA-256 的 hash，得到另一个哈希值</p></li>
-</ol>
+<p>6 对上一步的哈希值在进行一次 SHA-256 的 hash，得到另一个哈希值</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c7f18fe8fcbed6396741e58ad259b5cb16b7fd7f041904147ba1dcffabf747fd</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>去上一步结果的前四个字节，作为地址的校验码（checksum）</p></li>
-</ol>
+<p>7 去上一步结果的前四个字节，作为地址的校验码（checksum）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c7f18fe8</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>将上一步得到的 checksum 追加到第 4 步的结果的末尾</p></li>
-</ol>
+<p>8 将上一步得到的 checksum 追加到第 4 步的结果的末尾</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span> <span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span> <span class="n">c7f18fe8</span>
 </pre></div>
 </div>
 <p>这里我故意将三个不同的字段用空格分隔开来，实际情况中是没有空格的。
-9. 将上一步的结果使用 Base58Check 编码成一个 base58 格式的字符串，就得到地址了</p>
+9 将上一步的结果使用 Base58Check 编码成一个 base58 格式的字符串，就得到地址了</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="n">PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs</span>
 </pre></div>
 </div>
