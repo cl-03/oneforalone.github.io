@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -598,15 +599,15 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="hacking-in-rust">
 <h1 id="programming-hacking-in-rust--page-root">Hacking in Rust<a class="headerlink" href="#programming-hacking-in-rust--page-root" title="永久链接至标题">¶</a></h1>
-
+<section id="basic">
 <h2 id="basic">Basic<a class="headerlink" href="#basic" title="永久链接至标题">¶</a></h2>
 <p>Date: Tue Apr. 12 2022</p>
 <p>对于一些基础的数据结构和语法，这里就不作详细的介绍，可自行阅读官方文档：
 https://www.rust-lang.org/learn</p>
 <p>主要围绕 rust 一些独有的特性来讲。</p>
-
+<section id="id1">
 <h3 id="id1">概览<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
 <p>rust 主要特性有：</p>
 <ul class="simple">
@@ -616,12 +617,12 @@ https://www.rust-lang.org/learn</p>
 <li><p>Trait: 共享特征/接口</p></li>
 <li><p>Lifetime: 生命周期</p></li>
 </ul>
-
-
+</section>
+<section id="ownership">
 <h3 id="ownership">Ownership<a class="headerlink" href="#ownership" title="永久链接至标题">¶</a></h3>
 <p>TODO:</p>
-
-
+</section>
+<section id="generic-types">
 <h3 id="generic-types">Generic Types<a class="headerlink" href="#generic-types" title="永久链接至标题">¶</a></h3>
 <p>泛型主要是为了处理编程中可能返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>/<code class="docutils literal notranslate"><span class="pre">NULL</span></code>/<code class="docutils literal notranslate"><span class="pre">Nil</span></code> 之类的 bug 问题，同时
 也解决了处理不同类型的参数问题，提高代码的复用率。</p>
@@ -694,7 +695,7 @@ https://www.rust-lang.org/learn</p>
 <p>而对于一些可能返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>/<code class="docutils literal notranslate"><span class="pre">NULL</span></code>/<code class="docutils literal notranslate"><span class="pre">NIL</span></code> 的值，有时候会忘了做判断，有了泛型后，
 如果遇到这种情况会自动 <code class="docutils literal notranslate"><span class="pre">panic</span></code>（即 rust 中的异常）退出。</p>
 <p>对于一些返回值为泛型的函数，想要获取到其中的原型时，有两种方法将原有的类型取出来。</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>使用 <code class="docutils literal notranslate"><span class="pre">unwrap()</span></code> 函数：</p></li>
 </ol>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -705,7 +706,7 @@ https://www.rust-lang.org/learn</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>使用 <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">...</span> <span class="pre">match</span></code> 表达式：</p></li>
 </ol>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -721,17 +722,17 @@ https://www.rust-lang.org/learn</p>
 </pre></div>
 </div>
 <p>Ok, 以上就是 rust 中泛型的介绍了。</p>
-
-
+</section>
+<section id="trait">
 <h3 id="trait">Trait<a class="headerlink" href="#trait" title="永久链接至标题">¶</a></h3>
 <p>TODO:</p>
-
-
+</section>
+<section id="lifetime">
 <h3 id="lifetime">Lifetime<a class="headerlink" href="#lifetime" title="永久链接至标题">¶</a></h3>
 <p>TODO:</p>
-
-
-
+</section>
+</section>
+</section>
 
 
           </article>
@@ -780,7 +781,7 @@ https://www.rust-lang.org/learn</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

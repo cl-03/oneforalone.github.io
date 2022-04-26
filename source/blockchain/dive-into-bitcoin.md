@@ -81,8 +81,8 @@ Private Key 通过椭圆曲线加密得到 Public Key，然后 Public Key
 那么 Private Key 又是什么呢？其实就是一个随机数，这个随机数的大小
 是 256 位，即 Private Key 的范围是 (0, 2^256)。这里的随机数不能
 使用一些伪随机数生成器生成，这样很容易被人破解，因为椭圆曲线原本是有
-两个变量，无法直接求解，如果随机数是个比较确定的，那么就能直接通过公
-式将另一个变量推导出来，从而将你的公私钥给破解。Sony 的 PS3 就是因为
+两个变量，无法直接求解，如果随机数是个确定的值，那么就能直接通过公
+式将另一个变量求解出来，从而将你的公私钥给破解。Sony 的 PS3 就是因为
 用于签名的随机数是固定的，结果被人给破解了。具体的可以参考知乎文章：
 [一文读懂 ECDSSA 算法如何保护数据](https://zhuanlan.zhihu.com/p/97953640)
 
@@ -96,23 +96,23 @@ Private Key 通过椭圆曲线加密得到 Public Key，然后 Public Key
 
 以下是 bitcoin 从私钥到地址的详细步骤：
 
-0 生成个随机数的 ECDSA 值
+0 - 生成个随机数的 ECDSA 值
 ```
 18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725
 ```
-1 将上面生成的 ECDSA 值使用 ECC 加密生成公钥
+1 - 将上面生成的 ECDSA 值使用 ECC 加密生成公钥
 ```
 0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352
 ```
-2 对公钥使用 SHA-256 进行 hash，得到一个哈希值
+2 - 对公钥使用 SHA-256 进行 hash，得到一个哈希值
 ```
 0b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98
 ```
-3 对上面的 SHA-256 的哈希值 使用 RIPEMD-160 进行 hash，得到另一个哈希值
+3 - 对上面的 SHA-256 的哈希值 使用 RIPEMD-160 进行 hash，得到另一个哈希值
 ```
 f54a5851e9372b87810a8e60cdd2e7cfd80b6e31
 ```
-4 在上面的哈希值前添加一个版本的字段（一个字节），其中 0x00 表示主网
+4 - 在上面的哈希值前添加一个版本的字段（一个字节），其中 0x00 表示主网
 ```
 00f54a5851e9372b87810a8e60cdd2e7cfd80b6e31
 ```
@@ -120,24 +120,25 @@ f54a5851e9372b87810a8e60cdd2e7cfd80b6e31
 到这一步其实基本已经完成了需要信息的生成，但是还需要对公钥的哈希进行编码，下面
 就是对这个哈希值的 Bass58Check 的编码
 
-5 对第 4 步中所得到的结果使用 SHA-256 进行 hash，得到一个哈希值
+5 - 对第 4 步中所得到的结果使用 SHA-256 进行 hash，得到一个哈希值
 ```
 ad3c854da227c7e99c4abfad4ea41d71311160df2e415e713318c70d67c6b41c
 ```
-6 对上一步的哈希值在进行一次 SHA-256 的 hash，得到另一个哈希值
+6 - 对上一步的哈希值在进行一次 SHA-256 的 hash，得到另一个哈希值
 ```
 c7f18fe8fcbed6396741e58ad259b5cb16b7fd7f041904147ba1dcffabf747fd
 ```
-7 去上一步结果的前四个字节，作为地址的校验码（checksum）
+7 - 取上一步结果的前四个字节，作为地址的校验码（checksum）
 ```
 c7f18fe8
 ```
-8 将上一步得到的 checksum 追加到第 4 步的结果的末尾
+8 - 将上一步得到的 checksum 追加到第 4 步的结果的末尾
 ```
 00 f54a5851e9372b87810a8e60cdd2e7cfd80b6e31 c7f18fe8
 ```
 这里我故意将三个不同的字段用空格分隔开来，实际情况中是没有空格的。
-9 将上一步的结果使用 Base58Check 编码成一个 base58 格式的字符串，就得到地址了
+
+9 - 将上一步的结果使用 Base58Check 编码成一个 base58 格式的字符串，就得到地址了
 ```
 1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs
 ```
@@ -159,10 +160,10 @@ c7f18fe8
 
 所以，别人给你看他的账号时，注意看其钱包地址的前缀，不要被骗了，因为有测试网能
 够手动生成区块，这个在 {ref}`bitcoin-tx` 一节中的 {ref}`tx-example`
-中会演示。好像上面又翻车了， version prefix 新的 BIP 不止一个字段，不过这
+中会演示。好像上面又翻车了， version prefix 新的 BIP 不止一个字节，不过这
 些都是更新过来的，基本的原理没差的。
 
-Okay，到这里其实就可以自己去写一个来生成 bitcoin 的地址了。
+Okay，到这里其实就可以自己去写代码来生成 bitcoin 的地址了。
 
 
 (bitcoin-wallets)=
@@ -199,7 +200,7 @@ Okay，到这里其实就可以自己去写一个来生成 bitcoin 的地址了�
 Format 的缩写，就是为了降低复制私钥出错的可能，就有了 WIF，
 WIF 也是用 Base58Check 对私钥进行编码。和
 {ref}`bitcoin-keys-addresses` 中编码 pubkey hash 的
-步骤一致，就是 version prefix 不同而以，具体对应关系都在
+步骤一致，就是 version prefix 不同而已，具体对应关系都在
 上节中末尾的表格中写明了。
 
 
@@ -211,7 +212,7 @@ Transaction，通常缩写成 tx，本文之后统一使用 tx 表示 transactio
 因为 tx 的字面意思就是交易记录。而 bitcoin 作为分布式的账本，其记录
 的就是 tx。所以了解 tx 或者说看懂 tx 是一个懂行的 crypto 的必备知识，
 毕竟要想确认自己的转账是否成功，最可靠的办法就是去浏览器（区块链的浏览器）
-上查看对应的 tx。而对于技术来说，不单要看懂 tx，还要知道 tx 是怎么构造
+上查看对应的 tx。而对于技术来说，不但要看懂 tx，还要知道 tx 是怎么构造
 的，即根据自己的需求定制一个 tx。
 
 
@@ -240,7 +241,7 @@ btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs �
   `tx_in` 数组中 txid 的个数。
 * `tx_in`：tx 的输入，数组，具体介绍见 {ref}`tx-input`
 * `tx_out count`：可变大小（uint)，表示当前 tx 中包含的 output 个数，即
-  下面 `tx_out` 数组中 txid 的个数
+  下面 `tx_out` 数组中元素的个数
 * `tx_out`：tx 的输出，数组，具体介绍见 {ref}`tx-output`
 * `lock_time`：UTXO 的锁定时间或区块（uint_32_t），用来表示这个 tx 中的
   UTXO 多久或哪个区块后可以被消费（优先级没有 `tx_in` 中 `sequence` 的高）
@@ -366,7 +367,7 @@ bcrt1q94rqgutjhjhtct6n3l6evpgccrn0mjt9v7qn5h
 生成地址后挖 101 个块给 miner，这个 101 是有讲究的，因为 bitcoin
 miner 挖出来的块需要 100 个区块确认后才可以消费，不然 miner 的
 balance 不会改变，依旧为 0。如果你想给 miner 中多放点钱，那就多
-挖一些，反正不能少于 101，我就是因为这个困扰了我好几天。
+挖一些，反正不能少于 101，就是因为这个困扰了我好几天。
 
 ```bash
 $ bitcoin-cli generatetoaddress 101 bcrt1q6xhr6gpxvlnv2n2gjhu03psa20w9rschxktjfv
@@ -464,7 +465,7 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 ```
 
 好吧，研究一个小时发现翻车了，这个 tx 是比较新的，使用的是 segwit
-的脚本语言，这个下一节中会去研究。但是不管怎么样，最基础的没有变，也
+的脚本语言，这个下一节中会讲解。但是不管怎么样，最基础的没有变，也
 就是要做个微调，总之今天就是要将这个 tx 解析出来，以下是解析的结果：
 
 ```
@@ -519,13 +520,11 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 66000000 ................................... locktime:  102 (a block height)
 ```
 
-就先到这里吧，Witness Script 还没有去研究，就不去解析他了，等看
-完所有的 scripting 再来解析吧。这里提解析中的一个问题，就是明明
-接受者，这里是指 bob，指提供了其地址，那为什么 发送者 alice 能够
-获取到 bob 的 pubkey hash 呢？这里不要陷入误区，从 private
-key 到 public key，再到 address 是不可逆的，但是可以通过
-address 解码成 pubkey(public key) hash，具体的流程见
-{ref}`bitcoin-keys-addresses`
+就先到这里吧，这里提一下解析中的一个问题，就是明明接受者（bob），
+只提供了其地址，那为什么发送者 alice 能够获取到 bob 的 pubkey
+hash 呢？这里不要陷入误区，从 private key 到 public key，
+再到 address 是不可逆的，但是 address 到 pubkey hash 是可逆的，
+具体的流程见 {ref}`bitcoin-keys-addresses`
 
 
 ### Optional: Coinbase Input
