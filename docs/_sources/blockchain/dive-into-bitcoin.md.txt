@@ -3,7 +3,6 @@
 
 > **CRYPTO IS HARD, DO NOT TRUST ANYONE, VERIFY YOURSELF !!!**
 
-TODO: 等我撸完 geth 的代码，再回来撸 bitcoin 的。
 
 (prodromes)=
 ## Prodromes
