@@ -796,4 +796,4 @@ Merkel Root 和 Pow 的介绍在 {ref}`blockchain-concepts` 中
 4. https://github.com/bitcoinbook/bitcoinbook
 5. https://bitcoincore.org/en/segwit_wallet_dev/#transaction-serialization
 6. https://bitcoin.stackexchange.com/questions/8250/what-is-relation-between-scriptsig-and-scriptpubkey
-7. https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
+7. [Bitcoin Wiki: Addresses](https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses)
