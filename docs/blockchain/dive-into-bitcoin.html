@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -275,7 +274,7 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#blockchain-dive-into-bitcoin--page-root" class="md-nav__link">Dive into Bitcoin</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#prodromes" class="md-nav__link">序论</a>
+        <li class="md-nav__item"><a href="#prodromes" class="md-nav__link">Prodromes</a>
         </li>
         <li class="md-nav__item"><a href="#keys-addresses-wallets" class="md-nav__link">Keys, Addresses, Wallets</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -298,10 +297,30 @@
         <li class="md-nav__item"><a href="#txout-a-transaction-output" class="md-nav__link">TxOut: A Transaction Output</a>
         </li>
         <li class="md-nav__item"><a href="#tx-example" class="md-nav__link">实例</a>
+        </li>
+        <li class="md-nav__item"><a href="#optional-coinbase-input" class="md-nav__link">Optional: Coinbase Input</a>
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#scripting" class="md-nav__link">Scripting</a>
+        <li class="md-nav__item"><a href="#scripting" class="md-nav__link">Scripting</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#pay-to-public-key-hash-p2pkh" class="md-nav__link">Pay To Public Key Hash (P2PKH)</a>
+        </li>
+        <li class="md-nav__item"><a href="#pay-to-script-hash-p2sh" class="md-nav__link">Pay To Script Hash (P2SH)</a>
+        </li>
+        <li class="md-nav__item"><a href="#p2pkh-script-validation" class="md-nav__link">P2PKH Script Validation</a>
+        </li>
+        <li class="md-nav__item"><a href="#multisig" class="md-nav__link">Multisig</a>
+        </li>
+        <li class="md-nav__item"><a href="#pubkey" class="md-nav__link">Pubkey</a>
+        </li>
+        <li class="md-nav__item"><a href="#null-data" class="md-nav__link">Null Data</a>
+        </li>
+        <li class="md-nav__item"><a href="#pay-to-witness-public-key-hash-p2wpkh" class="md-nav__link">Pay to Witness Public Key Hash (P2WPKH)</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#block" class="md-nav__link">Block</a>
         </li>
         <li class="md-nav__item"><a href="#terminology" class="md-nav__link">Terminology</a>
         </li>
@@ -587,7 +606,7 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#blockchain-dive-into-bitcoin--page-root" class="md-nav__link">Dive into Bitcoin</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#prodromes" class="md-nav__link">序论</a>
+        <li class="md-nav__item"><a href="#prodromes" class="md-nav__link">Prodromes</a>
         </li>
         <li class="md-nav__item"><a href="#keys-addresses-wallets" class="md-nav__link">Keys, Addresses, Wallets</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -610,10 +629,30 @@
         <li class="md-nav__item"><a href="#txout-a-transaction-output" class="md-nav__link">TxOut: A Transaction Output</a>
         </li>
         <li class="md-nav__item"><a href="#tx-example" class="md-nav__link">实例</a>
+        </li>
+        <li class="md-nav__item"><a href="#optional-coinbase-input" class="md-nav__link">Optional: Coinbase Input</a>
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#scripting" class="md-nav__link">Scripting</a>
+        <li class="md-nav__item"><a href="#scripting" class="md-nav__link">Scripting</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#pay-to-public-key-hash-p2pkh" class="md-nav__link">Pay To Public Key Hash (P2PKH)</a>
+        </li>
+        <li class="md-nav__item"><a href="#pay-to-script-hash-p2sh" class="md-nav__link">Pay To Script Hash (P2SH)</a>
+        </li>
+        <li class="md-nav__item"><a href="#p2pkh-script-validation" class="md-nav__link">P2PKH Script Validation</a>
+        </li>
+        <li class="md-nav__item"><a href="#multisig" class="md-nav__link">Multisig</a>
+        </li>
+        <li class="md-nav__item"><a href="#pubkey" class="md-nav__link">Pubkey</a>
+        </li>
+        <li class="md-nav__item"><a href="#null-data" class="md-nav__link">Null Data</a>
+        </li>
+        <li class="md-nav__item"><a href="#pay-to-witness-public-key-hash-p2wpkh" class="md-nav__link">Pay to Witness Public Key Hash (P2WPKH)</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#block" class="md-nav__link">Block</a>
         </li>
         <li class="md-nav__item"><a href="#terminology" class="md-nav__link">Terminology</a>
         </li>
@@ -635,13 +674,14 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="dive-into-bitcoin">
+  
 <span id="diving-into-bitcoin"></span><h1 id="blockchain-dive-into-bitcoin--page-root">Dive into Bitcoin<a class="headerlink" href="#blockchain-dive-into-bitcoin--page-root" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div><p><strong>CRYPTO IS HARD, DO NOT TRUST ANYONE, VERIFY YOURSELF !!!</strong></p>
 </div></blockquote>
-<section id="prodromes">
-<span id="id1"></span><h2 id="prodromes">序论<a class="headerlink" href="#prodromes" title="永久链接至标题">¶</a></h2>
+<p>TODO: 等我撸完 geth 的代码，再回来撸 bitcoin 的。</p>
+
+<span id="id1"></span><h2 id="prodromes">Prodromes<a class="headerlink" href="#prodromes" title="永久链接至标题">¶</a></h2>
 <p>正如开头引用的那句话，加密货币里面涉及到的知识太多了，而且经过十多年的发展，
 所需要学习的知识也很多，不过，随着慢慢的接触，我渐渐发现其最底层的原理和基础
 是大同小异的。因此，为了深入研究，需要从加密货币的鼻祖进行研究（好吧，其实是
@@ -661,8 +701,8 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 <div><p>P.S. 本文知识技术分析介绍，对于投资理财不做任何推荐担保。投资有风险，
 入市需谨慎，对于市场和生活要常怀敬畏之心。</p>
 </div></blockquote>
-</section>
-<section id="keys-addresses-wallets">
+
+
 <h2 id="keys-addresses-wallets">Keys, Addresses, Wallets<a class="headerlink" href="#keys-addresses-wallets" title="永久链接至标题">¶</a></h2>
 <p>Date: Mon Apr. 25 2022</p>
 <p>在 crypto 中，你有了 private key，你就有了这个 key 的
@@ -676,7 +716,7 @@ crypto 这种新兴的产业中，你心中需要有这么一根弦。不要觉�
 《三体》中所说的：“弱小和无知不是生存的障碍，傲慢才是。”</p>
 <p>那么，接下来就开始进入 bitcoin 的世界，开始了解在 bitcoin
 中私钥和公钥以及钱包地址的生成吧。</p>
-<section id="keys-addresses">
+
 <span id="bitcoin-keys-addresses"></span><h3 id="keys-addresses">Keys / Addresses<a class="headerlink" href="#keys-addresses" title="永久链接至标题">¶</a></h3>
 <p>首先， bitcoin 或者说整个 crypto 中，账号的生成使用的加密算法都
 是一致的，使用的都是<a class="reference external" href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">椭圆曲线加密</a>
@@ -716,31 +756,31 @@ Public Key - Hashing Function -&gt; Address</p>
 的 pubkey script 是发送方通过接收方的地址算出其 pubkey hash，然后
 放到 pubkey script 中。</p>
 <p>以下是 bitcoin 从私钥到地址的详细步骤：</p>
-<ol class="arabic simple" start="0">
+<ol class="simple">
 <li><p>生成个随机数的 ECDSA 值</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">18e14</span><span class="n">a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725</span>
 </pre></div>
 </div>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>将上面生成的 ECDSA 值使用 ECC 加密生成公钥</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0250863</span><span class="n">ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+<ol class="simple">
 <li><p>对公钥使用 SHA-256 进行 hash，得到一个哈希值</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="n">b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+<ol class="simple">
 <li><p>对上面的 SHA-256 的哈希值 使用 RIPEMD-160 进行 hash，得到另一个哈希值</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="simple">
 <li><p>在上面的哈希值前添加一个版本的字段（一个字节），其中 0x00 表示主网</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span>
@@ -748,25 +788,25 @@ Public Key - Hashing Function -&gt; Address</p>
 </div>
 <p>到这一步其实基本已经完成了需要信息的生成，但是还需要对公钥的哈希进行编码，下面
 就是对这个哈希值的 Bass58Check 的编码</p>
-<ol class="arabic simple" start="5">
+<ol class="simple">
 <li><p>对第 4 步中所得到的结果使用 SHA-256 进行 hash，得到一个哈希值</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ad3c854da227c7e99c4abfad4ea41d71311160df2e415e713318c70d67c6b41c</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="simple">
 <li><p>对上一步的哈希值在进行一次 SHA-256 的 hash，得到另一个哈希值</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c7f18fe8fcbed6396741e58ad259b5cb16b7fd7f041904147ba1dcffabf747fd</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+<ol class="simple">
 <li><p>去上一步结果的前四个字节，作为地址的校验码（checksum）</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c7f18fe8</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="8">
+<ol class="simple">
 <li><p>将上一步得到的 checksum 追加到第 4 步的结果的末尾</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span> <span class="n">f54a5851e9372b87810a8e60cdd2e7cfd80b6e31</span> <span class="n">c7f18fe8</span>
@@ -783,62 +823,78 @@ Public Key - Hashing Function -&gt; Address</p>
 <p>下面表格是不同版本对应的值（第四步中的版本字段），以及 Base58Check 编码的结果：</p>
 <table>
 <thead>
-<tr class="row-odd"><th class="text-center head"><p>Type</p></th>
-<th class="text-center head"><p>Version prefix (hex)</p></th>
-<th class="text-center head"><p>Base58 result prefix</p></th>
+<tr class="row-odd"><th class="text-align:center head"><p>Type</p></th>
+<th class="text-align:center head"><p>Version prefix (hex)</p></th>
+<th class="text-align:center head"><p>Base58 result prefix</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p>Bitcoin Address</p></td>
-<td class="text-center"><p>0x00</p></td>
-<td class="text-center"><p>1</p></td>
+<tr class="row-even"><td class="text-align:center"><p>Bitcoin Address</p></td>
+<td class="text-align:center"><p>0x00</p></td>
+<td class="text-align:center"><p>1</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>Pay-to-Script-Hash Address</p></td>
-<td class="text-center"><p>0x05</p></td>
-<td class="text-center"><p>3</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>Pay-to-Script-Hash Address</p></td>
+<td class="text-align:center"><p>0x05</p></td>
+<td class="text-align:center"><p>3</p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p>Bitcoin Testnet Address</p></td>
-<td class="text-center"><p>0x6F</p></td>
-<td class="text-center"><p>m or n</p></td>
+<tr class="row-even"><td class="text-align:center"><p>Bitcoin Testnet Address</p></td>
+<td class="text-align:center"><p>0x6F</p></td>
+<td class="text-align:center"><p>m or n</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>Private Key WIF</p></td>
-<td class="text-center"><p>0x80</p></td>
-<td class="text-center"><p>5, K, or L</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>Private Key WIF</p></td>
+<td class="text-align:center"><p>0x80</p></td>
+<td class="text-align:center"><p>5, K, or L</p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p>BIP-38 Encrypted Private Key</p></td>
-<td class="text-center"><p>0x0142</p></td>
-<td class="text-center"><p>6P</p></td>
+<tr class="row-even"><td class="text-align:center"><p>BIP-38 Encrypted Private Key</p></td>
+<td class="text-align:center"><p>0x0142</p></td>
+<td class="text-align:center"><p>6P</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>BIP-32 Extended Public Key</p></td>
-<td class="text-center"><p>0x0488B21E</p></td>
-<td class="text-center"><p>xpub</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>BIP-32 Extended Public Key</p></td>
+<td class="text-align:center"><p>0x0488B21E</p></td>
+<td class="text-align:center"><p>xpub</p></td>
 </tr>
 </tbody>
 </table>
 <p>所以，别人给你看他的账号时，注意看其钱包地址的前缀，不要被骗了，因为有测试网能
 够手动生成区块，这个在 <a class="reference internal" href="#bitcoin-tx"><span class="std std-ref">Transaction</span></a> 一节中的 <a class="reference internal" href="#tx-example"><span class="std std-ref">实例</span></a>
-中会演示。</p>
+中会演示。好像上面又翻车了， version prefix 新的 BIP 不止一个字段，不过这
+些都是更新过来的，基本的原理没差的。</p>
 <p>Okay，到这里其实就可以自己去写一个来生成 bitcoin 的地址了。</p>
-</section>
-<section id="wallets">
+
+
 <span id="bitcoin-wallets"></span><h3 id="wallets">Wallets<a class="headerlink" href="#wallets" title="永久链接至标题">¶</a></h3>
+<p>相比于 Ethereum，bitcoin 的钱包稍微特殊一点，因为有些钱包是需
+要同步节点的，不过这个也没办法，毕竟他没有余额这一概念，每次查询
+余额都是去计算一下改账号的 vin 和 vout。</p>
+<p>钱包的种类也比较多，这个只能说是分类方式不同，这里就做个简短的介绍。</p>
+<p>如果按其功能来说，有三种：</p>
 <ul class="simple">
 <li><p>Full-Service Wallets</p></li>
-</ul>
-<p>create private keys -&gt; derive public keys -&gt; distribute public keys -&gt; monitor for outputs -&gt; sign txes -&gt; broadcast txes</p>
-<ul class="simple">
 <li><p>Signing-Only Wallets</p></li>
+<li><p>Distributing-Only wallets</p></li>
 </ul>
-<p>create parent private key -&gt; derive parent public key -&gt; derive child public keys -&gt; | Networked Wallet: distribute public keys -&gt; monitor for outputs -&gt; create unsigned txes :Networked Wallet| -&gt; sign txes -&gt; | Networked Wallet: broadcast txes</p>
+<p>这个分类就是字面意思，通俗易懂，没啥好介绍的。Distributing-Only
+是只在网上分发pubkey（其实是pubkey hash 的 Base58 地址）。</p>
+<p>按是否联网，可以分为两种：</p>
 <ul class="simple">
+<li><p>Online Wallets</p></li>
 <li><p>Offline Wallets</p></li>
-<li><p>Hardware Wallets</p></li>
-<li><p>distributing-only wallets</p></li>
 </ul>
-<p>only distribute public keys</p>
-</section>
-</section>
-<section id="transaction">
+<p>按钱包的构成又分为:</p>
+<ul class="simple">
+<li><p>Software Wallets</p></li>
+<li><p>Hardware Wallets</p></li>
+</ul>
+<p>其中 Hardware Wallets 大部分是 Signin-Only Wallets。</p>
+<p>如果玩的比较多的话，那么就一定会接触到 WIF，Wallet Import
+Format 的缩写，就是为了降低复制私钥出错的可能，就有了 WIF，
+WIF 也是用 Base58Check 对私钥进行编码。和
+<a class="reference internal" href="#bitcoin-keys-addresses"><span class="std std-ref">Keys / Addresses</span></a> 中编码 pubkey hash 的
+步骤一致，就是 version prefix 不同而以，具体对应关系都在
+上节中末尾的表格中写明了。</p>
+
+
+
 <span id="bitcoin-tx"></span><h2 id="transaction">Transaction<a class="headerlink" href="#transaction" title="永久链接至标题">¶</a></h2>
 <p>Transaction，通常缩写成 tx，本文之后统一使用 tx 表示 transaction。
 那么什么是 tx 呢？其实 tx 在金融或者跟确切点来说 —— 银行中用的最多，
@@ -847,7 +903,7 @@ Public Key - Hashing Function -&gt; Address</p>
 毕竟要想确认自己的转账是否成功，最可靠的办法就是去浏览器（区块链的浏览器）
 上查看对应的 tx。而对于技术来说，不单要看懂 tx，还要知道 tx 是怎么构造
 的，即根据自己的需求定制一个 tx。</p>
-<section id="utxo">
+
 <span id="bitcoin-utxo"></span><h3 id="utxo">UTXO<a class="headerlink" href="#utxo" title="永久链接至标题">¶</a></h3>
 <p>在讲 tx 之前，首先要介绍一下 bitcoin 记账的独特机制，一般的银行账户来说，会
 有一个账户余额的概念，而对于 bitcoin 来说，根本就没有账户余额这一说，而是采用
@@ -857,8 +913,8 @@ Public Key - Hashing Function -&gt; Address</p>
 你有 1 btc（10^8 satoshi），那么就意味着你在等待一个或多个 UTXO。那么最初的
 UTXO 来自那里呢？当然是矿工了，因为每当矿工挖到了一个 block，就会被奖励对应的
 btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs 了。</p>
-</section>
-<section id="transaction-struct">
+
+
 <h3 id="transaction-struct">Transaction Struct<a class="headerlink" href="#transaction-struct" title="永久链接至标题">¶</a></h3>
 <p>介绍了 UTXO，那么就直接介绍一下 tx 的具体的结构。</p>
 <p>每个 tx 有六部分组成：</p>
@@ -874,8 +930,8 @@ btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs �
 <li><p><code class="docutils literal notranslate"><span class="pre">lock_time</span></code>：UTXO 的锁定时间或区块（uint_32_t），用来表示这个 tx 中的
 UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docutils literal notranslate"><span class="pre">tx_in</span></code> 中 <code class="docutils literal notranslate"><span class="pre">sequence</span></code> 的高）</p></li>
 </ul>
-</section>
-<section id="txin-a-transaction-input-non-coinbase">
+
+
 <span id="tx-input"></span><h3 id="txin-a-transaction-input-non-coinbase">TxIn: A Transaction Input (Non-Coinbase)<a class="headerlink" href="#txin-a-transaction-input-non-coinbase" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">previous_output</span></code>：36 字节，上一个 UTXO，或者说是之前的 <code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 中的一个
@@ -894,8 +950,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 </ul>
 </li>
 </ul>
-</section>
-<section id="outpoint">
+
+
 <span id="txin-outpoint"></span><h3 id="outpoint">Outpoint<a class="headerlink" href="#outpoint" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">hash</span></code>：32 字节，char[32]，包含本次 input 所花费的 utxo 的 tx 的哈希值，
@@ -903,8 +959,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 <li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>：4 字节，uint32_t，所需要话费的 utxo 在 tx 中位置，即 utxo 在
 <code class="docutils literal notranslate"><span class="pre">vout</span></code>/<code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 数组中的索引/位置。</p></li>
 </ul>
-</section>
-<section id="txout-a-transaction-output">
+
+
 <span id="tx-output"></span><h3 id="txout-a-transaction-output">TxOut: A Transaction Output<a class="headerlink" href="#txout-a-transaction-output" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>：8 字节，int64_t，允许其他人花费的 satoshi，这里的 satoshi 总量
@@ -914,8 +970,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 <li><p><code class="docutils literal notranslate"><span class="pre">pk_script</span></code>：定义这个 utxo 是谁可以用的，只有这个脚本执行成功的人才能使用
 这个 utxo，通俗点就是转给谁的。</p></li>
 </ul>
-</section>
-<section id="tx-example">
+
+
 <span id="id3"></span><h3 id="tx-example">实例<a class="headerlink" href="#tx-example" title="永久链接至标题">¶</a></h3>
 <p>Talk is cheap，所以下面是一个 pay-to-pubkey-hash<a class="footnote-reference brackets" href="#scripts" id="id4">2</a> 的 tx：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01000000</span> <span class="o">...................................</span> <span class="n">Version</span>
@@ -1115,11 +1171,11 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 <span class="o">|</span> <span class="o">|</span> <span class="mi">84918</span><span class="n">ee53117e789c9bb27a37c8c36b0</span>
 <span class="o">|</span> <span class="o">|</span> <span class="n">b70d713402205855358e1379e2257421</span>
 <span class="o">|</span> <span class="o">|</span> <span class="mi">10</span><span class="n">fcdfed064b80e1443c1df3e8c7f77a</span>
-<span class="o">|</span> <span class="o">|</span> <span class="mi">1</span><span class="n">c12a3c9721101</span> <span class="o">.........................</span> <span class="n">Witness</span> <span class="n">Script</span><span class="p">,</span> <span class="n">big</span><span class="o">-</span><span class="n">endian</span>
+<span class="o">|</span> <span class="o">|</span> <span class="mi">1</span><span class="n">c12a3c9721101</span> <span class="o">.........................</span> <span class="n">SegWit</span><span class="p">,</span> <span class="n">big</span><span class="o">-</span><span class="n">endian</span>
 <span class="o">|</span>
 <span class="o">|</span> <span class="mi">21</span> <span class="o">.......................................</span> <span class="n">Bytes</span> <span class="ow">in</span> <span class="n">witness</span> <span class="n">script</span><span class="p">:</span> <span class="mi">33</span>
 <span class="o">|</span> <span class="o">|</span> <span class="mi">02</span><span class="n">ccc59184de0b0e5318308ca755b7af</span>
-<span class="o">|</span> <span class="o">|</span> <span class="mi">3</span><span class="n">eef3c62a41c1d802d3a0f1e92c87b5291</span> <span class="o">.....</span> <span class="n">Witness</span> <span class="n">Script</span><span class="p">,</span> <span class="n">big</span><span class="o">-</span><span class="n">endian</span>
+<span class="o">|</span> <span class="o">|</span> <span class="mi">3</span><span class="n">eef3c62a41c1d802d3a0f1e92c87b5291</span> <span class="o">.....</span> <span class="n">SegWit</span><span class="p">,</span> <span class="n">big</span><span class="o">-</span><span class="n">endian</span>
 
 <span class="o">|</span>                                            <span class="n">nLockTime</span>
 <span class="mi">66000000</span> <span class="o">...................................</span> <span class="n">locktime</span><span class="p">:</span>  <span class="mi">102</span> <span class="p">(</span><span class="n">a</span> <span class="n">block</span> <span class="n">height</span><span class="p">)</span>
@@ -1132,17 +1188,225 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 key 到 public key，再到 address 是不可逆的，但是可以通过
 address 解码成 pubkey(public key) hash，具体的流程见
 <a class="reference internal" href="#bitcoin-keys-addresses"><span class="std std-ref">Keys / Addresses</span></a></p>
-</section>
-</section>
-<section id="scripting">
+
+
+<h3 id="optional-coinbase-input">Optional: Coinbase Input<a class="headerlink" href="#optional-coinbase-input" title="永久链接至标题">¶</a></h3>
+<p>TxIn 是分两种，一种就是正常的转账，还有一种就是 utxo 的源头，
+爆块的到的奖励，这个一般是矿工比较关注的。</p>
+<p>Coinbase Input 的结构如下：</p>
+<ul class="simple">
+<li><p>hash：32 字节，char[32]，null，全为 0</p></li>
+<li><p>index：4 字节，uint32_t，0xffffffff</p></li>
+<li><p>script bytes：可变大小，uint，script 的大小，最大为 100</p></li>
+<li><p>height：最长 4 字节，script 中前多少个字节表示高度。</p></li>
+<li><p>coinbase script：最长 100 - 4 = 96 个字节，任意数据</p></li>
+<li><p>sequence：4 字节，uint32_t，sequence number</p></li>
+</ul>
+<p>官方给给出的示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01000000</span> <span class="o">..............................</span> <span class="n">Version</span>
+
+<span class="mi">01</span> <span class="o">....................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">inputs</span>
+<span class="o">|</span> <span class="mi">00000000000000000000000000000000</span>
+<span class="o">|</span> <span class="mi">00000000000000000000000000000000</span> <span class="o">...</span>  <span class="n">Previous</span> <span class="n">outpoint</span> <span class="n">TXID</span>
+<span class="o">|</span> <span class="n">ffffffff</span> <span class="o">............................</span> <span class="n">Previous</span> <span class="n">outpoint</span> <span class="n">index</span>
+<span class="o">|</span>
+<span class="o">|</span> <span class="mi">29</span> <span class="o">..................................</span> <span class="n">Bytes</span> <span class="ow">in</span> <span class="n">coinbase</span>
+<span class="o">|</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">|</span> <span class="mi">03</span> <span class="o">................................</span> <span class="n">Bytes</span> <span class="ow">in</span> <span class="n">height</span>
+<span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="mf">4e0105</span> <span class="o">..........................</span> <span class="n">Height</span><span class="p">:</span> <span class="mi">328014</span>
+<span class="o">|</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">|</span> <span class="mi">062</span><span class="n">f503253482f0472d35454085fffed</span>
+<span class="o">|</span> <span class="o">|</span> <span class="n">f2400000f90f54696d65202620486561</span>
+<span class="o">|</span> <span class="o">|</span> <span class="mi">6</span><span class="n">c74682021</span> <span class="o">........................</span> <span class="n">Arbitrary</span> <span class="n">data</span>
+<span class="o">|</span> <span class="mi">00000000</span> <span class="o">............................</span> <span class="n">Sequence</span>
+
+<span class="mi">01</span> <span class="o">....................................</span> <span class="n">Output</span> <span class="n">count</span>
+<span class="o">|</span> <span class="mi">2</span><span class="n">c37449500000000</span> <span class="o">....................</span> <span class="n">Satoshis</span> <span class="p">(</span><span class="mf">25.04275756</span> <span class="n">BTC</span><span class="p">)</span>
+<span class="o">|</span> <span class="mi">1976</span><span class="n">a914a09be8040cbf399926aeb1f4</span>
+<span class="o">|</span> <span class="mi">70</span><span class="n">c37d1341f3b46588ac</span> <span class="o">................</span> <span class="n">P2PKH</span> <span class="n">script</span>
+<span class="o">|</span> <span class="mi">00000000</span> <span class="o">............................</span> <span class="n">Locktime</span>
+</pre></div>
+</div>
+
+
+
 <span id="bitcoin-scipting"></span><h2 id="scripting">Scripting<a class="headerlink" href="#scripting" title="永久链接至标题">¶</a></h2>
-</section>
-<section id="terminology">
+<p>bitcoin 中也有类似 ethereum 的合约语言，但是因为不支持循环，
+不具备图灵完备，所以就被看作是编程语言，但确实是可以使用 bitcoin
+中的脚本语言创建合约的，但写 bitcoin 的合约有点像写汇编，汇编
+的难度相信大家都是清楚的。但是 bitcoin 发展到现在，其脚本语言有
+以下几种：</p>
+<ul class="simple">
+<li><p>Pay To Public Key Hash (P2PKH)</p></li>
+<li><p>Pay To Script Hash (P2SH)</p></li>
+<li><p>Multisig</p></li>
+<li><p>Pubkey</p></li>
+<li><p>Null Data</p></li>
+</ul>
+<p>使用时要在 tx 的 vin 里面要有 Signature script, vout 里面
+要有 p2pkh/p2sh/multisig/pubkey。vin 中的 Signature script
+是证明上个 tx 中的 vout 是给你的，而 vout 里面的 script 是为了
+指定谁可以使用。下面开始分别介绍。</p>
+
+<h3 id="pay-to-public-key-hash-p2pkh">Pay To Public Key Hash (P2PKH)<a class="headerlink" href="#pay-to-public-key-hash-p2pkh" title="永久链接至标题">¶</a></h3>
+<p>P2PKH 在 bitcoin 中使用最广泛，是用来确认 utxo 是不是属于
+你的。其格式为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">script</span><span class="p">:</span> <span class="n">OP_DUP</span> <span class="n">OP_HASH160</span> <span class="o">&lt;</span><span class="n">PubKeyHash</span><span class="o">&gt;</span> <span class="n">OP_EQUALVERIFY</span> <span class="n">OP_CHECKSIG</span>
+<span class="n">Signature</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">sig</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pubkey</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>具体是怎么验证的在 <a class="reference internal" href="#p2pkh-script-validation"><span class="std std-ref">P2PKH Script Validation</span></a> 中讲解。</p>
+
+
+<h3 id="pay-to-script-hash-p2sh">Pay To Script Hash (P2SH)<a class="headerlink" href="#pay-to-script-hash-p2sh" title="永久链接至标题">¶</a></h3>
+<p>P2SH 是为了改进 Pubkey script，因为 pubkey script 比较
+复杂，而且也没有统一的标准，所以被 <a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki">BIP70</a>
+弃用了。转而使用 P2SH。</p>
+<p>P2SH 的机制是这样的：接收方需要用自己的公钥生成一个赎回脚本（Redeem
+Script），然后再将这个赎回脚本的 hash 给发送方，发送方会在 tx
+中的 output/vout 中插入这个 hash。如果接受方需要使用这个 utxo，
+那么需要在他发送的 tx 的 input/vin 中提供他的 redeem script
+和其 private key 对 redeem script 的签名。这个 redeem script
+的 hash 和 pubkey hash 一样，同样可以编码成 Base58 的格式，
+可以减小 script 的大小。</p>
+<p>其格式为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">script</span><span class="p">:</span> <span class="n">OP_HASH160</span> <span class="o">&lt;</span><span class="n">Hash</span> <span class="mi">160</span><span class="p">(</span><span class="n">redeemScript</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">OP_EQUAL</span>
+<span class="n">Signature</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">sig</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">sig</span><span class="p">]</span> <span class="p">[</span><span class="n">sig</span><span class="o">...</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">redeemScript</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+
+
+<span id="id7"></span><h3 id="p2pkh-script-validation">P2PKH Script Validation<a class="headerlink" href="#p2pkh-script-validation" title="永久链接至标题">¶</a></h3>
+<p>这里介绍一下 P2PKH 是怎么进行验证的，以下面的 pubkey script 和
+signature script 为例。</p>
+<p>假设 A 给 B 进行一笔转账，tx 中的 vout 的 pubkey script 为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OP_DUP</span> <span class="n">OP_HASH160</span> <span class="o">&lt;</span><span class="n">PubkeyHash</span><span class="o">&gt;</span> <span class="n">OP_EQUALVERIFY</span> <span class="n">OP_CHECKSIG</span>
+</pre></div>
+</div>
+<p>当 B 给 C 进行一笔转账是，tx 中的 vin 的 Signature script 为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Sig</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">PubKey</span><span class="o">&gt;</span> <span class="n">OP_DUP</span> <span class="n">OP_HASH160</span> <span class="o">&lt;</span><span class="n">PubkeyHash</span><span class="o">&gt;</span> <span class="n">OP_EQUALVERIFY</span> <span class="n">OP_CHECKSIG</span>
+</pre></div>
+</div>
+<p>其实 Signature Script 就是在 pubkey script 前面添加了签名和
+公钥。</p>
+<p>执行的是 Signature script，步骤如下：</p>
+<ol class="simple">
+<li><p>将签名 <code class="docutils literal notranslate"><span class="pre">&lt;Sig&gt;</span></code> 添加到一个空栈中，再将 <code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code> 压入这个栈</p></li>
+<li><p>执行 <code class="docutils literal notranslate"><span class="pre">OP_DUP</span></code>，将栈顶的元素复制一份然后压入栈中，这是这个栈的
+元素就有 <code class="docutils literal notranslate"><span class="pre">&lt;Sig&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code>。</p></li>
+<li><p>执行 <code class="docutils literal notranslate"><span class="pre">OP_HASH160</span></code>，将栈顶的数据取出然后进行 hash，再将结果
+压入栈，即将 <code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code> 进行 hash，然后将得到的 hash 值压
+入栈。这是栈中的元素为：<code class="docutils literal notranslate"><span class="pre">&lt;Sig&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;PubkeyHash&gt;</span></code></p></li>
+<li><p>将 <code class="docutils literal notranslate"><span class="pre">&lt;PubkeyHash&gt;</span></code> 压入栈，这个 pubkey hash 是 A 通过解码
+B 的钱包地址（Base58）得到的 B 的 pubkey hash。这时栈内的
+元素为：<code class="docutils literal notranslate"><span class="pre">&lt;Sig&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;PubkeyHash&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;PubkeyHash&gt;</span></code></p></li>
+<li><p>执行 <code class="docutils literal notranslate"><span class="pre">OP_EQUALVERIFY</span></code>，等价于 <code class="docutils literal notranslate"><span class="pre">OP_EQUAL</span></code> + <code class="docutils literal notranslate"><span class="pre">OP_VERIFY</span></code>，
+<code class="docutils literal notranslate"><span class="pre">OP_EQUAL</span></code> 指令是将栈顶的两个元素取出，进行比较，然后将比较的
+结果压入栈顶，如果这两个元素相等，则将 1 压入栈，反之则将 0 压
+入栈。这部操作就是比较 B 所提供的 pubkey 计算出来的 hash 和
+通过其地址解码出来的 pubkey hash 是否相等。<code class="docutils literal notranslate"><span class="pre">OP_VERIFY</span></code> 是
+检查栈顶元素的值，如果为 0，则立即终止执行这条 tx，否则将栈顶
+元素（1）弹出。这部是检查上一步的结果，根据结果来决定 tx 是否
+继续执行。执行到这一步，这个栈内的元素：<code class="docutils literal notranslate"><span class="pre">&lt;Sig&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code></p></li>
+<li><p>执行 <code class="docutils literal notranslate"><span class="pre">OP_CHECKSIG</span></code>，检查 B 所提供的签名是否和已经验证过了的
+pubkey 的匹配，如果匹配的话，则将 true（1） 压入栈顶，否则
+将 false（0）压入栈顶。</p></li>
+</ol>
+<p>最后就是去检查这个栈顶的元素值，如果为 false 的话就表明这个 tx 是
+个无效的 tx，否则就是有效。这样就能有效的验证花费 utxo 的人是不是
+真正的收款人。因为只有拥有 B 地址的私钥才能给出这些信息。</p>
+
+
+<h3 id="multisig">Multisig<a class="headerlink" href="#multisig" title="永久链接至标题">¶</a></h3>
+<p>p2pkh 的格式为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">A</span> <span class="n">pubkey</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">B</span> <span class="n">pubkey</span><span class="p">]</span> <span class="p">[</span><span class="n">C</span> <span class="n">pubkey</span><span class="o">...</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="n">OP_CHECKMULTISIG</span>
+<span class="n">Signature</span> <span class="n">script</span><span class="p">:</span> <span class="n">OP_0</span> <span class="o">&lt;</span><span class="n">A</span> <span class="n">sig</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">B</span> <span class="n">sig</span><span class="p">]</span> <span class="p">[</span><span class="n">C</span> <span class="n">sig</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">m</span></code> 表示的是需要多少人的签名才是用时，<code class="docutils literal notranslate"><span class="pre">n</span></code> 是共有多少个
+pubkey 可以参与签名。比如说总共有 3 个人，只要 2 个人签名
+这个 utxo 就可以被花费，那么 <code class="docutils literal notranslate"><span class="pre">m</span></code> 就是 2，<code class="docutils literal notranslate"><span class="pre">n</span></code> 就是 3。</p>
+<p>p2sh 的格式为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">script</span><span class="p">:</span> <span class="n">OP_HASH160</span> <span class="o">&lt;</span><span class="n">Hash160</span><span class="p">(</span><span class="n">redeemScript</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">OP_EQUAL</span>
+<span class="n">Redeem</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">OP_2</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">A</span> <span class="n">pubkey</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">B</span> <span class="n">pubkey</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">C</span> <span class="n">pubkey</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">OP_3</span><span class="o">&gt;</span> <span class="n">OP_CHECKMULTISIG</span>
+<span class="n">Signature</span> <span class="n">script</span><span class="p">:</span> <span class="n">OP_0</span> <span class="o">&lt;</span><span class="n">A</span> <span class="n">sig</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">C</span> <span class="n">sig</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">redeemScript</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+
+
+<h3 id="pubkey">Pubkey<a class="headerlink" href="#pubkey" title="永久链接至标题">¶</a></h3>
+<p>和 p2pkh 类似，但是没有 p2pkh 安全，所以被弃用了，其格式为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pubkey</span><span class="o">&gt;</span> <span class="n">OP_CHECKSIG</span>
+<span class="n">Signature</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">sig</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+
+
+<h3 id="null-data">Null Data<a class="headerlink" href="#null-data" title="永久链接至标题">¶</a></h3>
+<p>格式为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">Script</span><span class="p">:</span> <span class="n">OP_RETURN</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="n">to</span> <span class="mi">40</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="n">Null</span> <span class="n">data</span> <span class="n">scripts</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">spent</span><span class="p">,</span> <span class="n">so</span> <span class="n">there</span><span class="s1">'s no signature script.)</span>
+</pre></div>
+</div>
+<p>null data 主要是可以将任意数据添加到链上，这些数据不会添加到 utxo
+的数据库中，而是添加到链上。就相当于付点 tx fee，就可以将数据存在
+bitcoin 的链上（目前来说太贵了，如果真要存数据为什么不用其他的链呢？）
+所以总的来说也没什么用，估计设计时是想做存储吧。</p>
+
+
+<h3 id="pay-to-witness-public-key-hash-p2wpkh">Pay to Witness Public Key Hash (P2WPKH)<a class="headerlink" href="#pay-to-witness-public-key-hash-p2wpkh" title="永久链接至标题">¶</a></h3>
+<p>SegWit，或者说 Segregated Witness，是个 2017 添加到 bitcoin
+中的协议，用来提高 tx 的吞吐量。但这个并不是 bitcoin 的原创，而
+是 Litecoin（Litecoin 一开始是 copy bitcoin 的源代码，只是
+改了名字而已）实现的。</p>
+<p>那么 SegWit 是怎么提高 tx 的吞吐的呢？segwit 是通过对 vin 进行
+签名，然后替代 scriptSig，因为签名的数据可以做的比短，同时 segwit
+script 是放到 vin 的外面，也就以为这 vin 中的每个元素都不需要
+scriptSig，这样的话 vin 中可以存放更多的数据，从而达到减小 tx
+的大小，这样同样大小的 block 就能容纳更多的 tx。</p>
+<p>例如一个 P2PKH 是这样的：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DUP</span> <span class="n">HASH160</span> <span class="o">&lt;</span><span class="n">PubkeyHash</span><span class="o">&gt;</span> <span class="n">EQUALVERIFY</span> <span class="n">CHECKSIG</span>
+</pre></div>
+</div>
+<p>而 P2WPKH 是这样的：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">&lt;</span><span class="n">PubkeyHash</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">0</span></code> 表示的是 segwit 的版本，这个版本值让后续的升级提供了可能。</p>
+<p>同时 segwit 的校验算法的复杂度为 O(n)，而 hashing 的复杂度为
+O(n^2)。与之相关的 BIP 有：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki">BIP-141</a>：Segregated Witness 的定义</p></li>
+<li><p><a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki">BIP-143</a>：V0 版本中 tx 签名的校验</p></li>
+<li><p><a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki">BIP-144</a>：Witness 在网络中传输的格式</p></li>
+<li><p><a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki">BIP-145</a>：Segwit 的 getblocktemplate 更新（挖矿）</p></li>
+<li><p><a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki">BIP-173</a>：v0-16 版本的 witness 的 Base32 格式</p></li>
+</ul>
+
+
+
+<span id="bitcoin-block"></span><h2 id="block">Block<a class="headerlink" href="#block" title="永久链接至标题">¶</a></h2>
+<p>讲完 tx 和 script，就可以好好讲一下 bitcoin 中的 block 了。</p>
+<p>block 通常分两个部分，一个是 block header，另一个就是 txes。</p>
+<p>block headers 六个字段：</p>
+<ul class="simple">
+<li><p>Version：4 字节，版本号</p></li>
+<li><p>Previous Block Hash： 32 字节，上一个区块的 hash</p></li>
+<li><p>Merkle Root：32 字节，区块中所有的 txes 的 hash</p></li>
+<li><p>Time： 4 字节，Unix epoch timestamp，挖块的时间</p></li>
+<li><p>Bits： 4 字节，这个字段就是 PoW 的难度，shortened version of the Target</p></li>
+<li><p>Nonce：4 字节，miner 就是修改这个字段来找到 target</p></li>
+</ul>
+<p>这些字段都是小段对齐的。</p>
+<p>Merkel Root 和 Pow 的介绍在 <a class="reference internal" href="concepts.html#blockchain-concepts"><span class="std std-ref">Basic Concepts</span></a> 中</p>
+
+
 <span id="bitcoin-terminology"></span><h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="永久链接至标题">¶</a></h2>
-</section>
-<section id="reference">
+<p><a class="reference external" href="https://developer.bitcoin.org/glossary.html">bitcoin glossary</a></p>
+
+
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>https://bitcoin.org/bitcoin.pdf</p></li>
 <li><p>https://developer.bitcoin.org/devguide/transactions.html</p></li>
 <li><p>https://developer.bitcoin.org/reference/transactions.html</p></li>
@@ -1166,8 +1430,8 @@ address 解码成 pubkey(public key) hash，具体的流程见
 <dd><p>https://bitcoin.stackexchange.com/questions/90608/cant-get-the-tx-with-gettransaction-or-getrawtransaction-methods</p>
 </dd>
 </dl>
-</section>
-</section>
+
+
 
 
           </article>
@@ -1216,7 +1480,7 @@ address 解码成 pubkey(public key) hash，具体的流程见
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

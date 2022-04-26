@@ -3,8 +3,10 @@
 
 > **CRYPTO IS HARD, DO NOT TRUST ANYONE, VERIFY YOURSELF !!!**
 
+TODO: 等我撸完 geth 的代码，再回来撸 bitcoin 的。
+
 (prodromes)=
-## 序论
+## Prodromes
 
 正如开头引用的那句话，加密货币里面涉及到的知识太多了，而且经过十多年的发展，
 所需要学习的知识也很多，不过，随着慢慢的接触，我渐渐发现其最底层的原理和基础
@@ -508,11 +510,11 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 | | 84918ee53117e789c9bb27a37c8c36b0
 | | b70d713402205855358e1379e2257421
 | | 10fcdfed064b80e1443c1df3e8c7f77a
-| | 1c12a3c9721101 ......................... Witness Script, big-endian
+| | 1c12a3c9721101 ......................... SegWit, big-endian
 |
 | 21 ....................................... Bytes in witness script: 33
 | | 02ccc59184de0b0e5318308ca755b7af
-| | 3eef3c62a41c1d802d3a0f1e92c87b5291 ..... Witness Script, big-endian
+| | 3eef3c62a41c1d802d3a0f1e92c87b5291 ..... SegWit, big-endian
 
 |                                            nLockTime
 66000000 ................................... locktime:  102 (a block height)
@@ -527,13 +529,265 @@ address 解码成 pubkey(public key) hash，具体的流程见
 {ref}`bitcoin-keys-addresses`
 
 
+### Optional: Coinbase Input
+
+TxIn 是分两种，一种就是正常的转账，还有一种就是 utxo 的源头，
+爆块的到的奖励，这个一般是矿工比较关注的。
+
+Coinbase Input 的结构如下：
+
+* hash：32 字节，char[32]，null，全为 0
+* index：4 字节，uint32_t，0xffffffff
+* script bytes：可变大小，uint，script 的大小，最大为 100
+* height：最长 4 字节，script 中前多少个字节表示高度。
+* coinbase script：最长 100 - 4 = 96 个字节，任意数据
+* sequence：4 字节，uint32_t，sequence number
+
+官方给给出的示例：
+
+```
+01000000 .............................. Version
+
+01 .................................... Number of inputs
+| 00000000000000000000000000000000
+| 00000000000000000000000000000000 ...  Previous outpoint TXID
+| ffffffff ............................ Previous outpoint index
+|
+| 29 .................................. Bytes in coinbase
+| |
+| | 03 ................................ Bytes in height
+| | | 4e0105 .......................... Height: 328014
+| |
+| | 062f503253482f0472d35454085fffed
+| | f2400000f90f54696d65202620486561
+| | 6c74682021 ........................ Arbitrary data
+| 00000000 ............................ Sequence
+
+01 .................................... Output count
+| 2c37449500000000 .................... Satoshis (25.04275756 BTC)
+| 1976a914a09be8040cbf399926aeb1f4
+| 70c37d1341f3b46588ac ................ P2PKH script
+| 00000000 ............................ Locktime
+```
+
 (bitcoin-scipting)=
 ## Scripting
 
+bitcoin 中也有类似 ethereum 的合约语言，但是因为不支持循环，
+不具备图灵完备，所以就被看作是编程语言，但确实是可以使用 bitcoin
+中的脚本语言创建合约的，但写 bitcoin 的合约有点像写汇编，汇编
+的难度相信大家都是清楚的。但是 bitcoin 发展到现在，其脚本语言有
+以下几种：
+
+* Pay To Public Key Hash (P2PKH)
+* Pay To Script Hash (P2SH)
+* Multisig
+* Pubkey
+* Null Data
+
+使用时要在 tx 的 vin 里面要有 Signature script, vout 里面
+要有 p2pkh/p2sh/multisig/pubkey。vin 中的 Signature script
+是证明上个 tx 中的 vout 是给你的，而 vout 里面的 script 是为了
+指定谁可以使用。下面开始分别介绍。
+
+
+### Pay To Public Key Hash (P2PKH)
+
+P2PKH 在 bitcoin 中使用最广泛，是用来确认 utxo 是不是属于
+你的。其格式为：
+
+```
+Pubkey script: OP_DUP OP_HASH160 <PubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
+Signature script: <sig> <pubkey>
+```
+
+具体是怎么验证的在 {ref}`p2pkh-script-validation` 中讲解。
+
+### Pay To Script Hash (P2SH)
+
+P2SH 是为了改进 Pubkey script，因为 pubkey script 比较
+复杂，而且也没有统一的标准，所以被 [BIP70](https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki)
+弃用了。转而使用 P2SH。
+
+P2SH 的机制是这样的：接收方需要用自己的公钥生成一个赎回脚本（Redeem
+Script），然后再将这个赎回脚本的 hash 给发送方，发送方会在 tx
+中的 output/vout 中插入这个 hash。如果接受方需要使用这个 utxo，
+那么需要在他发送的 tx 的 input/vin 中提供他的 redeem script
+和其 private key 对 redeem script 的签名。这个 redeem script
+的 hash 和 pubkey hash 一样，同样可以编码成 Base58 的格式，
+可以减小 script 的大小。
+
+其格式为：
+
+```
+Pubkey script: OP_HASH160 <Hash 160(redeemScript)> OP_EQUAL
+Signature script: <sig> [sig] [sig...] <redeemScript>
+```
+
+(p2pkh-script-validation)=
+### P2PKH Script Validation
+
+这里介绍一下 P2PKH 是怎么进行验证的，以下面的 pubkey script 和
+signature script 为例。
+
+假设 A 给 B 进行一笔转账，tx 中的 vout 的 pubkey script 为：
+
+```
+OP_DUP OP_HASH160 <PubkeyHash> OP_EQUALVERIFY OP_CHECKSIG
+```
+
+当 B 给 C 进行一笔转账是，tx 中的 vin 的 Signature script 为：
+
+```
+<Sig> <PubKey> OP_DUP OP_HASH160 <PubkeyHash> OP_EQUALVERIFY OP_CHECKSIG
+```
+
+其实 Signature Script 就是在 pubkey script 前面添加了签名和
+公钥。
+
+执行的是 Signature script，步骤如下：
+
+1. 将签名 `<Sig>` 添加到一个空栈中，再将 `<Pubkey>` 压入这个栈
+2. 执行 `OP_DUP`，将栈顶的元素复制一份然后压入栈中，这是这个栈的
+   元素就有 `<Sig>`、`<Pubkey>`、`<Pubkey>`。
+3. 执行 `OP_HASH160`，将栈顶的数据取出然后进行 hash，再将结果
+   压入栈，即将 `<Pubkey>` 进行 hash，然后将得到的 hash 值压
+   入栈。这是栈中的元素为：`<Sig>`、`<Pubkey>`、`<PubkeyHash>`
+4. 将 `<PubkeyHash>` 压入栈，这个 pubkey hash 是 A 通过解码
+   B 的钱包地址（Base58）得到的 B 的 pubkey hash。这时栈内的
+   元素为：`<Sig>`、`<Pubkey>`、`<PubkeyHash>`、`<PubkeyHash>`
+5. 执行 `OP_EQUALVERIFY`，等价于 `OP_EQUAL` + `OP_VERIFY`，
+   `OP_EQUAL` 指令是将栈顶的两个元素取出，进行比较，然后将比较的
+   结果压入栈顶，如果这两个元素相等，则将 1 压入栈，反之则将 0 压
+   入栈。这部操作就是比较 B 所提供的 pubkey 计算出来的 hash 和
+   通过其地址解码出来的 pubkey hash 是否相等。`OP_VERIFY` 是
+   检查栈顶元素的值，如果为 0，则立即终止执行这条 tx，否则将栈顶
+   元素（1）弹出。这部是检查上一步的结果，根据结果来决定 tx 是否
+   继续执行。执行到这一步，这个栈内的元素：`<Sig>`、`<Pubkey>`
+6. 执行 `OP_CHECKSIG`，检查 B 所提供的签名是否和已经验证过了的
+   pubkey 的匹配，如果匹配的话，则将 true（1） 压入栈顶，否则
+   将 false（0）压入栈顶。
+
+最后就是去检查这个栈顶的元素值，如果为 false 的话就表明这个 tx 是
+个无效的 tx，否则就是有效。这样就能有效的验证花费 utxo 的人是不是
+真正的收款人。因为只有拥有 B 地址的私钥才能给出这些信息。
+
+
+### Multisig
+
+ p2pkh 的格式为：
+
+```
+Pubkey script: <m> <A pubkey> [B pubkey] [C pubkey...] <n> OP_CHECKMULTISIG
+Signature script: OP_0 <A sig> [B sig] [C sig...]
+```
+
+其中 `m` 表示的是需要多少人的签名才是用时，`n` 是共有多少个
+pubkey 可以参与签名。比如说总共有 3 个人，只要 2 个人签名
+这个 utxo 就可以被花费，那么 `m` 就是 2，`n` 就是 3。
+
+p2sh 的格式为：
+
+```
+Pubkey script: OP_HASH160 <Hash160(redeemScript)> OP_EQUAL
+Redeem script: <OP_2> <A pubkey> <B pubkey> <C pubkey> <OP_3> OP_CHECKMULTISIG
+Signature script: OP_0 <A sig> <C sig> <redeemScript>
+```
+
+
+### Pubkey
+
+和 p2pkh 类似，但是没有 p2pkh 安全，所以被弃用了，其格式为：
+
+```
+Pubkey script: <pubkey> OP_CHECKSIG
+Signature script: <sig>
+```
+
+
+### Null Data
+
+格式为：
+
+```
+Pubkey Script: OP_RETURN <0 to 40 bytes of data>
+(Null data scripts cannot be spent, so there's no signature script.)
+```
+
+null data 主要是可以将任意数据添加到链上，这些数据不会添加到 utxo
+的数据库中，而是添加到链上。就相当于付点 tx fee，就可以将数据存在
+bitcoin 的链上（目前来说太贵了，如果真要存数据为什么不用其他的链呢？）
+所以总的来说也没什么用，估计设计时是想做存储吧。
+
+
+### Pay to Witness Public Key Hash (P2WPKH)
+
+SegWit，或者说 Segregated Witness，是个 2017 添加到 bitcoin
+中的协议，用来提高 tx 的吞吐量。但这个并不是 bitcoin 的原创，而
+是 Litecoin（Litecoin 一开始是 copy bitcoin 的源代码，只是
+改了名字而已）实现的。
+
+那么 SegWit 是怎么提高 tx 的吞吐的呢？segwit 是通过对 vin 进行
+签名，然后替代 scriptSig，因为签名的数据可以做的比短，同时 segwit
+script 是放到 vin 的外面，也就以为这 vin 中的每个元素都不需要
+scriptSig，这样的话 vin 中可以存放更多的数据，从而达到减小 tx
+的大小，这样同样大小的 block 就能容纳更多的 tx。
+
+例如一个 P2PKH 是这样的：
+
+```
+DUP HASH160 <PubkeyHash> EQUALVERIFY CHECKSIG
+```
+
+而 P2WPKH 是这样的：
+
+```
+0 <PubkeyHash>
+```
+
+`0` 表示的是 segwit 的版本，这个版本值让后续的升级提供了可能。
+
+同时 segwit 的校验算法的复杂度为 O(n)，而 hashing 的复杂度为
+O(n^2)。与之相关的 BIP 有：
+
+* [BIP-141][bip-141]：Segregated Witness 的定义
+* [BIP-143][bip-143]：V0 版本中 tx 签名的校验
+* [BIP-144][bip-144]：Witness 在网络中传输的格式
+* [BIP-145][bip-145]：Segwit 的 getblocktemplate 更新（挖矿）
+* [BIP-173][bip-173]：v0-16 版本的 witness 的 Base32 格式
+
+[bip-141]: https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki
+[bip-143]: https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki
+[bip-144]: https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki
+[bip-145]: https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki
+[bip-173]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
+
+
+(bitcoin-block)=
+## Block
+
+讲完 tx 和 script，就可以好好讲一下 bitcoin 中的 block 了。
+
+block 通常分两个部分，一个是 block header，另一个就是 txes。
+
+block headers 六个字段：
+
+* Version：4 字节，版本号
+* Previous Block Hash： 32 字节，上一个区块的 hash
+* Merkle Root：32 字节，区块中所有的 txes 的 hash
+* Time： 4 字节，Unix epoch timestamp，挖块的时间
+* Bits： 4 字节，这个字段就是 PoW 的难度，shortened version of the Target
+* Nonce：4 字节，miner 就是修改这个字段来找到 target
+
+这些字段都是小段对齐的。
+
+Merkel Root 和 Pow 的介绍在 {ref}`blockchain-concepts` 中
 
 
 (bitcoin-terminology)=
 ## Terminology
+
+[bitcoin glossary](https://developer.bitcoin.org/glossary.html)
 
 
 ## Reference
