@@ -158,7 +158,8 @@ c7f18fe8
 
 所以，别人给你看他的账号时，注意看其钱包地址的前缀，不要被骗了，因为有测试网能
 够手动生成区块，这个在 {ref}`bitcoin-tx` 一节中的 {ref}`tx-example`
-中会演示。
+中会演示。好像上面又翻车了， version prefix 新的 BIP 不止一个字段，不过这
+些都是更新过来的，基本的原理没差的。
 
 Okay，到这里其实就可以自己去写一个来生成 bitcoin 的地址了。
 
@@ -166,24 +167,39 @@ Okay，到这里其实就可以自己去写一个来生成 bitcoin 的地址了�
 (bitcoin-wallets)=
 ### Wallets
 
+相比于 Ethereum，bitcoin 的钱包稍微特殊一点，因为有些钱包是需
+要同步节点的，不过这个也没办法，毕竟他没有余额这一概念，每次查询
+余额都是去计算一下改账号的 vin 和 vout。
+
+钱包的种类也比较多，这个只能说是分类方式不同，这里就做个简短的介绍。
+
+如果按其功能来说，有三种：
+
 * Full-Service Wallets
-
-create private keys -> derive public keys -> distribute public keys -> monitor for outputs -> sign txes -> broadcast txes
-
 * Signing-Only Wallets
+* Distributing-Only wallets
 
-create parent private key -> derive parent public key -> derive child public keys -> | Networked Wallet: distribute public keys -> monitor for outputs -> create unsigned txes :Networked Wallet| -> sign txes -> | Networked Wallet: broadcast txes
+这个分类就是字面意思，通俗易懂，没啥好介绍的。Distributing-Only
+是只在网上分发pubkey（其实是pubkey hash 的 Base58 地址）。
 
+按是否联网，可以分为两种：
+
+* Online Wallets
 * Offline Wallets
 
+按钱包的构成又分为:
 
+* Software Wallets
 * Hardware Wallets
 
+其中 Hardware Wallets 大部分是 Signin-Only Wallets。
 
-* distributing-only wallets
-
-only distribute public keys
-
+如果玩的比较多的话，那么就一定会接触到 WIF，Wallet Import
+Format 的缩写，就是为了降低复制私钥出错的可能，就有了 WIF，
+WIF 也是用 Base58Check 对私钥进行编码。和
+{ref}`bitcoin-keys-addresses` 中编码 pubkey hash 的
+步骤一致，就是 version prefix 不同而以，具体对应关系都在
+上节中末尾的表格中写明了。
 
 
 (bitcoin-tx)=
