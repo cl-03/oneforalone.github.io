@@ -1017,7 +1017,7 @@ bcrt1q94rqgutjhjhtct6n3l6evpgccrn0mjt9v7qn5h
 <p>生成地址后挖 101 个块给 miner，这个 101 是有讲究的，因为 bitcoin
 miner 挖出来的块需要 100 个区块确认后才可以消费，不然 miner 的
 balance 不会改变，依旧为 0。如果你想给 miner 中多放点钱，那就多
-挖一些，方正不能少于 101，我就是因为这个困扰了我好几天。</p>
+挖一些，反正不能少于 101，我就是因为这个困扰了我好几天。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ bitcoin-cli generatetoaddress <span class="m">101</span> bcrt1q6xhr6gpxvlnv2n2gjhu03psa20w9rschxktjfv
 <span class="c1"># check the balance of the miner wallet</span>
 $ bitcoin-cli -rpcwallet<span class="o">=</span>miner getbalance
