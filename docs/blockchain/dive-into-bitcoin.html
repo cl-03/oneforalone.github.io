@@ -819,6 +819,14 @@ Public Key - Hashing Function -&gt; Address</p>
 <td class="text-center"><p>0x05</p></td>
 <td class="text-center"><p>3</p></td>
 </tr>
+<tr class="row-even"><td class="text-center"><p>Bech32 pubkey hash or script hash</p></td>
+<td class="text-center"><p>N/A</p></td>
+<td class="text-center"><p>bc1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Bech32 testnet pubkey hash or script hash</p></td>
+<td class="text-center"><p>N/A</p></td>
+<td class="text-center"><p>tb1</p></td>
+</tr>
 <tr class="row-even"><td class="text-center"><p>Bitcoin Testnet Address</p></td>
 <td class="text-center"><p>0x6F</p></td>
 <td class="text-center"><p>m or n</p></td>
@@ -842,12 +850,42 @@ Public Key - Hashing Function -&gt; Address</p>
 中会演示。好像上面又翻车了， version prefix 新的 BIP 不止一个字节，不过这
 些都是更新过来的，基本的原理没差的。</p>
 <p>Okay，到这里其实就可以自己去写代码来生成 bitcoin 的地址了。</p>
+<p><strong>[Update Wed Apr. 27 2022]</strong>:</p>
+<p>上面的表格只显示了一些用的通用的地址格式，具体详细的参考 <a class="reference external" href="https://en.bitcoin.it/wiki/List_of_address_prefixes">List of address prefixes</a>。
+这里在补充一下几个通用的地址的区别：</p>
+<ul class="simple">
+<li><p>1：比较老的地址格式，对应的 tx 中的 script 使用的是 p2pkh，
+因为这个类型的 tx 的 script 比较大，即 tx 比较大，所以对应
+的 tx fee 也会比较高一点。</p></li>
+<li><p>3：使用最广泛的，相比于 <strong>1</strong>，支持的功能也多一点，而且这类
+地址也常使用多签（multisig），同时也可以使用 segwit 格式
+的 tx 中。即这个地址即可以发 p2pkh 的 tx，也可以发 segwit
+的 tx。</p></li>
+<li><p>bc1：Bech32，即对应的 tx 中的 script 使用的是 p2wpkh，即
+segwit，目前最新的格式，主要是减小了 tx 的大小，降低了 tx
+fee。但正是因为比较新，所以支持的钱包并不是很多，用户量也不
+多，目前正在增长中。</p></li>
+</ul>
+<p>还要补充一点就是，segwit 有 native segwit 和 non-native
+segwit 之分。其实两者的差别很简单，native segwit 就是纯粹
+的 segwit 协议，而 non-native segwit 就是地址使用的是
+Bech32 格式的地址，但是 tx 中的 script 是嵌套了 segwit
+的 p2sh（aka. p2wpkh-in-p2sh）。总的来说 segwit 是未来
+的趋势，即最后的 tx 都将更新到 native segwit 的协议，而
+non-native segwit 是为了兼容老协议的一个中间过渡版本。</p>
+<blockquote>
+<div><p>至于 segwit 的地址格式为什么叫 Bech32，原因是因为它的
+编码算法是 <a class="reference external" href="https://en.bitcoin.it/wiki/Bech32">Bech32</a>（<a class="reference external" href="https://en.bitcoin.it/wiki/BIP_0173">BIP-0173</a>
+里给出的）</p>
+</div></blockquote>
+<p>至于 BIP32/BIP38，是关于通过同一个 seed 派生出多个钱包地址
+的一个标准。</p>
 </section>
 <section id="wallets">
 <span id="bitcoin-wallets"></span><h3 id="wallets">Wallets<a class="headerlink" href="#wallets" title="永久链接至标题">¶</a></h3>
 <p>相比于 Ethereum，bitcoin 的钱包稍微特殊一点，因为有些钱包是需
 要同步节点的，不过这个也没办法，毕竟他没有余额这一概念，每次查询
-余额都是去计算一下改账号的 vin 和 vout。</p>
+余额都是去计算一下该账号的 vin 和 vout。</p>
 <p>钱包的种类也比较多，这个只能说是分类方式不同，这里就做个简短的介绍。</p>
 <p>如果按其功能来说，有三种：</p>
 <ul class="simple">

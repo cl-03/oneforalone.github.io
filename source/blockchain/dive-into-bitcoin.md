@@ -149,14 +149,16 @@ c7f18fe8
 
 下面表格是不同版本对应的值（第四步中的版本字段），以及 Base58Check 编码的结果：
 
-| Type                         | Version prefix (hex) | Base58 result prefix |
-| :--------------------------: | :------------------: | :------------------: |
-| Bitcoin Address              | 0x00                 | 1                    |
-| Pay-to-Script-Hash Address   | 0x05                 | 3                    |
-| Bitcoin Testnet Address      | 0x6F                 | m or n               |
-| Private Key WIF              | 0x80                 | 5, K, or L           |
-| BIP-38 Encrypted Private Key | 0x0142               | 6P                   |
-| BIP-32 Extended Public Key   | 0x0488B21E           | xpub                 |
+| Type                                      | Version prefix (hex) | Base58 result prefix |
+| :---------------------------------------: | :------------------: | :------------------: |
+| Bitcoin Address                           | 0x00                 | 1                    |
+| Pay-to-Script-Hash Address                | 0x05                 | 3                    |
+| Bech32 pubkey hash or script hash         | N/A                  | bc1                  |
+| Bech32 testnet pubkey hash or script hash | N/A                  | tb1                  |
+| Bitcoin Testnet Address                   | 0x6F                 | m or n               |
+| Private Key WIF                           | 0x80                 | 5, K, or L           |
+| BIP-38 Encrypted Private Key              | 0x0142               | 6P                   |
+| BIP-32 Extended Public Key                | 0x0488B21E           | xpub                 |
 
 所以，别人给你看他的账号时，注意看其钱包地址的前缀，不要被骗了，因为有测试网能
 够手动生成区块，这个在 {ref}`bitcoin-tx` 一节中的 {ref}`tx-example`
@@ -165,13 +167,50 @@ c7f18fe8
 
 Okay，到这里其实就可以自己去写代码来生成 bitcoin 的地址了。
 
+**[Update Wed Apr. 27 2022]**:
+
+上面的表格只显示了一些用的通用的地址格式，具体详细的参考 [List of address prefixes][address-prefix]。
+这里在补充一下几个通用的地址的区别：
+
+* 1：比较老的地址格式，对应的 tx 中的 script 使用的是 p2pkh，
+  因为这个类型的 tx 的 script 比较大，即 tx 比较大，所以对应
+  的 tx fee 也会比较高一点。
+* 3：使用最广泛的，相比于 **1**，支持的功能也多一点，而且这类
+  地址也常使用多签（multisig），同时也可以使用 segwit 格式
+  的 tx 中。即这个地址即可以发 p2pkh 的 tx，也可以发 segwit
+  的 tx。
+* bc1：Bech32，即对应的 tx 中的 script 使用的是 p2wpkh，即
+  segwit，目前最新的格式，主要是减小了 tx 的大小，降低了 tx
+  fee。但正是因为比较新，所以支持的钱包并不是很多，用户量也不
+  多，目前正在增长中。
+
+还要补充一点就是，segwit 有 native segwit 和 non-native
+segwit 之分。其实两者的差别很简单，native segwit 就是纯粹
+的 segwit 协议，而 non-native segwit 就是地址使用的是
+Bech32 格式的地址，但是 tx 中的 script 是嵌套了 segwit
+的 p2sh（aka. p2wpkh-in-p2sh）。总的来说 segwit 是未来
+的趋势，即最后的 tx 都将更新到 native segwit 的协议，而
+non-native segwit 是为了兼容老协议的一个中间过渡版本。
+
+> 至于 segwit 的地址格式为什么叫 Bech32，原因是因为它的
+> 编码算法是 [Bech32][bech32]（[BIP-0173][bip-0173]
+> 里给出的）
+
+至于 BIP32/BIP38，是关于通过同一个 seed 派生出多个钱包地址
+的一个标准。
+
+
+[bech32]: https://en.bitcoin.it/wiki/Bech32
+[bip-0173]: https://en.bitcoin.it/wiki/BIP_0173
+[address-prefix]: https://en.bitcoin.it/wiki/List_of_address_prefixes
+
 
 (bitcoin-wallets)=
 ### Wallets
 
 相比于 Ethereum，bitcoin 的钱包稍微特殊一点，因为有些钱包是需
 要同步节点的，不过这个也没办法，毕竟他没有余额这一概念，每次查询
-余额都是去计算一下改账号的 vin 和 vout。
+余额都是去计算一下该账号的 vin 和 vout。
 
 钱包的种类也比较多，这个只能说是分类方式不同，这里就做个简短的介绍。
 
