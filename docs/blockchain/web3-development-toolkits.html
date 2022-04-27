@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -727,10 +726,10 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="smart-contract-development-toolkits">
+  
 <span id="id1"></span><h1 id="blockchain-web3-development-toolkits--page-root">Smart Contract Development Toolkits<a class="headerlink" href="#blockchain-web3-development-toolkits--page-root" title="永久链接至标题">¶</a></h1>
 <p>Date: Wed Apr. 13 2022</p>
-<section id="id2">
+
 <h2 id="id2">序<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>智能合约，目前公认的是 Ethereum 上的定义，可以简单的理解为运行在
 Ethereum 中 EVM 上的程序，推广一下就是运行在分布式系统上的程序。</p>
@@ -753,14 +752,14 @@ NEAR 和 SOLONA 这些链的智能合约开发（这两个链最好还是先把 
 <p>NOTE: 因为区块链又和 "Web3" 紧密联系到一起了，所以，在开发智能合约时，
 最好还是先去学一下 JavaScript(或者 NodeJS)，不然就会像我一开始学开发
 智能合约一样，两眼懵逼，又要看 Solidity 的文档，还要去查 NodeJS 的文档。</p>
-</section>
-<section id="hardhat">
+
+
 <span id="id3"></span><h2 id="hardhat">Hardhat<a class="headerlink" href="#hardhat" title="永久链接至标题">¶</a></h2>
 <p>这个 toolkit 使用起来很简单，我目前使用的就是这个，但是最近准备把 Rust
 用起来，准备切换到 Foundry 开发了。首先，先将官方文档的链接放出来：
 https://hardhat.org/getting-started 。如果有条件的话，建议还是去看
 英文文档。</p>
-<section id="hardhat-installation">
+
 <span id="id4"></span><h3 id="hardhat-installation">安装<a class="headerlink" href="#hardhat-installation" title="永久链接至标题">¶</a></h3>
 <p>安装有两种选择:</p>
 <ul class="simple">
@@ -775,10 +774,10 @@ https://hardhat.org/getting-started 。如果有条件的话，建议还是去�
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm install -g hardhat
 </pre></div>
 </div>
-</section>
-<section id="hardhat-usage">
+
+
 <span id="id5"></span><h3 id="hardhat-usage">使用<a class="headerlink" href="#hardhat-usage" title="永久链接至标题">¶</a></h3>
-<section id="hardhat-init">
+
 <span id="id6"></span><h4 id="hardhat-init">初始化<a class="headerlink" href="#hardhat-init" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx hardhat
 </pre></div>
@@ -830,8 +829,8 @@ https://hardhat.org/getting-started 。如果有条件的话，建议还是去�
 <p>至于 <code class="docutils literal notranslate"><span class="pre">package-lock.json</span></code> 和 <code class="docutils literal notranslate"><span class="pre">package.json</span></code> 这两个文件是 npm 的配置文件。
 主要是因为 <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> 目录太大了，不会上传到 Github 上，所以别人使用你
 的代码时，只要执行 <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> 就回把所以的依赖都安装好。</p>
-</section>
-<section id="hardhat-config">
+
+
 <span id="id7"></span><h4 id="hardhat-config">配置<a class="headerlink" href="#hardhat-config" title="永久链接至标题">¶</a></h4>
 <p>这里需要额外介绍一下 <code class="docutils literal notranslate"><span class="pre">hardhat.config.js</span></code> 文件，最初的文件内容为：</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">require</span><span class="p">(</span><span class="s2">"nomiclabs/hardhat-waffle"</span><span class="p">);</span>
@@ -1002,15 +1001,15 @@ Ethereum 的是 https://etherscan.io。</p></li>
 <p><code class="docutils literal notranslate"><span class="pre">mocha</span></code> 是执行测试时的一些配置，上面只配置了超时时间，更多的配置参考：
 https://mochajs.org/#command-line-usage ，其中的参数是一致的。</p>
 <p>更多相关的配置介绍，参考：https://hardhat.org/config/#path-configuration</p>
-</section>
-<section id="hardhat-compile">
+
+
 <span id="id8"></span><h4 id="hardhat-compile">编译<a class="headerlink" href="#hardhat-compile" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npx hardhat compile
 </pre></div>
 </div>
 <p>编译没啥好介绍的，通过了就通过了，出错了就自己去修复。</p>
-</section>
-<section id="hardhat-deploy">
+
+
 <span id="id9"></span><h4 id="hardhat-deploy">上链（部署）<a class="headerlink" href="#hardhat-deploy" title="永久链接至标题">¶</a></h4>
 <p>在 <code class="docutils literal notranslate"><span class="pre">scripts</span></code> 目录下创建一个 <code class="docutils literal notranslate"><span class="pre">deploy.js</span></code>（或者你自己取个名字，我用 deploy 命名）
 的文件，文件内容如下：</p>
@@ -1049,10 +1048,10 @@ https://mochajs.org/#command-line-usage ，其中的参数是一致的。</p>
 直接用 node 执行。</p>
 <p>对了，忘了写怎么测试了，我测试的话直接是用的 <code class="docutils literal notranslate"><span class="pre">web3.js</span></code>，直接部署到测试网上测试的，反正
 不要钱。</p>
-</section>
-</section>
-</section>
-<section id="truffle">
+
+
+
+
 <span id="id10"></span><h2 id="truffle">Truffle<a class="headerlink" href="#truffle" title="永久链接至标题">¶</a></h2>
 <p>Date: Fri Apr. 15 2022</p>
 <p>今天试着用了一下 Truffle，发现是真的难用（可能是我水平不够），反正我不喜欢。
@@ -1067,7 +1066,7 @@ Truffle 基础的使用是真的简单，但是它的配置和部署不是很适
 <code class="docutils literal notranslate"><span class="pre">truffle</span> <span class="pre">develop</span></code> 或是 <code class="docutils literal notranslate"><span class="pre">truffle</span> <span class="pre">console</span></code> 就可以直接进入交互模式，
 前提是需要先启动 ganache。</p>
 <p>好了，介绍就说到这里了，下面简单介绍下怎么使用吧。</p>
-<section id="truffle-installation">
+
 <span id="id11"></span><h3 id="truffle-installation">安装<a class="headerlink" href="#truffle-installation" title="永久链接至标题">¶</a></h3>
 <p>说到安装，在国内的环境是真的很痛苦，除非使用代理，不过代理最好是稳定一点的，
 我就是因为代理稍微有点不稳定（可能是我用的设备比较多），导致出错好几次，浪费
@@ -1079,17 +1078,17 @@ Truffle 基础的使用是真的简单，但是它的配置和部署不是很适
 node install -g truffle
 </pre></div>
 </div>
-</section>
-<section id="truffle-usage">
+
+
 <span id="id12"></span><h3 id="truffle-usage">使用<a class="headerlink" href="#truffle-usage" title="永久链接至标题">¶</a></h3>
-<section id="truffle-init">
+
 <span id="id13"></span><h4 id="truffle-init">初始化<a class="headerlink" href="#truffle-init" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir my-project
 truffle init
 </pre></div>
 </div>
-</section>
-<section id="truffle-config">
+
+
 <span id="id14"></span><h4 id="truffle-config">配置<a class="headerlink" href="#truffle-config" title="永久链接至标题">¶</a></h4>
 <p>编辑项目目录下的 <code class="docutils literal notranslate"><span class="pre">truffle-config.js</span></code>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
@@ -1123,8 +1122,8 @@ GUI 版本的话端口就是 7545，如果是三方提供的全节点的话，�
 <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Web3.providers.HttpProvider("https://&lt;host&gt;:&lt;port&gt;)</span></code>。
 当然 <code class="docutils literal notranslate"><span class="pre">network</span></code> 里面也可以设置 <code class="docutils literal notranslate"><span class="pre">gas</span></code>、<code class="docutils literal notranslate"><span class="pre">gasPrice</span></code>、<code class="docutils literal notranslate"><span class="pre">from</span></code> 等参数。
 详细的配置说明见：https://trufflesuite.com/docs/truffle/reference/configuration</p>
-</section>
-<section id="truffle-compile">
+
+
 <span id="id15"></span><h4 id="truffle-compile">编译<a class="headerlink" href="#truffle-compile" title="永久链接至标题">¶</a></h4>
 <p>编译很简单，直接执行 <code class="docutils literal notranslate"><span class="pre">truffle</span> <span class="pre">compile</span></code> 就可以了，编译好的 abi 文件默认存放
 在 <code class="docutils literal notranslate"><span class="pre">build</span></code> 目录下。这个目录路径也可以在 <code class="docutils literal notranslate"><span class="pre">truffle-config.js</span></code> 中配置，在
@@ -1133,8 +1132,8 @@ GUI 版本的话端口就是 7545，如果是三方提供的全节点的话，�
 </pre></div>
 </div>
 <p>路径自己定义，不要照抄。</p>
-</section>
-<section id="truffle-deploy">
+
+
 <span id="id16"></span><h4 id="truffle-deploy">部署<a class="headerlink" href="#truffle-deploy" title="永久链接至标题">¶</a></h4>
 <p>首先要在 <code class="docutils literal notranslate"><span class="pre">migrations</span></code> 目录下创建一个对应的脚本，一般习惯命名为
 <code class="docutils literal notranslate"><span class="pre">2_deploy_contracts.js</span></code>, 因为该目录下已经有一个 <code class="docutils literal notranslate"><span class="pre">1_initial_migration.js</span></code>
@@ -1198,17 +1197,17 @@ https://trufflesuite.com/docs/truffle/quickstart/</p>
 <p>而到了 truffle 项目中，引用是这样的：
 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">"openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";</span></code></p>
 <p>所以 truffle 在引用三方的合约时，需要注意。</p>
-</section>
-</section>
-</section>
-<section id="brownie">
+
+
+
+
 <span id="id17"></span><h2 id="brownie">Brownie<a class="headerlink" href="#brownie" title="永久链接至标题">¶</a></h2>
 <p>Brownie，一个由 python 和 web3.py 实现的一个 toolkit，或者说
 framework 吧。怎么叫随你了。其中 brownie 的优势是，其提供了 GUI
 界面显示合约的 opcode，可以对合约进行 evm 级别的优化。当然，前提
 是你要了解 evm 的 opcode 具体含义，这个有点 hardcore，因为 evm
 的 opcode 类似于汇编语言，所以懂得都懂。</p>
-<section id="brownie-installation">
+
 <span id="id18"></span><h3 id="brownie-installation">安装<a class="headerlink" href="#brownie-installation" title="永久链接至标题">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3.9 -m pip install --user pipx
 python3.9 -m pipx ensurepath
@@ -1218,10 +1217,10 @@ pipx install eth-brownie
 </div>
 <p><strong>注</strong>：这里需要使用 python3.9 或相近的版本，但不能高于 3.9，比如
 3.10 安装会出错的。我只验证过 python3.9，3.8 和 3.7 没有验证过。</p>
-</section>
-<section id="brownie-usage">
+
+
 <span id="id19"></span><h3 id="brownie-usage">使用<a class="headerlink" href="#brownie-usage" title="永久链接至标题">¶</a></h3>
-<section id="brownie-init">
+
 <span id="id20"></span><h4 id="brownie-init">初始化<a class="headerlink" href="#brownie-init" title="永久链接至标题">¶</a></h4>
 <p>初始化项目很简单，基本命令都是通用的，就一句：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brownie init
@@ -1251,38 +1250,38 @@ pipx install eth-brownie
 <li><p><code class="docutils literal notranslate"><span class="pre">build</span></code>：存放编译后的文件代码以及测试结果</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">reports</span></code>：可选的，这里放的是 JSON 报告文件，供 GUI 中使用</p></li>
 </ul>
-</section>
-<section id="brownie-config">
+
+
 <span id="id21"></span><h4 id="brownie-config">配置<a class="headerlink" href="#brownie-config" title="永久链接至标题">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">brownie</span> <span class="pre">init</span></code> 不会像 truffle 和 hardhat 那样提供一些初始的
 配置文件和示例代码，所以需要自己手动创建配置文件，配置文件名为：
 <code class="docutils literal notranslate"><span class="pre">brownie-config.yaml</span></code>。</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">dependencies</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OpenZeppelin/openzeppelin-contracts@4.1.0</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OpenZeppelin/openzeppelin-contracts@4.1.0</span><span class="w"></span>
 
-<span class="nt">compiler</span><span class="p">:</span>
-  <span class="nt">solc</span><span class="p">:</span>
-    <span class="nt">version</span><span class="p">:</span> <span class="s">'0.8.4'</span>
-    <span class="nt">optimizer</span><span class="p">:</span>
-      <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-      <span class="nt">runs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">200</span>
-    <span class="nt">remappings</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">'@OpenZeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0'</span>
+<span class="nt">compiler</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">solc</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'0.8.4'</span><span class="w"></span>
+<span class="w">    </span><span class="nt">optimizer</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">runs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span><span class="w"></span>
+<span class="w">    </span><span class="nt">remappings</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'@OpenZeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0'</span><span class="w"></span>
 
-<span class="c1"># Automatically fetch contract sources from Etherscan</span>
-<span class="nt">autofetch_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">dotenv</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.env</span>
-<span class="nt">networks</span><span class="p">:</span>
-  <span class="nt">defaults</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">development</span>
-  <span class="nt">development</span><span class="p">:</span>
-    <span class="nt">verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">rinkeby</span><span class="p">:</span>
-    <span class="nt">verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">ganache</span><span class="p">:</span>
-    <span class="nt">verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">wallets</span><span class="p">:</span>
-  <span class="nt">private_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${PRIVATE_KEY}</span>
-  <span class="nt">mnemonic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${MNEMONIC}</span>
+<span class="c1"># Automatically fetch contract sources from Etherscan</span><span class="w"></span>
+<span class="nt">autofetch_sources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">dotenv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span><span class="w"></span>
+<span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">defaults</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">development</span><span class="w"></span>
+<span class="w">  </span><span class="nt">development</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">rinkeby</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ganache</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="nt">wallets</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">private_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${PRIVATE_KEY}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">mnemonic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${MNEMONIC}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>配置和前面的两个也是大同小异，基本的网络、编译器的配置参数基本一致，只要在
@@ -1305,15 +1304,15 @@ brownie 中的编译其的配置中，多了 <code class="docutils literal notra
 <p>首先是全节点的信息，如果你自己本地有全节点的话，可以不用配置，直接在部署测试中
 写就好了，毕竟 brownie 使用的是 <code class="docutils literal notranslate"><span class="pre">web3.py</span></code>，和 <code class="docutils literal notranslate"><span class="pre">web3.js</span></code> 基本没差。其他的
 配置都可以直接通过名字就知道其配置是干啥的，私钥，助记词，etherscan 的 token。</p>
-</section>
-<section id="brownie-compile">
+
+
 <span id="id22"></span><h4 id="brownie-compile">编译<a class="headerlink" href="#brownie-compile" title="永久链接至标题">¶</a></h4>
 <p>编译和其他的一样，都是后面加个 <code class="docutils literal notranslate"><span class="pre">compile</span></code> 就好了</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brownie compile
 </pre></div>
 </div>
-</section>
-<section id="brownie-deploy">
+
+
 <span id="id23"></span><h4 id="brownie-deploy">部署<a class="headerlink" href="#brownie-deploy" title="永久链接至标题">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brownie run scripts/deploy.py
 </pre></div>
@@ -1383,15 +1382,15 @@ Github 上生成一下 Token，然后在 <code class="docutils literal notransla
 <p>部署后可以使用 <code class="docutils literal notranslate"><span class="pre">brownie</span> <span class="pre">gui</span></code> 查看对应合约的 opcode。这个我就看到文档可以这样
 做，但是具体我没操作过，毕竟还没达到那个水平。</p>
 <p>最后同样是附上官方文档： https://eth-brownie.readthedocs.io/en/stable/</p>
-</section>
-</section>
-</section>
-<section id="foundry">
+
+
+
+
 <span id="id24"></span><h2 id="foundry">Foundry<a class="headerlink" href="#foundry" title="永久链接至标题">¶</a></h2>
 <p>Foundry 是个用 rust 实现的 toolkit，用法和 Brownie 差不多。
 要注意的一点就是 Foundry 是这个 toolkit 的名字，但是内部命令
 不是 foundry，而是 <code class="docutils literal notranslate"><span class="pre">forge</span></code> 和 <code class="docutils literal notranslate"><span class="pre">cast</span></code> 两个命令。</p>
-<section id="foundry-installation">
+
 <span id="id25"></span><h3 id="foundry-installation">安装<a class="headerlink" href="#foundry-installation" title="永久链接至标题">¶</a></h3>
 <p>官方提供的安装二进制的方法我在 M1 上失败了，所以我就从源代码
 直接编译出来了。</p>
@@ -1405,10 +1404,10 @@ Github 上生成一下 Token，然后在 <code class="docutils literal notransla
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cargo install --git https://github.com/foundry-rs/foundry --bins --locked
 </pre></div>
 </div>
-</section>
-<section id="foundry-usage">
+
+
 <span id="id26"></span><h3 id="foundry-usage">使用<a class="headerlink" href="#foundry-usage" title="永久链接至标题">¶</a></h3>
-<section id="foundry-init">
+
 <span id="id27"></span><h4 id="foundry-init">初始化<a class="headerlink" href="#foundry-init" title="永久链接至标题">¶</a></h4>
 <p>这些 toolkits 的初始化命令大同小异，这个因为是 rust 开发的，
 所以就会继承 rust 的一些特性，比如，创建新项目可以直接指定
@@ -1448,8 +1447,8 @@ $ tree ./
 <p>编译后会多出两个文件夹，一个是 <code class="docutils literal notranslate"><span class="pre">out</span></code>，里面存放的是合约的 abi
 等文件，<code class="docutils literal notranslate"><span class="pre">cache</span></code> 就是一些缓存，重新编译时会检查里面的文件来进行
 对应的编译。</p>
-</section>
-<section id="foundry-config">
+
+
 <span id="id28"></span><h4 id="foundry-config">配置<a class="headerlink" href="#foundry-config" title="永久链接至标题">¶</a></h4>
 <p>Foundry 的配置文件为 <code class="docutils literal notranslate"><span class="pre">foundry.toml</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">default</span><span class="p">]</span>
@@ -1567,16 +1566,16 @@ $ tree ./
 <blockquote>
 <div><p>P.S. 就是不知道为什么 truffle 不支持 remapping。</p>
 </div></blockquote>
-</section>
-<section id="foundry-compile">
+
+
 <span id="id29"></span><h4 id="foundry-compile">编译<a class="headerlink" href="#foundry-compile" title="永久链接至标题">¶</a></h4>
 <p>和上面三个不同的是，foundry 的编译用的是 build 命令，这和其实现
 有关，毕竟是 rust 写的。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>forge build
 </pre></div>
 </div>
-</section>
-<section id="foundry-deploy">
+
+
 <span id="id30"></span><h4 id="foundry-deploy">部署<a class="headerlink" href="#foundry-deploy" title="永久链接至标题">¶</a></h4>
 <p>Foundry 的部署上面三个要稍微繁琐一点，不支持脚本。没办法，编译型语言和
 解释型语言的差异。</p>
@@ -1599,8 +1598,8 @@ $ tree ./
 </pre></div>
 </div>
 <p>Whoo, 这个参数有够多的，没有脚本语言舒服，希望后续可以放到配置文件中吧。</p>
-</section>
-<section id="id31">
+
+
 <h4 id="id31">交互<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h4>
 <p>如果要与链进行交互的话，Foundry 使用的是另一个命令：<code class="docutils literal notranslate"><span class="pre">cast</span></code>。</p>
 <p>这种编译型语言就是这点不太方便，不能像解释型那样直接写一个脚本然后运行就
@@ -1616,10 +1615,10 @@ $ tree ./
 </div>
 <p>更多的去官方文档上查看吧。</p>
 <p>官网文档：https://book.getfoundry.sh/getting-started/installation.html</p>
-</section>
-</section>
-</section>
-<section id="id32">
+
+
+
+
 <h2 id="id32">总结<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h2>
 <p>上面的使用中我都没有介绍怎么进行测试，因为我都是直接部署到测试网上，然后进行
 交互式的验证，反正测试网上不要钱，直接测就好，或者本地起一个 ganache，也可以
@@ -1630,39 +1629,39 @@ $ tree ./
 下面就做个简单的对比吧。</p>
 <table>
 <thead>
-<tr class="row-odd"><th class="text-left head"><p>Toolkits</p></th>
-<th class="text-center head"><p>实现语言</p></th>
-<th class="text-center head"><p>上手难度</p></th>
+<tr class="row-odd"><th class="text-align:left head"><p>Toolkits</p></th>
+<th class="text-align:center head"><p>实现语言</p></th>
+<th class="text-align:center head"><p>上手难度</p></th>
 <th class="head"><p>优点</p></th>
 <th class="head"><p>缺点</p></th>
 <th class="head"><p>总体评分</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>Hardhat</p></td>
-<td class="text-center"><p>JavaScript</p></td>
-<td class="text-center"><p>1   星</p></td>
+<tr class="row-even"><td class="text-align:left"><p>Hardhat</p></td>
+<td class="text-align:center"><p>JavaScript</p></td>
+<td class="text-align:center"><p>1   星</p></td>
 <td><p>文档全，用户多</p></td>
 <td><p>无</p></td>
 <td><p>4</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>Truffle</p></td>
-<td class="text-center"><p>JavaScript</p></td>
-<td class="text-center"><p>1   星</p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Truffle</p></td>
+<td class="text-align:center"><p>JavaScript</p></td>
+<td class="text-align:center"><p>1   星</p></td>
 <td><p>使用简单</p></td>
 <td><p>项目不再更新，可配置性不高</p></td>
 <td><p>3</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>Brownie</p></td>
-<td class="text-center"><p>Python</p></td>
-<td class="text-center"><p>2   星</p></td>
+<tr class="row-even"><td class="text-align:left"><p>Brownie</p></td>
+<td class="text-align:center"><p>Python</p></td>
+<td class="text-align:center"><p>2   星</p></td>
 <td><p>使用方便，集成功能较多</p></td>
 <td><p>Python 在速度上比较慢</p></td>
 <td><p>4</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>Foundry</p></td>
-<td class="text-center"><p>Rust</p></td>
-<td class="text-center"><p>2.5 星</p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Foundry</p></td>
+<td class="text-align:center"><p>Rust</p></td>
+<td class="text-align:center"><p>2.5 星</p></td>
 <td><p>一个字，快</p></td>
 <td><p>部署和交互比较麻烦</p></td>
 <td><p>3.5</p></td>
@@ -1684,8 +1683,8 @@ Python 背景的人，那么 Brownie 是个很不错的选择，毕竟不用再�
 <p>One more thing，一个个人觉得很不错的资源合集的链接：</p>
 <p>https://github.com/OpenZeppelin/awesome-openzeppelin</p>
 <p>Happy Crypting :)</p>
-</section>
-</section>
+
+
 
 
           </article>
@@ -1734,7 +1733,7 @@ Python 背景的人，那么 Brownie 是个很不错的选择，毕竟不用再�
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

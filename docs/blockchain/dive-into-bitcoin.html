@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -675,12 +674,12 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="dive-into-bitcoin">
+  
 <span id="diving-into-bitcoin"></span><h1 id="blockchain-dive-into-bitcoin--page-root">Dive into Bitcoin<a class="headerlink" href="#blockchain-dive-into-bitcoin--page-root" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div><p><strong>CRYPTO IS HARD, DO NOT TRUST ANYONE, VERIFY YOURSELF !!!</strong></p>
 </div></blockquote>
-<section id="prodromes">
+
 <span id="id1"></span><h2 id="prodromes">Prodromes<a class="headerlink" href="#prodromes" title="永久链接至标题">¶</a></h2>
 <p>正如开头引用的那句话，加密货币里面涉及到的知识太多了，而且经过十多年的发展，
 所需要学习的知识也很多，不过，随着慢慢的接触，我渐渐发现其最底层的原理和基础
@@ -701,8 +700,8 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 <div><p>P.S. 本文只是技术分析介绍，对于投资理财不做任何推荐担保。投资有风险，
 入市需谨慎，对于市场和生活要常怀敬畏之心。</p>
 </div></blockquote>
-</section>
-<section id="keys-addresses-wallets">
+
+
 <h2 id="keys-addresses-wallets">Keys, Addresses, Wallets<a class="headerlink" href="#keys-addresses-wallets" title="永久链接至标题">¶</a></h2>
 <p>Date: Mon Apr. 25 2022</p>
 <p>在 crypto 中，有了 private key，才能打开 crypto 的大
@@ -716,7 +715,7 @@ crypto 不到一年的时间。如果其中有任何错误的话，可以尽情�
 《三体》中所说的：“弱小和无知不是生存的障碍，傲慢才是。”</p>
 <p>那么，接下来就开始进入 bitcoin 的世界，开始了解在 bitcoin
 中私钥和公钥以及钱包地址的生成吧。</p>
-<section id="keys-addresses">
+
 <span id="bitcoin-keys-addresses"></span><h3 id="keys-addresses">Keys / Addresses<a class="headerlink" href="#keys-addresses" title="永久链接至标题">¶</a></h3>
 <p>首先， bitcoin 或者说整个 crypto 中，账号的生成使用的加密算法都
 是一致的，使用的都是<a class="reference external" href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">椭圆曲线加密</a>
@@ -805,35 +804,35 @@ Public Key - Hashing Function -&gt; Address</p>
 <p>下面表格是不同版本对应的值（第四步中的版本字段），以及 Base58Check 编码的结果：</p>
 <table>
 <thead>
-<tr class="row-odd"><th class="text-center head"><p>Type</p></th>
-<th class="text-center head"><p>Version prefix (hex)</p></th>
-<th class="text-center head"><p>Base58 result prefix</p></th>
+<tr class="row-odd"><th class="text-align:center head"><p>Type</p></th>
+<th class="text-align:center head"><p>Version prefix (hex)</p></th>
+<th class="text-align:center head"><p>Base58 result prefix</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p>Bitcoin Address</p></td>
-<td class="text-center"><p>0x00</p></td>
-<td class="text-center"><p>1</p></td>
+<tr class="row-even"><td class="text-align:center"><p>Bitcoin Address</p></td>
+<td class="text-align:center"><p>0x00</p></td>
+<td class="text-align:center"><p>1</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>Pay-to-Script-Hash Address</p></td>
-<td class="text-center"><p>0x05</p></td>
-<td class="text-center"><p>3</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>Pay-to-Script-Hash Address</p></td>
+<td class="text-align:center"><p>0x05</p></td>
+<td class="text-align:center"><p>3</p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p>Bitcoin Testnet Address</p></td>
-<td class="text-center"><p>0x6F</p></td>
-<td class="text-center"><p>m or n</p></td>
+<tr class="row-even"><td class="text-align:center"><p>Bitcoin Testnet Address</p></td>
+<td class="text-align:center"><p>0x6F</p></td>
+<td class="text-align:center"><p>m or n</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>Private Key WIF</p></td>
-<td class="text-center"><p>0x80</p></td>
-<td class="text-center"><p>5, K, or L</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>Private Key WIF</p></td>
+<td class="text-align:center"><p>0x80</p></td>
+<td class="text-align:center"><p>5, K, or L</p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p>BIP-38 Encrypted Private Key</p></td>
-<td class="text-center"><p>0x0142</p></td>
-<td class="text-center"><p>6P</p></td>
+<tr class="row-even"><td class="text-align:center"><p>BIP-38 Encrypted Private Key</p></td>
+<td class="text-align:center"><p>0x0142</p></td>
+<td class="text-align:center"><p>6P</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>BIP-32 Extended Public Key</p></td>
-<td class="text-center"><p>0x0488B21E</p></td>
-<td class="text-center"><p>xpub</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>BIP-32 Extended Public Key</p></td>
+<td class="text-align:center"><p>0x0488B21E</p></td>
+<td class="text-align:center"><p>xpub</p></td>
 </tr>
 </tbody>
 </table>
@@ -842,8 +841,8 @@ Public Key - Hashing Function -&gt; Address</p>
 中会演示。好像上面又翻车了， version prefix 新的 BIP 不止一个字节，不过这
 些都是更新过来的，基本的原理没差的。</p>
 <p>Okay，到这里其实就可以自己去写代码来生成 bitcoin 的地址了。</p>
-</section>
-<section id="wallets">
+
+
 <span id="bitcoin-wallets"></span><h3 id="wallets">Wallets<a class="headerlink" href="#wallets" title="永久链接至标题">¶</a></h3>
 <p>相比于 Ethereum，bitcoin 的钱包稍微特殊一点，因为有些钱包是需
 要同步节点的，不过这个也没办法，毕竟他没有余额这一概念，每次查询
@@ -874,9 +873,9 @@ WIF 也是用 Base58Check 对私钥进行编码。和
 <a class="reference internal" href="#bitcoin-keys-addresses"><span class="std std-ref">Keys / Addresses</span></a> 中编码 pubkey hash 的
 步骤一致，就是 version prefix 不同而已，具体对应关系都在
 上节中末尾的表格中写明了。</p>
-</section>
-</section>
-<section id="transaction">
+
+
+
 <span id="bitcoin-tx"></span><h2 id="transaction">Transaction<a class="headerlink" href="#transaction" title="永久链接至标题">¶</a></h2>
 <p>Transaction，通常缩写成 tx，本文之后统一使用 tx 表示 transaction。
 那么什么是 tx 呢？其实 tx 在金融或者跟确切点来说 —— 银行中用的最多，
@@ -885,7 +884,7 @@ WIF 也是用 Base58Check 对私钥进行编码。和
 毕竟要想确认自己的转账是否成功，最可靠的办法就是去浏览器（区块链的浏览器）
 上查看对应的 tx。而对于技术来说，不但要看懂 tx，还要知道 tx 是怎么构造
 的，即根据自己的需求定制一个 tx。</p>
-<section id="utxo">
+
 <span id="bitcoin-utxo"></span><h3 id="utxo">UTXO<a class="headerlink" href="#utxo" title="永久链接至标题">¶</a></h3>
 <p>在讲 tx 之前，首先要介绍一下 bitcoin 记账的独特机制，一般的银行账户来说，会
 有一个账户余额的概念，而对于 bitcoin 来说，根本就没有账户余额这一说，而是采用
@@ -895,8 +894,8 @@ WIF 也是用 Base58Check 对私钥进行编码。和
 你有 1 btc（10^8 satoshi），那么就意味着你在等待一个或多个 UTXO。那么最初的
 UTXO 来自那里呢？当然是矿工了，因为每当矿工挖到了一个 block，就会被奖励对应的
 btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs 了。</p>
-</section>
-<section id="transaction-struct">
+
+
 <h3 id="transaction-struct">Transaction Struct<a class="headerlink" href="#transaction-struct" title="永久链接至标题">¶</a></h3>
 <p>介绍了 UTXO，那么就直接介绍一下 tx 的具体的结构。</p>
 <p>每个 tx 有六部分组成：</p>
@@ -912,8 +911,8 @@ btc，而这些奖励是矿工的 Input，这也就变成了矿工们的 UTXOs �
 <li><p><code class="docutils literal notranslate"><span class="pre">lock_time</span></code>：UTXO 的锁定时间或区块（uint_32_t），用来表示这个 tx 中的
 UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docutils literal notranslate"><span class="pre">tx_in</span></code> 中 <code class="docutils literal notranslate"><span class="pre">sequence</span></code> 的高）</p></li>
 </ul>
-</section>
-<section id="txin-a-transaction-input-non-coinbase">
+
+
 <span id="tx-input"></span><h3 id="txin-a-transaction-input-non-coinbase">TxIn: A Transaction Input (Non-Coinbase)<a class="headerlink" href="#txin-a-transaction-input-non-coinbase" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">previous_output</span></code>：36 字节，上一个 UTXO，或者说是之前的 <code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 中的一个
@@ -932,8 +931,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 </ul>
 </li>
 </ul>
-</section>
-<section id="outpoint">
+
+
 <span id="txin-outpoint"></span><h3 id="outpoint">Outpoint<a class="headerlink" href="#outpoint" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">hash</span></code>：32 字节，char[32]，包含本次 input 所花费的 utxo 的 tx 的哈希值，
@@ -941,8 +940,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 <li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>：4 字节，uint32_t，所需要话费的 utxo 在 tx 中位置，即 utxo 在
 <code class="docutils literal notranslate"><span class="pre">vout</span></code>/<code class="docutils literal notranslate"><span class="pre">tx_out</span></code> 数组中的索引/位置。</p></li>
 </ul>
-</section>
-<section id="txout-a-transaction-output">
+
+
 <span id="tx-output"></span><h3 id="txout-a-transaction-output">TxOut: A Transaction Output<a class="headerlink" href="#txout-a-transaction-output" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>：8 字节，int64_t，允许其他人花费的 satoshi，这里的 satoshi 总量
@@ -952,8 +951,8 @@ UTXO 多久或哪个区块后可以被消费（优先级没有 <code class="docu
 <li><p><code class="docutils literal notranslate"><span class="pre">pk_script</span></code>：定义这个 utxo 是谁可以用的，只有这个脚本执行成功的人才能使用
 这个 utxo，通俗点就是转给谁的。</p></li>
 </ul>
-</section>
-<section id="tx-example">
+
+
 <span id="id3"></span><h3 id="tx-example">实例<a class="headerlink" href="#tx-example" title="永久链接至标题">¶</a></h3>
 <p>Talk is cheap，所以下面是一个 pay-to-pubkey-hash<a class="footnote-reference brackets" href="#scripts" id="id4">2</a> 的 tx：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01000000</span> <span class="o">...................................</span> <span class="n">Version</span>
@@ -1117,12 +1116,14 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 <span class="mi">01</span> <span class="o">.........................................</span> <span class="n">Flag</span><span class="p">,</span> <span class="n">segwit</span> <span class="nb">format</span>
 <span class="mi">01</span> <span class="o">.........................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">Inputs</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tx_in</span> <span class="n">counts</span>
 <span class="o">|</span>
-<span class="o">|</span>                                            <span class="n">Txln</span><span class="o">/</span><span class="n">vin</span>
+<span class="o">|</span>                                            <span class="n">Txln</span><span class="o">/</span><span class="n">vin</span><span class="p">:</span>
+<span class="o">|</span>                                            <span class="n">Outpoint</span><span class="p">:</span>
 <span class="o">|</span> <span class="mi">3</span><span class="n">d75af2a19881e883ff5c604eeaaae55</span>
 <span class="o">|</span> <span class="mi">1</span><span class="n">f048ee2e530eb3e06569c5321605487</span> <span class="o">.........</span> <span class="n">Oupoint</span> <span class="n">TXID</span>
+<span class="o">|</span> <span class="mi">01000000</span> <span class="o">.................................</span> <span class="n">Outpoint</span> <span class="n">index</span> <span class="n">number</span><span class="p">:</span> <span class="mi">1</span>
 <span class="o">|</span>
-<span class="o">|</span> <span class="mi">0100000000</span> <span class="o">...............................</span> <span class="n">Outpoint</span> <span class="n">index</span> <span class="n">number</span><span class="p">:</span> <span class="mi">1</span>
-<span class="o">|</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">........................................</span> <span class="n">Number</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">signature</span> <span class="n">script</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">........................................</span> <span class="n">Signature</span> <span class="n">Script</span>
 <span class="o">|</span> <span class="n">fdffffff</span> <span class="o">.................................</span> <span class="n">Sequence</span> <span class="n">Number</span><span class="p">,</span> <span class="mi">4294967293</span><span class="p">(</span><span class="mh">0xfffffffd</span><span class="p">)</span>
 <span class="o">|</span>
 <span class="o">|</span>                                            <span class="n">TxOut</span><span class="o">/</span><span class="n">vout</span>
@@ -1168,8 +1169,8 @@ $ bitcoin-cli -rpcwallet<span class="o">=</span>bob getbalance
 hash 呢？这里不要陷入误区，从 private key 到 public key，
 再到 address 是不可逆的，但是 address 到 pubkey hash 是可逆的，
 具体的流程见 <a class="reference internal" href="#bitcoin-keys-addresses"><span class="std std-ref">Keys / Addresses</span></a></p>
-</section>
-<section id="optional-coinbase-input">
+
+
 <h3 id="optional-coinbase-input">Optional: Coinbase Input<a class="headerlink" href="#optional-coinbase-input" title="永久链接至标题">¶</a></h3>
 <p>TxIn 是分两种，一种就是正常的转账，还有一种就是 utxo 的源头，
 爆块的到的奖励，这个一般是矿工比较关注的。</p>
@@ -1207,9 +1208,9 @@ hash 呢？这里不要陷入误区，从 private key 到 public key，
 <span class="o">|</span> <span class="mi">00000000</span> <span class="o">............................</span> <span class="n">Locktime</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="scripting">
+
+
+
 <span id="bitcoin-scipting"></span><h2 id="scripting">Scripting<a class="headerlink" href="#scripting" title="永久链接至标题">¶</a></h2>
 <p>bitcoin 中也有类似 ethereum 的合约语言，但是因为不支持循环，
 不具备图灵完备，所以就被看作是编程语言，但确实是可以使用 bitcoin
@@ -1227,7 +1228,7 @@ hash 呢？这里不要陷入误区，从 private key 到 public key，
 要有 p2pkh/p2sh/multisig/pubkey。vin 中的 Signature script
 是证明上个 tx 中的 vout 是给你的，而 vout 里面的 script 是为了
 指定谁可以使用。下面开始分别介绍。</p>
-<section id="pay-to-public-key-hash-p2pkh">
+
 <h3 id="pay-to-public-key-hash-p2pkh">Pay To Public Key Hash (P2PKH)<a class="headerlink" href="#pay-to-public-key-hash-p2pkh" title="永久链接至标题">¶</a></h3>
 <p>P2PKH 在 bitcoin 中使用最广泛，是用来确认 utxo 是不是属于
 你的。其格式为：</p>
@@ -1236,8 +1237,8 @@ hash 呢？这里不要陷入误区，从 private key 到 public key，
 </pre></div>
 </div>
 <p>具体是怎么验证的在 <a class="reference internal" href="#p2pkh-script-validation"><span class="std std-ref">P2PKH Script Validation</span></a> 中讲解。</p>
-</section>
-<section id="pay-to-script-hash-p2sh">
+
+
 <h3 id="pay-to-script-hash-p2sh">Pay To Script Hash (P2SH)<a class="headerlink" href="#pay-to-script-hash-p2sh" title="永久链接至标题">¶</a></h3>
 <p>P2SH 是为了改进 Pubkey script，因为 pubkey script 比较
 复杂，而且也没有统一的标准，所以被 <a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki">BIP70</a>
@@ -1254,8 +1255,8 @@ Script），然后再将这个赎回脚本的 hash 给发送方，发送方会�
 <span class="n">Signature</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">sig</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">sig</span><span class="p">]</span> <span class="p">[</span><span class="n">sig</span><span class="o">...</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">redeemScript</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</section>
-<section id="p2pkh-script-validation">
+
+
 <span id="id7"></span><h3 id="p2pkh-script-validation">P2PKH Script Validation<a class="headerlink" href="#p2pkh-script-validation" title="永久链接至标题">¶</a></h3>
 <p>这里介绍一下 P2PKH 是怎么进行验证的，以下面的 pubkey script 和
 signature script 为例。</p>
@@ -1270,7 +1271,7 @@ signature script 为例。</p>
 <p>其实 Signature Script 就是在 pubkey script 前面添加了签名和
 公钥。</p>
 <p>执行的是 Signature script，步骤如下：</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>将签名 <code class="docutils literal notranslate"><span class="pre">&lt;Sig&gt;</span></code> 添加到一个空栈中，再将 <code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code> 压入这个栈</p></li>
 <li><p>执行 <code class="docutils literal notranslate"><span class="pre">OP_DUP</span></code>，将栈顶的元素复制一份然后压入栈中，这是这个栈的
 元素就有 <code class="docutils literal notranslate"><span class="pre">&lt;Sig&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;Pubkey&gt;</span></code>。</p></li>
@@ -1295,8 +1296,8 @@ pubkey 的匹配，如果匹配的话，则将 true（1） 压入栈顶，否则
 <p>最后就是去检查这个栈顶的元素值，如果为 false 的话就表明这个 tx 是
 个无效的 tx，否则就是有效。这样就能有效的验证花费 utxo 的人是不是
 真正的收款人。因为只有拥有 B 地址的私钥才能给出这些信息。</p>
-</section>
-<section id="multisig">
+
+
 <h3 id="multisig">Multisig<a class="headerlink" href="#multisig" title="永久链接至标题">¶</a></h3>
 <p>p2pkh 的格式为：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">A</span> <span class="n">pubkey</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">B</span> <span class="n">pubkey</span><span class="p">]</span> <span class="p">[</span><span class="n">C</span> <span class="n">pubkey</span><span class="o">...</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span> <span class="n">OP_CHECKMULTISIG</span>
@@ -1312,16 +1313,16 @@ pubkey 可以参与签名。比如说总共有 3 个人，只要 2 个人签名
 <span class="n">Signature</span> <span class="n">script</span><span class="p">:</span> <span class="n">OP_0</span> <span class="o">&lt;</span><span class="n">A</span> <span class="n">sig</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">C</span> <span class="n">sig</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">redeemScript</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</section>
-<section id="pubkey">
+
+
 <h3 id="pubkey">Pubkey<a class="headerlink" href="#pubkey" title="永久链接至标题">¶</a></h3>
 <p>和 p2pkh 类似，但是没有 p2pkh 安全，所以被弃用了，其格式为：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">pubkey</span><span class="o">&gt;</span> <span class="n">OP_CHECKSIG</span>
 <span class="n">Signature</span> <span class="n">script</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">sig</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</section>
-<section id="null-data">
+
+
 <h3 id="null-data">Null Data<a class="headerlink" href="#null-data" title="永久链接至标题">¶</a></h3>
 <p>格式为：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pubkey</span> <span class="n">Script</span><span class="p">:</span> <span class="n">OP_RETURN</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="n">to</span> <span class="mi">40</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="o">&gt;</span>
@@ -1332,8 +1333,8 @@ pubkey 可以参与签名。比如说总共有 3 个人，只要 2 个人签名
 的数据库中，而是添加到链上。就相当于付点 tx fee，就可以将数据存在
 bitcoin 的链上（目前来说太贵了，如果真要存数据为什么不用其他的链呢？）
 所以总的来说也没什么用，估计设计时是想做存储吧。</p>
-</section>
-<section id="pay-to-witness-public-key-hash-p2wpkh">
+
+
 <h3 id="pay-to-witness-public-key-hash-p2wpkh">Pay to Witness Public Key Hash (P2WPKH)<a class="headerlink" href="#pay-to-witness-public-key-hash-p2wpkh" title="永久链接至标题">¶</a></h3>
 <p>SegWit，或者说 Segregated Witness，是个 2017 添加到 bitcoin
 中的协议，用来提高 tx 的吞吐量。但这个并不是 bitcoin 的原创，而
@@ -1362,9 +1363,9 @@ O(n^2)。与之相关的 BIP 有：</p>
 <li><p><a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki">BIP-145</a>：Segwit 的 getblocktemplate 更新（挖矿）</p></li>
 <li><p><a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki">BIP-173</a>：v0-16 版本的 witness 的 Base32 格式</p></li>
 </ul>
-</section>
-</section>
-<section id="block">
+
+
+
 <span id="bitcoin-block"></span><h2 id="block">Block<a class="headerlink" href="#block" title="永久链接至标题">¶</a></h2>
 <p>讲完 tx 和 script，就可以好好讲一下 bitcoin 中的 block 了。</p>
 <p>block 通常分两个部分，一个是 block header，另一个就是 txes。</p>
@@ -1379,14 +1380,14 @@ O(n^2)。与之相关的 BIP 有：</p>
 </ul>
 <p>这些字段都是小段对齐的。</p>
 <p>Merkel Root 和 Pow 的介绍在 <a class="reference internal" href="concepts.html#blockchain-concepts"><span class="std std-ref">Basic Concepts</span></a> 中</p>
-</section>
-<section id="terminology">
+
+
 <span id="bitcoin-terminology"></span><h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="永久链接至标题">¶</a></h2>
 <p><a class="reference external" href="https://developer.bitcoin.org/glossary.html">bitcoin glossary</a></p>
-</section>
-<section id="reference">
+
+
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>https://bitcoin.org/bitcoin.pdf</p></li>
 <li><p>https://developer.bitcoin.org/devguide/transactions.html</p></li>
 <li><p>https://developer.bitcoin.org/reference/transactions.html</p></li>
@@ -1410,8 +1411,8 @@ O(n^2)。与之相关的 BIP 有：</p>
 <dd><p>https://bitcoin.stackexchange.com/questions/90608/cant-get-the-tx-with-gettransaction-or-getrawtransaction-methods</p>
 </dd>
 </dl>
-</section>
-</section>
+
+
 
 
           </article>
@@ -1460,7 +1461,7 @@ O(n^2)。与之相关的 BIP 有：</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
