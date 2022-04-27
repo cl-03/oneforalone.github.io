@@ -528,19 +528,19 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 02 ......................................... Number of outputs: 2, tx_out counts
 | 00ca9a3b00000000 ......................... Satoshis (10.00000000 BTC)
 |
-| 16 ....................................... Bytes in pubkey script: 22
+| 16 ....................................... Bytes in redeem script: 22
 | | 00 ..................................... Nothing
 | | 14 ..................................... Push 20 bytes as data
 | | | 2d46047172bcaebc2f53
-| | | 8ff5960518c0e6fdc965 ................. Pubkey hash, big-endian
+| | | 8ff5960518c0e6fdc965 ................. Redeem script, big-endian
 |
 | ecf7675900000000 ......................... Satoshis (14.99985900 BTC)
 |
-| 16 ....................................... Bytes in pubkey script: 22
+| 16 ....................................... Bytes in redeem script: 22
 | | 00 ..................................... Nothing
 | | 14 ..................................... Push 20 bytes as data
 | | | 8eede2516b0ff9e90244
-| | | 0a95225e39d6d98fad33 ................. Pubkey hash, big-endian
+| | | 0a95225e39d6d98fad33 ................. Redeem Script, big-endian
 |
 |                                            Witness
 

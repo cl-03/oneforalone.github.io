@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -590,25 +591,25 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="pgp-suit-for-apple-mail-on-mac-os">
 <h1 id="blockchain-gpg-on-mac--page-root">PGP Suit for Apple Mail on Mac OS<a class="headerlink" href="#blockchain-gpg-on-mac--page-root" title="永久链接至标题">¶</a></h1>
 <p>Date: Tue. Apr. 19 2022</p>
-
+<section id="id1">
 <h2 id="id1">简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>进入 crypto 了，那么就不得不注重起隐私来了，论隐私来说，那些 IM 的
 信息没啥好谈的，就连开源界都要政治正确，所以也就没啥好说的。但是对于
 一个比较喜欢用邮箱的人来说，可以使用 PGP 来规避信息内容泄漏的风险。
 下面是在 Mac OS 使用 PGP Suit 的一些记录。</p>
-
-
+</section>
+<section id="id2">
 <h2 id="id2">安装<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>首先，千万不要使用 homebrew 安装 PGP Suit，不然 Apple Mail 的
 插件你是启用不了的，要去官网下载 dmg 手动安装。这已经不是我第一次
 因为 homebrew 安装导致软件版本的问题了，所以，官网没有推荐使用
 homebrew 的，就不要使用，免得又遇到什么问题。</p>
 <p>官网地址为：https://gpgtools.org/</p>
-
-
+</section>
+<section id="id3">
 <h2 id="id3">配置<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>创建密钥对和在 Apple Mail 中启用 GPG Suit 插件就不用我介绍了，
 安装完成后会自动弹窗让你选择，选择是就好。这里所说的配置是，我怎
@@ -663,8 +664,8 @@ group &lt;email-address&gt; <span class="o">=</span> &lt;fingerprint1&gt; &lt;fi
 协议的文件。BTW. 我的公钥可以在 <a class="reference internal" href="../about-me.html#about-me"><span class="std std-ref">About Me</span></a> 中。
 如果对文件进行了加密，记得备份自己的密钥对哦。</p>
 </div></blockquote>
-
-
+</section>
+<section id="command-line">
 <h2 id="command-line">Command Line<a class="headerlink" href="#command-line" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>Generate/Revoke/Delete Key Pair</p></li>
@@ -748,16 +749,16 @@ gpg --output &lt;filename&gt; --decrypt &lt;encrypted-filename&gt;
 </div>
 <p>其实这些命令使用 <code class="docutils literal notranslate"><span class="pre">pgp</span> <span class="pre">--help</span></code> 就能查到，但还是记录一下吧，有总比
 没有要好。</p>
-
-
+</section>
+<section id="reference">
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>https://gpgtools.org/</p></li>
 <li><p>https://gpgtools.tenderapp.com/kb/how-to/add-email-address-to-existing-public-key-domain-mapping-group-feature</p></li>
 <li><p>https://www.gnupg.org/gph/en/manual.html</p></li>
 </ol>
-
-
+</section>
+</section>
 
 
           </article>
@@ -806,7 +807,7 @@ gpg --output &lt;filename&gt; --decrypt &lt;encrypted-filename&gt;
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -582,7 +583,7 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="raspberry-pi-bitcoin">
 <span id="bitcoin-on-pi"></span><h1 id="blockchain-bitcoin-on-pi--page-root">Raspberry Pi 安装 bitcoin<a class="headerlink" href="#blockchain-bitcoin-on-pi--page-root" title="永久链接至标题">¶</a></h1>
 <p>Author: Yuqi Liu</p>
 <p>Date: Sat Apr 9 2022</p>
@@ -590,7 +591,7 @@
 官网有编译好了 ARM 版本的二进制，如果懒得去编译可以直接下载去官网下载就
 好了，官网下载链接：https://bitcoin.org/en/download</p>
 <p>本文主要是记录 ARM 版从源码编译安装 bitcoin 命令行的记录。</p>
-
+<section id="enviroment">
 <h2 id="enviroment">Enviroment<a class="headerlink" href="#enviroment" title="永久链接至标题">¶</a></h2>
 <p>Raspberry Pi 4 Modle B @2018:</p>
 <ul class="simple">
@@ -598,10 +599,10 @@
 <li><p>Mem: 4GiB</p></li>
 <li><p>Disk: 128GiB(TF) + 1 TiB(WD HDD)</p></li>
 </ul>
-
-
+</section>
+<section id="installation">
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>安装依赖库</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt -y install build-essential autoconf libtool pkg-config <span class="se">\</span>
@@ -622,7 +623,7 @@ See http://randspringer.de/boost for more documentation.
 </div>
 </li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>安装 berkeley-db 4.8</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
@@ -641,7 +642,7 @@ sudo make install
 <span class="p">(</span><span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">incompatible</span><span class="o">-</span><span class="n">bdb</span> <span class="n">to</span> <span class="n">ignore</span> <span class="ow">or</span> <span class="o">--</span><span class="n">disable</span><span class="o">-</span><span class="n">wallet</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">wallet</span> <span class="n">functionality</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple" start="3">
 <li><p>获取源代码</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/bitcoin/bitcoin.git
@@ -649,7 +650,7 @@ sudo make install
 git checkout v22.
 </pre></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple" start="4">
 <li><p>编译安装</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./configure <span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">"-I/usr/local/BerkeleyDB.4.8/include -O2"</span> <span class="se">\</span>
@@ -684,10 +685,10 @@ mwO7F-1njVd3ToTQpLPNHNWe3HxmXYNSuQSPTi6aDzQ<span class="o">=</span>
 <p>OK，以上 Pi 就能跑 bitcoin 的 full node 了。</p>
 <p>同步需要时间，Just wait。</p>
 <p>Happy hacking。</p>
-
-
+</section>
+<section id="reference">
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>https://stackoverflow.com/questions/8811381/possibly-undefined-macro-ac-msg-error</p></li>
 <li><p>https://github.com/bitcoin/bitcoin/issues/2998</p></li>
 <li><p>https://bitcoin.stackexchange.com/questions/91901/how-to-install-berkeley-db-4-8-on-linux</p></li>
@@ -697,8 +698,8 @@ mwO7F-1njVd3ToTQpLPNHNWe3HxmXYNSuQSPTi6aDzQ<span class="o">=</span>
 <li><p>https://github.com/bitcoin/bitcoin/blob/v0.16.0/contrib/debian/examples/bitcoin.conf</p></li>
 <li><p>https://bitcoin.org/en/full-node#other-linux-daemon</p></li>
 </ol>
-
-
+</section>
+</section>
 
 
           </article>
@@ -747,7 +748,7 @@ mwO7F-1njVd3ToTQpLPNHNWe3HxmXYNSuQSPTi6aDzQ<span class="o">=</span>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

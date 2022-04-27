@@ -4,7 +4,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -614,12 +615,12 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="hacking-in-lisp">
 <h1 id="programming-hacking-in-lisp--page-root">Hacking in Lisp<a class="headerlink" href="#programming-hacking-in-lisp--page-root" title="永久链接至标题">¶</a></h1>
 <p>Author: Yuqi Liu</p>
 <p>Date: Mon Apr. 10 2022</p>
 <p>NOTE: This is a scatch, need to re-organized.</p>
-
+<section id="environment-setups">
 <h2 id="environment-setups">Environment Setups<a class="headerlink" href="#environment-setups" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>sbcl: lisp implemention</p></li>
@@ -642,8 +643,8 @@ exiting interactive debugger: 0 or Ctrl-D</p>
 <span class="p">(</span><span class="nb">setf</span> <span class="vg">*debugger-hook*</span> <span class="nf">#'</span><span class="nv">print-condition-hook</span><span class="p">)</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="hello-program">
 <h2 id="hello-program">hello program<a class="headerlink" href="#hello-program" title="永久链接至标题">¶</a></h2>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">hello</span> <span class="p">()</span>
   <span class="s">"say hello to USER"</span>
@@ -671,8 +672,8 @@ exiting interactive debugger: 0 or Ctrl-D</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbcl --script hello.lisp
 </pre></div>
 </div>
-
-
+</section>
+<section id="portacle-ide">
 <h2 id="portacle-ide">Portacle (IDE)<a class="headerlink" href="#portacle-ide" title="永久链接至标题">¶</a></h2>
 <p>download it... and run</p>
 <p>call a private function in package <code class="docutils literal notranslate"><span class="pre">(package-name::function-name)</span></code></p>
@@ -733,8 +734,8 @@ https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defp
 <span class="p">(</span><span class="nb">print</span> <span class="s2">"We are on linux)</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="iteration">
 <h2 id="iteration">Iteration<a class="headerlink" href="#iteration" title="永久链接至标题">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">dolist</span></code>, <code class="docutils literal notranslate"><span class="pre">dotimes</span></code>, <code class="docutils literal notranslate"><span class="pre">loop</span></code>, <code class="docutils literal notranslate"><span class="pre">maphash</span></code> ...</p>
 <ul class="simple">
@@ -822,7 +823,7 @@ https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defp
 <span class="p">(</span><span class="nb">loop</span> <span class="p">(</span><span class="nb">print</span> <span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="nb">read</span><span class="p">))))</span>
 </pre></div>
 </div>
-
+<section id="loop-hight-level-overview">
 <h3 id="loop-hight-level-overview">LOOP: Hight-level Overview<a class="headerlink" href="#loop-hight-level-overview" title="永久链接至标题">¶</a></h3>
 <p>2 rules:</p>
 <ul class="simple">
@@ -858,9 +859,9 @@ https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defp
   <span class="ss">:finally</span> <span class="p">(</span><span class="nb">return</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">i</span> <span class="nv">res</span><span class="p">)))</span>
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+<section id="all-named-functions">
 <h2 id="all-named-functions">All named functions<a class="headerlink" href="#all-named-functions" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>named functions (<code class="docutils literal notranslate"><span class="pre">defun</span></code>)</p></li>
@@ -897,15 +898,15 @@ https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defp
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">flet</span></code> ~ <code class="docutils literal notranslate"><span class="pre">let</span></code>
 <code class="docutils literal notranslate"><span class="pre">labels</span></code> ~ <code class="docutils literal notranslate"><span class="pre">let*</span></code></p>
-
+<section id="multiple-return-values">
 <h3 id="multiple-return-values">multiple return values<a class="headerlink" href="#multiple-return-values" title="永久链接至标题">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">values</span></code> print the multiple values, and return the first elements
 using <code class="docutils literal notranslate"><span class="pre">nth-value</span></code> to get the respectivly elements
 using <code class="docutils literal notranslate"><span class="pre">multiple-value-bind</span></code> to bind multiple elements of returned from <code class="docutils literal notranslate"><span class="pre">values</span></code></p>
-
-
+</section>
+<section id="higher-order-functions">
 <h3 id="higher-order-functions">higher order functions<a class="headerlink" href="#higher-order-functions" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>accept function as arguments
 a. reference functions
 b. funcall</p></li>
@@ -920,7 +921,7 @@ b. funcall</p></li>
 <span class="p">(</span><span class="nb">member</span> <span class="s">"foo"</span> <span class="o">'</span><span class="p">(</span><span class="s">"rst"</span> <span class="s">"foo"</span><span class="p">)</span> <span class="ss">:test</span> <span class="nf">#'</span><span class="nb">string-equal</span><span class="p">)</span> <span class="c1">;; =&gt; ("foo")</span>
 </pre></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>return functions
 a. anonymous / lambda functions</p></li>
 </ol>
@@ -977,9 +978,9 @@ a. anonymous / lambda functions</p></li>
   <span class="p">(</span><span class="ss">:documentation</span> <span class="s">"doc for hell"</span><span class="p">))</span>
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+<section id="create-a-new-project">
 <h2 id="create-a-new-project">create a new project:<a class="headerlink" href="#create-a-new-project" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">my-project.asd</span></code>:</p></li>
@@ -1037,8 +1038,8 @@ first such pair determines the property</p></li>
 </ul>
 </li>
 </ul>
-
-
+</section>
+</section>
 
 
           </article>
@@ -1087,7 +1088,7 @@ first such pair determines the property</p></li>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
