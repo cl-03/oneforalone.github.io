@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -583,18 +582,18 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="freebsd-12">
+  
 <h1 id="misc-freebsd-install-x11--page-root">FreeBSD 12 安装图形界面<a class="headerlink" href="#misc-freebsd-install-x11--page-root" title="永久链接至标题">¶</a></h1>
 <p>没事玩了会 FreeBSD，安装完系统后发现，只有个黑黑的 terminal，这怎么能行呢？本意是想要作为桌面系统的。去社区和官网溜达一下，参照 <a class="reference external" href="https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/index.html">FreeBSD Handbook</a> 中的<a class="reference external" href="https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/x11.html">I.5 节</a>就开始折腾了。</p>
 <p>对了，在国内的伙伴千万要记得，换成国内的 pkg 源哦，另外，官网给的镜像已经挂了，建议使用<a class="reference external" href="http://mirrors.ustc.edu.cn/help/freebsd-pkg.html">中科大的镜像</a></p>
-<section id="xorg">
+
 <h2 id="xorg">安装 Xorg<a class="headerlink" href="#xorg" title="永久链接至标题">¶</a></h2>
 <p>因为 *nix 的桌面环境都是基于 <a class="reference external" href="https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/x-understanding.html">X Windows System</a> 的，所以，需要先安装 X Windows System，该套件包名叫 <code class="docutils literal notranslate"><span class="pre">xorg</span></code>：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># pkg install xorg</span>
 </pre></div>
 </div>
-</section>
-<section id="xdm">
+
+
 <h2 id="xdm">安装配置 XDM<a class="headerlink" href="#xdm" title="永久链接至标题">¶</a></h2>
 <p>安装完 <code class="docutils literal notranslate"><span class="pre">xorg</span></code> 后，就需要安装登陆界面的管理器了。当然，不同的桌面环境有不同的 <code class="docutils literal notranslate"><span class="pre">XDM</span></code>。我这里就直接装默认的，虽然很丑，但是好用啊。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># pkg install x11/xdm</span>
@@ -605,8 +604,8 @@
 </pre></div>
 </div>
 <p>这一行中的 <code class="docutils literal notranslate"><span class="pre">off</span></code> 改为 <code class="docutils literal notranslate"><span class="pre">on</span></code> 保存。这行配置会让 <code class="docutils literal notranslate"><span class="pre">XDM</span></code> 随系统启动而启动。</p>
-</section>
-<section id="xfce">
+
+
 <h2 id="xfce">安装配置 Xfce<a class="headerlink" href="#xfce" title="永久链接至标题">¶</a></h2>
 <p>最后，安装 <code class="docutils literal notranslate"><span class="pre">Xfce</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># pkg install xfce</span>
@@ -630,8 +629,8 @@
 </div>
 <p><strong>注</strong>：以上两个命令都是以用户权限执行的，如果没有切换，那么默认是进入 <code class="docutils literal notranslate"><span class="pre">root</span></code> 用户的桌面。</p>
 <p>P.S. 什么，<code class="docutils literal notranslate"><span class="pre">GNOME</span></code> 和 <code class="docutils literal notranslate"><span class="pre">KDE</span></code>？自己看文档去，反正我不用这些桌面。</p>
-</section>
-</section>
+
+
 
 
           </article>
@@ -680,7 +679,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

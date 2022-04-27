@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -595,13 +594,13 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="hacking-in-golang">
+  
 <span id="id1"></span><h1 id="programming-hacking-in-golang--page-root">Hacking in Golang<a class="headerlink" href="#programming-hacking-in-golang--page-root" title="永久链接至标题">¶</a></h1>
 <p><strong>NOTE: This is a scratch</strong></p>
 <p>Date: Sat Apr. 16 2022</p>
-<section id="variables-and-types">
+
 <h2 id="variables-and-types">Variables and Types<a class="headerlink" href="#variables-and-types" title="永久链接至标题">¶</a></h2>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="w"></span>
 </pre></div>
 </div>
 <p>变量声明和赋值</p>
@@ -634,30 +633,30 @@ func main() {
 </pre></div>
 </div>
 <p>变量可以以分组的方式组成一个语法块</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="p">(</span>
-  <span class="nx">is_true</span> <span class="kt">bool</span> <span class="p">=</span> <span class="kc">false</span>
-  <span class="nx">max_int</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">64</span> <span class="o">-</span><span class="mi">1</span>
-  <span class="nx">z</span> <span class="kt">complex128</span> <span class="p">=</span> <span class="nx">cmplx</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">+</span> <span class="m">12i</span><span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">is_true</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">  </span><span class="nx">max_int</span><span class="w"> </span><span class="kt">uint64</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">64</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="nx">z</span><span class="w"> </span><span class="kt">complex128</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cmplx</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">12i</span><span class="p">)</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>类型转换需要显示声明，变量类型未指定时根据右值推导变量</p>
 <p>常量使用关键字 const，不能使用 <code class="docutils literal notranslate"><span class="pre">:=</span></code> 语法</p>
-</section>
-<section id="flow-control">
+
+
 <h2 id="flow-control">Flow Control<a class="headerlink" href="#flow-control" title="永久链接至标题">¶</a></h2>
 <p>循环： for</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">sum</span> <span class="o">:=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-  <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
-<span class="p">}</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">sum</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">i</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>for 是 Go 中的 “while”</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">sum</span> <span class="o">:=</span> <span class="mi">1</span>
-<span class="k">for</span> <span class="nx">sum</span> <span class="p">&lt;</span> <span class="mi">1000</span> <span class="p">{</span>
-   <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">sum</span>
- <span class="p">}</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">sum</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nx">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">sum</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span> <span class="pre">{</span> <span class="pre">statement</span> <span class="pre">}</span></code>
@@ -694,17 +693,17 @@ default:
 }
 </pre></div>
 </div>
-</section>
-<section id="more-structures">
+
+
 <h2 id="more-structures">More Structures<a class="headerlink" href="#more-structures" title="永久链接至标题">¶</a></h2>
 <p>指针：是 C 指针的子集，Go 中没有指针运算
 结构体：与 C 基本一致，Go 中结构体指针访问结构体的字段和结构体一致，
 都是使用点(<code class="docutils literal notranslate"><span class="pre">.</span></code>)，而 C 中使用 <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>
 数组：与 C 一致，但是可以切片，下面的几个表达式都是等价的</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
-<span class="nx">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-<span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:]</span>
-<span class="nx">a</span><span class="p">[:]</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="w"></span>
+<span class="nx">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="w"></span>
+<span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:]</span><span class="w"></span>
+<span class="nx">a</span><span class="p">[:]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>切片有长度和容量
@@ -717,60 +716,60 @@ default:
 追加使用 <code class="docutils literal notranslate"><span class="pre">append</span></code>，<code class="docutils literal notranslate"><span class="pre">append</span></code> 追加多个元素时，会自动分配一个更大的数组，数
 组的大小可能会比数组的元素要大一点。遍历切片时可以使用 <code class="docutils literal notranslate"><span class="pre">range</span></code>，<code class="docutils literal notranslate"><span class="pre">range</span></code>
 返回两个值，一个是下标，一个是下标所对应的值的副本，可使用 <code class="docutils literal notranslate"><span class="pre">_</span></code> 来忽略。</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w"></span>
 
-<span class="kn">import</span> <span class="s">"fmt"</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">}</span>
-	<span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// len = 6, cap = 6</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="c1">// len = 6, cap = 6</span><span class="w"></span>
 
-	<span class="c1">// 截取切片使其长度为 0</span>
-	<span class="nx">s</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span>
-	<span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// len = 0, cap = 6</span>
+<span class="w">	</span><span class="c1">// 截取切片使其长度为 0</span><span class="w"></span>
+<span class="w">	</span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="c1">// len = 0, cap = 6</span><span class="w"></span>
 
-	<span class="c1">// 拓展其长度</span>
-	<span class="nx">s</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
-	<span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// len = 4, cap = 6</span>
+<span class="w">	</span><span class="c1">// 拓展其长度</span><span class="w"></span>
+<span class="w">	</span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="c1">// len = 4, cap = 6</span><span class="w"></span>
 
-	<span class="c1">// 舍弃前两个值</span>
-	<span class="nx">s</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-	<span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// len = 2, cap = 4</span>
-<span class="p">}</span>
+<span class="w">	</span><span class="c1">// 舍弃前两个值</span><span class="w"></span>
+<span class="w">	</span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="w"></span>
+<span class="w">	</span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="c1">// len = 2, cap = 4</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"len=%d cap=%d %v\n"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="nx">s</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">printSlice</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"len=%d cap=%d %v\n"</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span><span class="w"> </span><span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>映射：字典，<code class="docutils literal notranslate"><span class="pre">map[keyType]ValueType</span></code>，若 <code class="docutils literal notranslate"><span class="pre">ValueType</span></code> 是个类型名，
 可以直接省略</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">Lat</span><span class="p">,</span> <span class="nx">Long</span> <span class="kt">float64</span>
-<span class="p">}</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">Vertex</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Lat</span><span class="p">,</span><span class="w"> </span><span class="nx">Long</span><span class="w"> </span><span class="kt">float64</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">var</span> <span class="nx">m</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Vertex</span> <span class="p">{</span>
-  <span class="s">"Bell Labs"</span><span class="p">:</span> <span class="nx">Vertex</span> <span class="p">{</span>
-    <span class="mf">40.68433</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.39967</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="s">"Google"</span><span class="p">:</span> <span class="nx">Vertex</span> <span class="p">{</span>
-    <span class="mf">37.42202</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.08408</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">}</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Vertex</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s">"Bell Labs"</span><span class="p">:</span><span class="w"> </span><span class="nx">Vertex</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="mf">40.68433</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">74.39967</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s">"Google"</span><span class="p">:</span><span class="w"> </span><span class="nx">Vertex</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="mf">37.42202</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">122.08408</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="c1">// equal to</span>
-<span class="kd">var</span> <span class="nx">m</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Vertex</span> <span class="p">{</span>
-  <span class="s">"Bell Labs"</span><span class="p">:</span> <span class="p">{</span> <span class="mf">40.68433</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.39967</span> <span class="p">},</span>
-  <span class="s">"Google"</span><span class="p">:</span> <span class="p">{</span> <span class="mf">37.42202</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.08408</span> <span class="p">}</span>
-<span class="p">}</span>
+<span class="c1">// equal to</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Vertex</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s">"Bell Labs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">40.68433</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">74.39967</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s">"Google"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">37.42202</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">122.08408</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>添加和获取 k/v 与其他语言的字典一致，删除使用
 <code class="docutils literal notranslate"><span class="pre">delete(mapname,</span> <span class="pre">key)</span></code>，还一个特殊的就是检测对应的 key
 是否存在的语句：<code class="docutils literal notranslate"><span class="pre">elem,</span> <span class="pre">ok</span> <span class="pre">=</span> <span class="pre">m[key]</span></code>，<code class="docutils literal notranslate"><span class="pre">ok</span></code> 为 <code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
 <p>函数也可以作为参数或返回值，所以有闭包</p>
-</section>
-<section id="id2">
+
+
 <h2 id="id2">方法和接口<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>没有类，但是可以给结构体或非结构体实现方法，与 Rust 的 <code class="docutils literal notranslate"><span class="pre">trait</span></code> 类似，
 方法即函数，方法只是个带接受者的函数。但是不能给基础类型的指针添加方法。
@@ -781,48 +780,48 @@ default:
 参数的指针，否则不会对参数的值进行修改。</p>
 <p>参数必须匹配类型，但是对于接受者（即方法名前面的那个表达式），类型及
 其指针都可以正常使用</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w"></span>
 
-<span class="kn">import</span> <span class="p">(</span>
-  <span class="s">"fmt"</span>
-  <span class="s">"math"</span>
-<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="s">"fmt"</span><span class="w"></span>
+<span class="w">  </span><span class="s">"math"</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-<span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">float64</span>
-<span class="p">}</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Vertex</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">X</span><span class="p">,</span><span class="w"> </span><span class="nx">Y</span><span class="w"> </span><span class="kt">float64</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Vertex</span><span class="p">)</span> <span class="nx">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">*</span> <span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span> <span class="o">*</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="nx">Vertex</span><span class="p">)</span><span class="w"> </span><span class="nx">Abs</span><span class="p">()</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">Abs</span><span class="p">(</span><span class="nx">v</span> <span class="nx">Vertex</span><span class="p">)</span> <span class="kt">float64</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">X</span> <span class="o">*</span> <span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span> <span class="o">*</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">Abs</span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="nx">Vertex</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">X</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">type</span> <span class="nx">MyFloat</span> <span class="kt">float64</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="nx">MyFloat</span><span class="p">)</span> <span class="nx">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="nx">f</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">float64</span><span class="p">(</span><span class="o">-</span><span class="nx">f</span><span class="p">)</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">MyFloat</span><span class="w"> </span><span class="kt">float64</span><span class="w"></span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="nx">MyFloat</span><span class="p">)</span><span class="w"> </span><span class="nx">Abs</span><span class="p">()</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="o">-</span><span class="nx">f</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">v</span> <span class="o">:=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Abs</span><span class="p">())</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Abs</span><span class="p">())</span><span class="w"></span>
 
-  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Abs</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Abs</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span><span class="w"></span>
 
-  <span class="nx">f</span> <span class="o">:=</span> <span class="nx">MyFloat</span><span class="p">(</span><span class="o">-</span><span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt2</span><span class="p">)</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">Abs</span><span class="p">())</span>
+<span class="w">  </span><span class="nx">f</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">MyFloat</span><span class="p">(</span><span class="o">-</span><span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt2</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">Abs</span><span class="p">())</span><span class="w"></span>
 
-  <span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">v</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">((</span><span class="o">*</span><span class="nx">p</span><span class="p">).</span><span class="nx">Abs</span><span class="p">())</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">Abs</span><span class="p">())</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Abs</span><span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">))</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Abs</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span> <span class="c1">// this would cause an error.</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="nx">p</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">v</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">((</span><span class="o">*</span><span class="nx">p</span><span class="p">).</span><span class="nx">Abs</span><span class="p">())</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">Abs</span><span class="p">())</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Abs</span><span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Abs</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span><span class="w"> </span><span class="c1">// this would cause an error.</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>接口，方法/函数定义的集合，接口是通过隐式声明的，接口的实现若没有值的话，
@@ -832,226 +831,226 @@ default:
 <code class="docutils literal notranslate"><span class="pre">s,</span> <span class="pre">ok</span> <span class="pre">:=</span> <span class="pre">i.(string)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">f,</span> <span class="pre">ok</span> <span class="pre">:=</span> <span class="pre">i.(float64)</span></code> 能正常执行，
 但是 <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">:=</span> <span class="pre">i.(float64)</span></code> 会 panic（为什么 GO 的异常错误和 Rust 一样
 也叫 <code class="docutils literal notranslate"><span class="pre">panic</span></code> 呢？）</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w"></span>
 
-<span class="kn">import</span> <span class="s">"fmt"</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span><span class="w"></span>
 
-<span class="kd">type</span> <span class="nx">I</span> <span class="kd">interface</span> <span class="p">{</span>
-  <span class="nx">M</span><span class="p">()</span>
-<span class="p">}</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">I</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">M</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">S</span> <span class="kt">string</span>
-<span class="p">}</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">S</span><span class="w"> </span><span class="kt">string</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="nx">T</span><span class="p">)</span> <span class="nx">M</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">S</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="nx">M</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">S</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">i</span> <span class="nx">I</span> <span class="p">=</span> <span class="nx">T</span><span class="p">{</span><span class="s">"hello"</span><span class="p">}</span>
-  <span class="nx">i</span><span class="p">.</span><span class="nx">M</span><span class="p">()</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="nx">I</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">T</span><span class="p">{</span><span class="s">"hello"</span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nx">i</span><span class="p">.</span><span class="nx">M</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>通常使用 <code class="docutils literal notranslate"><span class="pre">fmt.Println</span></code> 打印一个自定义结构时，需要
 对改结构添加一个 <code class="docutils literal notranslate"><span class="pre">String()</span></code> 的方法</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">Name</span> <span class="kt">string</span>
-  <span class="nx">Age</span> <span class="kt">int</span>
-<span class="p">}</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Age</span><span class="w"> </span><span class="kt">int</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">Person</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%v (%v years)"</span><span class="p">,</span>
-                     <span class="nx">p</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Age</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="nx">String</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%v (%v years)"</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="nx">p</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">Age</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>错误使用 <code class="docutils literal notranslate"><span class="pre">Error()</span></code>，通常函数会返回一个 error 值，调用的它的代
 码应当判断这个错误是否等于 nil 来进行错误处理。</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">i</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">"42"</span><span class="p">)</span>
-<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"couldn't convert number: %v\n"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-    <span class="k">return</span>
-<span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Converted integer:"</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">"42"</span><span class="p">)</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"couldn't convert number: %v\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Converted integer:"</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>可以自定义 <code class="docutils literal notranslate"><span class="pre">error</span></code>：</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">MyError</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="nx">When</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
-	<span class="nx">What</span> <span class="kt">string</span>
-<span class="p">}</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">MyError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="nx">When</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"></span>
+<span class="w">	</span><span class="nx">What</span><span class="w"> </span><span class="kt">string</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">MyError</span><span class="p">)</span> <span class="nx">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"at %v, %s"</span><span class="p">,</span>
-		<span class="nx">e</span><span class="p">.</span><span class="nx">When</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">What</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">MyError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"at %v, %s"</span><span class="p">,</span><span class="w"></span>
+<span class="w">		</span><span class="nx">e</span><span class="p">.</span><span class="nx">When</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">What</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">run</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">MyError</span><span class="p">{</span>
-		<span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span>
-		<span class="s">"it didn't work"</span><span class="p">,</span>
-	<span class="p">}</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">MyError</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span><span class="w"></span>
+<span class="w">		</span><span class="s">"it didn't work"</span><span class="p">,</span><span class="w"></span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">run</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-	<span class="p">}</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">run</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-<section id="id3">
+
+
 <h2 id="id3">泛型<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nx">Index</span><span class="p">[</span><span class="nx">T</span> <span class="nx">comparable</span><span class="p">](</span><span class="nx">s</span> <span class="p">[]</span><span class="nx">T</span><span class="p">,</span> <span class="nx">x</span> <span class="nx">T</span><span class="p">)</span> <span class="kt">int</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">func</span><span class="w"> </span><span class="nx">Index</span><span class="p">[</span><span class="nx">T</span><span class="w"> </span><span class="nx">comparable</span><span class="p">](</span><span class="nx">s</span><span class="w"> </span><span class="p">[]</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"></span>
 </pre></div>
 </div>
 <p>函数 Index 接受参数为 comparable 类型的一个数组和一个值，返回一个 int</p>
 <p>接受任何类型的链表结构</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">List</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">next</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
-  <span class="nx">val</span> <span class="nx">T</span>
-<span class="p">}</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span><span class="w"> </span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="w"> </span><span class="nx">any</span><span class="p">]</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">next</span><span class="w"> </span><span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="nx">val</span><span class="w"> </span><span class="nx">T</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="nx">lst</span> <span class="p">=</span> <span class="nx">List</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="p">{</span> <span class="kc">nil</span><span class="p">,</span> <span class="mi">4</span> <span class="p">}</span>
+<span class="nx">lst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">List</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-<section id="concurrency">
+
+
 <h2 id="concurrency">Concurrency<a class="headerlink" href="#concurrency" title="永久链接至标题">¶</a></h2>
 <p>goroutine，运行时的轻量级线程，调用 <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">f(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>，和 C 的子进程类似</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w"></span>
 
-<span class="kn">import</span> <span class="p">(</span>
-  <span class="s">"fmt"</span>
-  <span class="s">"time"</span>
-<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="s">"fmt"</span><span class="w"></span>
+<span class="w">  </span><span class="s">"time"</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">say</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">say</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">go</span> <span class="nx">say</span><span class="p">(</span><span class="s">"world"</span><span class="p">)</span>
-  <span class="nx">say</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">go</span><span class="w"> </span><span class="nx">say</span><span class="p">(</span><span class="s">"world"</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">say</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>channel，带有类型的管道 <code class="docutils literal notranslate"><span class="pre">ch</span> <span class="pre">&lt;-</span> <span class="pre">v</span></code> 将 <code class="docutils literal notranslate"><span class="pre">v</span></code> 发送给 <code class="docutils literal notranslate"><span class="pre">ch</span></code>，<code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">:=</span> <span class="pre">&lt;-ch</span></code> 将 <code class="docutils literal notranslate"><span class="pre">ch</span></code>
 中接收值并赋给 <code class="docutils literal notranslate"><span class="pre">v</span></code>，创建信道 <code class="docutils literal notranslate"><span class="pre">ch</span> <span class="pre">:=</span> <span class="pre">make(chan</span> <span class="pre">&lt;Type&gt;,</span> <span class="pre">[buffer_size])</span></code>。
 所以 channel 也是个切片，发送者可以使用 <code class="docutils literal notranslate"><span class="pre">close(ch)</span></code> 来关闭 channel，接受者
 不能。channel 关闭后不能再向其中发送数据。</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w"></span>
 
-<span class="kn">import</span> <span class="p">(</span>
-  <span class="s">"fmt"</span>
-<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="s">"fmt"</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">c</span> <span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span> <span class="p">{</span>
-    <span class="nx">c</span> <span class="o">&lt;-</span> <span class="nx">x</span>
-    <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="o">+</span><span class="nx">y</span>
-  <span class="p">}</span>
-  <span class="nb">close</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="kd">chan</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">x</span><span class="w"></span>
+<span class="w">    </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nb">close</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">c</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-  <span class="k">go</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nb">cap</span><span class="p">(</span><span class="nx">c</span><span class="p">),</span> <span class="nx">c</span><span class="p">)</span>
-  <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">c</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">go</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nb">cap</span><span class="p">(</span><span class="nx">c</span><span class="p">),</span><span class="w"> </span><span class="nx">c</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">select</span></code> 进行阻塞</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">pacakge</span> <span class="nx">main</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">pacakge</span><span class="w"> </span><span class="nx">main</span><span class="w"></span>
 
-<span class="kn">import</span> <span class="s">"fmt"</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">quit</span> <span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="k">for</span> <span class="p">{</span>
-    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">c</span> <span class="o">&lt;-</span> <span class="nx">x</span><span class="p">:</span>
-      <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="o">+</span><span class="nx">y</span>
-    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">quit</span><span class="p">:</span>
-      <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"quit"</span><span class="p">)</span>
-      <span class="k">return</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">quit</span><span class="w"> </span><span class="kd">chan</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">x</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">quit</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"quit"</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">c</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
-  <span class="nx">quit</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
-  <span class="k">go</span> <span class="kd">func</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-      <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">c</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">quit</span> <span class="o">&lt;-</span> <span class="mi">0</span>
-  <span class="p">}()</span>
-  <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">quit</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">quit</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">c</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">quit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">  </span><span class="p">}()</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">quit</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>如果有多个分支的话会随机选择一个执行，<code class="docutils literal notranslate"><span class="pre">default</span></code> 分支再其他的分支没有值时
 默认执行的。</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="p">{</span>
-<span class="k">case</span> <span class="nx">i</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c</span><span class="p">:</span>
-  <span class="c1">// use i</span>
-<span class="k">default</span><span class="p">:</span>
-  <span class="c1">// receiving from c would block</span>
-<span class="p">}</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">case</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">c</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// use i</span><span class="w"></span>
+<span class="k">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// receiving from c would block</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>mutex, 互斥锁，因为有并发，就会需要到互斥锁，来保证数据一致性，互斥锁有在
 <code class="docutils literal notranslate"><span class="pre">sync</span></code> 包中，有 <code class="docutils literal notranslate"><span class="pre">Lock</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Unlock</span></code> 两个方法，<code class="docutils literal notranslate"><span class="pre">sync.Mutex</span></code> 为互斥锁
 类型结构。</p>
-<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w"></span>
 
-<span class="kn">import</span> <span class="p">(</span>
-  <span class="s">"fmt"</span>
-  <span class="s">"sync"</span>
-  <span class="s">"time"</span>
-<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="s">"fmt"</span><span class="w"></span>
+<span class="w">  </span><span class="s">"sync"</span><span class="w"></span>
+<span class="w">  </span><span class="s">"time"</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-<span class="kd">type</span> <span class="nx">SafeCounter</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">v</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
-  <span class="nx">mux</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
-<span class="p">}</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">SafeCounter</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">v</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="w"></span>
+<span class="w">  </span><span class="nx">mux</span><span class="w"> </span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span> <span class="nx">Inc</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
-  <span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="o">++</span>
-  <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span><span class="w"> </span><span class="nx">Inc</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="o">++</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span> <span class="nx">Value</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
-  <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-  <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">SafeCounter</span><span class="p">)</span><span class="w"> </span><span class="nx">Value</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="k">defer</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">mux</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">v</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">c</span> <span class="o">:=</span> <span class="nx">SafeCounter</span><span class="p">{</span> <span class="nx">v</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)}</span>
-  <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-    <span class="k">go</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Inc</span><span class="p">(</span><span class="s">"somekey"</span><span class="p">)</span>
-  <span class="p">}</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">c</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">SafeCounter</span><span class="p">{</span><span class="w"> </span><span class="nx">v</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)}</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Inc</span><span class="p">(</span><span class="s">"somekey"</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="s">"somekey"</span><span class="p">))</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="s">"somekey"</span><span class="p">))</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-</section>
+
+
 
 
           </article>
@@ -1100,7 +1099,7 @@ default:
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

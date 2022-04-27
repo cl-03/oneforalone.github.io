@@ -513,12 +513,14 @@ bitcoin-cli decoderawtransaction 020000000001013d75af2a19881e883ff5c604eeaaae551
 01 ......................................... Flag, segwit format
 01 ......................................... Number of Inputs: 1, tx_in counts
 |
-|                                            Txln/vin
+|                                            Txln/vin:
+|                                            Outpoint:
 | 3d75af2a19881e883ff5c604eeaaae55
 | 1f048ee2e530eb3e06569c5321605487 ......... Oupoint TXID
+| 01000000 ................................. Outpoint index number: 1
 |
-| 0100000000 ............................... Outpoint index number: 1
-|
+| 0 ........................................ Number of bytes in the signature script
+| 0 ........................................ Signature Script
 | fdffffff ................................. Sequence Number, 4294967293(0xfffffffd)
 |
 |                                            TxOut/vout
