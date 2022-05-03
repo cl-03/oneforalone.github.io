@@ -18,3 +18,4 @@
    miscellaneous.md
    macos.md
    raspberry-pi-4b.md
+   git-with-gpg.md
