@@ -1,5 +1,5 @@
 (gpg-on-mac)=
-# PGP Suit for Apple Mail on Mac OS
+# GPG Suit for Apple Mail on Mac OS
 
 Date: Tue. Apr. 19 2022
 
@@ -7,12 +7,12 @@ Date: Tue. Apr. 19 2022
 
 进入 crypto 了，那么就不得不注重起隐私来了，论隐私来说，那些 IM 的
 信息没啥好谈的，就连开源界都要政治正确，所以也就没啥好说的。但是对于
-一个比较喜欢用邮箱的人来说，可以使用 PGP 来规避信息内容泄漏的风险。
-下面是在 Mac OS 使用 PGP Suit 的一些记录。
+一个比较喜欢用邮箱的人来说，可以使用 GPG 来规避信息内容泄漏的风险。
+下面是在 Mac OS 使用 GPG Suit 的一些记录。
 
 ## 安装
 
-首先，千万不要使用 homebrew 安装 PGP Suit，不然 Apple Mail 的
+首先，千万不要使用 homebrew 安装 GPG Suit，不然 Apple Mail 的
 插件你是启用不了的，要去官网下载 dmg 手动安装。这已经不是我第一次
 因为 homebrew 安装导致软件版本的问题了，所以，官网没有推荐使用
 homebrew 的，就不要使用，免得又遇到什么问题。
