@@ -1,6 +1,6 @@
-.. _blockchain:
+.. _crypto:
 
-区块链
+Crypto
 ============================
 
 .. toctree::

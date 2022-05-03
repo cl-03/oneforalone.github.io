@@ -9,7 +9,7 @@ Yuqi's Blog
 .. toctree::
    :maxdepth: 2
 
-   blockchain/index
+   crypto/index
 
    life/index
 
