@@ -345,27 +345,39 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#programming-hacking-in-lisp--page-root" class="md-nav__link">Hacking in Lisp</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#basic" class="md-nav__link">Basic</a><nav class="md-nav">
+              <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#environment-setups" class="md-nav__link">Environment Setups</a>
         </li>
-        <li class="md-nav__item"><a href="#hello-program" class="md-nav__link">hello program</a>
+        <li class="md-nav__item"><a href="#hello-lisp" class="md-nav__link">Hello Lisp</a>
         </li>
-        <li class="md-nav__item"><a href="#portacle-ide" class="md-nav__link">Portacle (IDE)</a>
-        </li>
-        <li class="md-nav__item"><a href="#iteration" class="md-nav__link">Iteration</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#defvar-defparameter-setf-setq" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">defvar</span></code>/<code class="docutils literal notranslate"><span class="pre">defparameter</span></code>/<code class="docutils literal notranslate"><span class="pre">setf</span></code>/<code class="docutils literal notranslate"><span class="pre">setq</span></code></a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#defvar-defparameter" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">defvar</span></code>/<code class="docutils literal notranslate"><span class="pre">defparameter</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#setf-setq" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">setf</span></code>/<code class="docutils literal notranslate"><span class="pre">setq</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#features" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">*features*</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#iteration" class="md-nav__link">Iteration</a>
+        </li>
         <li class="md-nav__item"><a href="#loop-hight-level-overview" class="md-nav__link">LOOP: Hight-level Overview</a>
+        </li>
+        <li class="md-nav__item"><a href="#functions" class="md-nav__link">Functions</a>
+        </li>
+        <li class="md-nav__item"><a href="#multiple-return-values" class="md-nav__link">Multiple return values</a>
+        </li>
+        <li class="md-nav__item"><a href="#higher-order-functions" class="md-nav__link">Higher order functions</a>
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#all-named-functions" class="md-nav__link">All named functions</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#create-a-new-project" class="md-nav__link">Create a new project:</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#multiple-return-values" class="md-nav__link">multiple return values</a>
-        </li>
-        <li class="md-nav__item"><a href="#higher-order-functions" class="md-nav__link">higher order functions</a>
+        <li class="md-nav__item"><a href="#alist-plist" class="md-nav__link">Alist/Plist</a>
         </li></ul>
             </nav>
-        </li>
-        <li class="md-nav__item"><a href="#create-a-new-project" class="md-nav__link">create a new project:</a>
         </li></ul>
             </nav>
         </li>
@@ -584,27 +596,39 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#programming-hacking-in-lisp--page-root" class="md-nav__link">Hacking in Lisp</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#basic" class="md-nav__link">Basic</a><nav class="md-nav">
+              <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#environment-setups" class="md-nav__link">Environment Setups</a>
         </li>
-        <li class="md-nav__item"><a href="#hello-program" class="md-nav__link">hello program</a>
+        <li class="md-nav__item"><a href="#hello-lisp" class="md-nav__link">Hello Lisp</a>
         </li>
-        <li class="md-nav__item"><a href="#portacle-ide" class="md-nav__link">Portacle (IDE)</a>
-        </li>
-        <li class="md-nav__item"><a href="#iteration" class="md-nav__link">Iteration</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#defvar-defparameter-setf-setq" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">defvar</span></code>/<code class="docutils literal notranslate"><span class="pre">defparameter</span></code>/<code class="docutils literal notranslate"><span class="pre">setf</span></code>/<code class="docutils literal notranslate"><span class="pre">setq</span></code></a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#defvar-defparameter" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">defvar</span></code>/<code class="docutils literal notranslate"><span class="pre">defparameter</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#setf-setq" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">setf</span></code>/<code class="docutils literal notranslate"><span class="pre">setq</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#features" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">*features*</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#iteration" class="md-nav__link">Iteration</a>
+        </li>
         <li class="md-nav__item"><a href="#loop-hight-level-overview" class="md-nav__link">LOOP: Hight-level Overview</a>
+        </li>
+        <li class="md-nav__item"><a href="#functions" class="md-nav__link">Functions</a>
+        </li>
+        <li class="md-nav__item"><a href="#multiple-return-values" class="md-nav__link">Multiple return values</a>
+        </li>
+        <li class="md-nav__item"><a href="#higher-order-functions" class="md-nav__link">Higher order functions</a>
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#all-named-functions" class="md-nav__link">All named functions</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#create-a-new-project" class="md-nav__link">Create a new project:</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#multiple-return-values" class="md-nav__link">multiple return values</a>
-        </li>
-        <li class="md-nav__item"><a href="#higher-order-functions" class="md-nav__link">higher order functions</a>
+        <li class="md-nav__item"><a href="#alist-plist" class="md-nav__link">Alist/Plist</a>
         </li></ul>
             </nav>
-        </li>
-        <li class="md-nav__item"><a href="#create-a-new-project" class="md-nav__link">create a new project:</a>
         </li></ul>
             </nav>
         </li>
@@ -624,21 +648,49 @@
             
   <section id="hacking-in-lisp">
 <h1 id="programming-hacking-in-lisp--page-root">Hacking in Lisp<a class="headerlink" href="#programming-hacking-in-lisp--page-root" title="永久链接至标题">¶</a></h1>
-<p>Author: Yuqi Liu</p>
 <p>Date: Mon Apr. 10 2022</p>
-<p>NOTE: This is a scatch, need to re-organized.</p>
+<p>对于 Lisp 来说，与其他语言的主要差别有三个：</p>
+<ul class="simple">
+<li><p><strong>Lisp 的每个表达式都会返回一个值，没有 statement 和 expression</strong>
+<strong>的分别。</strong></p></li>
+<li><p><strong>Lisp 的词法规则会比其他的语言简单些，词法树只需要解析小括号、引号、</strong>
+<strong>空格以及逗号。引号包括双引号、单引号以及反引号。</strong></p></li>
+<li><p><strong>Lisp 使用小括号作为统一的分隔符，而不是像其他语言一样使用多种组合</strong>
+<strong>对 expression/statement 做分隔。所以 Lisp 把分号当作注释符。</strong></p></li>
+</ul>
+<p>上面三点是 Lisp 和其他语言的差异，也是为什么从其他语言转到 Lisp 会
+比较疑惑的点。还有一点就是，其他语言是不会先对传过来的参数进行求值，
+然后再将函数运用到这些参数的结果上，但是 Lisp 就是这么做的，<strong>先对参数</strong>
+<strong>进行求值，然后再将函数应用到这些参数的结果上计算结果。</strong></p>
+<section id="basic">
+<h2 id="basic">Basic<a class="headerlink" href="#basic" title="永久链接至标题">¶</a></h2>
+<p>如果是其他语言，没必要介绍编译环境的安装配置，因为基本都有官网，官网上也都有对
+应的安装教程，或者说网上一搜一大堆。但 Lisp 或者说 Common Lisp（下面不对这
+两者进行区分，统一使用 Lisp 指代 Common Lisp）不一样，最官方的是 LispWorks，
+那个 IDE 贵的离谱，具体是 $1000 还是 $8000 我忘了，反正这超过普通的人承受
+范围，虽然有免费版的，但是功能阉割的离谱，想要感受的自行去体验吧。</p>
+<p>还有一点就是 Lisp 的编译器其实是比较多的，同时大部分时候又要搭配着 Emacs 使
+用，Emacs 的配置需要投入一点时间去学习的。所以总给人一种比较混乱的感觉。而且
+很多 Lisp 的教材里其实不会花什么篇幅去介绍环境配置。直接开讲，你自己要去验证
+代码时就只能自己去查找资料。不过要感谢 Vindarel，他把这个门槛给砍掉了，让
+Lisp 入门变得简单了。强烈推荐去看看他编写的 <a class="reference external" href="https://lispcookbook.github.io/cl-cookbook/">The Common Lisp Cookbook</a>，
+当然我刚开始时也做了一下中文翻译，如果英文水平不是很好的话可以参考我翻译的
+<a class="reference external" href="https://oneforalone.github.io/cl-cookbook-cn/#/">Common Lisp 秘籍</a>。</p>
+<p>废话不多说，let's dive in.</p>
 <section id="environment-setups">
-<h2 id="environment-setups">Environment Setups<a class="headerlink" href="#environment-setups" title="永久链接至标题">¶</a></h2>
-<ul class="simple">
-<li><p>sbcl: lisp implemention</p></li>
-<li><p>rlwrap: readline support</p></li>
-</ul>
-<p>in REPL(Read Eval Print Loop):
-exiting interactive debugger: 0 or Ctrl-D</p>
-<ul class="simple">
-<li><p>avoid annoying interactive debugger</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">~/.sbclrc</span></code>:</p>
+<h3 id="environment-setups">Environment Setups<a class="headerlink" href="#environment-setups" title="永久链接至标题">¶</a></h3>
+<p>环境配置看你怎么选，如果你懒得去做一些配置什么的，有人已经写好了配置，直接下载
+安装就好了，那个就是 <code class="docutils literal notranslate"><span class="pre">[Portacle][portacle]</span></code>。这个就是一个 IDE，里面基本的
+配置都集成好了，开箱即用，版本什么的也比较新。</p>
+<p>如果喜欢折腾的话，那么就需要自己安装 <a class="reference external" href="http://www.sbcl.org">sbcl</a>，至于你用什么编辑器编辑，
+你自己选个喜欢的就好了，普遍用的都是 sbcl + slime + emacs。不过 vscode
+和 vim 之类都也都是可以的。当然你也可以直接在 sbcl 中调试，但是要注意，
+sbcl 不支持上下左右键，如果需要支持的话，需要安装 <code class="docutils literal notranslate"><span class="pre">[rlwrap][rlwrap]</span></code>，
+然后启动时执行 <code class="docutils literal notranslate"><span class="pre">rlwrap</span> <span class="pre">sbcl</span></code>。</p>
+<p>Lisp 的解释器或者说脚本语言的解释器都是遵循 REPL（Read Eval Print Loop）
+的原则，只不过在 sbcl 中表达式执行错误的话会进入一个 interactive debugger，
+要想退出这个 debugger，输入 0 或者按 Ctrl-D。或者更进一步想要去掉这个烦人的
+debugger，可以在 sbcl 的配置文件 <code class="docutils literal notranslate"><span class="pre">~/.sbclrc</span></code> 中添加以下代码：</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">print-condition-hook</span> <span class="p">(</span><span class="kt">condition</span> <span class="nv">hook</span><span class="p">)</span>
   <span class="s">"Print this error message (condition) and abort the current operation."</span>
   <span class="p">(</span><span class="k">declare</span> <span class="p">(</span><span class="k">ignore</span> <span class="nv">hook</span><span class="p">))</span>
@@ -651,57 +703,87 @@ exiting interactive debugger: 0 or Ctrl-D</p>
 </pre></div>
 </div>
 </section>
-<section id="hello-program">
-<h2 id="hello-program">hello program<a class="headerlink" href="#hello-program" title="永久链接至标题">¶</a></h2>
+<section id="hello-lisp">
+<h3 id="hello-lisp">Hello Lisp<a class="headerlink" href="#hello-lisp" title="永久链接至标题">¶</a></h3>
+<p>从 C 语言那里流传下来的传统（虽然 Lisp 要比 C 早），接触一门语言的
+时候都喜欢用打印一个 "Hello World" 开始。其实大部分 Lisp 的教程
+都不会一开始写 hello world，而是直接从其 <a class="reference external" href="https://baike.baidu.com/item/S-%E8%A1%A8%E8%BE%BE%E5%BC%8F/4409560">S-expression</a>
+开始讲。但是这里我就遵循一下 C 的传统吧。</p>
+<p>下面是 <code class="docutils literal notranslate"><span class="pre">hello.lisp</span></code> 的代码：</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">hello</span> <span class="p">()</span>
-  <span class="s">"say hello to USER"</span>
-  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"hello ~a"</span> <span class="p">(</span><span class="nv">uiop:getenv</span> <span class="s">"USER"</span><span class="p">)))</span>
+  <span class="s">"say hello"</span>
+  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"hello lisp"</span><span class="p">))</span>
 
 <span class="p">(</span><span class="nv">hello</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbcl --load hello.lisp
+<p>然后直接使用 sbcl 的 <code class="docutils literal notranslate"><span class="pre">--script</span></code> 参数加载 <code class="docutils literal notranslate"><span class="pre">hello.lisp</span></code> 文件就好，会在
+命令行中输出 <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">lisp</span></code> 这句话。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sbcl --script hello.lisp
+hello lisp
 </pre></div>
 </div>
-<p>If using <code class="docutils literal notranslate"><span class="pre">sbcl</span> <span class="pre">--script</span></code>, then should modify <code class="docutils literal notranslate"><span class="pre">hello.lisp</span></code> as:</p>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">require</span> <span class="ss">:asdf</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">hello</span> <span class="p">()</span>
-  <span class="s">"say hello to USER"</span>
-  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"hello ~a"</span> <span class="p">(</span><span class="nv">uiop:getenv</span> <span class="s">"USER"</span><span class="p">)))</span>
+<p>如果源代码中调用了其他的库/包，需要再代码的最上面添加一行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">require</span> <span class="p">:</span><span class="n">asdf</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果想执行 <code class="docutils literal notranslate"><span class="pre">hello.lisp</span></code> 之后进入 sbcl，可以使用 <code class="docutils literal notranslate"><span class="pre">--load</span></code> 参数，这个参数
+是先启动 sbcl，然后再执行 <code class="docutils literal notranslate"><span class="pre">hello.lisp</span></code> 。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sbcl --load hello.lisp
+This is SBCL <span class="m">2</span>.1.9, an implementation of ANSI Common Lisp.
+More information about SBCL is available at &lt;http://www.sbcl.org/&gt;.
 
-<span class="p">(</span><span class="nv">hello</span><span class="p">)</span>
-
-<span class="c1">;; quit the lisp implementation</span>
-<span class="p">(</span><span class="nv">uiop:quit</span><span class="p">)</span>
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly <span class="k">in</span> the public domain<span class="p">;</span> some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files <span class="k">in</span> the
+distribution <span class="k">for</span> more information.
+hello lisp
 </pre></div>
 </div>
-<p>and run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbcl --script hello.lisp
-</pre></div>
-</div>
+<p>简单的讲一下 <code class="docutils literal notranslate"><span class="pre">hello.lisp</span></code>，<code class="docutils literal notranslate"><span class="pre">defun</span></code> 是函数定义宏，后面接函数名，然后是函数的参数，
+再然后是使用双引号的文档注释，最后是函数的主体。格式就是 S-expression 的格式，开头
+使用小括号，接一个函数或宏的名字，然后是其参数。至于 <code class="docutils literal notranslate"><span class="pre">format</span></code>，就是一个输出的函数，
+可以类比其他语言的 <code class="docutils literal notranslate"><span class="pre">print</span></code> / <code class="docutils literal notranslate"><span class="pre">printf</span></code> 函数，不过这个字符串对应的转移符和类 C 的
+不一致，其转移符使用的是 <code class="docutils literal notranslate"><span class="pre">~</span></code>，而不是 <code class="docutils literal notranslate"><span class="pre">\</span></code>，所以换行是 <code class="docutils literal notranslate"><span class="pre">~%</span></code>，和 <code class="docutils literal notranslate"><span class="pre">\n</span></code> 一样的效果。
+更具体详细的介绍，参看 <a class="reference external" href="https://en.wikipedia.org/wiki/Format_(Common_Lisp)">wiki</a> 和 <a class="reference external" href="http://www.lispworks.com/documentation/lw50/CLHS/Body/22_c.htm">Lisp Hyper Spec: format</a>。</p>
 </section>
-<section id="portacle-ide">
-<h2 id="portacle-ide">Portacle (IDE)<a class="headerlink" href="#portacle-ide" title="永久链接至标题">¶</a></h2>
-<p>download it... and run</p>
-<p>call a private function in package <code class="docutils literal notranslate"><span class="pre">(package-name::function-name)</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">defvar</span></code> vs <code class="docutils literal notranslate"><span class="pre">defparameter</span></code> vs <code class="docutils literal notranslate"><span class="pre">setf</span></code> vs <code class="docutils literal notranslate"><span class="pre">setq</span></code>:
-https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defparameter-setf-and-setq</p>
-<p><code class="docutils literal notranslate"><span class="pre">defparameter</span></code> always assigns a value, while <code class="docutils literal notranslate"><span class="pre">defvar</span></code> does it only once:</p>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">defparameter</span> <span class="nv">a</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nv">A</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">defparameter</span> <span class="nv">a</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nv">A</span>
-<span class="nb">&gt;</span> <span class="nv">a</span>
+<section id="defvar-defparameter-setf-setq">
+<h3 id="defvar-defparameter-setf-setq"><code class="docutils literal notranslate"><span class="pre">defvar</span></code>/<code class="docutils literal notranslate"><span class="pre">defparameter</span></code>/<code class="docutils literal notranslate"><span class="pre">setf</span></code>/<code class="docutils literal notranslate"><span class="pre">setq</span></code><a class="headerlink" href="#defvar-defparameter-setf-setq" title="永久链接至标题">¶</a></h3>
+<p>refer to <a class="reference external" href="https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defparameter-setf-and-setq">what's difference between defvar defparameter setf and setq</a></p>
+<section id="defvar-defparameter">
+<h4 id="defvar-defparameter"><code class="docutils literal notranslate"><span class="pre">defvar</span></code>/<code class="docutils literal notranslate"><span class="pre">defparameter</span></code><a class="headerlink" href="#defvar-defparameter" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">defvar</span></code> 和 <code class="docutils literal notranslate"><span class="pre">defparameter</span></code> 这两个内置函数都是用来定义
+全局变量的。区别在于 <code class="docutils literal notranslate"><span class="pre">defvar</span></code> 在第一次定义赋值后，之后都
+不能修改这个变量的值，而 <code class="docutils literal notranslate"><span class="pre">defparameter</span></code> 是可以修改的。
+<code class="docutils literal notranslate"><span class="pre">defvar</span></code> 相当于是定义了一个全局常量，而 <code class="docutils literal notranslate"><span class="pre">defparameter</span></code>
+只是定义了一个全局变量而已。具体表现形式见如下代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defparameter</span> <span class="n">a</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">A</span>
+<span class="o">&gt;</span> <span class="n">a</span>
+<span class="mi">1</span>
+<span class="o">&gt;</span> <span class="p">(</span><span class="n">defparameter</span> <span class="n">a</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span>
+<span class="o">&gt;</span> <span class="n">a</span>
 <span class="mi">2</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">defvar</span> <span class="nv">b</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nv">B</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">defvar</span> <span class="nv">b</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nv">B</span>
-<span class="nb">&gt;</span> <span class="nv">b</span>
+<span class="o">&gt;</span> <span class="p">(</span><span class="n">defvar</span> <span class="n">b</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">B</span>
+<span class="o">&gt;</span> <span class="n">b</span>
+<span class="mi">1</span>
+<span class="o">&gt;</span> <span class="p">(</span><span class="n">defvar</span> <span class="n">b</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">B</span>
+<span class="o">&gt;</span> <span class="n">b</span>
 <span class="mi">1</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">setf</span></code> is a macro which uses <code class="docutils literal notranslate"><span class="pre">setq</span></code> internally, but has more possibilities:</p>
+<p>有一点需要注意的是，定义全局变量时，有一部分 lisper 喜欢使用 <code class="docutils literal notranslate"><span class="pre">*</span></code> 将变量
+包起来，用来标识只是个全局变量，这个看自己的习惯吧，但是之后肯定会遇到这种
+情况的。例如之后介绍的 <code class="docutils literal notranslate"><span class="pre">*features*</span></code>。</p>
+</section>
+<section id="setf-setq">
+<h4 id="setf-setq"><code class="docutils literal notranslate"><span class="pre">setf</span></code>/<code class="docutils literal notranslate"><span class="pre">setq</span></code><a class="headerlink" href="#setf-setq" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">setf</span></code> 和 <code class="docutils literal notranslate"><span class="pre">setq</span></code> 都是修改变量的值，区别是 <code class="docutils literal notranslate"><span class="pre">setf</span></code> 是使用了 <code class="docutils literal notranslate"><span class="pre">setq</span></code> 的宏，
+对 <code class="docutils literal notranslate"><span class="pre">setq</span></code> 进行了拓展。因为 <code class="docutils literal notranslate"><span class="pre">setq</span></code> 不能对表达式的结果的值进行修改。具体的
+差别参考下面的代码：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defparameter</span> <span class="n">c</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">C</span>
 <span class="o">&gt;</span> <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">car</span> <span class="n">c</span><span class="p">)</span> <span class="mi">42</span><span class="p">)</span>
@@ -736,100 +818,153 @@ https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defp
 <span class="mi">0</span><span class="p">]</span> <span class="n">abort</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">*features*</span></code> a predefined list, can add custom features</p>
+</section>
+<section id="features">
+<h4 id="features"><code class="docutils literal notranslate"><span class="pre">*features*</span></code><a class="headerlink" href="#features" title="永久链接至标题">¶</a></h4>
+<p>预定义的一个列表，可以自己添加一些自定义的特性，主要是用来根据不同的环境来执行
+不同的代码。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#+unix</span>
-<span class="p">(</span><span class="nb">print</span> <span class="s2">"We are on linux)</span>
+<span class="p">(</span><span class="nb">print</span> <span class="s2">"We are on linux"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
+</section>
 <section id="iteration">
-<h2 id="iteration">Iteration<a class="headerlink" href="#iteration" title="永久链接至标题">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">dolist</span></code>, <code class="docutils literal notranslate"><span class="pre">dotimes</span></code>, <code class="docutils literal notranslate"><span class="pre">loop</span></code>, <code class="docutils literal notranslate"><span class="pre">maphash</span></code> ...</p>
+<h3 id="iteration">Iteration<a class="headerlink" href="#iteration" title="永久链接至标题">¶</a></h3>
+<p>Lisp 中控制循环迭代最原生的是 <code class="docutils literal notranslate"><span class="pre">loop</span></code>，其他的都是后面衍生出来的。
+<code class="docutils literal notranslate"><span class="pre">dolist</span></code> 是遍历列表，<code class="docutils literal notranslate"><span class="pre">dotimes</span></code> 是已知循环的次数，<code class="docutils literal notranslate"><span class="pre">maphash</span></code>
+是遍历 hash table 的。具体用法见下面代码。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">loop</span></code>:</p></li>
 </ul>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">x</span> <span class="nv">in</span> <span class="o">'</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span>
-   <span class="nb">do</span> <span class="p">(</span><span class="nb">print</span> <span class="nv">x</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span><span class="n">loop</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">'(1 3 5)</span>
+     <span class="n">do</span> <span class="p">(</span><span class="nb">print</span> <span class="n">x</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="n">NIL</span> <span class="p">;</span> <span class="k">return</span> <span class="n">value</span>
 
-<span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">x</span> <span class="nv">in</span> <span class="o">'</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span>
-   <span class="nv">collect</span> <span class="p">(</span><span class="nb">print</span> <span class="nv">x</span><span class="p">))</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">loop</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">'(1 3 5)</span>
+     <span class="n">collect</span> <span class="p">(</span><span class="nb">print</span> <span class="n">x</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span> <span class="p">;</span> <span class="k">return</span> <span class="n">value</span>
 
-<span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">x</span> <span class="nv">in</span> <span class="o">'</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span>
-   <span class="nv">sum</span> <span class="p">(</span><span class="nb">print</span> <span class="nv">x</span><span class="p">))</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">loop</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">'(1 3 5)</span>
+     <span class="nb">sum</span> <span class="p">(</span><span class="nb">print</span> <span class="n">x</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="mi">9</span> <span class="p">;</span> <span class="k">return</span> <span class="n">value</span>
 
-<span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">x</span> <span class="nv">in</span> <span class="o">'</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span>
-   <span class="nb">count</span> <span class="p">(</span><span class="nb">print</span> <span class="nv">x</span><span class="p">))</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">loop</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">'(1 3 5)</span>
+     <span class="n">count</span> <span class="p">(</span><span class="nb">print</span> <span class="n">x</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="mi">3</span> <span class="p">;</span> <span class="k">return</span> <span class="n">value</span>
 
-<span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">x</span> <span class="nv">in</span> <span class="o">'</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span>
-   <span class="nv">maximize</span> <span class="p">(</span><span class="nb">print</span> <span class="nv">x</span><span class="p">))</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">loop</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">'(1 3 5)</span>
+     <span class="n">maximize</span> <span class="p">(</span><span class="nb">print</span> <span class="n">x</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="mi">5</span> <span class="p">;</span> <span class="k">return</span> <span class="n">value</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">dolist</span></code></p></li>
 </ul>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">x</span> <span class="o">'</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">))</span>
-         <span class="nv">x</span><span class="p">)</span> <span class="c1">; this is the return value of the last eval of x</span>
-  <span class="p">(</span><span class="nb">print</span> <span class="nv">x</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span><span class="n">dolist</span> <span class="p">(</span><span class="n">x</span> <span class="s1">'(1 3 5))</span>
+           <span class="n">x</span> <span class="p">;</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="k">return</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">last</span> <span class="nb">eval</span> <span class="n">of</span> <span class="n">x</span>
+    <span class="p">(</span><span class="nb">print</span> <span class="n">x</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="n">NIL</span> <span class="p">;</span> <span class="k">return</span> <span class="n">value</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code></p></li>
 </ul>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">ql-quickload</span> <span class="s">"for"</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span><span class="n">ql</span><span class="p">:</span><span class="n">quickload</span> <span class="s2">"for"</span><span class="p">)</span>
 
-<span class="p">(</span><span class="nv">for:for</span> <span class="p">((</span><span class="nv">x</span> <span class="nv">over</span> <span class="o">#(</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">))</span>
-          <span class="p">(</span><span class="nv">y</span> <span class="nv">over</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"~a - ~a"</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">))</span>
+<span class="o">*</span> <span class="p">(</span><span class="k">for</span><span class="p">:</span><span class="k">for</span> <span class="p">((</span><span class="n">x</span> <span class="n">over</span> <span class="c1">#(0 2 4))</span>
+            <span class="p">(</span><span class="n">y</span> <span class="n">over</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nb">format</span> <span class="n">t</span> <span class="s2">"~a - ~a ~%"</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
+<span class="mi">0</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
+<span class="mi">4</span> <span class="o">-</span> <span class="mi">5</span>
+<span class="n">NIL</span>
 </pre></div>
 </div>
+<p>注，以上的循环中，<code class="docutils literal notranslate"><span class="pre">for</span></code> 的效率最低，所以慎用，个人还是比较喜欢用 <code class="docutils literal notranslate"><span class="pre">loop</span></code>。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">maphash</span></code></p></li>
 </ul>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">ht</span> <span class="p">(</span><span class="nb">make-hash-table</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nb">gethash</span> <span class="ss">:a</span> <span class="nv">ht</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nb">gethash</span> <span class="ss">:b</span> <span class="nv">ht</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">loop</span> <span class="ss">:for</span> <span class="nv">k</span> <span class="ss">:being</span> <span class="ss">:the</span> <span class="ss">:hash-key</span>
-     <span class="ss">:using</span> <span class="p">(</span><span class="ss">:hash-value</span> <span class="nv">v</span><span class="p">)</span>
-     <span class="ss">:of</span> <span class="nv">ht</span>
-     <span class="nb">do</span> <span class="p">(</span><span class="nb">print</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">k</span> <span class="nv">v</span><span class="p">))))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span><span class="n">let</span> <span class="p">((</span><span class="n">ht</span> <span class="p">(</span><span class="n">make</span><span class="o">-</span><span class="nb">hash</span><span class="o">-</span><span class="n">table</span><span class="p">)))</span>
+    <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">gethash</span> <span class="p">:</span><span class="n">a</span> <span class="n">ht</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">gethash</span> <span class="p">:</span><span class="n">b</span> <span class="n">ht</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">loop</span> <span class="p">:</span><span class="k">for</span> <span class="n">k</span> <span class="p">:</span><span class="n">being</span> <span class="p">:</span><span class="n">the</span> <span class="p">:</span><span class="nb">hash</span><span class="o">-</span><span class="n">key</span>
+       <span class="p">:</span><span class="n">using</span> <span class="p">(:</span><span class="nb">hash</span><span class="o">-</span><span class="n">value</span> <span class="n">v</span><span class="p">)</span>
+       <span class="p">:</span><span class="n">of</span> <span class="n">ht</span>
+       <span class="n">do</span> <span class="p">(</span><span class="nb">print</span> <span class="p">(</span><span class="nb">list</span> <span class="n">k</span> <span class="n">v</span><span class="p">))))</span>
+<span class="p">(:</span><span class="n">A</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">B</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">NIL</span>
 
-<span class="c1">;; ==&gt;</span>
-<span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">ht</span> <span class="p">(</span><span class="nb">make-hash-table</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nb">gethash</span> <span class="ss">:a</span> <span class="nv">ht</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nb">gethash</span> <span class="ss">:b</span> <span class="nv">ht</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">maphash</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">k</span> <span class="nv">v</span><span class="p">)</span>
-              <span class="p">(</span><span class="nb">print</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">k</span> <span class="nv">v</span><span class="p">)))</span>
-           <span class="nv">ht</span><span class="p">))</span>
-<span class="c1">;; ==&gt;</span>
-<span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"alexandria"</span><span class="p">)</span>
-<span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">ht</span> <span class="p">(</span><span class="nb">make-hash-table</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nb">gethash</span> <span class="ss">:a</span> <span class="nv">ht</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nb">gethash</span> <span class="ss">:b</span> <span class="nv">ht</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">alexandria:hash-table-keys</span> <span class="nv">ht</span><span class="p">))</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">let</span> <span class="p">((</span><span class="n">ht</span> <span class="p">(</span><span class="n">make</span><span class="o">-</span><span class="nb">hash</span><span class="o">-</span><span class="n">table</span><span class="p">)))</span>
+    <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">gethash</span> <span class="p">:</span><span class="n">a</span> <span class="n">ht</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">gethash</span> <span class="p">:</span><span class="n">b</span> <span class="n">ht</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">maphash</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">k</span> <span class="n">v</span><span class="p">)</span>
+                <span class="p">(</span><span class="nb">print</span> <span class="p">(</span><span class="nb">list</span> <span class="n">k</span> <span class="n">v</span><span class="p">)))</span>
+             <span class="n">ht</span><span class="p">))</span>
+<span class="p">(:</span><span class="n">A</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">B</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">NIL</span>
 
-<span class="c1">;; ==&gt;</span>
-<span class="p">(</span><span class="nv">ql:quickload</span> <span class="s">"for"</span><span class="p">)</span>
-<span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">ht</span> <span class="p">(</span><span class="nb">make-hash-table</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nb">gethash</span> <span class="ss">:a</span> <span class="nv">ht</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nb">gethash</span> <span class="ss">:b</span> <span class="nv">ht</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">for:for</span> <span class="p">((</span><span class="nv">key/value</span> <span class="nv">over</span> <span class="nv">ht</span><span class="p">))</span>
-    <span class="p">(</span><span class="nb">print</span> <span class="nv">key/value</span><span class="p">)))</span>
-<span class="c1">;; or using trivial-do https://github.com/yitzchak/trivial-do/</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">ql</span><span class="p">:</span><span class="n">quickload</span> <span class="s2">"alexandria"</span><span class="p">)</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">let</span> <span class="p">((</span><span class="n">ht</span> <span class="p">(</span><span class="n">make</span><span class="o">-</span><span class="nb">hash</span><span class="o">-</span><span class="n">table</span><span class="p">)))</span>
+    <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">gethash</span> <span class="p">:</span><span class="n">a</span> <span class="n">ht</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">gethash</span> <span class="p">:</span><span class="n">b</span> <span class="n">ht</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">alexandria</span><span class="p">:</span><span class="nb">hash</span><span class="o">-</span><span class="n">table</span><span class="o">-</span><span class="n">keys</span> <span class="n">ht</span><span class="p">))</span>
+<span class="p">(:</span><span class="n">B</span> <span class="p">:</span><span class="n">A</span><span class="p">)</span>
+
+<span class="o">*</span> <span class="p">(</span><span class="n">ql</span><span class="p">:</span><span class="n">quickload</span> <span class="s2">"for"</span><span class="p">)</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">let</span> <span class="p">((</span><span class="n">ht</span> <span class="p">(</span><span class="n">make</span><span class="o">-</span><span class="nb">hash</span><span class="o">-</span><span class="n">table</span><span class="p">)))</span>
+    <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">gethash</span> <span class="p">:</span><span class="n">a</span> <span class="n">ht</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">setf</span> <span class="p">(</span><span class="n">gethash</span> <span class="p">:</span><span class="n">b</span> <span class="n">ht</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">for</span><span class="p">:</span><span class="k">for</span> <span class="p">((</span><span class="n">key</span><span class="o">/</span><span class="n">value</span> <span class="n">over</span> <span class="n">ht</span><span class="p">))</span>
+      <span class="p">(</span><span class="nb">print</span> <span class="n">key</span><span class="o">/</span><span class="n">value</span><span class="p">)))</span>
+<span class="p">;;</span> <span class="ow">or</span> <span class="n">using</span> <span class="n">trivial</span><span class="o">-</span><span class="n">do</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">yitzchak</span><span class="o">/</span><span class="n">trivial</span><span class="o">-</span><span class="n">do</span><span class="o">/</span>
+<span class="p">(:</span><span class="n">A</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(:</span><span class="n">B</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">NIL</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">dotimes</span></code></p></li>
 </ul>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">dotimes</span> <span class="p">(</span><span class="nv">i</span> <span class="mi">3</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">print</span> <span class="nv">i</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span><span class="n">dotimes</span> <span class="p">(</span><span class="n">i</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">print</span> <span class="n">i</span><span class="p">))</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="n">NIL</span>
 
-<span class="p">(</span><span class="nb">loop</span> <span class="nv">repeat</span> <span class="mi">3</span>
-   <span class="nb">do</span> <span class="p">(</span><span class="nb">print</span> <span class="s">"hello"</span><span class="p">))</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">loop</span> <span class="n">repeat</span> <span class="mi">3</span>
+     <span class="n">do</span> <span class="p">(</span><span class="nb">print</span> <span class="s2">"hello"</span><span class="p">))</span>
+<span class="s2">"hello"</span>
+<span class="s2">"hello"</span>
+<span class="s2">"hello"</span>
+<span class="n">NIL</span>
 
-<span class="c1">;; REPL: READ EVAL PRINT LOOP</span>
-<span class="p">(</span><span class="nb">loop</span> <span class="p">(</span><span class="nb">print</span> <span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="nb">read</span><span class="p">))))</span>
+<span class="p">;;</span> <span class="n">REPL</span><span class="p">:</span> <span class="n">READ</span> <span class="n">EVAL</span> <span class="n">PRINT</span> <span class="n">LOOP</span>
+<span class="p">(</span><span class="n">loop</span> <span class="p">(</span><span class="nb">print</span> <span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="n">read</span><span class="p">))))</span>
 </pre></div>
 </div>
+</section>
 <section id="loop-hight-level-overview">
 <h3 id="loop-hight-level-overview">LOOP: Hight-level Overview<a class="headerlink" href="#loop-hight-level-overview" title="永久链接至标题">¶</a></h3>
 <p>2 rules:</p>
@@ -867,19 +1002,18 @@ https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defp
 </pre></div>
 </div>
 </section>
-</section>
-<section id="all-named-functions">
-<h2 id="all-named-functions">All named functions<a class="headerlink" href="#all-named-functions" title="永久链接至标题">¶</a></h2>
+<section id="functions">
+<h3 id="functions">Functions<a class="headerlink" href="#functions" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
-<li><p>named functions (<code class="docutils literal notranslate"><span class="pre">defun</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">apropos</span></code>: find definition</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">documentation</span></code>: get the documents</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">inspect</span></code>: check the details</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defun</span></code>：定义一个函数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">apropos</span></code>：查看符号是否被定义</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">documentation</span></code>：查看对应的文档</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inspect</span></code>：查看具体的细节</p></li>
 </ul>
-<p>difference between <code class="docutils literal notranslate"><span class="pre">#'</span></code> and <code class="docutils literal notranslate"><span class="pre">'</span></code> while calling with functions with <code class="docutils literal notranslate"><span class="pre">funcall</span></code>:</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">funcall</span></code> 调用函数时，可以使用 <code class="docutils literal notranslate"><span class="pre">#'</span></code> 或 <code class="docutils literal notranslate"><span class="pre">'</span></code>，两者的区别是：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">#'</span></code>: respects lexcial environment</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'</span></code>: mostly refers to top-level functions that live in packages</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#'</span></code>：表示调用当前词法作用域中定义的函数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'</span></code>：大部分时候是只 top-level 的函数，即全局作用域中的函数</p></li>
 </ul>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">hello</span> <span class="p">(</span><span class="nv">name</span> <span class="k">&amp;key</span> <span class="p">(</span><span class="nv">happy</span> <span class="no">t</span> <span class="nv">happy-p</span><span class="p">))</span>
   <span class="s">"Say hello to NAME."</span>
@@ -903,21 +1037,19 @@ https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defp
   <span class="p">(</span><span class="nb">funcall</span> <span class="nf">#'</span><span class="nv">hello</span> <span class="s">"with #'"</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">flet</span></code> ~ <code class="docutils literal notranslate"><span class="pre">let</span></code>
-<code class="docutils literal notranslate"><span class="pre">labels</span></code> ~ <code class="docutils literal notranslate"><span class="pre">let*</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">flet</span></code> ~ <code class="docutils literal notranslate"><span class="pre">let</span></code>，<code class="docutils literal notranslate"><span class="pre">let</span></code> 是对变量的绑定，<code class="docutils literal notranslate"><span class="pre">flet</span></code> 是对函数的绑定。
+<code class="docutils literal notranslate"><span class="pre">labels</span></code> ~ <code class="docutils literal notranslate"><span class="pre">let*</span></code> 类似。</p>
+</section>
 <section id="multiple-return-values">
-<h3 id="multiple-return-values">multiple return values<a class="headerlink" href="#multiple-return-values" title="永久链接至标题">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">values</span></code> print the multiple values, and return the first elements
-using <code class="docutils literal notranslate"><span class="pre">nth-value</span></code> to get the respectivly elements
-using <code class="docutils literal notranslate"><span class="pre">multiple-value-bind</span></code> to bind multiple elements of returned from <code class="docutils literal notranslate"><span class="pre">values</span></code></p>
+<h3 id="multiple-return-values">Multiple return values<a class="headerlink" href="#multiple-return-values" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">values</span></code> 会输出多个值，但返回的是多个值中的第一个，可以使用 <code class="docutils literal notranslate"><span class="pre">nth-value</span></code>
+获取到对应的元素，使用 <code class="docutils literal notranslate"><span class="pre">multiple-value-bind</span></code> 将 <code class="docutils literal notranslate"><span class="pre">values</span></code> 返回的多个值
+绑定到多个变量上。</p>
 </section>
 <section id="higher-order-functions">
-<h3 id="higher-order-functions">higher order functions<a class="headerlink" href="#higher-order-functions" title="永久链接至标题">¶</a></h3>
-<ol class="arabic simple">
-<li><p>accept function as arguments
-a. reference functions
-b. funcall</p></li>
-</ol>
+<h3 id="higher-order-functions">Higher order functions<a class="headerlink" href="#higher-order-functions" title="永久链接至标题">¶</a></h3>
+<p>Lisp 还有个优点是函数可以作为参数使用，这个后续的语言都是从 Lisp
+模仿过去的。</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">compute</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">y</span> <span class="k">&amp;key</span> <span class="nv">operation</span> <span class="nf">#'</span><span class="nb">+</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">funcall</span> <span class="nv">operation</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">))</span>
 
@@ -928,10 +1060,7 @@ b. funcall</p></li>
 <span class="p">(</span><span class="nb">member</span> <span class="s">"foo"</span> <span class="o">'</span><span class="p">(</span><span class="s">"rst"</span> <span class="s">"foo"</span><span class="p">)</span> <span class="ss">:test</span> <span class="nf">#'</span><span class="nb">string-equal</span><span class="p">)</span> <span class="c1">;; =&gt; ("foo")</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>return functions
-a. anonymous / lambda functions</p></li>
-</ol>
+<p>既然函数都能当参数使用，那么当作返回值也就没啥例外的了：</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">1+</span> <span class="nv">x</span><span class="p">))</span>
 
@@ -946,7 +1075,7 @@ a. anonymous / lambda functions</p></li>
   <span class="o">'</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">'</span><span class="p">(</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">))</span> <span class="c1">;; =&gt; (11 22 33)</span>
 </pre></div>
 </div>
-<p>b. <code class="docutils literal notranslate"><span class="pre">setf</span></code> functions</p>
+<p>同时还有个 <code class="docutils literal notranslate"><span class="pre">setf</span></code> 的属性</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">counter</span> <span class="mi">0</span><span class="p">))</span>
   <span class="p">(</span><span class="nb">defun</span> <span class="nv">counter-inc</span> <span class="p">()</span>
     <span class="p">(</span><span class="nb">incf</span> <span class="nv">counter</span><span class="p">))</span>
@@ -965,30 +1094,40 @@ a. anonymous / lambda functions</p></li>
 <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">counter-value</span><span class="p">)</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">;; =&gt; 9</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">defmethod</span></code> define a generic function</p>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defmethod</span> <span class="nv">hello</span> <span class="p">(</span><span class="nv">name</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">print</span> <span class="nv">name</span><span class="p">))</span>
+<p><code class="docutils literal notranslate"><span class="pre">defmethod</span></code>/<code class="docutils literal notranslate"><span class="pre">defgeneric</span></code> 用来定义泛型函数，区别在于
+<code class="docutils literal notranslate"><span class="pre">defmethod</span></code> 是对每个具体实现的定义，而 <code class="docutils literal notranslate"><span class="pre">defgeneric</span></code>
+可以使用 <code class="docutils literal notranslate"><span class="pre">:method</span></code> 关键词一次性定义多个实现。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">defmethod</span></code></p></li>
+</ul>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="nb">*</span> <span class="p">(</span><span class="nb">defmethod</span> <span class="nv">hello</span> <span class="p">(</span><span class="nv">name</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">print</span> <span class="nv">name</span><span class="p">))</span>
 
-<span class="p">(</span><span class="nb">defmethod</span> <span class="nv">hello</span> <span class="p">((</span><span class="nv">obj</span> <span class="nc">hash-table</span><span class="p">))</span>
-  <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"rrr we have a HT"</span><span class="p">))</span>
+<span class="nb">*</span> <span class="p">(</span><span class="nb">defmethod</span> <span class="nv">hello</span> <span class="p">((</span><span class="nv">obj</span> <span class="nc">hash-table</span><span class="p">))</span>
+    <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"rrr we have a HT"</span><span class="p">))</span>
 
-<span class="p">(</span><span class="nv">hello</span> <span class="p">(</span><span class="nb">make-hash-table</span><span class="p">))</span>
+<span class="nb">*</span> <span class="p">(</span><span class="nv">hello</span> <span class="p">(</span><span class="nb">make-hash-table</span><span class="p">))</span>
 <span class="c1">;; =&gt; rrr we have a HT</span>
 <span class="c1">;; NIL</span>
-<span class="p">(</span><span class="nv">hello</span> <span class="s">"me"</span><span class="p">)</span>
+<span class="nb">*</span> <span class="p">(</span><span class="nv">hello</span> <span class="s">"me"</span><span class="p">)</span>
 <span class="c1">;; "me"</span>
 <span class="c1">;; "me"</span>
 </pre></div>
 </div>
-<p>optional:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">defgeneric</span></code></p></li>
+</ul>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defgeneric</span> <span class="nv">hello</span> <span class="p">(</span><span class="nv">sthg</span><span class="p">)</span>
-  <span class="p">(</span><span class="ss">:documentation</span> <span class="s">"doc for hell"</span><span class="p">))</span>
+  <span class="p">(</span><span class="ss">:method</span> <span class="p">((</span><span class="nv">sthg</span> <span class="no">t</span><span class="p">))</span>
+      <span class="p">(</span><span class="nb">print</span> <span class="nv">sthg</span><span class="p">))</span>
+  <span class="p">(</span><span class="ss">:method</span> <span class="p">((</span><span class="nv">sthg</span> <span class="nc">hash-table</span><span class="p">))</span>
+      <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"rrr we have a HT"</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="create-a-new-project">
-<h2 id="create-a-new-project">create a new project:<a class="headerlink" href="#create-a-new-project" title="永久链接至标题">¶</a></h2>
+<h2 id="create-a-new-project">Create a new project:<a class="headerlink" href="#create-a-new-project" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">my-project.asd</span></code>:</p></li>
 </ul>
@@ -1027,24 +1166,36 @@ a. anonymous / lambda functions</p></li>
   <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"Hello ~a!"</span> <span class="p">(</span><span class="nv">uiop:getenv</span> <span class="s">"USER"</span><span class="p">)))</span>
 </pre></div>
 </div>
-<p>systems: like Debian packages
-packages: containers for symbols. Namespaces
-https://dnaeon.github.io/common-lisp-lookup-tables-alists-and-plists/
-https://gigamonkeys.com/book/beyond-lists-other-uses-for-cons-cells.html</p>
+<p>在 package 的定义和使用中，<code class="docutils literal notranslate"><span class="pre">#:</span></code> 和 <code class="docutils literal notranslate"><span class="pre">:</span></code> 用法基本是一致，只是
+有细微的差别，就是 <code class="docutils literal notranslate"><span class="pre">:</span></code> 会在当前的 image 中将后面的符号给占用，
+符号补全时能找到，而 <code class="docutils literal notranslate"><span class="pre">#:</span></code> 不会占用符号，因此推荐使用 <code class="docutils literal notranslate"><span class="pre">#:</span></code>，
+而不是 <code class="docutils literal notranslate"><span class="pre">:</span></code>。</p>
+<p>systems: like Debian packages</p>
+<p>packages: containers for symbols. Namespaces</p>
+<section id="alist-plist">
+<h3 id="alist-plist">Alist/Plist<a class="headerlink" href="#alist-plist" title="永久链接至标题">¶</a></h3>
+<p>这两种数据结构是轻量的 hash-table</p>
 <ul class="simple">
-<li><p>alists: association lists, a <code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">cons</span></code>es representing an associated
-of keys with values, where the <code class="docutils literal notranslate"><span class="pre">car</span></code> of each <code class="docutils literal notranslate"><span class="pre">cons</span></code> is the key and the <code class="docutils literal notranslate"><span class="pre">cdr</span></code>
-is the value associated with that key</p></li>
-<li><p>plists: property list</p>
-<ul>
-<li><p>a listcontaining an even number of elements that are alternating names(sometimes
-called indicators or keys) and values(sometimes called properties). When there is
-more than one name and value pair with the identical name in a property list, the
-first such pair determines the property</p></li>
-<li><p>the component of the symbol containing a property list</p></li>
+<li><p>alist 的格式如下：</p></li>
 </ul>
-</li>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span> <span class="p">(:</span><span class="n">a</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(:</span><span class="n">b</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>plist 的格式如下：</p></li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(:</span><span class="n">a</span> <span class="mi">1</span> <span class="p">:</span><span class="n">b</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>总的看来就是 alist 使用的是 <code class="docutils literal notranslate"><span class="pre">cons</span></code> 结构来关联 key-values，
+内部是嵌套的，而 plist 是 flatten 的 alist，偶数索引的元素
+为 key，索引为奇数的是 value（索引从 0 开始）。</p>
+<p>详细的讲解参考下面这两篇文章：</p>
+<ul class="simple">
+<li><p>https://dnaeon.github.io/common-lisp-lookup-tables-alists-and-plists/</p></li>
+<li><p>https://gigamonkeys.com/book/beyond-lists-other-uses-for-cons-cells.html</p></li>
+</ul>
+</section>
 </section>
 </section>
 
