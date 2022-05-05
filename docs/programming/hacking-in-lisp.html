@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -54,6 +53,8 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Hacking in Golang" href="hacking-in-golang.html" />
@@ -646,7 +647,7 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="hacking-in-lisp">
+  
 <h1 id="programming-hacking-in-lisp--page-root">Hacking in Lisp<a class="headerlink" href="#programming-hacking-in-lisp--page-root" title="永久链接至标题">¶</a></h1>
 <p>Date: Mon Apr. 10 2022</p>
 <p>对于 Lisp 来说，与其他语言的主要差别有三个：</p>
@@ -662,12 +663,12 @@
 比较疑惑的点。还有一点就是，其他语言是不会先对传过来的参数进行求值，
 然后再将函数运用到这些参数的结果上，但是 Lisp 就是这么做的，<strong>先对参数</strong>
 <strong>进行求值，然后再将函数应用到这些参数的结果上计算结果。</strong></p>
-<section id="basic">
+
 <h2 id="basic">Basic<a class="headerlink" href="#basic" title="永久链接至标题">¶</a></h2>
 <p>如果是其他语言，没必要介绍编译环境的安装配置，因为基本都有官网，官网上也都有对
 应的安装教程，或者说网上一搜一大堆。但 Lisp 或者说 Common Lisp（下面不对这
 两者进行区分，统一使用 Lisp 指代 Common Lisp）不一样，最官方的是 LispWorks，
-那个 IDE 贵的离谱，具体是 $1000 还是 $8000 我忘了，反正这超过普通的人承受
+那个 IDE 贵的离谱，具体是 <span class="math notranslate nohighlight">\(1000 还是 \)</span>8000 我忘了，反正这超过普通的人承受
 范围，虽然有免费版的，但是功能阉割的离谱，想要感受的自行去体验吧。</p>
 <p>还有一点就是 Lisp 的编译器其实是比较多的，同时大部分时候又要搭配着 Emacs 使
 用，Emacs 的配置需要投入一点时间去学习的。所以总给人一种比较混乱的感觉。而且
@@ -677,7 +678,7 @@ Lisp 入门变得简单了。强烈推荐去看看他编写的 <a class="referen
 当然我刚开始时也做了一下中文翻译，如果英文水平不是很好的话可以参考我翻译的
 <a class="reference external" href="https://oneforalone.github.io/cl-cookbook-cn/#/">Common Lisp 秘籍</a>。</p>
 <p>废话不多说，let's dive in.</p>
-<section id="environment-setups">
+
 <h3 id="environment-setups">Environment Setups<a class="headerlink" href="#environment-setups" title="永久链接至标题">¶</a></h3>
 <p>环境配置看你怎么选，如果你懒得去做一些配置什么的，有人已经写好了配置，直接下载
 安装就好了，那个就是 <code class="docutils literal notranslate"><span class="pre">[Portacle][portacle]</span></code>。这个就是一个 IDE，里面基本的
@@ -702,8 +703,8 @@ debugger，可以在 sbcl 的配置文件 <code class="docutils literal notransl
 <span class="p">(</span><span class="nb">setf</span> <span class="vg">*debugger-hook*</span> <span class="nf">#'</span><span class="nv">print-condition-hook</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="hello-lisp">
+
+
 <h3 id="hello-lisp">Hello Lisp<a class="headerlink" href="#hello-lisp" title="永久链接至标题">¶</a></h3>
 <p>从 C 语言那里流传下来的传统（虽然 Lisp 要比 C 早），接触一门语言的
 时候都喜欢用打印一个 "Hello World" 开始。其实大部分 Lisp 的教程
@@ -746,11 +747,11 @@ hello lisp
 可以类比其他语言的 <code class="docutils literal notranslate"><span class="pre">print</span></code> / <code class="docutils literal notranslate"><span class="pre">printf</span></code> 函数，不过这个字符串对应的转移符和类 C 的
 不一致，其转移符使用的是 <code class="docutils literal notranslate"><span class="pre">~</span></code>，而不是 <code class="docutils literal notranslate"><span class="pre">\</span></code>，所以换行是 <code class="docutils literal notranslate"><span class="pre">~%</span></code>，和 <code class="docutils literal notranslate"><span class="pre">\n</span></code> 一样的效果。
 更具体详细的介绍，参看 <a class="reference external" href="https://en.wikipedia.org/wiki/Format_(Common_Lisp)">wiki</a> 和 <a class="reference external" href="http://www.lispworks.com/documentation/lw50/CLHS/Body/22_c.htm">Lisp Hyper Spec: format</a>。</p>
-</section>
-<section id="defvar-defparameter-setf-setq">
+
+
 <h3 id="defvar-defparameter-setf-setq"><code class="docutils literal notranslate"><span class="pre">defvar</span></code>/<code class="docutils literal notranslate"><span class="pre">defparameter</span></code>/<code class="docutils literal notranslate"><span class="pre">setf</span></code>/<code class="docutils literal notranslate"><span class="pre">setq</span></code><a class="headerlink" href="#defvar-defparameter-setf-setq" title="永久链接至标题">¶</a></h3>
 <p>refer to <a class="reference external" href="https://stackoverflow.com/questions/8927741/whats-difference-between-defvar-defparameter-setf-and-setq">what's difference between defvar defparameter setf and setq</a></p>
-<section id="defvar-defparameter">
+
 <h4 id="defvar-defparameter"><code class="docutils literal notranslate"><span class="pre">defvar</span></code>/<code class="docutils literal notranslate"><span class="pre">defparameter</span></code><a class="headerlink" href="#defvar-defparameter" title="永久链接至标题">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">defvar</span></code> 和 <code class="docutils literal notranslate"><span class="pre">defparameter</span></code> 这两个内置函数都是用来定义
 全局变量的。区别在于 <code class="docutils literal notranslate"><span class="pre">defvar</span></code> 在第一次定义赋值后，之后都
@@ -778,8 +779,8 @@ hello lisp
 <p>有一点需要注意的是，定义全局变量时，有一部分 lisper 喜欢使用 <code class="docutils literal notranslate"><span class="pre">*</span></code> 将变量
 包起来，用来标识只是个全局变量，这个看自己的习惯吧，但是之后肯定会遇到这种
 情况的。例如之后介绍的 <code class="docutils literal notranslate"><span class="pre">*features*</span></code>。</p>
-</section>
-<section id="setf-setq">
+
+
 <h4 id="setf-setq"><code class="docutils literal notranslate"><span class="pre">setf</span></code>/<code class="docutils literal notranslate"><span class="pre">setq</span></code><a class="headerlink" href="#setf-setq" title="永久链接至标题">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">setf</span></code> 和 <code class="docutils literal notranslate"><span class="pre">setq</span></code> 都是修改变量的值，区别是 <code class="docutils literal notranslate"><span class="pre">setf</span></code> 是使用了 <code class="docutils literal notranslate"><span class="pre">setq</span></code> 的宏，
 对 <code class="docutils literal notranslate"><span class="pre">setq</span></code> 进行了拓展。因为 <code class="docutils literal notranslate"><span class="pre">setq</span></code> 不能对表达式的结果的值进行修改。具体的
@@ -818,8 +819,8 @@ hello lisp
 <span class="mi">0</span><span class="p">]</span> <span class="n">abort</span>
 </pre></div>
 </div>
-</section>
-<section id="features">
+
+
 <h4 id="features"><code class="docutils literal notranslate"><span class="pre">*features*</span></code><a class="headerlink" href="#features" title="永久链接至标题">¶</a></h4>
 <p>预定义的一个列表，可以自己添加一些自定义的特性，主要是用来根据不同的环境来执行
 不同的代码。</p>
@@ -827,9 +828,9 @@ hello lisp
 <span class="p">(</span><span class="nb">print</span> <span class="s2">"We are on linux"</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="iteration">
+
+
+
 <h3 id="iteration">Iteration<a class="headerlink" href="#iteration" title="永久链接至标题">¶</a></h3>
 <p>Lisp 中控制循环迭代最原生的是 <code class="docutils literal notranslate"><span class="pre">loop</span></code>，其他的都是后面衍生出来的。
 <code class="docutils literal notranslate"><span class="pre">dolist</span></code> 是遍历列表，<code class="docutils literal notranslate"><span class="pre">dotimes</span></code> 是已知循环的次数，<code class="docutils literal notranslate"><span class="pre">maphash</span></code>
@@ -964,8 +965,8 @@ hello lisp
 <span class="p">(</span><span class="n">loop</span> <span class="p">(</span><span class="nb">print</span> <span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="n">read</span><span class="p">))))</span>
 </pre></div>
 </div>
-</section>
-<section id="loop-hight-level-overview">
+
+
 <h3 id="loop-hight-level-overview">LOOP: Hight-level Overview<a class="headerlink" href="#loop-hight-level-overview" title="永久链接至标题">¶</a></h3>
 <p>2 rules:</p>
 <ul class="simple">
@@ -1001,8 +1002,8 @@ hello lisp
   <span class="ss">:finally</span> <span class="p">(</span><span class="nb">return</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">i</span> <span class="nv">res</span><span class="p">)))</span>
 </pre></div>
 </div>
-</section>
-<section id="functions">
+
+
 <h3 id="functions">Functions<a class="headerlink" href="#functions" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">defun</span></code>：定义一个函数</p></li>
@@ -1039,14 +1040,14 @@ hello lisp
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">flet</span></code> ~ <code class="docutils literal notranslate"><span class="pre">let</span></code>，<code class="docutils literal notranslate"><span class="pre">let</span></code> 是对变量的绑定，<code class="docutils literal notranslate"><span class="pre">flet</span></code> 是对函数的绑定。
 <code class="docutils literal notranslate"><span class="pre">labels</span></code> ~ <code class="docutils literal notranslate"><span class="pre">let*</span></code> 类似。</p>
-</section>
-<section id="multiple-return-values">
+
+
 <h3 id="multiple-return-values">Multiple return values<a class="headerlink" href="#multiple-return-values" title="永久链接至标题">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">values</span></code> 会输出多个值，但返回的是多个值中的第一个，可以使用 <code class="docutils literal notranslate"><span class="pre">nth-value</span></code>
 获取到对应的元素，使用 <code class="docutils literal notranslate"><span class="pre">multiple-value-bind</span></code> 将 <code class="docutils literal notranslate"><span class="pre">values</span></code> 返回的多个值
 绑定到多个变量上。</p>
-</section>
-<section id="higher-order-functions">
+
+
 <h3 id="higher-order-functions">Higher order functions<a class="headerlink" href="#higher-order-functions" title="永久链接至标题">¶</a></h3>
 <p>Lisp 还有个优点是函数可以作为参数使用，这个后续的语言都是从 Lisp
 模仿过去的。</p>
@@ -1124,9 +1125,9 @@ hello lisp
       <span class="p">(</span><span class="nb">format</span> <span class="no">t</span> <span class="s">"rrr we have a HT"</span><span class="p">))</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="create-a-new-project">
+
+
+
 <h2 id="create-a-new-project">Create a new project:<a class="headerlink" href="#create-a-new-project" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">my-project.asd</span></code>:</p></li>
@@ -1172,7 +1173,7 @@ hello lisp
 而不是 <code class="docutils literal notranslate"><span class="pre">:</span></code>。</p>
 <p>systems: like Debian packages</p>
 <p>packages: containers for symbols. Namespaces</p>
-<section id="alist-plist">
+
 <h3 id="alist-plist">Alist/Plist<a class="headerlink" href="#alist-plist" title="永久链接至标题">¶</a></h3>
 <p>这两种数据结构是轻量的 hash-table</p>
 <ul class="simple">
@@ -1195,9 +1196,9 @@ hello lisp
 <li><p>https://dnaeon.github.io/common-lisp-lookup-tables-alists-and-plists/</p></li>
 <li><p>https://gigamonkeys.com/book/beyond-lists-other-uses-for-cons-cells.html</p></li>
 </ul>
-</section>
-</section>
-</section>
+
+
+
 
 
           </article>
@@ -1246,7 +1247,7 @@ hello lisp
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

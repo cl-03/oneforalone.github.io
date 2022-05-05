@@ -4,8 +4,7 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -602,17 +601,17 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="using-gpg-signing-key-in-git">
+  
 <span id="git-with-gpg"></span><h1 id="misc-git-with-gpg--page-root">Using GPG signing key in git<a class="headerlink" href="#misc-git-with-gpg--page-root" title="永久链接至标题">¶</a></h1>
 <p>Date: Tue. May. 3 2022</p>
 <p>既然开始使用 GPG 了，那么就贯彻到底咯，git 也用上 GPG 签名好了。</p>
-<section id="id1">
+
 <h2 id="id1">初始化环境<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<section id="id2">
+
 <h3 id="id2">安装并生成密钥<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <p>PGP 的安装和密钥的生成参考 <a class="reference internal" href="../crypto/GPG-on-Mac.html#gpg-on-mac"><span class="std std-ref">GPG Suit for Apple Mail on Mac OS</span></a>  中的步骤。</p>
-</section>
-<section id="id3">
+
+
 <h3 id="id3">导出公钥<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>列出 GPG keys</p></li>
@@ -636,29 +635,43 @@ ssb   rsa4096/A94CB14EEA671E75 <span class="m">2022</span>-04-15 <span class="o"
 </pre></div>
 </div>
 <p>这里会在终端输出公钥，复制粘贴到 Github 账号中。</p>
-</section>
-</section>
-<section id="git">
+
+
+
 <h2 id="git">配置 git<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h2>
 <p>设置签名时使用的 key：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global user.signingkey pub 3095B650DD23CCAC
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global user.signingkey 3095B650DD23CCAC
+</pre></div>
+</div>
+<p>上面的命令中的 <code class="docutils literal notranslate"><span class="pre">user.signingkey</span></code> 后面接的是你自己的 key id。</p>
+<p>因为 macOS 上安装的 GPG Suit 的命令是 <code class="docutils literal notranslate"><span class="pre">gpg2</span></code>，不是 <code class="docutils literal notranslate"><span class="pre">gpg</span></code>，所以
+需要指定一下 GPG 的命令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global gpg.program gpg2
 </pre></div>
 </div>
 <p>如果只是想对单独的 repo 使用 GPG 签名，那么就切换到那个 repo 目录下，
-然后执行 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">commit.gpgsign</span> <span class="pre">true</span></code>，但是一般既然用了，那么
-肯定是喜欢全局都使用，那么就执行
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">commit.gpgsign</span> <span class="pre">true</span></code> 咯。</p>
+然后执行：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config commit.gpgsign <span class="nb">true</span>
+</pre></div>
+</div>
+<p>但是一般既然用了，那么肯定是喜欢全局都使用，那么就执行：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global commit.gpgsign <span class="nb">true</span>
+</pre></div>
+</div>
+<p>反正就是对 git 的配置，要是不想敲命令，就直接编辑
+<code class="docutils literal notranslate"><span class="pre">$HOME/.gitconfig</span></code>，至于具体的参数格式，参考官方
+文档吧：https://git-scm.com/docs/git-config。</p>
 <p>Okay，Done。</p>
-</section>
-<section id="reference">
+
+
 <h2 id="reference">Reference:<a class="headerlink" href="#reference" title="永久链接至标题">¶</a></h2>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p><a class="reference external" href="https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key">Telling Git about your signing key</a></p></li>
 <li><p><a class="reference internal" href="../crypto/GPG-on-Mac.html#gpg-on-mac"><span class="std std-ref">GPG Suit for Apple Mail on Mac OS</span></a></p></li>
 <li><p><a class="reference external" href="https://www.cnblogs.com/xueweihan/p/5430451.html">使用 GPG 签名你的 Commit</a></p></li>
 </ol>
-</section>
-</section>
+
+
 
 
           </article>
@@ -707,7 +720,7 @@ ssb   rsa4096/A94CB14EEA671E75 <span class="m">2022</span>-04-15 <span class="o"
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

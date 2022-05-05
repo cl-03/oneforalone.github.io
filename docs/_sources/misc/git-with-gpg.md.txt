@@ -42,13 +42,34 @@ $ gpg2 --armor --export pub 3095B650DD23CCAC
 设置签名时使用的 key：
 
 ```bash
-$ git config --global user.signingkey pub 3095B650DD23CCAC
+$ git config --global user.signingkey 3095B650DD23CCAC
+```
+
+上面的命令中的 `user.signingkey` 后面接的是你自己的 key id。
+
+因为 macOS 上安装的 GPG Suit 的命令是 `gpg2`，不是 `gpg`，所以
+需要指定一下 GPG 的命令：
+
+```bash
+$ git config --global gpg.program gpg2
 ```
 
 如果只是想对单独的 repo 使用 GPG 签名，那么就切换到那个 repo 目录下，
-然后执行 `git config commit.gpgsign true`，但是一般既然用了，那么
-肯定是喜欢全局都使用，那么就执行
-`git config --global commit.gpgsign true` 咯。
+然后执行：
+
+```bash
+$ git config commit.gpgsign true
+```
+
+但是一般既然用了，那么肯定是喜欢全局都使用，那么就执行：
+
+```bash
+$ git config --global commit.gpgsign true
+```
+
+反正就是对 git 的配置，要是不想敲命令，就直接编辑
+`$HOME/.gitconfig`，至于具体的参数格式，参考官方
+文档吧：https://git-scm.com/docs/git-config。
 
 Okay，Done。
 
